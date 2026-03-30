@@ -1,0 +1,80 @@
+name: Deploy Quartz to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Format code (optional)
+        run: npm run format
+
+      - name: Check types and lint (optional)
+        run: npm run check
+      - name: List project files (debugging)
+        run: ls -la
+
+      - name: Show Node.js version (debugging)
+        run: node -v
+
+      - name: Show obsidian directory before build (debugging)
+        run: |
+          echo "Contenido del directorio antes del build:"
+          ls -la obsidian
+
+      - name: Build Quartz site
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          echo "Contenido de la carpeta de salida:"
+          ls -la public
+          echo "Si no ves archivos HTML aquí, algo falló en el build"
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
