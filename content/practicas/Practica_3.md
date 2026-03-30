@@ -1,6 +1,7 @@
 ---
 title: Practica 3 (Regresión Lineal con Java)
 date: 2024-06-01
+tags: ["Java", "POO", "Regresión Lineal"]
 ---
 
 ## 🎯 **Objetivo del laboratorio**
