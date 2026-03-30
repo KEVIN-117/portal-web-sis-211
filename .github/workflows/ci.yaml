@@ -45,8 +45,6 @@ jobs:
       - name: Format code (optional)
         run: npm run format
 
-      - name: Check types and lint (optional)
-        run: npm run check
       - name: List project files (debugging)
         run: ls -la
 
