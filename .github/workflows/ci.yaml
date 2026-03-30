@@ -47,16 +47,6 @@ jobs:
 
       - name: Check types and lint (optional)
         run: npm run check
-      - name: List project files (debugging)
-        run: ls -la
-
-      - name: Show Node.js version (debugging)
-        run: node -v
-
-      - name: Show obsidian directory before build (debugging)
-        run: |
-          echo "Contenido del directorio antes del build:"
-          ls -la obsidian
 
       - name: Build Quartz site
         run: npm run build
