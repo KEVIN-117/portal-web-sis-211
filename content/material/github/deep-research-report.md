@@ -2,6 +2,7 @@
 title: "Guía básica de Git y GitHub"
 author: "Grupo 2"
 date: 2026-03-24
+tags: ["Git", "GitHub"]
 ---
 
 **Resumen ejecutivo:** Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros. Un *repositorio local* es la copia del proyecto en tu computadora; un *repositorio remoto* es la copia en un servidor (por ejemplo, GitHub). Con Git trabajas creando *confirmaciones (commits)*, que son fotos o instantáneas de los cambios preparados. Para colaborar, se usan *ramas*: cada rama es una línea independiente de desarrollo. Cuando terminas una función, fusionas la rama con la rama principal (usualmente `main`) mediante una *merge*, uniendo así los historiales. Para trabajar con repositorios remotos, usas `git push` (para subir tus commits) y `git pull` (para bajar cambios de otros). Si contribuyes a un proyecto ajeno, primero haces un *fork* (copia personal del repositorio) y luego envías un *pull request* (“solicitud de cambios”) para que integren tu rama.

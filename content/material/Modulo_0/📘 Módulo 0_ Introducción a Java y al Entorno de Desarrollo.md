@@ -3,6 +3,7 @@ title: "📘 Introducción a Java y al Entorno de Desarrollo"
 author: "Profesor: [Nombre del Profesor]"
 last-modified: "2026-03-24"
 date: "2026-03-24"
+tags: ["Java", "Introducción"]
 ---
 
 Objetivo: preparar el entorno y comprender los fundamentos del lenguaje.  
@@ -154,7 +155,7 @@ La razón por la que Java sigue dominando el software corporativo se basa en sus
 
 ### **0.2.3 La Promesa de Java: WORA**
 
-**Concepto Clave: “Write Once, Run Anywhere” (Escríbelo una vez, ejecútalo en cualquier lugar)**
+***Concepto Clave: “Write Once, Run Anywhere” (Escríbelo una vez, ejecútalo en cualquier lugar)***
 
 Este eslogan lo dice todo. Antes de Java, si querías que tu programa funcionara en Windows, Mac y UNIX, tenías que escribir versiones diferentes. Java prometió (y cumplió) que el mismo código fuente funcionaría idénticamente en cualquier plataforma, ahorrando tiempo y dinero a las empresas.
 
@@ -240,7 +241,7 @@ Conceptos básicos
 
 ## **0.4 Primer Programa en Java**
 
-**El bautismo de todo programador: El ritual del "Hola Mundo" en Java**
+***El bautismo de todo programador: El ritual del "Hola Mundo" en Java***
 
 Hay una regla no escrita, una bienvenida casi sagrada en nuestro mundo, el de los programadores: cuando te aventuras a aprender un lenguaje nuevo, tu primera misión es un simple saludo. No buscamos una proeza de lógica, sino un "test de encendido" vital. Es nuestra forma de asegurar que todas tus herramientas (el editor, las configuraciones, el traductor y la "máquina" que lo ejecuta) se han dado la mano y están listos para que empieces a crear.
 
@@ -360,17 +361,33 @@ Son el corazón de cualquier decisión que tome el programa.
 | **==** | Igualdad Absoluta | ¿Son exactamente el mismo valor? |
 | **!=** | Desigualdad / Diferencia | ¿Son diferentes? (¿Hay una divergencia entre ellos?) |
 | **>** y **<** | Mayor y Menor Estricto | ¿Uno es estrictamente más grande/pequeño que el otro? |
-| **>=** y **<=** | Mayor/Menor o Igual | ¿Es más grande/pequeño... **o al menos igual**? (Esto permite la igualdad). |
+| **>=** y **<\=** | Mayor/Menor o Igual | ¿Es más grande/pequeño... **o al menos igual**? (Esto permite la igualdad). |
 
 ### **0.6.3 Operadores Lógicos: Los Arquitectos de las Condiciones**
 
 Permiten unir varias preguntas aisladas y construir "árboles de decisiones" mucho más complejos y sofisticados para el programa.
 
 | Símbolo | Nombre | Función Humana |
-| :---: | :---: | :---: |
+|---------|--------|----------------|
 | **&&** | AND / Y Lógico | **El Riguroso:** Exige que *todas* las condiciones sean verdad. Si la primera ya es falsa, se rinde de inmediato (optimización de "cortocircuito") porque sabe que el resultado final ya es Falso. |
-| **||** | OR / O Lógico | **El Tolerante:** Le basta con que *al menos una* de las condiciones sea verdadera para que toda la declaración sea considerada Verdadera. |
+| **\|\|** | OR / O Lógico | **El Tolerante:** Le basta con que *al menos una* de las condiciones sea verdadera para que toda la declaración sea considerada Verdadera. |
 | **!** | NOT / Negación | **El Inversor:** Simplemente le da la vuelta a la verdad. Si algo era *true*, lo convierte en *false*, y viceversa. |
+
+> **Nota:** Los operadores lógicos son fundamentales para la toma de decisiones en un programa. Permiten crear condiciones complejas que determinan el flujo de ejecución del programa.
+
+### **0.6.4 Operadores de Asignación: El Acto de Entregar el Valor**
+
+Son los operadores más comunes y sencillos de entender, ya que su función es puramente mecánica: tomar el resultado de una operación o el valor de una variable y "entregárselo" a otra para que la guarde en su memoria. El símbolo universal para esta acción es el signo de igual (`=`).
+
+| Símbolo | Nombre | Función Humana |
+|---------|--------|----------------|
+| **=** | Asignación Simple | **El Depositante:** Toma el valor que está a su derecha y lo guarda en la variable que está a su izquierda. |
+| **+=** | Suma y Asigna | **El Incrementador:** Suma el valor de la derecha al valor actual de la variable de la izquierda y guarda el resultado en esa misma variable. |
+| **-=** | Resta y Asigna | **El Decrementador:** Resta el valor de la derecha al valor actual de la variable de la izquierda y guarda el resultado en esa misma variable. |
+| **\*\=** | Multiplica y Asigna | **El Escalador:** Multiplica el valor actual de la variable de la izquierda por el valor de la derecha y guarda el resultado en esa misma variable. |
+| **\/=** | Divide y Asigna | **El Reductor:** Divide el valor actual de la variable de la izquierda por el valor de la derecha y guarda el resultado en esa misma variable. |
+
+> **Nota:** Los operadores de asignación son fundamentales para la manipulación de datos en un programa. Permiten crear condiciones complejas que determinan el flujo de ejecución del programa.
 
 ## **0.7 Entrada y Salida de Datos**
 

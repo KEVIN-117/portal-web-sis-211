@@ -260,16 +260,3 @@ System.out.print("¿Cuántas casas desea ingresar?");
 ## 🌱 **Desafío adicional (opcional)**
 
 👉 Muestra cuál casa tiene el **precio más alto**
-
----
-
-## 🎯 **Cierre**
-
-Este laboratorio es importante porque:
-
-- Aprendes Java con un caso real ✔️
-- Entiendes cómo funciona una predicción ✔️
-- Te prepara para temas más avanzados como:
-  - Machine Learning real
-  - APIs
-  - Sistemas inteligentes

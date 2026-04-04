@@ -1,5 +1,6 @@
 ---
 title: "Portal Web SIS-211 G2"
+tags: ["Portal Web", "SIS-211"]
 ---
 
 Welcome to the Portal Web SIS-211 G2.
