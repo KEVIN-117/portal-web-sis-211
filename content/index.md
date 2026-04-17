@@ -16,32 +16,6 @@ This portal is a web application that allows users to access and manage their in
 - Attendance management
 - Communication tools
 
-## Getting Started
+[@netflixScaling2026].
 
-To get started with the Portal Web SIS-211 G2, please follow the instructions in the [documentation](https://quartz.jzhao.xyz).
-
-## Contact
-
-For more information, please contact [EMAIL_ADDRESS]
-
-```java
-public int reverse(int x) {
-        int result = 0;
-        StringBuilder sb = new StringBuilder();
-        int sign = x < 0 ? -1 : 1;
-        x = Math.abs(x);
-        while (x ~~~hidden!=hidden~~~ 0){
-            int pop = x % 10;
-            x /= 10;
-            sb.append((pop));
-        }
-
-        try {
-            result = Integer.parseInt(sb.toString()) * sign;
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-
-        return isValid32BitInteger.apply(result)? result : 0;
-    }
-```
+[^ref]
