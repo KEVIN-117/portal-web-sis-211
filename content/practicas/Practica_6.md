@@ -14,66 +14,80 @@ Nuestra startup de e-commerce necesita procesar pagos. Dado que todos los pagos,
 
 ## 🛠️ Arquitectura Base (Implementación de Referencia)
 
-Primero, definimos la superclase abstracta. Esta clase tendrá código reutilizable y obligará a sus hijas a definir cómo se procesa el cobro.
+Primero, definimos la superclase abstracta dentro del paquete `core`. Esta clase tendrá código reutilizable y obligará a sus hijas a definir cómo se procesa el cobro.
 
 ```java
-// 1. La Clase Padre (Abstracta)
-public abstract class MetodoPago {
-    // Atributo común protegido para que las clases hijas puedan acceder si lo necesitan
-    protected String titular;
+package core;
 
-    // El constructor de la clase padre
-    public MetodoPago(String titular) {
-        this.titular = titular;
+public abstract class PaymentMethod {
+    private String holderName;
+
+    public PaymentMethod(String holderName) {
+        this.holderName = holderName;
     }
 
-    // Método concreto (Comportamiento heredado y reutilizado por TODAS las hijas)
-    public void generarRecibo(double monto) {
-        System.out.println("----- RECIBO DE PAGO -----");
-        System.out.println("Cliente: " + titular);
-        System.out.println("Monto cobrado: $" + monto);
+    public String getHolderName() {
+        return holderName;
+    }
+
+    // Specific method (Behavior inherited and used by ALL daughters)
+    public void generateReceipt(double amount) {
+        System.out.println("----- PAYMENT RECEIPT -----");
+        System.out.println("Client: " + holderName);
+        System.out.println("Amount charged: $" + amount);
         System.out.println("--------------------------");
     }
 
-    // Método abstracto (El contrato: cada hija debe implementarlo a su manera)
-    public abstract boolean procesarPago(double monto);
+    // Abstract method (The contract: each daughter must implement it in their own way)
+    public abstract boolean processPayment(double amount);
 }
 ```
 
-Ahora, implementamos las clases concretas (hijas) usando la palabra reservada `extends`.
+Ahora, implementamos las clases concretas (hijas) usando la palabra reservada `extends` dentro del paquete `models`.
 
 ```java
-// 2. Subclase 1: Tarjeta de Crédito
-public class PagoTarjeta extends MetodoPago {
-    private String numeroTarjeta;
+package models;
 
-    public PagoTarjeta(String titular, String numeroTarjeta) {
-        super(titular); // Invocamos obligatoriamente al constructor de la clase padre
-        this.numeroTarjeta = numeroTarjeta;
+import core.PaymentMethod;
+
+public class CreditCard extends PaymentMethod {
+    private String cardNumber;
+
+    public CreditCard(String holderName, String cardNumber) {
+        super(holderName);
+        this.cardNumber = cardNumber;
     }
 
     @Override
-    public boolean procesarPago(double monto) {
-        // Simulamos la lógica de cobro
-        System.out.println("Cobrando con Tarjeta terminada en " + numeroTarjeta.substring(numeroTarjeta.length() - 4));
-        generarRecibo(monto); // Reutilizamos el código de la superclase
-        return true; 
+    public boolean processPayment(double amount) {
+        // TODO Auto-generated method stub
+        // Simulation of payment processing logic
+        System.out.println("Processing payment with Credit Card ending in " + cardNumber.substring(cardNumber.length() - 4));
+        generateReceipt(amount); // Reusing the method from the parent class to generate a receipt
+        return true;
     }
 }
 
-// 3. Subclase 2: PayPal
-public class PagoPayPal extends MetodoPago {
-    private String correoElectronico;
+```
 
-    public PagoPayPal(String titular, String correoElectronico) {
-        super(titular);
-        this.correoElectronico = correoElectronico;
+```java
+package models;
+
+import core.PaymentMethod;
+
+public class PayPal extends PaymentMethod {
+    private String email;
+
+    public PayPal(String holderName, String email) {
+        super(holderName);
+        this.email = email;
     }
 
     @Override
-    public boolean procesarPago(double monto) {
-        System.out.println("Cobrando vía PayPal a la cuenta: " + correoElectronico);
-        generarRecibo(monto);
+    public boolean processPayment(double amount) {
+        // TODO Auto-generated method stub
+        System.out.println("Collecting payment via PayPal to the account: " + email);
+        generateReceipt(amount);
         return true;
     }
 }
@@ -84,27 +98,42 @@ El código cliente aprovecha el polimorfismo instanciando las subclases, pero ag
 ```java
 // 4. El Procesador (Polimorfismo en acción)
 import java.util.List;
+import core.PaymentMethod;
+import models.CreditCard;
+import models.PayPal;
 
-public class Tienda {
-    // Fíjense cómo recibimos la Clase Abstracta 'MetodoPago'.
-    public void realizarCobros(List<MetodoPago> pagosPendientes, double montoMembresia) {
-        for (MetodoPago pago : pagosPendientes) {
-            // El polimorfismo dinámico decide en tiempo de ejecución qué procesarPago() llamar
-            boolean exito = pago.procesarPago(montoMembresia);
-            if (!exito) {
-                System.err.println("Atención: El pago de " + pago.titular + " ha fallado.");
+public class Store {
+    public static void main(String[] args) throws Exception {
+        // Creation of payment methods
+        CreditCard creditCardPayment = new CreditCard("Alice Smith", "1234-5678-9012-3456");
+        PayPal payPalPayment = new PayPal("Bob Johnson", "bob.johnson@example.com");
+        // Adding the payment methods to a list
+        List<PaymentMethod> payments = List.of(creditCardPayment, payPalPayment);
+        // Amount of the membership to be charged
+        double membershipAmount = 49.99;
+        // Process the payments using the static method of the Store class
+        makePayments(payments, membershipAmount);
+    }
+
+    public static void makePayments(List<PaymentMethod> payments, double membershipAmount) {
+        for (PaymentMethod payment : payments) {
+            boolean success = payment.processPayment(membershipAmount);
+            if (!success) {
+                System.err.println("Payment failed for: " + payment.getHolderName());
             }
         }
     }
 }
+
 ```
 
 ---
 
 ## 🚀 Retos para el Estudiante (El Trabajo Práctico)
 
-1. **Reto 1 (Cripto):** Crea una subclase `PagoCripto` que herede de `MetodoPago`. Su constructor debe recibir el nombre del titular y la dirección de la billetera (wallet). El método `procesarPago` solo debe retornar `true` y llamar a `generarRecibo()` **si el monto es mayor o igual a 10.0** (simulando una restricción de red). Si es menor, debe imprimir "Monto insuficiente" y retornar `false`.
-2. **Reto 2 (Efectivo):** Crea una subclase `PagoEfectivo` que herede de `MetodoPago`. Su constructor solo necesita el `titular`. Para evitar lavado de dinero, su método `procesarPago` debe rechazar el pago (retornar `false`) si el monto supera los 1000. De lo contrario, genera el recibo y retorna `true`.
+1. **Reto 1 (Crypto):** Crea una subclase `CryptoPayment` que herede de `PaymentMethod`. Su constructor debe recibir el nombre del titular (`holderName`) y la dirección de la billetera (`walletAddress`). El método `processPayment()` solo debe retornar `true` y llamar a `generateReceipt()` **si el monto es mayor o igual a 10.0** (simulando una restricción de red). Si es menor, debe imprimir "Crypto payment failed: Amount must be at least $10.0" y retornar `false`.
+2. **Reto 2 (Cash):** Crea una subclase `CashPayment` que herede de `PaymentMethod`. Su constructor solo necesita el `titular`. Para evitar lavado de dinero, su método `processPayment()` debe rechazar el pago (retornar `false`) si el monto supera los 1000 e imprimir el mensaje (`Cash payment failed: Amount exceeds the limit of $1000.`). De lo contrario, genera el recibo y retorna `true`.
+3. **Reto 3:** Modifica la clase `Store`, crea nuevas instancias de `CreditCard`, `PayPal`, `CryptoPayment` y `CashPayment` y llámales al método `processPayment()` con diferentes montos para verificar que los métodos se comporten correctamente.
 
 ---
 
@@ -118,39 +147,114 @@ Estas pruebas garantizarán que los estudiantes hayan respetado la jerarquía de
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SistemaPagosTest {
+public class PaymentSystemTest {
 
     @Test
-    public void testHerenciaBasica() {
-        MetodoPago tarjeta = new PagoTarjeta("Juan Perez", "1234567890123456");
-        MetodoPago paypal = new PagoPayPal("Ana Gomez", "ana@usfx.bo");
+    public void testBasicInheritance() {
+        CreditCard creditCardPayment = new CreditCard("Juan Perez", "1234567890123456");
+        PayPal payPalPayment = new PayPal("Ana Gomez", "ana@usfx.bo");
 
-        assertTrue(tarjeta.procesarPago(50.0), "El pago con tarjeta debería ser exitoso");
-        assertTrue(paypal.procesarPago(25.0), "El pago con PayPal debería ser exitoso");
+        assertTrue(creditCardPayment.processPayment(50.0), "Payment with credit card should be successful");
+        assertTrue(payPalPayment.processPayment(25.0), "Payment with PayPal should be successful");
     }
 
     @Test
-    public void testPagoCriptoFallaMontoMinimo() {
-        MetodoPago cripto = new PagoCripto("Satoshi", "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+    public void testCryptoPaymentLowAmount() {
+        CryptoPayment crypto = new CryptoPayment("Satoshi", "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
         
-        assertFalse(cripto.procesarPago(5.0), "El pago cripto debe fallar si es menor a 10.0");
-        assertTrue(cripto.procesarPago(15.0), "El pago cripto debe ser exitoso si es mayor o igual a 10.0");
+        assertFalse(crypto.processPayment(5.0), "Crypto payment must fail if it is less than 10.0");
+        assertTrue(crypto.processPayment(15.0), "Crypto payment must be successful if it is greater than or equal to 10.0");
     }
 
     @Test
-    public void testPagoEfectivoRechazaMaximo() {
-        MetodoPago efectivo = new PagoEfectivo("Carlos Lopez");
+    public void testCashPaymentExceedsLimit() {
+        CashPayment cash = new CashPayment("Carlos Lopez");
 
-        assertTrue(efectivo.procesarPago(500.0), "Debe ser exitoso con un monto permitido");
-        assertFalse(efectivo.procesarPago(1500.0), "Debe fallar si el monto supera los 1000 por políticas de seguridad");
+        assertTrue(cash.processPayment(500.0), "Must be successful with an allowed amount");
+        assertFalse(cash.processPayment(1500.0), "Must fail if the amount exceeds 1000 due to security policies");
     }
 }
 ```
 
-### 📊 Métricas de Revisión (Rúbrica)
+### 📊 Métricas de Revisión (Rúbrica basada en `tests`)
 
-* **Compilación y Herencia (20%):** Las clases hijas utilizan `extends MetodoPago` y compilan correctamente invocando a `super(titular)`.
-* **Test Passing (50%):** Cada Test exitoso en JUnit suma puntos.
-* **Buenas Prácticas POO (30%):** * Uso obligatorio de la anotación `@Override`.
-  * La llamada al método heredado `generarRecibo(monto)` se realiza dentro de las clases hijas solo si el pago es exitoso.
-  * Encapsulamiento correcto (atributos de las subclases marcados como `private`).
+- **Puntaje total: 100 puntos**
+
+| Suite de Tests      | Puntos |
+| ------------------- | -----: |
+| `PaymentMethodTest` |     15 |
+| `CreditCardTest`    |     10 |
+| `PayPalTest`        |     10 |
+| `CryptoPaymentTest` |     15 |
+| `CashPaymentTest`   |     15 |
+| `StoreTest`         |     35 |
+
+---
+
+#### ✅ Criterios por suite
+
+- **`PaymentMethodTest` (15 pts)**
+  - Clase `PaymentMethod` declarada como `abstract`.
+  - Constructor y `getHolderName()` funcionando correctamente.
+  - Método `generateReceipt(double amount)` disponible y reutilizable por subclases.
+  - Contrato `processPayment(double amount)` definido como método abstracto.
+
+- **`CreditCardTest` (10 pts)**
+  - `CreditCard` hereda de `PaymentMethod`.
+  - Implementa `processPayment` y retorna `true`.
+  - Usa `generateReceipt(...)` al procesar pagos válidos.
+
+- **`PayPalTest` (10 pts)**
+  - `PayPal` hereda de `PaymentMethod`.
+  - Implementa `processPayment` y retorna `true`.
+  - Usa `generateReceipt(...)` al procesar pagos válidos.
+
+- **`CryptoPaymentTest` (15 pts)**
+  - Si `amount < 10.0`: retorna `false` y muestra  
+     `Crypto payment failed: Amount must be at least $10.0`.
+  - Si `amount >= 10.0`: retorna `true` y genera recibo.
+
+- **`CashPaymentTest` (15 pts)**
+  - Si `amount > 1000`: retorna `false` y muestra  
+     `Cash payment failed: Amount exceeds the limit of $1000.`
+  - Si `amount <= 1000`: retorna `true` y genera recibo.
+
+- **`StoreTest` (35 pts)**
+  - Verifica integración completa y polimorfismo en `makePayments(...)`.
+  - Casos esperados:
+    - `testPagoExitosoTarjetaCredito` — **2.5 pts**
+    - `testPagoExitosoPayPal` — **2.5 pts**
+    - `testPagoExitosoCripto` — **2.5 pts**
+    - `testPagoFallidoCriptoMontoBajo` — **2.5 pts**
+    - `testPagoExitosoEfectivo` — **2.5 pts**
+    - `testPagoFallidoEfectivoMontoExcedido` — **2.5 pts**
+    - `testProcesarMultiplesPagos` — **7.5 pts**
+  - Además, se evalúa consistencia de salida, manejo de errores y correcta ejecución de todos los pagos de la lista.
+
+> **Recomendación:** respetar exactamente nombres de clases, firmas de métodos y mensajes esperados por los tests para evitar fallos por formato.
+
+---
+
+### 🎯 Puntos clave de arquitectura y POO
+
+- ✅ **Herencia**: las clases `CreditCard`, `PayPal`, `CryptoPayment` y `CashPayment` heredan de la clase abstracta `PaymentMethod`.
+- ✅ **Encapsulamiento**: el atributo `holderName` está protegido en la clase base y solo se accede mediante getters.
+- ✅ **Polimorfismo**: el método `makePayments` acepta una lista genérica de `PaymentMethod`, demostrando que el código cliente trabaja con la interfaz abstracta sin conocer las implementaciones concretas.
+- ✅ **Reutilización de código**: todas las subclases invocan al método heredado `generateReceipt()` para evitar duplicación de lógica.
+
+---
+
+### 🧰 Herramientas de validación
+
+El entorno de evaluación usa JUnit 5 y Hamcrest.
+
+- **Pruebas unitarias:**  
+  `PaymentMethodTest`, `CreditCardTest`, `PayPalTest`, `CryptoPaymentTest`, `CashPaymentTest`, `StoreTest`.
+- **Asserters disponibles:**  
+  `assertEquals`, `assertTrue`, `assertFalse`, `assertNotNull`, etc.
+- **Mensajes de error:**  
+  Los tests validan mensajes de texto exactos como:  
+  - `Crypto payment failed: Amount must be at least $10.0`  
+  - `Cash payment failed: Amount exceeds the limit of $1000.`
+
+> **Tip:** Para evitar errores, usa las cadenas de mensaje y los valores exactos que se muestran en los tests.
