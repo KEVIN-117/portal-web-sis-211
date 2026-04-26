@@ -1,5 +1,5 @@
 ---
-title: 'Fundamentos de la Herencia en Java'
+title: 'Herencia en Java'
 
 tags: 
   - Herencia
