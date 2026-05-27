@@ -7,6 +7,8 @@ tags: ["POO", "Java", "Arquitectura de Software", "Desarrollo Full Stack"]
 
 ## **1. Sintaxis de Java y la Filosofía del Código Limpio**
 
+![alt text](material/modulo_2/image.png)
+
 Antes de sumergirnos en los paradigmas arquitectónicos de alto nivel, es imperativo establecer una base sólida. En el desarrollo de software, la sintaxis no es solo un conjunto de reglas gramaticales para que el compilador entienda nuestras instrucciones; es el lenguaje con el que nos comunicamos con otros desarrolladores.[4] El concepto de "Clean Code" (Código Limpio) nos enseña que el código se lee muchas más veces de las que se escribe. [5]
 
 La sintaxis fundamental de Java, desde la declaración de variables hasta las estructuras de control avanzadas, debe aplicarse con rigor profesional.[4] Nombrar variables adecuadamente es el primer paso. En lugar de utilizar identificadores genéricos como `int d`, un desarrollador profesional utiliza nombres descriptivos como `int diasTranscurridos`. Las estructuras de control, como los bucles `for`, `while` y las sentencias condicionales `if-else`, forman el flujo lógico de la aplicación. Sin embargo, como veremos más adelante, el abuso de condicionales anidados es un síntoma de un diseño pobre que debe ser mitigado mediante técnicas avanzadas de orientación a objetos.[7]
