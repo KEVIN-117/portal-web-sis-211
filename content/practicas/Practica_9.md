@@ -68,7 +68,7 @@ A lo largo del camino, aprenderemos cómo crear componentes personalizados exten
 
 La aplicación final se verá así:
 
-![Frame Example Preview](/practicas/FrameExamplePreview.png)
+![Frame Example Preview](FrameExamplePreview.png)
 
 ---
 
@@ -448,7 +448,7 @@ public class InputField extends JTextField {
   - Un `LineBorder` exterior (una línea delgada de color alrededor del campo)
   - Un `EmptyBorder` interior (relleno invisible para que el texto no toque los bordes)
 
-  ![Input Field Example](practicas/InputFieldExample.png)
+  ![Input Field Example](InputFieldExample.png)
 
 - **`new LineBorder(color, grosor, esquinasRedondeadas)`** — El tercer parámetro `true` hace que las esquinas sean ligeramente redondeadas.
 
@@ -627,7 +627,7 @@ public class Panel extends JPanel {
 
 - **`GradientPaint`** — Define un degradado que transiciona de `bgOneColor` en la posición `(0, 0)` (esquina superior izquierda) a `bgTwoColor` en la posición `(0, getHeight())` (parte inferior). Esto crea un degradado **vertical**:
 
-  ![Gradient Panel Preview](practicas/GradientPanelPreview.png)
+  ![Gradient Panel Preview](GradientPanelPreview.png)
 
 - **`g2d.fillRect(0, 0, getWidth(), getHeight())`** — Rellena toda el área del panel con el degradado.
 

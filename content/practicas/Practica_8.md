@@ -82,7 +82,7 @@ Antes de comenzar a programar, es importante comprender algunos conceptos clave 
 
 Un **motor de búsqueda** es un sistema que permite encontrar información relevante dentro de un conjunto de documentos. El proceso general consta de tres etapas:
 
-![Diagrama Motor de Búsqueda](/practicas/Diagrama_Motor_de_Búsqueda.png)
+![Search Engine Diagram](SearchEngineDiagram.png)
 
 1. **Indexación**: se leen los documentos, se extraen las palabras clave y se construye una estructura de datos que permite búsquedas rápidas.
 2. **Búsqueda**: el usuario escribe una consulta (*query*) y el sistema encuentra todos los documentos que contienen esas palabras.
@@ -178,7 +178,7 @@ Un **Stream** es una secuencia de elementos que soporta operaciones funcionales 
 
 **Anatomía de un Stream pipeline:**
 
-![Diagrama Streams Java](/practicas/Diagrama_Streams_Java.png)
+![Stream Pipeline Diagram](StreamPipelineDiagram.png)
 
 **Ejemplo comparativo — Filtrar nombres que empiezan con "A" y convertir a mayúsculas:**
 
