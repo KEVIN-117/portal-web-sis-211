@@ -1,6 +1,6 @@
 ---
 title: "Práctica 9: Swing - Parte 2"
-description: "En esta práctica analizaremos código existente, identificaremos patrones de diseño, refactorizaremos y aplicaremos técnicas de programación funcional, incluyendo el uso de Streams y method references. El objetivo es comprender mejor el patrón Strategy, la programación orientada a objetos y las herramientas modernas de Java."
+description: "En esta práctica analizaremos código existente, identificaremos patrones de diseño, refactorizaremos y aplicaremos técnicas de programación funcional, incluyendo el uso de Streams y method references. El objetivo es comprender mejor el patrón Strategy, el patron Observer, la programación orientada a objetos y las herramientas modernas de Java. Lo que estaremos construyendo es un detector básico de emociones."
 tags: ["POO", "Herencia", "Polimorfismo", "Interfaces", "Clases Abstractas", "Programación Funcional", "Colecciones", "Streams", "Patrón Strategy"]
 ---
 
