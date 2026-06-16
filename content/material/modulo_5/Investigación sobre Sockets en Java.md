@@ -74,7 +74,7 @@ Para inicializar un servidor TCP, se debe instanciar la clase ServerSocket, prop
 **Ejemplo de Código: Despliegue de un Servidor TCP Básico**  
 El siguiente fragmento demuestra el proceso mediante los principios de código limpio, empleando la estructura try-with-resources para prevenir fugas de memoria y bloqueos de puertos [12, 16, 17].
 
-Java  
+```Java  
 import java.io.BufferedReader;  
 import java.io.IOException;  
 import java.io.InputStreamReader;  
@@ -121,6 +121,7 @@ public class ServidorTCP {
         }  
     }  
 }
+```
 
 En este diseño, la instrucción PrintWriter(socketCliente.getOutputStream(), true) resulta de suma importancia. El segundo parámetro booleano activa el vaciado automático (auto-flush). En las redes TCP, los sistemas operativos agrupan los mensajes pequeños en búferes locales para maximizar la eficiencia de la tarjeta de red (Algoritmo de Nagle). Si no se realiza un vaciado (flush) explícito, los datos podrían quedar estancados en la memoria RAM del emisor, provocando un escenario de interbloqueo (deadlock) donde el cliente espera una respuesta que el servidor ha generado pero que aún no ha abandonado físicamente la computadora [18, 19].
 
@@ -129,7 +130,7 @@ En este diseño, la instrucción PrintWriter(socketCliente.getOutputStream(), tr
 La contraparte requiere la invocación de la clase Socket. Al momento de la instanciación new Socket("direccion_ip", puerto), el entorno de ejecución de Java negocia automáticamente con el servidor para establecer el circuito TCP. Si la conexión falla (por un firewall, enrutamiento incorrecto o servidor inactivo), el programa lanza inmediatamente una excepción de tipo ConnectException [20].  
 **Ejemplo de Código: Despliegue de un Cliente TCP Interactivo**
 
-Java  
+```Java  
 import java.io.BufferedReader;  
 import java.io.IOException;  
 import java.io.InputStreamReader;  
@@ -176,6 +177,7 @@ public class ClienteTCP {
         }  
     }  
 }
+```
 
 La combinación del cliente y el servidor expuestos previamente consolida una arquitectura de chat bidireccional simple. No obstante, esta aproximación algorítmica adolece de una limitación arquitectónica grave: el servidor es síncrono y de un solo hilo, lo que implica que solo puede atender a un único cliente a la vez, descartando por completo el paradigma moderno de los sistemas distribuidos a gran escala [13].  
 **Ejercicio Práctico Propuesto:** Se recomienda diseñar la implementación lógica necesaria para transformar el servidor TCP básico, de modo que en lugar de reflejar cadenas de texto (String), intercambie objetos serializados mediante ObjectOutputStream y ObjectInputStream. Resulta vital analizar el orden de inicialización de estos flujos de objetos, ya que una instanciación cruzada puede inducir a un estado de interbloqueo estructural conocido en la literatura técnica como *Object Stream Deadlock* [21, 22].
@@ -195,7 +197,7 @@ Por el contrario, en el extremo receptor, se preasigna un bloque de memoria cont
 A diferencia de TCP, en UDP no se utilizan las clases ServerSocket ni Socket. Ambos extremos de la comunicación emplean exclusivamente la clase DatagramSocket. La única diferencia radica en la configuración de la instancia: el nodo que espera recibir información debe instanciar el socket enlazándolo a un puerto numérico explícito new DatagramSocket(puerto), mientras que el nodo que solo desea emitir puede usar un puerto efímero dinámico invocando el constructor sin parámetros new DatagramSocket() [10].  
 **Ejemplo de Código: Nodo Receptor UDP (Servidor Analógico)**
 
-Java  
+```Java  
 import java.net.DatagramPacket;  
 import java.net.DatagramSocket;  
 import java.net.InetAddress;
@@ -240,6 +242,7 @@ public class ReceptorUDP {
         }  
     }  
 }
+```
 
 La limpieza del búfer es una de las anomalías lógicas más comunes en la programación UDP inexperta. Si se recibe un paquete de 100 bytes, y posteriormente un paquete de 10 bytes, sin un borrado preventivo o el uso preciso de getLength(), el segundo mensaje presentará 90 bytes "basura" remanentes de la transmisión anterior incrustados en su cola de memoria [25].  
 **Pregunta de Reflexión:** La preasignación del búfer se define estáticamente en 1024 bytes. Si el emisor transmitiera un paquete cuyo tamaño neto alcance los 2048 bytes, ¿qué mecanismo de control emplea UDP para advertir sobre el truncamiento irrecuperable de la información excedente? Esta cuestión resalta la necesidad de implementar protocolos a nivel de aplicación cuando se utiliza UDP puro.
@@ -258,7 +261,7 @@ En la topología de un servidor de chat masivo, surge el requerimiento sistémic
 El uso de estructuras de datos básicas como un ArrayList originará una condición de carrera (Race Condition) resultando invariablemente en una excepción por modificación concurrente (ConcurrentModificationException). Las arquitecturas limpias y profesionales recurren a la interfaz java.util.concurrent, específicamente a estructuras complejas como CopyOnWriteArrayList. Esta colección especializada soluciona el entrelazamiento de memoria clonando internamente el arreglo subyacente cada vez que se efectúa una mutación estructural (agregar o remover), garantizando de forma absoluta operaciones de iteración seguras para hilos [27, 28].  
 **Ejemplo de Código: Servidor Chat Multicliente Concurrente**
 
-Java  
+```Java  
 import java.io.BufferedReader;  
 import java.io.IOException;  
 import java.io.InputStreamReader;  
@@ -343,6 +346,7 @@ public class ServidorChatGlobal {
         }  
     }  
 }
+```
 
 ### **5.3 Evolución de la Concurrencia: ExecutorService y Hilos Virtuales**
 
