@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Portal Web SIS-211</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Portal Web SIS-211</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Práctica 2: Mini-IA en Java — Predicción del Nivel de Riesgo</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_2</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_2</guid>
+    <description><![CDATA[ En esta práctica construiremos una pequeña aplicación en Java que simula un sistema de Machine Learning básico, utilizando un clasificador basado en reglas para predecir el nivel de riesgo académico de un estudiante. ]]></description>
+    <pubDate>Sat, 29 Aug 2026 04:40:10 GMT</pubDate>
+  </item><item>
+    <title>Práctica 1: Introducción a Git, GitHub y fundamentos de Java</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_1</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_1</guid>
+    <description><![CDATA[ Esta práctica tiene como objetivo introducir a los estudiantes en el uso de Git y GitHub, así como en los fundamentos de programación en Java. A través de una serie de ejercicios progresivos, los estudiantes aprenderán a crear y gestionar un proyecto Java, versionarlo con Git, y colaborar utilizando GitHub. ]]></description>
+    <pubDate>Fri, 21 Aug 2026 19:48:39 GMT</pubDate>
+  </item><item>
+    <title>EXAMEN_FINAL</title>
+    <link>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</link>
+    <guid>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</guid>
+    <description><![CDATA[ Examen final de Programación II Pregunta 1 3 / 3 pts ¿Cuál de las siguientes clases pertenece al paquete java.lang y puede utilizarse sin importarla explícitamente? ArrayList HashMap String (correcta) Scanner NOTE Explicación Pregunta 1 El paquete java.lang se importa automáticamente en todos los pr... ]]></description>
+    <pubDate>Mon, 06 Jul 2026 16:37:43 GMT</pubDate>
+  </item><item>
+    <title>SEGUNDO_PARCIAL</title>
+    <link>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</link>
+    <guid>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</guid>
+    <description><![CDATA[ SEGUNDO PARCIAL SIS-211 G-2 Pregunta 1 ¿Qué principio de la POO garantiza que los detalles internos de una clase no puedan ser accedidos directamente desde afuera? Abstraccion Herencia Encapsulamiento Polimorfismo NOTE Explicación Pregunta 1 El encapsulamiento es el principio que oculta el estado in... ]]></description>
+    <pubDate>Mon, 06 Jul 2026 16:37:43 GMT</pubDate>
+  </item><item>
+    <title>Investigación — Sockets en Java</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_5/Investigaci%C3%B3n-sobre-Sockets-en-Java</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_5/Investigaci%C3%B3n-sobre-Sockets-en-Java</guid>
+    <description><![CDATA[ Comprensión exhaustiva de los sockets en Java desde cero hasta arquitecturas robustas. ]]></description>
+    <pubDate>Tue, 16 Jun 2026 19:58:53 GMT</pubDate>
+  </item><item>
+    <title>Práctica 9: Swing - Parte 2</title>
+    <link>https://quartz.jzhao.xyz/practicas/Practica_9_2</link>
+    <guid>https://quartz.jzhao.xyz/practicas/Practica_9_2</guid>
+    <description><![CDATA[ En esta práctica analizaremos código existente, identificaremos patrones de diseño, refactorizaremos y aplicaremos técnicas de programación funcional, incluyendo el uso de Streams y method references. El objetivo es comprender mejor el patrón Strategy, el patron Observer, la programación orientada a objetos y las herramientas modernas de Java. Lo que estaremos construyendo es un detector básico de emociones. ]]></description>
+    <pubDate>Tue, 16 Jun 2026 19:53:52 GMT</pubDate>
+  </item><item>
+    <title>Práctica 9: Swing - Parte 3</title>
+    <link>https://quartz.jzhao.xyz/practicas/Practica_9_3</link>
+    <guid>https://quartz.jzhao.xyz/practicas/Practica_9_3</guid>
+    <description><![CDATA[ En esta práctica construiremos un sistema de calculadora que implementa el patrón MVC (Model-View-Controller) y el algoritmo de Shunting Yard. El objetivo es comprender mejor la separación de responsabilidades entre la lógica del negocio, la interfaz de usuario y el controlador, así como manejar excepciones de forma controlada y diseñar interfaces gráficas de usuario (GUI) responsivas en Java Swing estructuradas mediante BorderLayout. ]]></description>
+    <pubDate>Tue, 16 Jun 2026 19:53:52 GMT</pubDate>
+  </item><item>
+    <title>Práctica 8: SearchEngine con Streams y Programación Funcional</title>
+    <link>https://quartz.jzhao.xyz/practicas/Practica_8</link>
+    <guid>https://quartz.jzhao.xyz/practicas/Practica_8</guid>
+    <description><![CDATA[ En esta práctica construiremos un motor de búsqueda de documentos de texto desde cero. La aplicación permitirá al usuario indexar archivos .txt desde su sistema de archivos, buscar por palabras clave y obtener resultados ordenados por relevancia. Lo que hace especial a este proyecto es que toda la lógica se implementará usando programación funcional: Streams, lambdas, method references, Optional y composición de funciones. No usaremos bucles for ni while para procesar datos; en su lugar, usaremos pipelines funcionales. ]]></description>
+    <pubDate>Tue, 02 Jun 2026 23:33:46 GMT</pubDate>
+  </item><item>
+    <title>Práctica 9: Swing - Parte 1</title>
+    <link>https://quartz.jzhao.xyz/practicas/Practica_9</link>
+    <guid>https://quartz.jzhao.xyz/practicas/Practica_9</guid>
+    <description><![CDATA[ En esta práctica construiremos una aplicación de escritorio completa usando Swing. La aplicación será una calculadora avanzada que implementará diferentes formas de manejar eventos, interfaces de usuario con diferentes layouts y componentes, y se estructurará siguiendo principios de diseño orientado a objetos. Además, aplicaremos programación funcional en el manejo de eventos y utilizaremos Streams para procesar colecciones de datos. ]]></description>
+    <pubDate>Tue, 02 Jun 2026 23:33:46 GMT</pubDate>
+  </item><item>
+    <title>Práctica 10: Sockets y Concurrencia</title>
+    <link>https://quartz.jzhao.xyz/practicas/Practica_10</link>
+    <guid>https://quartz.jzhao.xyz/practicas/Practica_10</guid>
+    <description><![CDATA[ En esta práctica construiremos un sistema de chat en tiempo real simple pero completo. Implementaremos un servidor que acepta múltiples clientes, maneja conexiones concurrentes y transmite mensajes a todos los participantes. Además, implementaremos un cliente con interfaz gráfica que se conecta al servidor y permite enviar y recibir mensajes en tiempo real. Esta práctica te permitirá comprender cómo funcionan las comunicaciones en red, el manejo concurrente de múltiples usuarios y la interacción entre el backend (servidor) y el frontend (cliente). ]]></description>
+    <pubDate>Fri, 29 May 2026 21:27:54 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>

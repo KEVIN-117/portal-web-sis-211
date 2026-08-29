@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Guía básica de Git y GitHub</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Portal Web SIS-211"/><meta property="og:title" content="Guía básica de Git y GitHub"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Guía básica de Git y GitHub"/><meta name="twitter:description" content="Resumen ejecutivo: Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros."/><meta property="og:description" content="Resumen ejecutivo: Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros."/><meta property="og:image:alt" content="Resumen ejecutivo: Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/material/github/deep-research-report"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/material/github/deep-research-report"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Resumen ejecutivo: Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxrcm9kclxccHJvZmlsZVxcYXV4LTIwMjZcXHBvcnRhbC13ZWItc2lzLTIxMVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/material/github/deep-research-report-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/material/github/deep-research-report-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/material/github/deep-research-report-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="material/github/deep-research-report"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Portal Web SIS-211</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-10" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../material/">material</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../material/github/">github</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Guía básica de Git y GitHub</a></div></nav><h1 class="article-title">Guía básica de Git y GitHub</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-24T04:00:00.000Z">Mar 24, 2026</time><span>16 min read</span></p><ul class="tags"><li><a href="../../tags/Git" class="internal tag-link">Git</a></li><li><a href="../../tags/GitHub" class="internal tag-link">GitHub</a></li></ul></div></div><article class="popover-hint"><p><strong>Resumen ejecutivo:</strong> Git es un sistema de control de versiones que lleva el historial de cambios de tus archivos, y GitHub es un servicio en la nube que aloja repositorios Git para colaborar con otros. Un <em>repositorio local</em> es la copia del proyecto en tu computadora; un <em>repositorio remoto</em> es la copia en un servidor (por ejemplo, GitHub). Con Git trabajas creando <em>confirmaciones (commits)</em>, que son fotos o instantáneas de los cambios preparados. Para colaborar, se usan <em>ramas</em>: cada rama es una línea independiente de desarrollo. Cuando terminas una función, fusionas la rama con la rama principal (usualmente <code>main</code>) mediante una <em>merge</em>, uniendo así los historiales. Para trabajar con repositorios remotos, usas <code>git push</code> (para subir tus commits) y <code>git pull</code> (para bajar cambios de otros). Si contribuyes a un proyecto ajeno, primero haces un <em>fork</em> (copia personal del repositorio) y luego envías un <em>pull request</em> (“solicitud de cambios”) para que integren tu rama.</p>
+<p>Estos conceptos serán explicados con analogías prácticas y ejemplos paso a paso en el desarrollo de esta guía. Veremos flujos típicos como <strong>iniciar un repositorio local</strong>, <strong>colaborar en GitHub usando fork+PR</strong> y el <strong>flujo de trabajo de rama de característica→PR→merge</strong>. Al final habrá tablas con los comandos básicos agrupados por tarea (configuración, trabajo diario, ramas, sincronización, resolución de conflictos) y su uso.</p>
+<h2 id="conceptos-clave-definiciones-sencillas">Conceptos clave (definiciones sencillas)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conceptos-clave-definiciones-sencillas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Repositorio local:</strong> Es tu copia privada del proyecto en tu computador. Imagina un folder donde trabajas. Ahí Git guarda el historial de cambios en una subcarpeta oculta <code>.git</code>.</li>
+<li><strong>Repositorio remoto:</strong> Es la copia “en la nube” (servidor) del proyecto, por ejemplo en GitHub. Al sincronizar, envías tus cambios locales al repositorio remoto o bajas los cambios de otros en él.</li>
+<li><strong>Commit (confirmación):</strong> Es una instantánea de los archivos preparados. Guarda el estado actual de tu proyecto. Piensa en ello como “guardar” en tu editor pero con historial. Como explica Atlassian: <em>“<code>git commit</code> captura una instantánea de los cambios preparados… consideradas versiones ‘seguras’ del proyecto”</em>.</li>
+<li><strong>Staging / Índice:</strong> Es la “zona de preparación” donde indicas qué archivos entrarán en el próximo commit. Un archivo modificado está primero en tu carpeta de trabajo; al hacer <code>git add</code> lo pasas al área de staging. Pro Git lo define así: <em>“El área de preparación… almacena información acerca de lo que va a ir en tu próxima confirmación. A veces se le denomina índice (‘index’)”</em>.</li>
+<li><strong>Rama (<em>branch</em>):</strong> Es una línea paralela de desarrollo. Al crear una rama Git hace un marcador o puntero a cierto commit y luego al hacer más commits en esa rama, ese puntero avanza. Como dice Atlassian: <em>“Las ramas de Git son un puntero eficaz para las instantáneas de tus cambios. Cuando quieres añadir una nueva función… generas una nueva rama”</em>. De esta forma puedes trabajar en paralelo sin afectar la rama principal.</li>
+<li><strong>Rama principal (<code>main</code>/<code>master</code>):</strong> Es la rama por defecto de tu proyecto, que suele contener el código “oficial” o listo para producción. Anteriormente llamada <code>master</code>, se renombró a <code>main</code>. En ella se van integrando (mediante merge) las mejoras o funciones terminadas de otras ramas.</li>
+<li><strong>HEAD:</strong> Es un apuntador interno de Git al <em>commit actual</em> donde estás trabajando. Normalmente coincide con el último commit de la rama activa. Piensa en HEAD como tu “ubicación” actual en la historia: si cambias de rama o apuntas a otro commit, HEAD se mueve.</li>
+<li><strong>Origen remoto (<code>origin</code>):</strong> Nombre por convención del repositorio remoto principal al que apunta tu local. Cuando clonas un proyecto, Git asigna “origin” al URL de ese repositorio. CampusMVP lo explica: <em>“Origin es simplemente el nombre predeterminado que recibe el repositorio remoto principal contra el que trabajamos.”</em>.</li>
+<li><strong>Clone (clonar):</strong> Crear una copia local de un repositorio remoto existente. GitHub dice que al clonar “se crea una copia local en tu computadora y sincronizarla con la remota”. Es como copiar la biblioteca completa a tu PC para trabajar.</li>
+<li><strong>Fork (bifurcar):</strong> En GitHub, copiar un repositorio (propiedad de otro) a tu cuenta. Esto crea un nuevo repositorio en tu perfil con el mismo contenido. Es como tomar prestado el proyecto de alguien más para hacerle cambios tú. Luego puedes enviar los cambios de tu fork al proyecto original mediante pull requests. GitHub dice que “cualquier persona puede hacer un <em>fork</em> de un repositorio existente (‘upstream’) al que tenga acceso de lectura”.</li>
+<li><strong>Pull request (solicitud de extracción/incorporación):</strong> Es una petición para integrar cambios. Básicamente notificas al dueño del repositorio que quieres fusionar tu rama (por ejemplo, de tu fork) en su rama principal. Atlassian lo describe así: un PR es un mecanismo para avisar que has terminado una feature en una rama, y pedir revisión para fusionarla a la rama principal. En la práctica, en la interfaz web de GitHub ves las diferencias y discutes la integración antes de hacer el merge.</li>
+<li><strong>Push (insertar):</strong> Enviar tus commits locales hacia un repositorio remoto. Deja tus cambios en GitHub.</li>
+<li><strong>Pull (extraer):</strong> Traer (bajar) los nuevos commits del repositorio remoto a tu copia local.<br/>
+GitHub resume este ciclo de colaboración: <em>“<strong>Extrae</strong> todos los cambios más recientes… del repositorio remoto en GitHub. <strong>Insertar</strong> sus propios cambios en el mismo repositorio remoto en GitHub.”</em>. Es decir, hacer un <code>git pull</code> para bajar y <code>git push</code> para subir.</li>
+</ul>
+<h2 id="analogías-prácticas">Analogías prácticas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#analogías-prácticas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Repositorio:</strong> Imagina que tu proyecto es un documento largo. El <em>repositorio</em> es como una carpeta que guarda todas las versiones de ese documento. El repositorio local es tu copia personal de la carpeta, y el remoto es la copia en la nube.</li>
+<li><strong>Commit:</strong> Piensa en un commit como tomar una foto del documento en ese instante. Cuando guardas un commit, guardas la “foto” de todos los archivos preparados, para poder volver a ella más tarde.</li>
+<li><strong>Rama:</strong> Una rama es como una copia alternativa del documento para hacer pruebas. Si quieres escribir un capítulo nuevo, puedes bifurcarte en una rama: escribes ahí sin tocar el texto original. Cuando terminas, haces un merge de tu rama de prueba con la rama principal (documento final).</li>
+<li><strong>Staging (área de preparación):</strong> Es como un carrito donde colocas los archivos que quieres incluir en la próxima foto (commit). Editas archivos en tu “mesa de trabajo” y cuando estén listos los pones en el carrito (<code>git add</code>). Al presionar “tomar foto” (<code>git commit</code>), Git captura lo que está en ese carrito.</li>
+<li><strong>HEAD:</strong> Es tu “lugar marcado” actual en la historia. Como si fuese el marcador de libro que indica en qué página estás leyendo. Cuando cambias de rama o ves otra versión antigua, mueves el marcador HEAD a ese commit.</li>
+<li><strong>Fork y Pull Request:</strong> Imagínate que colaboras en una enciclopedia en línea. Haces una copia de un artículo en tu propia área (fork), mejoras párrafos en privado y, cuando listo, solicitas a los editores que revisen tu cambio (pull request) para que lo agreguen al artículo oficial.</li>
+</ul>
+<h2 id="flujos-paso-a-paso">Flujos paso a paso<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flujos-paso-a-paso" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="flujo-1-iniciar-un-repositorio-local">Flujo 1: Iniciar un repositorio local<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flujo-1-iniciar-un-repositorio-local" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>Crear carpeta</strong> y entrar en ella:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">mkdir</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> mi-proyecto</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> mi-proyecto</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Inicializar Git:</strong> Esto crea el repositorio local (carpeta <code>.git</code>):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> init</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Initialized</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> empty</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> Git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> repository</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> in</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> /ruta/mi-proyecto/.git/</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Crear un archivo</strong> (ej.: <code>archivo.txt</code>) y editarlo.</p>
+</li>
+<li>
+<p><strong>Ver estado actual:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> status</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">On</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> branch</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> main</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Untracked</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> files:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">use</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;git add &lt;file>...&quot;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> to</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> include</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> in</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> what</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> will</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> be</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> committed</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    archivo.txt</span></span></code></pre></figure>
+<p>Git indica que <code>archivo.txt</code> no está bajo seguimiento.</p>
+</li>
+<li>
+<p><strong>Preparar archivo para commit:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo.txt</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Hacer un commit:</strong> Guarda los cambios preparados. Se necesita un mensaje descriptivo:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Agrega archivo inicial&quot;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[main (root</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">commit) abc1234] Agrega archivo inicial</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> 1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> file</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> changed,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> insertion</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> create</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> mode</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 100644</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo.txt</span></span></code></pre></figure>
+<p>Ahora el proyecto tiene un historial con un commit inicial.</p>
+</li>
+<li>
+<p><strong>Ver el historial de commits:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> log</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> --oneline</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">abc1234</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (HEAD -</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) Agrega archivo inicial</span></span></code></pre></figure>
+<p>Esto muestra el identificador corto de commit y el mensaje.</p>
+</li>
+</ol>
+<p>A partir de aquí, puedes seguir editando archivos, haciendo <code>git add</code> y <code>git commit</code> para guardar versiones sucesivas.</p>
+<h3 id="flujo-2-colaborar-en-github-con-fork-y-pull-request">Flujo 2: Colaborar en GitHub con <em>fork</em> y <em>pull request</em><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flujo-2-colaborar-en-github-con-fork-y-pull-request" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Supongamos que quieres contribuir a un proyecto abierto. El proceso típico es:</p>
+<ol>
+<li>
+<p><strong>Fork en GitHub:</strong> En la página del repositorio original (upstream), presiona “Fork” para crear tu copia en GitHub (tu cuenta).</p>
+</li>
+<li>
+<p><strong>Clonar tu fork:</strong> Copia la URL de tu fork y haz <code>git clone</code> en tu máquina:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">$</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> clone</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://github.com/TuUsuario/proyecto-ejemplo.git</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">Cloning</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> into</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'proyecto-ejemplo'...</span></span></code></pre></figure>
+<p>Ahora tienes el repositorio remoto “origin” apuntando a tu fork en GitHub.</p>
+</li>
+<li>
+<p><strong>Configurar upstream (opcional):</strong> Puedes agregar el repositorio original como remoto “upstream”:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> remote</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> upstream</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> https://github.com/OrgOriginal/proyecto-ejemplo.git</span></span></code></pre></figure>
+<p>Así podrás bajarte cambios nuevos del original con <code>git pull upstream main</code>.</p>
+</li>
+<li>
+<p><strong>Crear una rama de trabajo:</strong> Por ejemplo, crear una rama para tu mejora:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> checkout</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -b</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> feature-cambio</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Realizar cambios y commit:</strong> Edita archivos, luego <code>git add</code> y <code>git commit</code> con mensajes claros:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo-modificado.txt</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Mejora: ajusta el cálculo de totales&quot;</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Subir tu rama a tu fork:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> push</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> feature-cambio</span></span></code></pre></figure>
+<p>Esto crea la rama <code>feature-cambio</code> en tu repositorio en GitHub.</p>
+</li>
+<li>
+<p><strong>Crear Pull Request:</strong> En GitHub, ve a tu fork. Debería sugerirte abrir un PR desde <code>feature-cambio</code> en tu fork hacia la rama <code>main</code> del repositorio original. En la interfaz web, haz click en “Compare &amp; pull request”. Escribe un título y descripción claros de tu cambio. Luego envía la PR.</p>
+</li>
+<li>
+<p><strong>Revisión y merge:</strong> Los mantenedores del proyecto original revisarán tu PR. Pueden pedirte que hagas más commits de corrección en la misma rama. Cuando aprueben, ellos realizarán el <em>merge</em> (fusión) de tu rama al <code>main</code> del proyecto original.</p>
+</li>
+</ol>
+<p>Este flujo muestra el modelo de <em>fork and pull</em> que GitHub usa en proyectos colaborativos. Tu código nunca toca el repositorio original hasta que se acepta la PR.</p>
+<h3 id="flujo-3-rama-de-característica--pull-request--merge">Flujo 3: Rama de característica → Pull Request → Merge<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#flujo-3-rama-de-característica--pull-request--merge" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>En equipos internos (repositorio compartido), el flujo más común es crear ramas de característica desde <code>main</code> y luego revisarlas con PR. Por ejemplo:</p>
+<ol>
+<li>
+<p><strong>Actualizar <code>main</code>:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> main</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> pull</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">  # traemos últimos cambios del remoto</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Crear rama feature:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> checkout</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -b</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> feature-nueva-funcionalidad</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Trabajar en la rama:</strong> Edita archivos, luego repite <code>git add</code> y <code>git commit</code>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo2</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Agrega nueva funcionalidad X&quot;</span></span></code></pre></figure>
+<p>Puedes hacer varios commits con cambios incrementales.</p>
+</li>
+<li>
+<p><strong>Subir la rama al remoto:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> push</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -u</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> origin</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> feature-nueva-funcionalidad</span></span></code></pre></figure>
+</li>
+<li>
+<p><strong>Abrir pull request:</strong> En GitHub, desde tu repositorio, crea un PR solicitando fusionar <code>feature-nueva-funcionalidad</code> en <code>main</code>. Describe bien los cambios.</p>
+</li>
+<li>
+<p><strong>Revisar y fusionar:</strong> Otro miembro del equipo revisa el código. Si hay conflictos o mejoras, comentará en el PR. Cuando esté listo, alguien aprueba y hace <em>merge</em> a <code>main</code>【36†L1187-L1190】. Después de fusionar, puedes borrar la rama de la interfaz de GitHub.</p>
+</li>
+<li>
+<p><strong>Actualizar tu repositorio local:</strong> Al final, vuelve a <code>main</code> y trae los cambios:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> checkout</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> main</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> pull</span></span></code></pre></figure>
+</li>
+</ol>
+<p>Así se aísla el trabajo de cada funcionalidad y se asegura que <code>main</code> siempre tenga código probado.</p>
+<h4 id="diagrama-de-flujo-de-ramas-y-pr">Diagrama de flujo de ramas y PR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#diagrama-de-flujo-de-ramas-y-pr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;gitGraph\n   commit id: \&quot;init: Repositorio base\&quot;\n   branch develop\n   checkout develop\n   commit id: \&quot;chore: Configuración inicial\&quot;\n   \n   branch feature/autenticacion\n   checkout feature/autenticacion\n   commit id: \&quot;feat: Crear interfaz de login\&quot;\n   commit id: \&quot;feat: Implementar JWT\&quot;\n   \n   checkout develop\n   commit id: \&quot;chore: Actualizar dependencias\&quot;\n   \n   checkout feature/autenticacion\n   commit id: \&quot;fix: Validar tokens expirados\&quot;\n   \n   checkout develop\n   merge feature/autenticacion id: \&quot;Merge PR #12 (Auth)\&quot;\n   \n   checkout main\n   merge develop id: \&quot;Release inicial\&quot; tag: \&quot;v1.0.0\&quot;\n   \n   branch hotfix/parche-seguridad\n   checkout hotfix/parche-seguridad\n   commit id: \&quot;fix: Vulnerabilidad crítica\&quot;\n   \n   checkout main\n   merge hotfix/parche-seguridad id: \&quot;Despliegue de hotfix\&quot; tag: \&quot;v1.0.1\&quot;\n   \n   checkout develop\n   merge main id: \&quot;Sincronizar hotfix con develop\&quot;&quot;">gitGraph
+   commit id: &quot;init: Repositorio base&quot;
+   branch develop
+   checkout develop
+   commit id: &quot;chore: Configuración inicial&quot;
+   
+   branch feature/autenticacion
+   checkout feature/autenticacion
+   commit id: &quot;feat: Crear interfaz de login&quot;
+   commit id: &quot;feat: Implementar JWT&quot;
+   
+   checkout develop
+   commit id: &quot;chore: Actualizar dependencias&quot;
+   
+   checkout feature/autenticacion
+   commit id: &quot;fix: Validar tokens expirados&quot;
+   
+   checkout develop
+   merge feature/autenticacion id: &quot;Merge PR #12 (Auth)&quot;
+   
+   checkout main
+   merge develop id: &quot;Release inicial&quot; tag: &quot;v1.0.0&quot;
+   
+   branch hotfix/parche-seguridad
+   checkout hotfix/parche-seguridad
+   commit id: &quot;fix: Vulnerabilidad crítica&quot;
+   
+   checkout main
+   merge hotfix/parche-seguridad id: &quot;Despliegue de hotfix&quot; tag: &quot;v1.0.1&quot;
+   
+   checkout develop
+   merge main id: &quot;Sincronizar hotfix con develop&quot;
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Este diagrama muestra cómo partimos de <code>main</code>, creamos la rama <code>feature/nueva-funcionalidad</code>, hacemos commits en ella, luego volvemos a <code>main</code> y hacemos <code>merge</code> de la rama (se ve la <em>confirmación de fusión</em> final).</p>
+<h2 id="guía-definitiva-de-comandos-básicos">Guía definitiva de comandos básicos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guía-definitiva-de-comandos-básicos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>A continuación se listan los comandos esenciales de Git organizados por tarea. Úsalos con cuidado y con mensajes descriptivos.</p>
+<ul>
+<li>
+<p><strong>Configuración inicial:</strong> Se ejecuta una sola vez por máquina.</p>
+<ul>
+<li><code>git config --global user.name &quot;Tu Nombre&quot;</code> – Establece tu nombre de usuario.</li>
+<li><code>git config --global user.email &quot;tu@correo.com&quot;</code> – Establece tu correo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Flujo de trabajo diario:</strong> Añadir y guardar cambios.</p>
+<ul>
+<li>
+<p><code>git status</code> – Muestra el estado actual: archivos modificados, sin seguimiento, staged, etc.</p>
+</li>
+<li>
+<p><code>git add &lt;archivo></code> – Prepara (stage) uno o varios archivos para el próximo commit. Ej.: <code>git add index.html</code>.</p>
+</li>
+<li>
+<p><code>git add .</code> – Prepara todos los cambios nuevos/modificados.</p>
+</li>
+<li>
+<p><code>git commit -m &quot;Mensaje descriptivo&quot;</code> – Crea un commit con los cambios ya preparados.</p>
+</li>
+<li>
+<p><code>git log</code> – Ve el historial de commits. Con <code>--oneline</code> muestra versión corta.</p>
+</li>
+<li>
+<p><code>git diff</code> – Muestra diferencias entre archivos modificados y la última versión confirmada.</p>
+</li>
+<li>
+<p><strong>Ejemplo:</strong> Después de editar archivos, siempre revisa con <code>git status</code>, luego <code>git add</code> y finalmente <code>git commit</code>.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> status</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> archivo2</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">git</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> commit</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;Explica qué has hecho&quot;</span></span></code></pre></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Ramas (branching):</strong></p>
+<ul>
+<li><code>git branch</code> – Lista las ramas locales. La que estás aparece con <code>*</code>.</li>
+<li><code>git branch nombre-rama</code> – Crea una nueva rama (sin cambiarte a ella).</li>
+<li><code>git checkout nombre-rama</code> – Cambia a la rama especificada, actualiza archivos al estado de esa rama.</li>
+<li><code>git checkout -b nombre-rama</code> – Crea <em>y</em> cambia a la nueva rama (atajo muy usado).</li>
+<li><code>git merge nombre-rama</code> – Fusiona la rama indicada con la rama actual (tiene que estar <em>checkouteado</em> en la actual). Crea un commit de merge si hay cambios. Ver Atlassian: <em>“<code>git merge</code> permite tomar líneas independientes de desarrollo… e integrarlas en una sola rama”</em>.</li>
+<li><code>git branch -d nombre-rama</code> – Elimina localmente la rama (solo si ya está fusionada).</li>
+</ul>
+</li>
+<li>
+<p><strong>Sincronización remota:</strong></p>
+<ul>
+<li><code>git clone &lt;URL></code> – Copia un repositorio remoto a tu máquina local. Ej.: <code>git clone https://github.com/usuario/repositorio.git</code>. GitHub aclara que clonar “crea una copia local en tu computadora”.</li>
+<li><code>git remote -v</code> – Lista los remotos (origin, upstream, etc).</li>
+<li><code>git fetch</code> – Trae cambios del remoto a tus referencias locales (pero no modifica tu carpeta de trabajo ni ramas actuales). Se guarda en <code>origin/main</code> por ejemplo.</li>
+<li><code>git pull</code> – Combina <code>git fetch</code> + <code>git merge</code> (descarga y fusiona cambios en tu rama actual). Cuidado con conflictos.</li>
+<li><code>git push</code> – Envía tus commits locales a un remoto (origin u otro). Ej.: <code>git push origin main</code>.</li>
+<li><code>git push -u origin rama</code> – Envía rama nueva y establece origen por defecto para futuros pushes en esa rama.</li>
+<li><strong>Comparación:</strong> <code>git pull</code> vs <code>git fetch</code>:
+<ul>
+<li><code>git pull</code> actualiza directamente tu rama actual con cambios remotos.</li>
+<li><code>git fetch</code> sólo descarga los datos, necesitas luego hacer manualmente <code>git merge origin/main</code> o similar.</li>
+</ul>
+</li>
+<li><strong>Analogía:</strong> Extraer (pull) es como sincronizar tu disco con la copia en la nube para tener lo último de todos. Insertar (push) es subir tus novedades al servidor.</li>
+</ul>
+</li>
+<li>
+<p><strong>Colaboración (fork/PR):</strong></p>
+<ul>
+<li>Como usuario colaborador: primero <code>git fork</code> en la web, luego clonar tu fork, trabajar en una rama, hacer commits y <code>git push</code>. Finalmente, crear pull request en GitHub para pedir revisión.</li>
+</ul>
+</li>
+<li>
+<p><strong>Resolución de conflictos:</strong> Cuando un <code>merge</code> o <code>pull</code> no puede combinar automáticamente, Git marca los archivos en conflicto. Debes editar esos archivos para resolver diferencias, luego <code>git add</code> y <code>git commit</code> de nuevo. Siempre verifica con <code>git status</code> los archivos en conflicto. En GitHub (o Atlassian) suele verse similar a la fusión de dos ramas describiendo los cambios que no coinciden.</p>
+</li>
+</ul>
+<h4 id="tabla-comandos-para-tareas-comunes">Tabla: comandos para tareas comunes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#tabla-comandos-para-tareas-comunes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Tarea</th><th>Comando</th><th>Cuándo usarlo</th></tr></thead><tbody><tr><td>Ver estado</td><td><code>git status</code></td><td>Antes de cada commit para ver qué ha cambiado.</td></tr><tr><td>Preparar cambios</td><td><code>git add &lt;archivo></code></td><td>Tras editar archivos, para incluirlos en el próximo commit.</td></tr><tr><td>Hacer commit</td><td><code>git commit -m &quot;mensaje&quot;</code></td><td>Una vez que todo está preparado para guardar.</td></tr><tr><td>Ver historial</td><td><code>git log --oneline</code></td><td>Para revisar commits recientes con sus mensajes.</td></tr><tr><td>Crear rama</td><td><code>git checkout -b &lt;rama></code></td><td>Al empezar a trabajar en nueva funcionalidad.</td></tr><tr><td>Cambiar rama</td><td><code>git checkout &lt;rama></code></td><td>Para cambiar de tarea o empezar a fusionar.</td></tr><tr><td>Fusionar ramas</td><td><code>git merge &lt;rama></code></td><td>Cuando terminas la tarea y deseas integrarla.</td></tr><tr><td>Eliminar rama (local)</td><td><code>git branch -d &lt;rama></code></td><td>Tras fusionar una rama, para limpiar nombres.</td></tr><tr><td>Clonar repositorio</td><td><code>git clone &lt;URL></code></td><td>Para obtener un proyecto remoto en tu máquina.</td></tr><tr><td>Ver remotos</td><td><code>git remote -v</code></td><td>Para saber contra qué repositorios empujar/traer.</td></tr><tr><td>Traer cambios remotos</td><td><code>git fetch</code></td><td>Para actualizar info de remotos sin tocar tu rama actual.</td></tr><tr><td>Traer y combinar</td><td><code>git pull</code></td><td>Para bajar y fusionar de una sola vez.</td></tr><tr><td>Enviar cambios al remoto</td><td><code>git push</code></td><td>Para subir commits locales al servidor remoto.</td></tr><tr><td>Configurar usuario</td><td><code>git config --global user.name &quot;Nombre&quot;</code></td><td>Una sola vez, establece tu identidad.</td></tr></tbody></table></div>
+<h5 id="cuadro-comparativo-de-comandos">Cuadro comparativo de comandos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cuadro-comparativo-de-comandos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li><strong><code>git pull</code> vs <code>git fetch</code>:</strong> <code>pull</code> es fetch+merge automático en la rama actual, mientras que <code>fetch</code> solo descarga datos. Usa <code>pull</code> para actualizar rápido, <code>fetch</code> si quieres revisar antes de combinar.</li>
+<li><strong><code>merge</code> vs <code>rebase</code>:</strong> Ambos integran ramas distintas. <code>merge</code> combina y crea un commit de fusión (history con ramificaciones visibles). <code>rebase</code> reescribe tus commits sobre la punta de otra rama (history más linear). Para principiantes, <code>merge</code> suele ser más sencillo y seguro.</li>
+<li><strong><code>clone</code> vs <code>fork</code>:</strong> <code>git clone</code> copia un repositorio remoto a tu máquina (solo lectura/escritura si tienes permiso). Un <em>fork</em> es una copia del repositorio en tu cuenta de GitHub; se suele clonar después. Fork = crear un nuevo repo en tu cuenta; clone = copiarlo localmente.</li>
+<li><strong><code>checkout &lt;rama></code> vs <code>branch</code>:</strong> <code>branch nombre</code> solo crea la rama. <code>checkout nombre</code> cambia tu contexto a esa rama. O bien <code>checkout -b nombre</code> hace ambos pasos.</li>
+<li><strong><code>origin/main</code> vs <code>HEAD</code>:</strong> <code>HEAD</code> es tu posicion actual (¿qué commit estás viendo?). <code>origin/main</code> es la última versión conocida de la rama <code>main</code> en el remoto “origin”. Si quieres actualizarte a lo último del remoto, usualmente haces <code>git pull origin main</code> (que mueve HEAD de tu main local a coincidir con origin/main).</li>
+</ul>
+<h2 id="conclusión">Conclusión<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#conclusión" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Git y GitHub pueden parecer complejos al principio, pero con esta guía esperamos haber aclarado los conceptos básicos con definiciones sencillas, analogías claras y ejemplos prácticos. Recuerda que <strong>no necesitas ser experto desde el inicio</strong>; experimenta libremente porque Git protege tu historial de cambios. Siempre puedes explorar tu historial (<code>git log</code>), revertir commits o comparar versiones. La clave es practicar los flujos: crear repositorios locales, hacer commits frecuentes, trabajar en ramas para cada tarea, sincronizar con el remoto (<code>pull/push</code>) y utilizar PR para colaboración.</p>
+<p><strong>Fuentes:</strong></p>
+<ol>
+<li>
+<p><a href="https://docs.github.com/es/get-started/start-your-journey/about-github-and-git#:~:text=Git%20es%20un%20sistema%20de,mismos%20archivos%20al%20mismo%20tiempo" class="external">Acerca de GitHub y Git - Documentación de GitHub<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>
+Git es un sistema de control de versiones que realiza un seguimiento de los cambios en los archivos. Git es especialmente útil cuando un grupo de personas y tú estáis haciendo cambios en los mismos archivos al mismo tiempo.</p>
+</li>
+<li>
+<p><a href="https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository" class="external">Clonar un repositorio - Documentación de GitHub<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#:~:text=En%20el%20modelo%20de%20fork,rama%20de%20su%20solicitud%20de" class="external">Acerca de los modelos de desarrollo colaborativo - Documentación de GitHub<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/es/git/tutorials/saving-changes/git-commit#:~:text=El%20comando%20,que%20se%20lo%20pidas%20expresamente" class="external">Git commit | Tutorial de Atlassian sobre Git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/es/git/tutorials/using-branches#:~:text=Las%20ramas%20de%20Git%20son,fusionarlo%20con%20la%20rama%20main" class="external">¿Cómo crear una rama en Git? | Tutorial de Atlassian sobre Git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/es/git/tutorials/using-branches/git-merge#:~:text=La%20fusi%C3%B3n%20es%20la%20forma,integrarlas%20en%20una%20sola%20rama" class="external">Git merge | Tutorial de Atlassian sobre Git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/git/tutorials/making-a-pull-request#:~:text=In%20their%20simplest%20form%2C%20pull,branch" class="external">What Is a Pull Request? | Atlassian Git Tutorial<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Fundamentos-de-Git#:~:text=El%20%C3%A1rea%20de%20preparaci%C3%B3n%20es,como%20el%20%C3%A1rea%20de%20preparaci%C3%B3n" class="external">Git - Fundamentos de Git<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.campusmvp.es/recursos/post/git-los-conceptos-de-master-origin-y-head.aspx?srsltid=AfmBOorNYEVQyKE-eE5HMAl2MTcT9PCzIKD720R36bxpxRWuFLR1N9Fr#:~:text=Por%20regla%20general%20a%20main%C2%A0se,e%20incorporarla%20al%20producto%20final" class="external">Git: los conceptos de “main”, “origin” y “HEAD” | campusMVP.es<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+<li>
+<p><a href="https://www.campusmvp.es/recursos/post/git-los-conceptos-de-master-origin-y-head.aspx?srsltid=AfmBOorNYEVQyKE-eE5HMAl2MTcT9PCzIKD720R36bxpxRWuFLR1N9Fr#:~:text=HEAD" class="external">Git: los conceptos de “main”, “origin” y “HEAD” | campusMVP.es<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+</ol></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-2" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#conceptos-clave-definiciones-sencillas" data-for="conceptos-clave-definiciones-sencillas">Conceptos clave (definiciones sencillas)</a></li><li class="depth-0"><a href="#analogías-prácticas" data-for="analogías-prácticas">Analogías prácticas</a></li><li class="depth-0"><a href="#flujos-paso-a-paso" data-for="flujos-paso-a-paso">Flujos paso a paso</a></li><li class="depth-1"><a href="#flujo-1-iniciar-un-repositorio-local" data-for="flujo-1-iniciar-un-repositorio-local">Flujo 1: Iniciar un repositorio local</a></li><li class="depth-1"><a href="#flujo-2-colaborar-en-github-con-fork-y-pull-request" data-for="flujo-2-colaborar-en-github-con-fork-y-pull-request">Flujo 2: Colaborar en GitHub con fork y pull request</a></li><li class="depth-1"><a href="#flujo-3-rama-de-característica--pull-request--merge" data-for="flujo-3-rama-de-característica--pull-request--merge">Flujo 3: Rama de característica → Pull Request → Merge</a></li><li class="depth-0"><a href="#guía-definitiva-de-comandos-básicos" data-for="guía-definitiva-de-comandos-básicos">Guía definitiva de comandos básicos</a></li><li class="depth-0"><a href="#conclusión" data-for="conclusión">Conclusión</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">
+        const socket = new WebSocket('ws://localhost:3001')
+        // reload(true) ensures resources like images and scripts are fetched again in firefox
+        socket.addEventListener('message', () => document.location.reload(true))
+      </script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

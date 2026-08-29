@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>📘 Introducción a Java y al Entorno de Desarrollo</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Portal Web SIS-211"/><meta property="og:title" content="📘 Introducción a Java y al Entorno de Desarrollo"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="📘 Introducción a Java y al Entorno de Desarrollo"/><meta name="twitter:description" content="Objetivo: preparar el entorno y comprender los fundamentos del lenguaje. Contenidos mínimos 1."/><meta property="og:description" content="Objetivo: preparar el entorno y comprender los fundamentos del lenguaje. Contenidos mínimos 1."/><meta property="og:image:alt" content="Objetivo: preparar el entorno y comprender los fundamentos del lenguaje. Contenidos mínimos 1."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Objetivo: preparar el entorno y comprender los fundamentos del lenguaje. Contenidos mínimos 1."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiQzpcXFVzZXJzXFxrcm9kclxccHJvZmlsZVxcYXV4LTIwMjZcXHBvcnRhbC13ZWItc2lzLTIxMVxccXVhcnR6XFxjb21wb25lbnRzXFxzdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="material/Modulo_0/📘-Módulo-0_-Introducción-a-Java-y-al-Entorno-de-Desarrollo"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Portal Web SIS-211</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-7"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-7" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../material/">material</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../material/Modulo_0/">Modulo_0</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>📘 Introducción a Java y al Entorno de Desarrollo</a></div></nav><h1 class="article-title">📘 Introducción a Java y al Entorno de Desarrollo</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-24T04:00:00.000Z">Mar 24, 2026</time><span>39 min read</span></p><ul class="tags"><li><a href="../../tags/Java" class="internal tag-link">Java</a></li><li><a href="../../tags/Introducción" class="internal tag-link">Introducción</a></li></ul></div></div><article class="popover-hint"><p>Objetivo: preparar el entorno y comprender los fundamentos del lenguaje.<br/>
+Contenidos mínimos</p>
+<h2 id="1-introducción-al-lenguaje-java"><strong>1. Introducción al lenguaje Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-introducción-al-lenguaje-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Historia y características de Java</li>
+<li>Máquina virtual de Java (JVM)</li>
+<li>Compilación vs interpretación</li>
+</ul>
+<h2 id="2-configuración-del-entorno"><strong>2. Configuración del entorno</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-configuración-del-entorno" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Instalación de Java Development Kit</li>
+<li>Uso básico de terminal</li>
+<li>Uso de Visual Studio Code</li>
+<li>Uso de Git</li>
+</ul>
+<h2 id="3-estructura-básica-de-un-programa-java"><strong>3. Estructura básica de un programa Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-estructura-básica-de-un-programa-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Hola Mundo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h2 id="4-tipos-de-datos-y-variables"><strong>4. Tipos de datos y variables</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-tipos-de-datos-y-variables" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Tipos primitivos</li>
+<li>Operadores</li>
+<li>Entrada y salida básica</li>
+</ul>
+<h2 id="5-control-de-flujo"><strong>5. Control de flujo</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-control-de-flujo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>if / else</li>
+<li>switch</li>
+<li>while</li>
+<li>for</li>
+</ul>
+<h2 id="01-introducción-a-la-programación"><strong>0.1 Introducción a la Programación</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#01-introducción-a-la-programación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>El dominio de la informática exige una transformación profunda en el enfoque de los individuos hacia la resolución de problemas. Para los estudiantes que se inician en la programación, el obstáculo inicial más importante no es la memorización de la sintaxis de un lenguaje, sino la adquisición de la lógica fundamental que gobierna el comportamiento de los sistemas computacionales. Por lo tanto, esta sección se dedica a desglosar la abstracción del pensamiento computacional, sentando una base conceptual sólida indispensable antes de abordar cualquier herramienta o tecnología de desarrollo.</p>
+<h3 id="011-qué-es-programar"><strong>0.1.1 ¿Qué es programar?</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#011-qué-es-programar" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p><strong>La Programación: Definición y Propósito</strong><br/>
+La programación es una disciplina que combina el análisis, la estructuración y la creatividad para diseñar, escribir, probar y mantener el código fuente de aplicaciones informáticas. Su objetivo central es crear un conjunto de instrucciones precisas que el hardware de una computadora pueda ejecutar para llevar a cabo una tarea específica, automatizar procesos o resolver problemas complejos.<br/>
+A un nivel más profundo, programar implica traducir la lógica humana (a menudo ambigua) a un marco de reglas estrictamente definidas que un microprocesador puede procesar sin errores. Esto requiere la descomposición sistemática de un problema grande en unidades lógicas básicas y manejables.</p>
+</li>
+<li>
+<p><strong>Algoritmo: La Abstracción Pura de la Solución</strong><br/>
+Un algoritmo es una secuencia finita, rigurosamente ordenada y libre de ambigüedades, compuesta por pasos lógicos o matemáticos, diseñada para resolver un problema o alcanzar un objetivo. Representa la “idea” o la solución abstracta.<br/>
+Sus características obligatorias son:</p>
+</li>
+<li>
+<p><strong>Precisión:</strong> Cada instrucción debe estar definida con claridad.</p>
+</li>
+<li>
+<p><strong>Finitud:</strong> Debe terminar después de un número determinado de pasos.</p>
+</li>
+<li>
+<p><strong>Efectividad:</strong> Debe generar el resultado esperado a partir de las condiciones iniciales.<br/>
+El algoritmo es independiente del lenguaje de programación o la tecnología; es la base conceptual, comparable a una receta de cocina o un manual de montaje.</p>
+</li>
+<li>
+<p><strong>Programa: La Manifestación Concreta del Algoritmo</strong><br/>
+Un programa informático es la implementación práctica y tangible de uno o varios algoritmos. Consiste en la traducción de esa lógica a un lenguaje de programación específico (como Java o Python) que una computadora puede compilar, interpretar y ejecutar.<br/>
+Mientras que el algoritmo existe en el plano de las ideas, el programa reside en el plano digital, consumiendo memoria y ciclos de procesamiento del hardware.</p>
+</li>
+<li>
+<p><strong>Diferencia Clave: Abstracción vs. Operatividad</strong><br/>
+La distinción fundamental entre un algoritmo y un programa se basa en su nivel de abstracción y su dependencia tecnológica:</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Característica</th><th>Algoritmo</th><th>Programa</th></tr></thead><tbody><tr><td><strong>Nivel</strong></td><td>Conceptual (el “qué” se debe hacer)</td><td>Operativo (el “cómo” se lleva a cabo)</td></tr><tr><td><strong>Plataforma</strong></td><td>Independiente (puede verificarse con papel y lápiz)</td><td>Dependiente (requiere un intérprete o compilador y hardware)</td></tr><tr><td><strong>Enfoque</strong></td><td>Lógica y viabilidad matemática de la solución.</td><td>Sintaxis, semántica y limitaciones del lenguaje específico (Java, C++, etc.).</td></tr></tbody></table></div>
+<h3 id="012-cómo-piensa-una-computadora"><strong>0.1.2 ¿Cómo piensa una computadora?</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#012-cómo-piensa-una-computadora" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>¿Qué es una instrucción?</strong> Para entender cómo funcionan las computadoras, es clave saber que el hardware no tiene imaginación, ni entiende el contexto, ni puede deducir nada; solo sigue órdenes muy, muy pequeñas llamadas “instrucciones”. Una instrucción es la orden más básica que el cerebro de la computadora (la CPU) puede entender y ejecutar, generalmente escrita en un código binario (cadenas de ceros y unos que son, en realidad, impulsos eléctricos). Todo el software que usamos hoy, desde un juego complejo hasta una aplicación simple, al final se reduce a estas órdenes sencillas de hacer matemáticas, lógica y mover datos de un lado a otro en la memoria.</p>
+<p><strong>El proceso de ejecución, paso a paso</strong> Las computadoras no piensan en muchas cosas a la vez ni de forma global como lo hacemos los humanos. En cambio, siguen las instrucciones una tras otra, de forma muy estricta, en un proceso llamado el ciclo de instrucción (Buscar-Decodificar-Ejecutar). En este ciclo que nunca para, el microprocesador:</p>
+<ol>
+<li><strong>“Busca”</strong> la siguiente instrucción de la memoria (RAM).</li>
+<li><strong>“Decodifica”</strong> la orden para saber exactamente qué cables y circuitos internos debe activar.</li>
+<li><strong>“Ejecuta”</strong> la instrucción, guarda el resultado y pasa a la siguiente orden.<br/>
+Los procesadores de ahora hacen este ciclo miles de millones de veces por segundo, lo que nos da la sensación de que todo es instantáneo y de que la máquina “piensa”.</li>
+</ol>
+<p><strong>La regla de oro: Entrada → Proceso → Salida</strong> El modelo de “Entrada-Proceso-Salida” es la base universal de la informática y el esqueleto de cualquier programa.</p>
+<ul>
+<li><strong>Entrada (Input):</strong> Aquí es donde metemos los datos brutos a la computadora usando dispositivos como el teclado, el ratón, la pantalla táctil o un sensor. Cuando empezamos a programar, esto significa capturar lo que el usuario escribe.</li>
+<li><strong>Proceso:</strong> Es el motor de la operación. La CPU toma los datos de entrada, los guarda un momento en la RAM y los transforma (hace cálculos y operaciones lógicas) siguiendo el plan exacto que tú has escrito en el programa (el algoritmo).</li>
+<li><strong>Salida (Output):</strong> Una vez que la información está lista y tiene sentido, el resultado se le muestra al usuario (o a otro sistema) en un formato fácil de entender, como en el monitor, en un archivo de texto o como una respuesta en internet.</li>
+</ul>
+<h3 id="013-lenguajes-de-programación"><strong>0.1.3 Lenguajes de programación</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#013-lenguajes-de-programación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Para acortar la distancia entre cómo hablamos los humanos y cómo funciona el hardware, se han creado distintas categorías de lenguajes.</p>
+<p><strong>Lenguaje máquina:</strong> Es el nivel más íntimo de comunicación con el hardware. Está hecho solo de código binario y códigos que interactúan directamente con los componentes más pequeños de la CPU (los transistores). Aunque es increíblemente rápido, es casi imposible de entender para un humano, muy fácil de cometer errores y tomaría demasiado tiempo crear cualquier aplicación moderna usándolo.</p>
+<p><strong>Lenguajes de alto nivel:</strong> A medida que el desarrollo de software avanzó, fue urgente simplificar las cosas complejas del hardware. Los lenguajes de alto nivel usan palabras parecidas a las que usamos nosotros (casi siempre en inglés) y una sintaxis matemática organizada. Esto es genial porque esconde los detalles aburridos de manejar la memoria y los registros del procesador. Gracias a esto, los desarrolladores podemos concentrarnos en resolver problemas lógicos y de negocio. Java es un gran ejemplo de lenguaje de alto nivel.</p>
+<p><strong>Compilados vs. Interpretados:</strong> Dentro de los lenguajes de alto nivel, hay dos maneras principales de convertir nuestro código en lenguaje máquina, cada una con sus pros y contras.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Característica</th><th style="text-align:center;">Lenguajes Compilados (Ejemplos: C, C++)</th><th style="text-align:center;">Lenguajes Interpretados (Ejemplos: Python, JavaScript)</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>Mecanismo de traducción</strong></td><td style="text-align:center;">Un programa especial traduce <em>todo</em> el código fuente a un archivo ejecutable binario <em>antes</em> de que el programa pueda empezar a funcionar.</td><td style="text-align:center;">Un “intérprete” lee, traduce y ejecuta el código fuente línea por línea <em>en el mismo momento</em> en que el programa se está ejecutando.</td></tr><tr><td style="text-align:center;"><strong>Rendimiento</strong></td><td style="text-align:center;">Muy optimizado; la ejecución es rapidísima porque el procesador lee directamente su propio idioma.</td><td style="text-align:center;">Generalmente más lento, porque la traducción está pasando al mismo tiempo que la ejecución.</td></tr><tr><td style="text-align:center;"><strong>Portabilidad</strong></td><td style="text-align:center;">El archivo final solo funciona en el tipo de procesador y sistema operativo para el que fue creado.</td><td style="text-align:center;">Muy flexibles y pueden correr en casi cualquier plataforma, siempre y cuando esa plataforma tenga instalado el programa intérprete.</td></tr></tbody></table></div>
+<p><em>Nota pedagógica:</em> Java usa una mezcla inteligente de ambos. Primero se traduce a un formato intermedio y luego se “interpreta” o “compila al vuelo” mientras se está ejecutando, un detalle que veremos mejor más adelante.</p>
+<h3 id="014-dónde-se-usa-la-programación"><strong>0.1.4 ¿Dónde se usa la programación?</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#014-dónde-se-usa-la-programación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>El software está en todos lados y es la columna vertebral de la infraestructura moderna. Para que te motives, aquí te mostramos algunas áreas donde tu código se transforma en soluciones reales:</p>
+<ul>
+<li><strong>Desarrollo web:</strong> La creación de tiendas online, redes sociales y servicios en la nube requiere lenguajes que puedan manejar muchas peticiones y grandes bases de datos.</li>
+<li><strong>Inteligencia artificial y Machine Learning:</strong> Implementación de “cerebros” artificiales (redes neuronales), análisis de cómo hablamos los humanos (lenguaje natural) y sistemas de visión por computadora para tomar decisiones automáticas y predecir lo que harán los usuarios.</li>
+<li><strong>Ciberseguridad:</strong> Crear defensas como sistemas para detectar intrusos, herramientas que encuentran fallos en otros programas, análisis de virus (<em>malware</em>) y diseño de códigos de criptografía complejos para proteger nuestra información.</li>
+<li><strong>Sistemas empresariales:</strong> La construcción de programas gigantescos (como los que usan bancos o grandes compañías) para gestionar inventarios, transacciones financieras en tiempo real y cadenas de suministro. Este es un sector donde Java es el rey indiscutible.</li>
+<li><strong>Aplicaciones móviles:</strong> Todo el ecosistema de software para celulares y tabletas, desde las utilidades que usamos a diario hasta la enorme industria de los videojuegos móviles.</li>
+</ul>
+<h2 id="02-introducción-al-lenguaje-java"><strong>0.2 Introducción al Lenguaje Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#02-introducción-al-lenguaje-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="021-la-historia-de-java-de-los-electrodomésticos-a-internet"><strong>0.2.1 La Historia de Java: De los electrodomésticos a Internet</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#021-la-historia-de-java-de-los-electrodomésticos-a-internet" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Imagina que es 1991. En un rincón de <strong>Sun Microsystems</strong>, un equipo liderado por el ingeniero <strong>James Gosling</strong> (el “Green Team”) estaba creando un lenguaje de programación. Su idea inicial, que llamaron <strong>“Oak”</strong> (Roble), no era para tu PC, sino para darle inteligencia a la próxima ola de aparatos electrónicos, como tu televisor y otros electrodomésticos interactivos.</p>
+<p><strong>¿Por qué nació Java?</strong><br/>
+En esa época, cada electrodoméstico venía con un microprocesador diferente, ¡un caos! Gosling y su equipo necesitaban un lenguaje que funcionara <em>igual</em> sin importar la marca o el chip. Además, tenía que ser súper seguro y confiable, capaz de gestionar su propia memoria para evitar esos temidos “pantallazos azules” o cuelgues catastróficos que eran comunes en lenguajes como C.</p>
+<p><strong>El Gran Salto:</strong></p>
+<p>Cuando el equipo vio el auge imparable de Internet, se dieron cuenta de que su lenguaje era perfecto para la web. Así, lo renombraron como <strong>Java</strong> y lanzaron la versión <strong>1.0 en 1995</strong>, junto con su propio navegador web, HotJava. Desde ese momento, Java ha estado evolucionando sin parar para seguir siendo uno de los lenguajes más importantes del planeta.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Versión Clave</th><th style="text-align:center;">Año</th><th style="text-align:center;">¿Qué trajo de nuevo?</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>Java 1.0</strong></td><td style="text-align:center;">1995</td><td style="text-align:center;">El inicio. Presentó la <strong>Máquina Virtual de Java (JVM)</strong>, la gran clave de su éxito.</td></tr><tr><td style="text-align:center;"><strong>Java 5</strong></td><td style="text-align:center;">2004</td><td style="text-align:center;">Hizo el código más seguro y ordenado con “Generics” y nos dio el práctico “bucle for-each”.</td></tr><tr><td style="text-align:center;"><strong>Java 8</strong></td><td style="text-align:center;">2014</td><td style="text-align:center;">¡Adoptó el pensamiento funcional! Introdujo las <strong>Expresiones Lambda y la API de Streams</strong> para manejar colecciones de datos de forma más moderna.</td></tr><tr><td style="text-align:center;"><strong>Java 9</strong></td><td style="text-align:center;">2017</td><td style="text-align:center;">Implementó el sistema de <strong>modularidad (Project Jigsaw)</strong>, haciendo que las aplicaciones fueran más ligeras y fáciles de desplegar.</td></tr></tbody></table></div>
+<h3 id="022-los-súper-poderes-de-java"><strong>0.2.2 Los Súper Poderes de Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#022-los-súper-poderes-de-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>La razón por la que Java sigue dominando el software corporativo se basa en sus características estrella:</p>
+<ul>
+<li><strong>Portabilidad (La Regla de Oro):</strong> Este es su lema. El código Java se escribe una vez y se convierte en un formato intermedio. Luego, la <strong>Máquina Virtual de Java (JVM)</strong> traduce ese formato al sistema operativo o chip que tengas. Resultado: tu programa funciona en Windows, Mac, Linux o donde sea, sin tener que reescribir ni una línea.</li>
+<li><strong>Orientación a Objetos (El Modelo de la Vida Real):</strong> Java piensa en todo como un “objeto” (una persona, un coche, una factura…). Cada objeto tiene características (atributos) y sabe hacer cosas (métodos). Esto permite construir software complejo y gigante de forma modular, reutilizando piezas y facilitando que muchos programadores trabajen juntos.</li>
+<li><strong>Seguridad (La Caja Fuerte):</strong> Como nació para Internet, donde el código no es de confianza, Java es muy cauteloso. Aísla tu programa en una <strong>“Sandbox”</strong> (caja de arena), impidiendo que acceda a partes críticas de tu sistema. Además, tiene un vigilante (<strong>Bytecode Verifier</strong>) que revisa el código antes de ejecutarlo para asegurarse de que no haya instrucciones maliciosas.</li>
+<li><strong>Robustez (Antierrores):</strong> Java está diseñado para que cometas menos errores costosos. Es de “tipado fuerte” (tienes que ser claro con qué tipo de datos usas), lo que ayuda al compilador a encontrar fallos antes de que el programa se ejecute. Y lo más importante: ¡elimina la pesadilla de la <strong>fuga de memoria</strong>! El <strong>“Garbage Collector”</strong> (Recolector de Basura) se encarga automáticamente de limpiar y liberar la memoria RAM que ya no se necesita, una tarea que en otros lenguajes es manual y causa muchos cuelgues.</li>
+</ul>
+<h3 id="023-la-promesa-de-java-wora"><strong>0.2.3 La Promesa de Java: WORA</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#023-la-promesa-de-java-wora" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><em><strong>Concepto Clave: “Write Once, Run Anywhere” (Escríbelo una vez, ejecútalo en cualquier lugar)</strong></em></p>
+<p>Este eslogan lo dice todo. Antes de Java, si querías que tu programa funcionara en Windows, Mac y UNIX, tenías que escribir versiones diferentes. Java prometió (y cumplió) que el mismo código fuente funcionaría idénticamente en cualquier plataforma, ahorrando tiempo y dinero a las empresas.</p>
+<h3 id="024-el-equipo-detrás-de-la-magia"><strong>0.2.4 El Equipo Detrás de la Magia</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#024-el-equipo-detrás-de-la-magia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>La portabilidad de Java no es obra de una sola cosa, sino de tres herramientas que trabajan en equipo, como si fueran muñecas rusas (Matrioskas), una dentro de la otra:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Acrónimo</th><th style="text-align:center;">Nombre Completo</th><th style="text-align:center;">Propósito para ti</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>JVM</strong></td><td style="text-align:center;">Java Virtual Machine</td><td style="text-align:center;"><strong>El Motor:</strong> Es un emulador de software que simula una computadora perfecta e ideal. Es la que ejecuta el código Java en cualquier máquina.</td></tr><tr><td style="text-align:center;"><strong>JRE</strong></td><td style="text-align:center;">Java Runtime Environment</td><td style="text-align:center;"><strong>El Kit del Usuario:</strong> Contiene la JVM y todas las librerías básicas necesarias. Es lo que instalas si solo quieres <em>usar</em> un programa Java (pero no desarrollarlo).</td></tr><tr><td style="text-align:center;"><strong>JDK</strong></td><td style="text-align:center;">Java Development Kit</td><td style="text-align:center;"><strong>El Kit del Programador:</strong> Es la <em>suite</em> completa y obligatoria para crear software. Incluye el JRE, el compilador (<code>javac</code>), herramientas de depuración y todo lo necesario para programar.</td></tr></tbody></table></div>
+<h3 id="025-cómo-tu-código-java-cobra-vida"><strong>0.2.5 Cómo Tu Código Java Cobra Vida</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#025-cómo-tu-código-java-cobra-vida" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>El proceso para que un programa Java funcione es único y tiene cinco pasos:</p>
+<ol>
+<li><strong>Tú escribes el código (.java):</strong> Usas el lenguaje Java de alto nivel (el que parece inglés) y lo guardas en un archivo <code>.java</code>.</li>
+<li><strong>El Compilador Entra en Acción (javac):</strong> Usas la herramienta <code>javac</code> (incluida en el JDK). Esta herramienta no lo convierte a lenguaje de tu PC (como hacen otros), sino a un formato intermedio.</li>
+<li><strong>Nace el Bytecode (.class):</strong> El resultado de la compilación es el <strong>Bytecode</strong>, un “idioma” universal que solo la JVM entiende. Se guarda en un archivo <code>.class</code>.</li>
+<li><strong>La JVM se Prepara:</strong> Cuando abres el programa, la JVM de tu sistema operativo se activa, carga ese Bytecode en la memoria y lo revisa para asegurarse de que todo esté en orden.</li>
+<li><strong>Ejecución Final (¡El Programa Funciona!):</strong> La JVM se pone a trabajar. Usa un <strong>Intérprete</strong> para leer el Bytecode línea por línea. Pero para las partes que se repiten mucho, usa un <strong>Compilador Just-In-Time (JIT)</strong> que traduce esas rutinas a lenguaje máquina puro al instante, haciendo que el programa corra muy rápido e interactúe directamente con tu <em>hardware</em>.</li>
+</ol>
+<h2 id="03-preparación-del-entorno-de-desarrollo"><strong>0.3 Preparación del Entorno de Desarrollo</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#03-preparación-del-entorno-de-desarrollo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="031-qué-es-un-entorno-de-desarrollo"><strong>0.3.1 ¿Qué es un entorno de desarrollo?</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#031-qué-es-un-entorno-de-desarrollo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Concepto de IDE</strong> Un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) es una herramienta de software gigante que junta todo lo que un programador necesita en una sola aplicación con una interfaz muy completa. Plataformas clásicas como IntelliJ IDEA, Eclipse o NetBeans combinan el editor de texto, el compilador (la herramienta que traduce el código), un depurador (para buscar errores), gestores de bases de datos y control de versiones. Aunque son increíblemente poderosas para trabajar en empresas, sus muchísimas opciones y el alto consumo de memoria RAM pueden ser confusos y abrumadores para los que recién comienzan.</p>
+<p><strong>Concepto de editor de código</strong> Por otro lado, un editor de código, como el famoso Visual Studio Code (VS Code), es una herramienta mucho más ligera y rápida. Su diseño se centra, de forma minimalista, en escribir código con colores para resaltar la sintaxis. Pero su magia está en que se puede expandir; al añadir pequeños paquetes o extensiones (plugins), un simple editor puede ir adquiriendo, poco a poco, las capacidades complejas de un IDE completo. Esto permite al estudiante entender mejor cómo funciona cada parte.</p>
+<p><strong>Herramientas del desarrollador</strong> Además del editor de texto, todo desarrollador necesita saber usar la “Terminal” (o Consola o <em>Command Prompt</em>). La terminal nos permite hablar con el sistema operativo de forma directa, sin gráficos, lo que es súper rápido. Nos sirve para compilar el código manualmente, ejecutar programas, movernos entre las carpetas del sistema y manejar el control de versiones.</p>
+<h3 id="032-instalación-del-jdk"><strong>0.3.2 Instalación del JDK</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#032-instalación-del-jdk" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Instalación</strong> Para empezar con Java, es obligatorio descargar e instalar el Java Development Kit (JDK) que sea compatible con tu sistema operativo (Windows, macOS o Linux). Hoy en día, es mejor usar versiones como Microsoft Build of OpenJDK, Amazon Corretto, o Eclipse Adoptium (Temurin) para versiones 1.8 en adelante. Simplemente tienes que ejecutar el instalador y dejar que ponga los archivos necesarios en una carpeta del disco.</p>
+<p><strong>Configuración de variables de entorno</strong> El paso más importante, y donde muchos se frustran, es configurar las variables de entorno. Por defecto, tu sistema operativo no sabe dónde están las herramientas del JDK. Para que comandos vitales como <code>javac</code> funcionen desde cualquier carpeta donde abras la terminal, necesitamos decirle al sistema dónde buscar.</p>
+<ul>
+<li>En <strong>Windows</strong>, tienes que ir a las Propiedades Avanzadas del Sistema, buscar la variable <code>PATH</code> y añadir la carpeta específica donde están los ejecutables de Java (por ejemplo, <code>C:\Program Files\Java\jdk-21\bin</code>).</li>
+<li>En <strong>macOS</strong> o <strong>Linux</strong>, esto se hace editando archivos de configuración de la terminal (como <code>~/.bash_profile</code> o <code>~/.zshrc</code>), declarando la variable <code>JAVA_HOME</code> y luego añadiendo esa ruta al <code>PATH</code> global.</li>
+</ul>
+<p><strong>Verificación con terminal</strong> La prueba de fuego para saber que todo salió bien es abrir una terminal e introducir estos comandos, uno por uno:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">java</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -version</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">javac</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -version</span></span></code></pre></figure>
+<p>Si la configuración fue correcta, el sistema operativo no te dirá “comando no reconocido”, sino que responderá mostrando la versión exacta de Java y del compilador que acabas de instalar.</p>
+<h3 id="033-instalación-del-editor-de-código"><strong>0.3.3 Instalación del editor de código</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#033-instalación-del-editor-de-código" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Instalación y Configuración básica</strong> Elegiremos Visual Studio Code (VS Code) como estándar para este curso. Si usas Windows o macOS, tienes a tu disposición el “Coding Pack for Java”, un instalador de Microsoft que detecta lo que te falta e instala a la vez el editor, el JDK necesario y las extensiones clave, simplificando mucho el inicio.</p>
+<p>Es fundamental establecer una <strong>interfaz</strong> clara y aprender a manejar las <strong>carpetas de proyecto</strong>. Un proyecto de software en Java siempre debe vivir solo dentro de su propia carpeta principal. Al abrir esa carpeta en VS Code, el programa reconoce los límites de tu trabajo y crea archivos ocultos (como las carpetas <code>.vscode</code>) donde guarda las configuraciones específicas del proyecto y los parámetros de depuración.</p>
+<p><strong>Extensiones necesarias y recomendadas</strong> Como VS Code no entiende Java por sí mismo, es esencial añadirle funcionalidades a través de extensiones de la <em>Marketplace</em>:</p>
+<ul>
+<li><strong>Java Extension Pack:</strong> Una colección de herramientas oficiales de Microsoft. Incluye el <em>Language Support for Java™ by Red Hat</em>, que da la “inteligencia” en tiempo real para autocompletar código, encontrar errores de escritura al instante y navegar por el código. También trae soporte para herramientas como Maven, y la ayuda de IntelliCode con inteligencia artificial.</li>
+<li><strong>Debugger for Java:</strong> Imprescindible. Le da a VS Code la capacidad de depuración de un profesional. Te permite poner “puntos de interrupción” (<em>breakpoints</em>) para detener el programa en una línea específica, lo que te habilita a “ver por dentro” el valor de las variables en la memoria y encontrar la causa de los errores lógicos.</li>
+</ul>
+<h3 id="034-control-de-versiones"><strong>0.3.4 Control de versiones</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#034-control-de-versiones" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Programar rara vez es un camino recto sin fallos. El control de versiones funciona como un seguro de vida que nos permite guardar, deshacer y administrar los cambios y experimentos en nuestro código a lo largo del tiempo.</p>
+<p><strong>Introducción a Git</strong> Git es el sistema de control de versiones más usado en el mundo. Su arquitectura permite registrar de manera eficiente cada letra que añades, cambias o quitas, asegurando que puedas probar cosas nuevas sin el miedo de dañar el código que ya funcionaba bien.</p>
+<p>Conceptos básicos</p>
+<ul>
+<li><strong>Repositorio (Repository):</strong> Es una base de datos secreta que Git crea dentro de la carpeta principal de tu proyecto (con el nombre <code>.git</code>). Guarda de forma comprimida toda la información y la cronología completa de los cambios.</li>
+<li><strong>Commit:</strong> Es como una “foto” o captura instantánea, permanente, del estado de tu código en un momento exacto.</li>
+<li><strong>Historial de cambios:</strong> Es la cadena de todos los <em>commits</em> realizados, formando una línea de tiempo narrativa y auditable que documenta cómo tu proyecto ha ido creciendo.</li>
+</ul>
+<p><strong>Comandos básicos</strong> El ciclo de trabajo para usar Git a través de la terminal tiene tres pasos principales:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Comando</th><th style="text-align:left;">¿Qué hace y por qué es importante?</th></tr></thead><tbody><tr><td style="text-align:left;"><code>git init</code></td><td style="text-align:left;"><strong>Iniciar el control.</strong> Convierte una carpeta normal en un proyecto que Git vigilará activamente.</td></tr><tr><td style="text-align:left;"><code>git add .</code></td><td style="text-align:left;"><strong>Preparar los cambios (Staging).</strong> Empaqueta todos los archivos que modificaste, diciéndole a Git: “Estos son los cambios que quiero guardar en mi próxima foto”.</td></tr><tr><td style="text-align:left;"><code>git commit -m &quot;Mensaje&quot;</code></td><td style="text-align:left;"><strong>Tomar la foto definitiva.</strong> Guarda y sella la captura en la base de datos local. La parte <code>-m</code> te obliga a añadir un mensaje que explica el porqué de esta modificación.</td></tr></tbody></table></div>
+<h2 id="04-primer-programa-en-java"><strong>0.4 Primer Programa en Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#04-primer-programa-en-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><em><strong>El bautismo de todo programador: El ritual del “Hola Mundo” en Java</strong></em></p>
+<p>Hay una regla no escrita, una bienvenida casi sagrada en nuestro mundo, el de los programadores: cuando te aventuras a aprender un lenguaje nuevo, tu primera misión es un simple saludo. No buscamos una proeza de lógica, sino un “test de encendido” vital. Es nuestra forma de asegurar que todas tus herramientas (el editor, las configuraciones, el traductor y la “máquina” que lo ejecuta) se han dado la mano y están listos para que empieces a crear.</p>
+<h3 id="041-primer-paso-crear-el-archivo-java-tu-lienzo-en-blanco"><strong>0.4.1 Primer paso: Crear el archivo Java, tu lienzo en blanco</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#041-primer-paso-crear-el-archivo-java-tu-lienzo-en-blanco" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Todo arranca con un simple archivo de texto al que tienes que bautizar con sumo cuidado: <code>HelloWorld.java</code>. En Java somos estrictos con la etiqueta: el nombre de este archivo tiene que ser <strong>una copia idéntica</strong>, respetando mayúsculas y minúsculas, del nombre de la “caja” principal (la clase) que meterás dentro. Un solo error de dedo y el programa se pondrá de mal humor y se negará a compilar.</p>
+<h3 id="042-la-fórmula-mágica-el-esqueleto-de-tu-primera-creación-en-java"><strong>0.4.2 La fórmula mágica: El esqueleto de tu primera creación en Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#042-la-fórmula-mágica-el-esqueleto-de-tu-primera-creación-en-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>El esqueleto mínimo de tu programa, la receta básica, se ve así:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> HelloWorld</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(String </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Hola mundo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p><strong>Explicación linea por linea:</strong> Java es muy formal, y cada palabra tiene su propio porqué y su rol en la fiesta:</p>
+<ul>
+<li><code>public</code>: Imagina que es un gran cartel de “Bienvenidos, Pasen”. Al ponerlo, le das permiso a la Máquina Virtual de Java (la JVM) y a tu sistema operativo para que entren y busquen dónde empezar a ejecutar tu programa.</li>
+<li><code>class</code>: Esta es la palabra clave que nos recuerda que estamos en la Programación Orientada a Objetos. Significa que estás diseñando un nuevo “molde” o plano. En Java, absolutamente todo lo que tiene vida y hace algo debe estar <strong>sí o sí</strong> encapsulado dentro de las llaves <code>{}</code> de una clase.</li>
+<li>Nombre del archivo (<code>HelloWorld</code>): El nombre único de tu molde. Es la conexión vital entre el concepto lógico que creaste y el archivo físico en tu disco duro.</li>
+<li><code>método main</code>: El bloque <code>public static void main(String args)</code> es el corazón, el director de orquesta. Es el “punto de partida” obligatorio (<em>entry point</em>). La JVM busca esta firma exacta, como buscando la puerta principal de una casa, para saber con precisión dónde empezar a leer y ejecutar tu código.</li>
+<li><code>static</code>: Permite que la JVM ejecute estas instrucciones de inmediato, sin tener que esperar a que se cree una “copia” o “ejemplar” (un objeto) de la clase primero. Es como decir: “Esto es urgente, que se ejecute ya”.</li>
+<li><code>void</code>: Simplemente significa: “Hago mi trabajo y no le devuelvo nada a nadie”. Indica que el programa terminará sin entregar ningún resultado o valor de vuelta al sistema operativo.</li>
+<li><code>String args</code>: Este es el “buzón” por donde tu programa puede recibir mensajes o instrucciones (en forma de texto) del mundo exterior si lo ejecutas desde la línea de comandos.</li>
+<li><code>System.out.println</code>: Esta es la orden para “sacar la voz”. Le dices al sistema (<code>System</code>) que use su canal de comunicación estándar (<code>out</code>) y que imprima el mensaje que pusiste entre comillas (“Hola mundo”), terminando automáticamente con un salto de línea (para que el siguiente mensaje no quede pegado).</li>
+</ul>
+<h3 id="043-el-ritual-de-la-compilación-hora-de-hablar-con-el-traductor"><strong>0.4.3 El ritual de la Compilación, hora de hablar con el traductor</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#043-el-ritual-de-la-compilación-hora-de-hablar-con-el-traductor" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Con el traductor (compilador)</strong> Tu código, tal como lo escribiste en español (o en “código humano”), no sirve para la máquina. Necesitas un traductor super estricto. En tu terminal, navegas hasta donde dejaste el archivo y escribes la orden mágica:</p>
+<p><code>javac HelloWorld.java</code> El compilador de Java (<code>javac</code>) entra en acción y se convierte en un corrector de estilo despiadado. Revisa cada punto y coma, cada llave, cada mayúscula y minúscula. Es inflexible: si se te olvidó cerrar una llave (<code>}</code>), si pusiste <code>system</code> en minúscula o si dejaste un punto y coma (<code>;</code>) en el olvido, te lo hará saber con mensajes de error precisos y detendrá el proceso.</p>
+<p><strong>El resultado exitoso</strong> Si eres perfecto (o tuviste suerte), el compilador no dirá absolutamente nada (¡lo cual es excelente señal!). Lo único que verás es la aparición de un archivo nuevo en tu carpeta: <code>HelloWorld.class</code>. Este archivo contiene el código que la máquina ya entiende: el <em>Bytecode</em>.</p>
+<h3 id="044-la-prueba-de-vida-ejecución-del-programa-la-hora-de-la-verdad"><strong>0.4.4 La prueba de vida: Ejecución del programa, la hora de la verdad</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#044-la-prueba-de-vida-ejecución-del-programa-la-hora-de-la-verdad" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Finalmente, le pasas este archivo traducido a la Máquina Virtual de Java para que cobre vida. En la terminal, le das la orden de ejecución:<br/>
+<strong><code>java HelloWorld</code> Nota clave</strong>: aquí solo mencionas el nombre de la clase compilada (<code>HelloWorld</code>), sin la extensión <code>.class</code>. La JVM lee el <em>bytecode</em>, carga todo lo que necesita y, de repente, la frase “Hola mundo” aparecerá triunfante en tu consola.</p>
+<h3 id="045-los-tropiezos-del-novato-hacernos-amigos-de-los-errores"><strong>0.4.5 Los tropiezos del novato: Hacernos amigos de los errores</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#045-los-tropiezos-del-novato-hacernos-amigos-de-los-errores" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Aprender a programar es, fundamentalmente, aprender a ser amigo de los errores. No son fracasos, son comentarios constructivos de la máquina para que mejores tu código. Hay tres categorías principales de “tropezones”:</p>
+<ul>
+<li><strong>Errores del compilador (o de sintaxis):</strong> Son los más tempranos, los que <code>javac</code> atrapa antes de que el código siquiera intente correr. Son fallos en la “gramática” o “ortografía” del lenguaje: llaves que quedaron abiertas, mayúsculas y minúsculas mal usadas (Java es muy sensible a esto), o la falta de un punto y coma al final de una instrucción.</li>
+<li><strong>Errores de ejecución (<em>Runtime Errors/Exceptions</em>):</strong> El código está bien escrito y compiló sin problemas, pero la lógica interna falla mientras la JVM lo está ejecutando. Los ejemplos más comunes: intentar la locura de dividir algo por cero, intentar usar un objeto que no existe en la memoria (<em>NullPointerException</em>), o buscar algo que está fuera de los límites de una lista (<em>IndexOutOfBoundsException</em>).</li>
+<li><strong>Errores lógicos:</strong> Son los más traicioneros, los que te hacen sudar. El programa compila y corre sin problemas, no se queja, pero el resultado que arroja es incorrecto. El algoritmo que diseñaste no está haciendo lo que tú esperabas. Para resolverlos, la única solución es usar herramientas como el <em>Debugger</em> para seguir paso a paso la “mente” de tu programa.</li>
+</ul>
+<h2 id="05-fundamentos-del-lenguaje-java"><strong>0.5 Fundamentos del Lenguaje Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#05-fundamentos-del-lenguaje-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="051-variables-la-memoria-de-trabajo"><strong>0.5.1 Variables: La memoria de trabajo</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#051-variables-la-memoria-de-trabajo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>¿Qué es una variable?</strong> En términos sencillos, piensa en una variable como una <strong>cajita con etiqueta</strong> que creamos en la memoria RAM de la computadora. Esta cajita tiene un nombre único y solo sirve para guardar un dato específico. Lo genial es que el programa puede mirar lo que hay dentro, cambiarlo o actualizarlo tantas veces como necesite mientras se está ejecutando.</p>
+<p><strong>Tipos de variables: Poniéndole reglas al juego</strong> Java es un lenguaje muy estricto y ordenado. Cuando creas una cajita (variable), <strong>debes</strong> decirle de antemano qué tipo de cosa va a guardar, ¡no se permiten las ambigüedades! Tienes que elegir la “naturaleza” del dato:</p>
+<ul>
+<li><strong>Enteros:</strong> Son para contar cosas que no tienen pedacitos (sin decimales). Perfectos para llevar la cuenta de repeticiones en un ciclo o el número de elementos.</li>
+<li><strong>Decimales:</strong> Para guardar números que sí tienen mucha precisión o partes fraccionarias. Son la opción ideal para calcular impuestos, constantes de ciencia o mediciones detalladas.</li>
+<li><strong>Caracteres:</strong> Una cajita diminuta que solo puede guardar una <strong>unidad de texto aislada</strong>, como una letra, un número o un símbolo de puntuación (’$’).</li>
+<li><strong>Booleanos:</strong> La base del pensamiento binario. Son la “bandera” del programa; solo pueden tener dos estados fijos: <strong>Verdadero (true)</strong> o <strong>Falso (false)</strong>.</li>
+</ul>
+<h3 id="052-tipos-de-datos-primitivos-los-ladrillos-básicos-de-java"><strong>0.5.2 Tipos de datos primitivos: Los ladrillos básicos de Java</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#052-tipos-de-datos-primitivos-los-ladrillos-básicos-de-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Los tipos primitivos son la forma más simple, pura y rápida que tiene Java para guardar datos. A diferencia de otros elementos, estos no traen “extras” (métodos o funciones) y se almacenan en la parte más veloz de la memoria (el <em>Stack</em>), haciendo que el programa vuele. Aquí tienes un resumen de los más usados:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Tipo de Declaración</th><th style="text-align:center;">¿Para qué sirve? (Concepto)</th><th style="text-align:center;">¿Cuánto espacio consume?</th><th style="text-align:center;">¿Qué tan grande puede ser el valor?</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>int</strong></td><td style="text-align:center;">Números enteros comunes y corrientes.</td><td style="text-align:center;">4 bytes (un tamaño estándar)</td><td style="text-align:center;">Un rango muy amplio: desde unos -2.1 mil millones hasta +2.1 mil millones.</td></tr><tr><td style="text-align:center;"><strong>double</strong></td><td style="text-align:center;">Números con coma decimal para cálculos muy finos.</td><td style="text-align:center;">8 bytes (el doble de espacio)</td><td style="text-align:center;">Tienen una capacidad inmensa para guardar decimales con una precisión casi “astronómica”.</td></tr><tr><td style="text-align:center;"><strong>char</strong></td><td style="text-align:center;">Una sola letra o símbolo tipográfico.</td><td style="text-align:center;">2 bytes</td><td style="text-align:center;">Guarda un único carácter del estándar Unicode, y siempre se escribe entre comillas simples (ejemplo: ‘K’).</td></tr><tr><td style="text-align:center;"><strong>boolean</strong></td><td style="text-align:center;">Marcas de encendido/apagado (Sí/No, Verdadero/Falso).</td><td style="text-align:center;">No tiene un tamaño fijo (se maneja a nivel de instrucción con 1 bit)</td><td style="text-align:center;">Solo acepta los valores lógicos <strong>true</strong> o <strong>false</strong>.</td></tr></tbody></table></div>
+<h3 id="053-cómo-declarar-una-variable-creando-la-cajita"><strong>0.5.3 Cómo declarar una variable: Creando la cajita</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#053-cómo-declarar-una-variable-creando-la-cajita" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Para decirle a la computadora: “Oye, necesito una de estas cajitas y quiero que la nombres de esta forma”, usamos una sintaxis obligatoria: primero especificas el <strong>tipo de dato</strong>, luego le das el <strong>nombre único</strong> (el “identificador”), y opcionalmente, le asignas el primer valor usando el símbolo de igualdad (=):</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> edad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Creamos una cajita 'edad' que solo guarda enteros, y le ponemos el 20.</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> precio </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 10.5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Una cajita 'precio' para decimales, iniciada en 10.5.</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> letra </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'A'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Una cajita 'letra' que solo acepta un carácter: la 'A'.</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">boolean</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> activo </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Una bandera lógica 'activo', en estado verdadero.</span></span></code></pre></figure>
+<h2 id="06-operadores-en-java-los-motores-de-la-acción"><strong>0.6 Operadores en Java: Los Motores de la Acción</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#06-operadores-en-java-los-motores-de-la-acción" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Si las variables son como los “sustantivos” que guardan la información (la parte pasiva), los operadores son los “verbos” activos. Son las instrucciones precisas que le dicen al cerebro de la computadora (la CPU) qué tipo de cálculos, transformaciones y decisiones lógicas debe ejecutar con esa información.</p>
+<h3 id="061-operadores-aritméticos-la-calculadora-básica"><strong>0.6.1 Operadores Aritméticos: La Calculadora Básica</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#061-operadores-aritméticos-la-calculadora-básica" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Se encargan de las matemáticas del día a día, las operaciones más esenciales:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Símbolo</th><th style="text-align:center;">Nombre</th><th style="text-align:center;">Función Humana</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>+</strong></td><td style="text-align:center;">Adición / Suma</td><td style="text-align:center;"><strong>Doble Personalidad:</strong> Suma números (cálculo normal), pero si ve texto, ¡une las palabras como pegamento! (Concatenación).</td></tr><tr><td style="text-align:center;"><strong>-</strong></td><td style="text-align:center;">Sustracción / Resta</td><td style="text-align:center;">Calcula lo que queda al restar, o simplemente le cambia el signo a un número (negación).</td></tr><tr><td style="text-align:center;">*****</td><td style="text-align:center;">Multiplicación</td><td style="text-align:center;">El clásico: saca el producto de dos números.</td></tr><tr><td style="text-align:center;"><strong>/</strong></td><td style="text-align:center;">División</td><td style="text-align:center;"><strong>¡Cuidado Especial!</strong> Si divides dos números enteros, Java es muy estricto: simplemente ignora la parte decimal, no redondea nada.</td></tr><tr><td style="text-align:center;"><strong>%</strong></td><td style="text-align:center;">Operador Módulo</td><td style="text-align:center;"><strong>El Residuo es la Estrella:</strong> Te da <em>solo</em> lo que sobra de una división. Es genial para saber si un número es par o impar (si <code>x % 2</code> es cero, ¡es par!).</td></tr></tbody></table></div>
+<h3 id="062-operadores-relacionales-los-jueces-de-la-decisión"><strong>0.6.2 Operadores Relacionales: Los Jueces de la Decisión</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#062-operadores-relacionales-los-jueces-de-la-decisión" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Son como los “sensores de pregunta” de nuestro código. Comparan dos cosas (generalmente números) y su veredicto es siempre binario:</p>
+<ul>
+<li><strong>Verdadero</strong> (<em>true</em>)</li>
+<li><strong>Falso</strong> (<em>false</em>).</li>
+</ul>
+<p>Son el corazón de cualquier decisión que tome el programa.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Símbolo</th><th style="text-align:center;">Nomenclatura</th><th style="text-align:center;">Propósito Algorítmico (La Pregunta que Hacen)</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>==</strong></td><td style="text-align:center;">Igualdad Absoluta</td><td style="text-align:center;">¿Son exactamente el mismo valor?</td></tr><tr><td style="text-align:center;"><strong>!=</strong></td><td style="text-align:center;">Desigualdad / Diferencia</td><td style="text-align:center;">¿Son diferentes? (¿Hay una divergencia entre ellos?)</td></tr><tr><td style="text-align:center;"><strong>></strong> y <strong>&lt;</strong></td><td style="text-align:center;">Mayor y Menor Estricto</td><td style="text-align:center;">¿Uno es estrictamente más grande/pequeño que el otro?</td></tr><tr><td style="text-align:center;"><strong>>=</strong> y <strong><span>⇐</span></strong></td><td style="text-align:center;">Mayor/Menor o Igual</td><td style="text-align:center;">¿Es más grande/pequeño… <strong>o al menos igual</strong>? (Esto permite la igualdad).</td></tr></tbody></table></div>
+<h3 id="063-operadores-lógicos-los-arquitectos-de-las-condiciones"><strong>0.6.3 Operadores Lógicos: Los Arquitectos de las Condiciones</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#063-operadores-lógicos-los-arquitectos-de-las-condiciones" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Permiten unir varias preguntas aisladas y construir “árboles de decisiones” mucho más complejos y sofisticados para el programa.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Símbolo</th><th>Nombre</th><th>Función Humana</th></tr></thead><tbody><tr><td><strong>&amp;&amp;</strong></td><td>AND / Y Lógico</td><td><strong>El Riguroso:</strong> Exige que <em>todas</em> las condiciones sean verdad. Si la primera ya es falsa, se rinde de inmediato (optimización de “cortocircuito”) porque sabe que el resultado final ya es Falso.</td></tr><tr><td><strong>||</strong></td><td>OR / O Lógico</td><td><strong>El Tolerante:</strong> Le basta con que <em>al menos una</em> de las condiciones sea verdadera para que toda la declaración sea considerada Verdadera.</td></tr><tr><td><strong>!</strong></td><td>NOT / Negación</td><td><strong>El Inversor:</strong> Simplemente le da la vuelta a la verdad. Si algo era <em>true</em>, lo convierte en <em>false</em>, y viceversa.</td></tr></tbody></table></div>
+<blockquote>
+<p><strong>Nota:</strong> Los operadores lógicos son fundamentales para la toma de decisiones en un programa. Permiten crear condiciones complejas que determinan el flujo de ejecución del programa.</p>
+</blockquote>
+<h3 id="064-operadores-de-asignación-el-acto-de-entregar-el-valor"><strong>0.6.4 Operadores de Asignación: El Acto de Entregar el Valor</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#064-operadores-de-asignación-el-acto-de-entregar-el-valor" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Son los operadores más comunes y sencillos de entender, ya que su función es puramente mecánica: tomar el resultado de una operación o el valor de una variable y “entregárselo” a otra para que la guarde en su memoria. El símbolo universal para esta acción es el signo de igual (<code>=</code>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Símbolo</th><th>Nombre</th><th>Función Humana</th></tr></thead><tbody><tr><td><strong>=</strong></td><td>Asignación Simple</td><td><strong>El Depositante:</strong> Toma el valor que está a su derecha y lo guarda en la variable que está a su izquierda.</td></tr><tr><td><strong>+=</strong></td><td>Suma y Asigna</td><td><strong>El Incrementador:</strong> Suma el valor de la derecha al valor actual de la variable de la izquierda y guarda el resultado en esa misma variable.</td></tr><tr><td><strong>-=</strong></td><td>Resta y Asigna</td><td><strong>El Decrementador:</strong> Resta el valor de la derecha al valor actual de la variable de la izquierda y guarda el resultado en esa misma variable.</td></tr><tr><td><strong>*=</strong></td><td>Multiplica y Asigna</td><td><strong>El Escalador:</strong> Multiplica el valor actual de la variable de la izquierda por el valor de la derecha y guarda el resultado en esa misma variable.</td></tr><tr><td><strong>/=</strong></td><td>Divide y Asigna</td><td><strong>El Reductor:</strong> Divide el valor actual de la variable de la izquierda por el valor de la derecha y guarda el resultado en esa misma variable.</td></tr></tbody></table></div>
+<blockquote>
+<p><strong>Nota:</strong> Los operadores de asignación son fundamentales para la manipulación de datos en un programa. Permiten crear condiciones complejas que determinan el flujo de ejecución del programa.</p>
+</blockquote>
+<h2 id="07-entrada-y-salida-de-datos"><strong>0.7 Entrada y Salida de Datos</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#07-entrada-y-salida-de-datos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Un programa de computadora no sirve de mucho si solo trabaja en silencio, sin hablar con nadie. Los flujos de Entrada y Salida (lo que se conoce internacionalmente como I/O - <em>Input/Output</em>) son como el director de orquesta que permite que la lógica fría de los cálculos se comunique con la persona que está usando el programa.</p>
+<h3 id="071-mostrar-algo-en-pantalla-salida-por-consola"><strong>0.7.1 Mostrar algo en pantalla (Salida por consola)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#071-mostrar-algo-en-pantalla-salida-por-consola" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>La herramienta más simple, fundamental y usada por los programadores para ver qué está pasando dentro del cerebro del programa (la memoria y el procesador) es la instrucción <code>System.out.println()</code>. Imagina que es como un megáfono: le dices algo entre los paréntesis (puede ser un número o un mensaje de texto) y el sistema lo graba y lo muestra inmediatamente como texto en la ventana de la terminal. Además, automáticamente, te lleva el cursor parpadeante a la línea de abajo, listo para el siguiente mensaje.</p>
+<h3 id="072-recibir-información-del-teclado-entrada-de-datos-por-teclado"><strong>0.7.2 Recibir información del teclado (Entrada de datos por teclado)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#072-recibir-información-del-teclado-entrada-de-datos-por-teclado" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Si queremos que nuestro <em>software</em> sea dinámico y pida la opinión, decisiones o datos al usuario para cambiar su camino, Java nos ofrece una herramienta súper útil llamada la <strong>clase <code>Scanner</code></strong>. Su trabajo es estar atenta a lo que la persona escribe y pulsa en el teclado, ese flujo constante de información que el sistema maneja y que llamamos <code>System.in</code>.</p>
+<p><strong>Cómo usar la clase <code>Scanner</code>:</strong> Como esta clase es una herramienta externa al “núcleo duro” de Java, primero hay que avisarle al programa que vamos a usarla. Esto se hace con una pequeña línea de código al inicio (<em>importación</em>). Luego, dentro del programa principal, creamos una “entidad” o “escáner” que estará lista para interpretar lo que el humano teclee.</p>
+<p><strong>Un ejemplo para entenderlo mejor:</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> EjemploScanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingresa tu edad: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> edad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Tienes &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> edad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot; años.&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">close</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p><em>Nota para evitar dolores de cabeza (Un error común en principiantes):</em> Hay un pequeño “fantasma” que aparece cuando mezclas la lectura de números con la lectura de texto. Cuando le pides al <code>Scanner</code> que lea un número con <code>nextInt()</code>, el programa toma el número, ¡pero deja olvidado en la memoria el golpe de la tecla <em>Enter</em> que presionaste! Si inmediatamente después le pides que lea un texto (por ejemplo, el nombre, usando <code>nextLine()</code>), el programa encuentra ese <em>Enter</em> olvidado, piensa que ese es el texto que le diste, y se salta la pregunta, guardando una línea vacía. La solución mágica y de emergencia es, después de leer un número, agregar una línea extra de código que no hace nada más que “limpiar” ese <em>Enter</em> abandonado: <code>sc.nextLine();</code>. Así te aseguras de que el siguiente intento de leer texto funcione correctamente.</p>
+<h2 id="08-estructuras-de-control"><strong>0.8 Estructuras de Control</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#08-estructuras-de-control" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>La importancia de las estructuras de control en la programación</strong></p>
+<p>Imagina que un programa de computadora es como seguir una receta. Sin las “estructuras de control”, la computadora tendría que leer y ejecutar cada paso de esa receta de principio a fin, sin detenerse ni pensar, como un robot. Las estructuras de control son las que le dan a la computadora el poder de “decidir” o “pensar”, permitiéndole evaluar diferentes situaciones (como la entrada de un usuario o algún cambio interno) y tomar caminos lógicos distintos. Esto es lo que le da al sistema una especie de “inteligencia computacional”.</p>
+<h3 id="081-estructuras-para-tomar-decisiones-condicionales"><strong>0.8.1 Estructuras para “tomar decisiones” (Condicionales)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#081-estructuras-para-tomar-decisiones-condicionales" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Sentencias lógicas <code>if</code> e <code>if-else</code></strong></p>
+<p>Esta es la forma más básica de que una computadora tome una decisión. La instrucción clave es <code>if</code> (si). Cuando la computadora encuentra un <code>if</code>, revisa una pregunta que solo tiene dos respuestas posibles: verdadero o falso.</p>
+<ul>
+<li><strong>Si la respuesta es Verdadera:</strong> El bloque de código que sigue inmediatamente (el que está entre llaves <code>{}</code>) se ejecuta.</li>
+<li><strong>Si se añade el <code>else</code> (si no):</strong> Esto ofrece un “plan B” o una ruta alternativa. Si la pregunta inicial (<code>if</code>) resulta ser Falsa, entonces la computadora salta directamente al bloque de código que está después del <code>else</code> y lo ejecuta. Es como decir: “Si pasa esto, haz A; si no, haz B”.</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;">// Ejemplo sencillo de decisión  </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (edad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">>=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 18</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {  </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;¡Verificado! Es mayor de edad.&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);  </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">else</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {  </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;No cumple con la mayoría de edad requerida.&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);  </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line> </span></code></pre></figure>
+<h3 id="082-decisión-múltiple"><strong>0.8.2 Decisión Múltiple</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#082-decisión-múltiple" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Sentencia lógica <code>switch</code></strong><br/>
+Esta estructura es una herramienta especial para cuando necesitas comparar un único valor (como una variable) contra una lista grande de posibles valores fijos (como las opciones de un menú o los días de la semana).<br/>
+Usar un <code>switch</code> es mucho más claro y fácil de leer para un programador que escribir un montón de sentencias <code>if-else</code> anidadas una tras otra. El <code>switch</code> organiza todas las comparaciones de forma limpia.<br/>
+<strong>Importante:</strong> Dentro de un <code>switch</code>, después de cada posible caso (etiquetado como <code>case</code>), es obligatorio usar la palabra clave <code>break</code>. El <code>break</code> actúa como un “alto total” para que, una vez que se encuentra el caso correcto y se ejecuta el código, la computadora no siga revisando y ejecutando accidentalmente los casos siguientes (un problema conocido como <em>fall-through</em>).</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">switch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (diaSemana) {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Lunes&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Martes&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 3</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Miercoles&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 4</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Jueves&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Viernes&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 6</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Sabado&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    case</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 7</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Domingo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    default:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Dia invalido&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="083-estructuras-de-repetición-ciclos"><strong>0.8.3 Estructuras de Repetición (Ciclos)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#083-estructuras-de-repetición-ciclos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Las estructuras de repetición o ciclos le permiten a la computadora realizar la misma tarea una y otra vez, a una velocidad increíble, imitando el concepto de “rutina” o “acción reiterada”.</p>
+<ul>
+<li><strong>Comando estructurado <code>while</code> (mientras):</strong> Este ciclo revisa una condición al principio. <strong>Mientras</strong> esa condición sea verdadera, el ciclo sigue ejecutando el bloque de código una y otra vez. En el momento en que la condición se vuelve falsa, el ciclo se detiene. Es crucial asegurarse de que algo dentro del ciclo haga que la condición cambie eventualmente (por ejemplo, aumentando un contador), de lo contrario, el programa se quedaría atascado en un “ciclo infinito”, colapsando el sistema.</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> contar </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (contar </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Contador: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> contar);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    contar</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Fin del ciclo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<ul>
+<li><strong>Comando iterativo <code>for</code> (para):</strong> El ciclo <code>for</code> es ideal para cuando sabes exactamente cuántas veces quieres que se repita una acción. Es muy eficiente porque concentra en una sola línea tres elementos clave:
+<ol>
+<li><strong>Inicio:</strong> Dónde empezar a contar (inicialización).</li>
+<li><strong>Límite:</strong> La condición que dice cuándo detenerse.</li>
+<li><strong>Paso:</strong> Cómo avanzar en cada repetición (incremento o decremento).<br/>
+Esto resulta en un código muy compacto, elegante y funcional.</li>
+</ol>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Contador: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Fin del ciclo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<ul>
+<li><strong>Comando reflexivo <code>do-while</code> (hacer-mientras):</strong> Esta es una variación del ciclo <code>while</code> con una diferencia fundamental. Con el <code>do-while</code>, la computadora siempre ejecuta el bloque de código <strong>al menos una vez</strong> (<code>do</code> / hacer) <strong>antes de</strong> revisar si la condición es verdadera (<code>while</code> / mientras). Esto es muy útil, por ejemplo, para construir menús interactivos o sistemas de validación de contraseñas, ya que primero necesitas pedirle la entrada al usuario antes de poder comprobar si es correcta.</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> contar </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">do</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Contador: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> contar);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    contar</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (contar </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Fin del ciclo&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<h2 id="09-buenas-prácticas-básicas"><strong>0.9 Buenas prácticas básicas</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#09-buenas-prácticas-básicas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>En el ámbito de la ingeniería de software, el código fuente es un activo que se analiza, inspecciona, modifica y lee de forma continua y repetitiva por los desarrolladores a lo largo del tiempo. Partiendo de esta premisa fundamental, se adoptan diversos principios de desarrollo. Un ejemplo clave es la implementación de convenciones de nomenclatura (tales como las aplicadas a clases, variables/atributos y métodos) en el contexto de la Programación Orientada a Objetos (POO).</p>
+<h3 id="091-nombres-de-variables"><strong>0.9.1 Nombres de variables</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#091-nombres-de-variables" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Convenciones de Nomenclatura en Java</strong></p>
+<ul>
+<li>
+<p>Formato <code>camelCase</code> (Para Variables y Métodos)<br/>
+Para nombrar variables dinámicas, atributos y métodos funcionales, se utiliza el protocolo conocido como <strong><code>camelCase</code></strong>.</p>
+</li>
+<li>
+<p><strong>Regla:</strong> La primera palabra del identificador comienza siempre en minúscula.</p>
+</li>
+<li>
+<p><strong>Regla:</strong> Las palabras subsiguientes anexadas comienzan con mayúscula inicial (sin espacios).</p>
+</li>
+<li>
+<p><strong>Ejemplo:</strong> <code>numeroDeEstudiantes</code>.<br/>
+Esta metodología mejora drásticamente el reconocimiento cognitivo rápido del propósito de cualquier variable o función.</p>
+</li>
+<li>
+<p>Formato <code>PascalCase</code> o <code>UpperCamelCase</code> (Para Clases)<br/>
+Para la designación de entidades arquitectónicas superiores, como los nombres de archivos base o las declaraciones abstractas de <strong>clases</strong> orientadas a objetos, se debe seguir la pauta estipulada como <strong><code>PascalCase</code></strong> (o <strong><code>UpperCamelCase</code></strong>).</p>
+</li>
+<li>
+<p><strong>Regla:</strong> Todas las palabras que componen el identificador, incluida la primera, comienzan con mayúscula inicial.</p>
+</li>
+<li>
+<p><strong>Ejemplo:</strong> <code>CalculadoraBasica</code>.</p>
+</li>
+</ul>
+<h3 id="092-legibilidad-del-código"><strong>0.9.2 Legibilidad del código</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#092-legibilidad-del-código" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Implementación de la Indentación:</strong> Consiste en la práctica sistemática y fundamental de aplicar espacios en blanco, tabulaciones y espacios invisibles en el margen izquierdo del código. Esta estructura ortotipográfica es crucial, ya que el código sin una indentación formal y consistente resulta prácticamente ininteligible, incluso para analistas experimentados, volviéndose inviable e inservible. La indentación organiza lógicamente la jerarquía y dependencia de los bloques de código, sentencias y flujos condicionales o iterativos subyacentes.</li>
+<li><strong>Aportes Documentales de los Comentarios:</strong> La función principal de los comentarios es ser notas, reflexiones o recordatorios textuales dirigidos exclusivamente a otros humanos, ya que la maquinaria de los compiladores de Java los ignora por completo (son inertes a nivel funcional y algorítmico).
+<ul>
+<li><strong>Sintaxis:</strong> Se introducen con los símbolos <code>//</code> para anotaciones rápidas o líneas únicas, o se envuelven dentro de los delimitadores <code>/*</code> (inicio) y <code>*/</code> (fin) para párrafos explicativos más extensos o documentación profunda.</li>
+</ul>
+</li>
+</ul>
+<h3 id="093-organización-básica-de-archivos"><strong>0.9.3 Organización básica de archivos</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#093-organización-básica-de-archivos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Una vez que un proyecto de software supera la fase inicial y comienza a crecer en escala y volumen, la gestión de múltiples clases de sistemas y código dentro de un <strong>único directorio base</strong> se vuelve logísticamente <strong>insostenible, inviable e indefendible</strong> desde una perspectiva de ingeniería y organización.</p>
+<p>La <strong>implementación de una estandarización arquitectónica y organizativa</strong>, especialmente a través de la <strong>topografía de carpetas (o paquetes)</strong>, es crucial. Esta práctica garantiza a mediano y largo plazo la <strong>viabilidad de la escalabilidad</strong> y proporciona la codiciada característica de <strong>portabilidad internacional</strong>.</p>
+<p>La arquitectura estandarizada, aunque de naturaleza <strong>esbelta y simple de adoptar</strong>, es globalmente respetada e incluye obligatoriamente las siguientes subcarpetas principales:</p>
+<ul>
+<li><strong>src/</strong>: Proviene del vocablo inglés <em>source</em> (fuente). Este directorio es la <strong>residencia estricta y exclusiva</strong> para todo el código fuente legible por nosotros los humanos y archivos de origen del sistema, especialmente aquellos con la extensión <strong>.java</strong>. Su propósito es albergar la totalidad el código fuente de nuestra app o sistema</li>
+<li><strong>bin/</strong> o <strong>out/</strong>: Designado para ser el repositorio del <strong>producto bruto en binarios,</strong> es decir el código compilado, esto es gestionado por el compilador o el IDE. Contiene los archivos finales, a menudo denominados <strong>binarios oscuros</strong>, con la extensión <strong>.class</strong>. El objetivo de esta separación es <strong>evitar la entropía sistémica</strong> o la <strong>contaminación cruzada</strong> al invadir el área de desarrollo limpia del código fuente.</li>
+</ul>
+<h2 id="010-ejercicios-prácticos-del-módulo"><strong>0.10 Ejercicios prácticos del módulo</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#010-ejercicios-prácticos-del-módulo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1️⃣-programa-que-imprima-datos-personales"><strong>1️⃣ Programa que imprima datos personales</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1️⃣-programa-que-imprima-datos-personales" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese su nombre: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    String nombre </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese su edad: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> edad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese su carrera: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    String carrera </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Nombre: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> nombre);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Edad: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> edad);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Carrera: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> carrera);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="2️⃣-calculadora-básica"><strong>2️⃣ Calculadora básica</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2️⃣-calculadora-básica" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese el primer número: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextDouble</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese el segundo número: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num2 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextDouble</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Suma: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (num1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num2));</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Resta: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (num1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num2));</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Multiplicación: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (num1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num2));</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;División: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (num1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> num2));</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="3️⃣-conversor-de-temperatura"><strong>3️⃣ Conversor de temperatura</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3️⃣-conversor-de-temperatura" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese la temperatura en Celsius: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> celsius </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextDouble</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fahrenheit </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (celsius </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">*</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 9</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 32</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Temperatura en Fahrenheit: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> fahrenheit);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="4️⃣-programa-que-determine-si-un-número-es-par-o-impar"><strong>4️⃣ Programa que determine si un número es par o impar</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4️⃣-programa-que-determine-si-un-número-es-par-o-impar" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese un número: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> numero </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (numero </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">%</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 2</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> ==</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;El número es par&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">else</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;El número es impar&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<h3 id="5️⃣-programa-que-calcule-promedio-de-notas"><strong>5️⃣ Programa que calcule promedio de notas</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5️⃣-programa-que-calcule-promedio-de-notas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> java.util.Scanner;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    Scanner sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(System.in);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese la cantidad de notas: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cantidad </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> suma </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cantidad; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Ingrese la nota &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> i </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;: &quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      suma </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">nextDouble</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    </span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    double</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> promedio </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> suma </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">/</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> cantidad;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Promedio: &quot;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> promedio);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-1" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#1-introducción-al-lenguaje-java" data-for="1-introducción-al-lenguaje-java">1. Introducción al lenguaje Java</a></li><li class="depth-0"><a href="#2-configuración-del-entorno" data-for="2-configuración-del-entorno">2. Configuración del entorno</a></li><li class="depth-0"><a href="#3-estructura-básica-de-un-programa-java" data-for="3-estructura-básica-de-un-programa-java">3. Estructura básica de un programa Java</a></li><li class="depth-0"><a href="#4-tipos-de-datos-y-variables" data-for="4-tipos-de-datos-y-variables">4. Tipos de datos y variables</a></li><li class="depth-0"><a href="#5-control-de-flujo" data-for="5-control-de-flujo">5. Control de flujo</a></li><li class="depth-0"><a href="#01-introducción-a-la-programación" data-for="01-introducción-a-la-programación">0.1 Introducción a la Programación</a></li><li class="depth-1"><a href="#011-qué-es-programar" data-for="011-qué-es-programar">0.1.1 ¿Qué es programar?</a></li><li class="depth-1"><a href="#012-cómo-piensa-una-computadora" data-for="012-cómo-piensa-una-computadora">0.1.2 ¿Cómo piensa una computadora?</a></li><li class="depth-1"><a href="#013-lenguajes-de-programación" data-for="013-lenguajes-de-programación">0.1.3 Lenguajes de programación</a></li><li class="depth-1"><a href="#014-dónde-se-usa-la-programación" data-for="014-dónde-se-usa-la-programación">0.1.4 ¿Dónde se usa la programación?</a></li><li class="depth-0"><a href="#02-introducción-al-lenguaje-java" data-for="02-introducción-al-lenguaje-java">0.2 Introducción al Lenguaje Java</a></li><li class="depth-1"><a href="#021-la-historia-de-java-de-los-electrodomésticos-a-internet" data-for="021-la-historia-de-java-de-los-electrodomésticos-a-internet">0.2.1 La Historia de Java: De los electrodomésticos a Internet</a></li><li class="depth-1"><a href="#022-los-súper-poderes-de-java" data-for="022-los-súper-poderes-de-java">0.2.2 Los Súper Poderes de Java</a></li><li class="depth-1"><a href="#023-la-promesa-de-java-wora" data-for="023-la-promesa-de-java-wora">0.2.3 La Promesa de Java: WORA</a></li><li class="depth-1"><a href="#024-el-equipo-detrás-de-la-magia" data-for="024-el-equipo-detrás-de-la-magia">0.2.4 El Equipo Detrás de la Magia</a></li><li class="depth-1"><a href="#025-cómo-tu-código-java-cobra-vida" data-for="025-cómo-tu-código-java-cobra-vida">0.2.5 Cómo Tu Código Java Cobra Vida</a></li><li class="depth-0"><a href="#03-preparación-del-entorno-de-desarrollo" data-for="03-preparación-del-entorno-de-desarrollo">0.3 Preparación del Entorno de Desarrollo</a></li><li class="depth-1"><a href="#031-qué-es-un-entorno-de-desarrollo" data-for="031-qué-es-un-entorno-de-desarrollo">0.3.1 ¿Qué es un entorno de desarrollo?</a></li><li class="depth-1"><a href="#032-instalación-del-jdk" data-for="032-instalación-del-jdk">0.3.2 Instalación del JDK</a></li><li class="depth-1"><a href="#033-instalación-del-editor-de-código" data-for="033-instalación-del-editor-de-código">0.3.3 Instalación del editor de código</a></li><li class="depth-1"><a href="#034-control-de-versiones" data-for="034-control-de-versiones">0.3.4 Control de versiones</a></li><li class="depth-0"><a href="#04-primer-programa-en-java" data-for="04-primer-programa-en-java">0.4 Primer Programa en Java</a></li><li class="depth-1"><a href="#041-primer-paso-crear-el-archivo-java-tu-lienzo-en-blanco" data-for="041-primer-paso-crear-el-archivo-java-tu-lienzo-en-blanco">0.4.1 Primer paso: Crear el archivo Java, tu lienzo en blanco</a></li><li class="depth-1"><a href="#042-la-fórmula-mágica-el-esqueleto-de-tu-primera-creación-en-java" data-for="042-la-fórmula-mágica-el-esqueleto-de-tu-primera-creación-en-java">0.4.2 La fórmula mágica: El esqueleto de tu primera creación en Java</a></li><li class="depth-1"><a href="#043-el-ritual-de-la-compilación-hora-de-hablar-con-el-traductor" data-for="043-el-ritual-de-la-compilación-hora-de-hablar-con-el-traductor">0.4.3 El ritual de la Compilación, hora de hablar con el traductor</a></li><li class="depth-1"><a href="#044-la-prueba-de-vida-ejecución-del-programa-la-hora-de-la-verdad" data-for="044-la-prueba-de-vida-ejecución-del-programa-la-hora-de-la-verdad">0.4.4 La prueba de vida: Ejecución del programa, la hora de la verdad</a></li><li class="depth-1"><a href="#045-los-tropiezos-del-novato-hacernos-amigos-de-los-errores" data-for="045-los-tropiezos-del-novato-hacernos-amigos-de-los-errores">0.4.5 Los tropiezos del novato: Hacernos amigos de los errores</a></li><li class="depth-0"><a href="#05-fundamentos-del-lenguaje-java" data-for="05-fundamentos-del-lenguaje-java">0.5 Fundamentos del Lenguaje Java</a></li><li class="depth-1"><a href="#051-variables-la-memoria-de-trabajo" data-for="051-variables-la-memoria-de-trabajo">0.5.1 Variables: La memoria de trabajo</a></li><li class="depth-1"><a href="#052-tipos-de-datos-primitivos-los-ladrillos-básicos-de-java" data-for="052-tipos-de-datos-primitivos-los-ladrillos-básicos-de-java">0.5.2 Tipos de datos primitivos: Los ladrillos básicos de Java</a></li><li class="depth-1"><a href="#053-cómo-declarar-una-variable-creando-la-cajita" data-for="053-cómo-declarar-una-variable-creando-la-cajita">0.5.3 Cómo declarar una variable: Creando la cajita</a></li><li class="depth-0"><a href="#06-operadores-en-java-los-motores-de-la-acción" data-for="06-operadores-en-java-los-motores-de-la-acción">0.6 Operadores en Java: Los Motores de la Acción</a></li><li class="depth-1"><a href="#061-operadores-aritméticos-la-calculadora-básica" data-for="061-operadores-aritméticos-la-calculadora-básica">0.6.1 Operadores Aritméticos: La Calculadora Básica</a></li><li class="depth-1"><a href="#062-operadores-relacionales-los-jueces-de-la-decisión" data-for="062-operadores-relacionales-los-jueces-de-la-decisión">0.6.2 Operadores Relacionales: Los Jueces de la Decisión</a></li><li class="depth-1"><a href="#063-operadores-lógicos-los-arquitectos-de-las-condiciones" data-for="063-operadores-lógicos-los-arquitectos-de-las-condiciones">0.6.3 Operadores Lógicos: Los Arquitectos de las Condiciones</a></li><li class="depth-1"><a href="#064-operadores-de-asignación-el-acto-de-entregar-el-valor" data-for="064-operadores-de-asignación-el-acto-de-entregar-el-valor">0.6.4 Operadores de Asignación: El Acto de Entregar el Valor</a></li><li class="depth-0"><a href="#07-entrada-y-salida-de-datos" data-for="07-entrada-y-salida-de-datos">0.7 Entrada y Salida de Datos</a></li><li class="depth-1"><a href="#071-mostrar-algo-en-pantalla-salida-por-consola" data-for="071-mostrar-algo-en-pantalla-salida-por-consola">0.7.1 Mostrar algo en pantalla (Salida por consola)</a></li><li class="depth-1"><a href="#072-recibir-información-del-teclado-entrada-de-datos-por-teclado" data-for="072-recibir-información-del-teclado-entrada-de-datos-por-teclado">0.7.2 Recibir información del teclado (Entrada de datos por teclado)</a></li><li class="depth-0"><a href="#08-estructuras-de-control" data-for="08-estructuras-de-control">0.8 Estructuras de Control</a></li><li class="depth-1"><a href="#081-estructuras-para-tomar-decisiones-condicionales" data-for="081-estructuras-para-tomar-decisiones-condicionales">0.8.1 Estructuras para “tomar decisiones” (Condicionales)</a></li><li class="depth-1"><a href="#082-decisión-múltiple" data-for="082-decisión-múltiple">0.8.2 Decisión Múltiple</a></li><li class="depth-1"><a href="#083-estructuras-de-repetición-ciclos" data-for="083-estructuras-de-repetición-ciclos">0.8.3 Estructuras de Repetición (Ciclos)</a></li><li class="depth-0"><a href="#09-buenas-prácticas-básicas" data-for="09-buenas-prácticas-básicas">0.9 Buenas prácticas básicas</a></li><li class="depth-1"><a href="#091-nombres-de-variables" data-for="091-nombres-de-variables">0.9.1 Nombres de variables</a></li><li class="depth-1"><a href="#092-legibilidad-del-código" data-for="092-legibilidad-del-código">0.9.2 Legibilidad del código</a></li><li class="depth-1"><a href="#093-organización-básica-de-archivos" data-for="093-organización-básica-de-archivos">0.9.3 Organización básica de archivos</a></li><li class="depth-0"><a href="#010-ejercicios-prácticos-del-módulo" data-for="010-ejercicios-prácticos-del-módulo">0.10 Ejercicios prácticos del módulo</a></li><li class="depth-1"><a href="#1️⃣-programa-que-imprima-datos-personales" data-for="1️⃣-programa-que-imprima-datos-personales">1️⃣ Programa que imprima datos personales</a></li><li class="depth-1"><a href="#2️⃣-calculadora-básica" data-for="2️⃣-calculadora-básica">2️⃣ Calculadora básica</a></li><li class="depth-1"><a href="#3️⃣-conversor-de-temperatura" data-for="3️⃣-conversor-de-temperatura">3️⃣ Conversor de temperatura</a></li><li class="depth-1"><a href="#4️⃣-programa-que-determine-si-un-número-es-par-o-impar" data-for="4️⃣-programa-que-determine-si-un-número-es-par-o-impar">4️⃣ Programa que determine si un número es par o impar</a></li><li class="depth-1"><a href="#5️⃣-programa-que-calcule-promedio-de-notas" data-for="5️⃣-programa-que-calcule-promedio-de-notas">5️⃣ Programa que calcule promedio de notas</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">
+        const socket = new WebSocket('ws://localhost:3001')
+        // reload(true) ensures resources like images and scripts are fetched again in firefox
+        socket.addEventListener('message', () => document.location.reload(true))
+      </script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

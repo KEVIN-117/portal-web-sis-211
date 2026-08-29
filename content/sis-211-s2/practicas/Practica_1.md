@@ -4,14 +4,11 @@ description: "Esta práctica tiene como objetivo introducir a los estudiantes en
 tags: ["Git", "GitHub", "Java", "Programación", "Control de versiones"]
 ---
 
-Sí. Te propongo estructurarla como una práctica progresiva donde Git/GitHub y Java no se vean como dos temas aislados, sino como un pequeño flujo de desarrollo real: crear un proyecto Java, versionarlo localmente, trabajar con commits y ramas, publicarlo en GitHub y finalmente modificarlo mediante ejercicios sencillos.
-
-La práctica podría tener una duración aproximada de 2 a 3 horas y asumir únicamente conocimientos básicos de programación.
 
 
 ## 1. Datos generales
 
-**Asignatura:** Programación / Desarrollo de Software
+**Asignatura:** Tecnicas de Programación II | **Código:** SIS-211-S2
 **Práctica:** Introducción a Git, GitHub y fundamentos de Java
 **Duración:** 2–3 horas
 **Modalidad:** Individual
