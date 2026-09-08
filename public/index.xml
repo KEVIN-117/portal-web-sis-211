@@ -6,17 +6,23 @@
       <description>Last 10 notes on Portal Web SIS-211</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
-    <title>Práctica 3: Práctica Java Principiantes – Estilo ICPC</title>
-    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_3</link>
-    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_3</guid>
-    <description><![CDATA[ En esta práctica se presentan 14 problemas de programación en Java para principiantes, inspirados en concursos de programación estilo ICPC. Los problemas incluyen desafíos de lógica, manipulación de cadenas, estructuras de control y operaciones matemáticas básicas. ]]></description>
-    <pubDate>Tue, 08 Sep 2026 04:18:54 GMT</pubDate>
+    <title>Ejercicios Básicos de Programación</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/EjemplosBasicos</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/EjemplosBasicos</guid>
+    <description><![CDATA[ Recopilación de ejercicios de programación básica con soluciones en Java, incluyendo problemas de anagramas, duplicados, mover ceros, caracteres únicos, invertir strings y suma de dos números. ]]></description>
+    <pubDate>Tue, 08 Sep 2026 04:37:45 GMT</pubDate>
   </item><item>
     <title>Practica Aula 1</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/aula/PracticaAula_1</link>
     <guid>https://quartz.jzhao.xyz/sis-211-s2/aula/PracticaAula_1</guid>
     <description><![CDATA[ Practica Aula 1 Java I/O En este desafío, debes leer un número entero, un número decimal y una cadena de texto desde la entrada estándar (stdin), y luego imprimir los valores según las instrucciones de la sección Formato de salida que se encuentra a continuación. ]]></description>
-    <pubDate>Thu, 03 Sep 2026 04:18:09 GMT</pubDate>
+    <pubDate>Tue, 08 Sep 2026 04:19:54 GMT</pubDate>
+  </item><item>
+    <title>Práctica 3: Práctica Java Principiantes – Estilo ICPC</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_3</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_3</guid>
+    <description><![CDATA[ En esta práctica se presentan 14 problemas de programación en Java para principiantes, inspirados en concursos de programación estilo ICPC. Los problemas incluyen desafíos de lógica, manipulación de cadenas, estructuras de control y operaciones matemáticas básicas. ]]></description>
+    <pubDate>Tue, 08 Sep 2026 04:19:54 GMT</pubDate>
   </item><item>
     <title>Práctica 1: Introducción a Git, GitHub y fundamentos de Java</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_1</link>
@@ -59,12 +65,6 @@
     <guid>https://quartz.jzhao.xyz/practicas/Practica_9_3</guid>
     <description><![CDATA[ En esta práctica construiremos un sistema de calculadora que implementa el patrón MVC (Model-View-Controller) y el algoritmo de Shunting Yard. El objetivo es comprender mejor la separación de responsabilidades entre la lógica del negocio, la interfaz de usuario y el controlador, así como manejar excepciones de forma controlada y diseñar interfaces gráficas de usuario (GUI) responsivas en Java Swing estructuradas mediante BorderLayout. ]]></description>
     <pubDate>Tue, 16 Jun 2026 19:53:52 GMT</pubDate>
-  </item><item>
-    <title>Práctica 8: SearchEngine con Streams y Programación Funcional</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_8</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_8</guid>
-    <description><![CDATA[ En esta práctica construiremos un motor de búsqueda de documentos de texto desde cero. La aplicación permitirá al usuario indexar archivos .txt desde su sistema de archivos, buscar por palabras clave y obtener resultados ordenados por relevancia. Lo que hace especial a este proyecto es que toda la lógica se implementará usando programación funcional: Streams, lambdas, method references, Optional y composición de funciones. No usaremos bucles for ni while para procesar datos; en su lugar, usaremos pipelines funcionales. ]]></description>
-    <pubDate>Tue, 02 Jun 2026 23:33:46 GMT</pubDate>
   </item>
     </channel>
   </rss>
