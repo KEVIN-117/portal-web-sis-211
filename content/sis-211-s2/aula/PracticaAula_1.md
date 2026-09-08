@@ -45,6 +45,26 @@ Double: 3.1415
 Int: 42
 ```
 
+### Solución
+
+```java
+import java.util.Scanner;
+
+public class Ej1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int num = sc.nextInt();
+        double val = sc.nextDouble();
+        String str = sc.next();
+
+        System.out.println(num);
+        System.out.println(val);
+        System.out.println(str);
+    }
+}
+```
+
 ## Java IF/Else
 
 En este desafío, ponemos a prueba tus conocimientos sobre el uso de sentencias condicionales if-else para automatizar procesos de toma de decisiones. Una sentencia if-else tiene el siguiente flujo lógico:
@@ -87,6 +107,32 @@ Weird
 
 ```bash
 Not Weird
+```
+
+### Solución
+
+```java
+import java.util.Scanner;
+
+public class ej2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        if (n % 2 == 0) {
+            if (n > 2 && n < 5) {
+                System.out.println("Not Weird");
+            } else if (n > 6 && n < 20) {
+                System.out.println("Weird");
+            } else {
+                System.out.println("Not Weird");
+            }
+        } else {
+            System.out.println("Weird");
+        }
+    }
+}
 ```
 
 ## Java Loops
@@ -146,6 +192,34 @@ Seguimos este patrón hasta $s_9$ = $2046$. Por lo tanto, la salida es:
 > Puedes usar el operador de desplazamiento de bits `<<` para calcular las potencias de 2 de forma más eficiente.
 
 Aquí tienes el texto completo extraído de ambas imágenes, traducido al español sin omitir ningún detalle:
+
+### Solución
+
+```java
+import java.util.Scanner;
+
+public class Ej3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int q = sc.nextInt();
+
+        while (q-- > 0) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int n = sc.nextInt();
+
+            int ans = a;
+
+            for (int i = 0; i < n; i++) {
+                ans += Math.pow(2, i) * b;
+                System.out.print(ans + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
 
 ---
 
@@ -230,6 +304,32 @@ n no puede ser almacenado en ningún lado.
 
 Aquí tienes el texto completo extraído de la tercera imagen, traducido al español sin omitir ningún detalle:
 
+### Solucion
+
+```java
+import java.util.Scanner;
+
+public class Ej4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            try {
+                long x = sc.nextLong();
+                System.out.println(x + " puede ser almacenado en:");
+                if (x >= -128 && x <= 127) System.out.println("* byte");
+                if (x >= -32768 && x <= 32767) System.out.println("* short");
+                if (x >= -2147483648 && x <= 2147483647) System.out.println("* int");
+                if (x >= -9223372036854775808L && x <= 9223372036854775807L) System.out.println("* long");
+            } catch (Exception e) {
+                System.out.println(sc.next() + " no puede ser almacenado en ningún lado.");
+            }
+        }
+    }
+}
+```
 ---
 
 ### Problema: Substring en Java
@@ -266,6 +366,25 @@ lowo
 En el diagrama de abajo, la subcadena está resaltada en verde:
 
 ![SubString](SubString.png)
+
+### Solución
+
+```java
+import java.util.Scanner;
+
+public class Ej4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+
+        int start = sc.nextInt();
+        int end = sc.nextInt();
+
+        System.out.println(s.substring(start, end));
+    }
+}
+```
 
 ---
 
@@ -391,4 +510,45 @@ Anagrams
 
 Las dos cadenas contienen las mismas letras con las mismas frecuencias → **Anagrams**.
 
----
+### Solución
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ej5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+
+        // Populate the map with characters from string a
+        for (char c : a.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        System.out.println(map);
+
+        // Subtract the count of characters from string b
+        for (char c : b.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) - 1);
+        }
+
+        System.out.println(map);
+
+        // Check if all counts are zero
+        for (int count : map.values()) {
+            if (count != 0) {
+                System.out.println(false);
+                return;
+            }
+        }
+        System.out.println(true);
+    }
+
+}
+```

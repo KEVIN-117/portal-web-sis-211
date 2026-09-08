@@ -41,6 +41,9 @@
     <loc>https://quartz.jzhao.xyz/material/github/deep-research-report</loc>
     <lastmod>2026-03-24T04:00:00.000Z</lastmod>
   </url><url>
+    <loc>https://quartz.jzhao.xyz/material/Modulo_0/%F0%9F%93%98-M%C3%B3dulo-0_-Introducci%C3%B3n-a-Java-y-al-Entorno-de-Desarrollo</loc>
+    <lastmod>2026-03-24T04:00:00.000Z</lastmod>
+  </url><url>
     <loc>https://quartz.jzhao.xyz/material/modulo_2/Polimorfismo-en-Java_-Gu%C3%ADa-Completa</loc>
     <lastmod>2026-04-25T21:59:34.000Z</lastmod>
   </url><url>
@@ -56,11 +59,14 @@
     <loc>https://quartz.jzhao.xyz/material/modulo_3/summary</loc>
     <lastmod>2026-05-27T03:10:44.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/sis-211-s2/aula/PracticaAula_1</loc>
-    <lastmod>2026-09-03T03:51:06.436Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/material/modulo_4/apuntes</loc>
+    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/material/Modulo_0/%F0%9F%93%98-M%C3%B3dulo-0_-Introducci%C3%B3n-a-Java-y-al-Entorno-de-Desarrollo</loc>
-    <lastmod>2026-03-24T04:00:00.000Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/material/modulo_4/deep-research-report</loc>
+    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/material/modulo_4/summary</loc>
+    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/material/modulo_5/Investigaci%C3%B3n-sobre-Sockets-en-Java</loc>
     <lastmod>2026-06-16T19:58:53.000Z</lastmod>
@@ -71,20 +77,20 @@
     <loc>https://quartz.jzhao.xyz/material/modulo_5/summary</loc>
     <lastmod>2026-05-27T04:00:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/material/modulo_4/apuntes</loc>
-    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/material/modulo_4/deep-research-report</loc>
-    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/material/modulo_4/summary</loc>
-    <lastmod>2026-05-27T04:00:00.000Z</lastmod>
+    <loc>https://quartz.jzhao.xyz/sis-211-s2/aula/PracticaAula_1</loc>
+    <lastmod>2026-09-03T04:18:09.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_1</loc>
     <lastmod>2026-08-29T04:41:04.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_2</loc>
     <lastmod>2026-08-29T04:41:04.000Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_3</loc>
+    <lastmod>2026-09-08T04:18:54.823Z</lastmod>
+  </url><url>
+    <loc>https://quartz.jzhao.xyz/material/Modulo_0/Ejemplos/AdvancedLinearRegression</loc>
+    <lastmod>2026-04-04T10:20:42.000Z</lastmod>
   </url><url>
     <loc>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_1</loc>
     <lastmod>2026-05-27T03:10:44.000Z</lastmod>
@@ -113,12 +119,9 @@
     <loc>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_9</loc>
     <lastmod>2026-05-27T03:10:44.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/material/Modulo_0/Ejemplos/AdvancedLinearRegression</loc>
-    <lastmod>2026-04-04T10:20:42.000Z</lastmod>
-  </url><url>
-    <loc>https://quartz.jzhao.xyz/material/modulo_5/ejemplos/ejercicios</loc>
+    <loc>https://quartz.jzhao.xyz/material/modulo_4/ejemplos/ejercicios</loc>
     <lastmod>2026-05-26T04:00:00.000Z</lastmod>
   </url><url>
-    <loc>https://quartz.jzhao.xyz/material/modulo_4/ejemplos/ejercicios</loc>
+    <loc>https://quartz.jzhao.xyz/material/modulo_5/ejemplos/ejercicios</loc>
     <lastmod>2026-05-26T04:00:00.000Z</lastmod>
   </url></urlset>
