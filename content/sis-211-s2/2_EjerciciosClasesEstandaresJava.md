@@ -1,5 +1,5 @@
 ---
-title: 2. Ejercicios de Clases Estándares Java
+title: 2 Ejercicios de Clases Estándares Java
 description: Ejercicios prácticos para profundizar en la creación de clases, instanciación de objetos y buenas prácticas en Java.
 ---
 

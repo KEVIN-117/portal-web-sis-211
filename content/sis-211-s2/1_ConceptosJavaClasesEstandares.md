@@ -1,5 +1,5 @@
 ---
-title: 1. Clases Estándares Java.
+title: 1 Clases Estándares Java.
 description: Ejercicios y explicaciones para profundizar en la creación de clases, instanciación de objetos, buenas prácticas y herramientas estándar en Java.
 ---
 

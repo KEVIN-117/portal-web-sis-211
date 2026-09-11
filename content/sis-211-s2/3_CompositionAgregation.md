@@ -1,5 +1,5 @@
 ---
-title: 3. Composición y Agregación en Java
+title: 3 Composición y Agregación en Java
 description: Explicación detallada de la diferencia entre Composición y Agregación en Java.
 ---
 
