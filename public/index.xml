@@ -6,23 +6,29 @@
       <description>Last 10 notes on Portal Web SIS-211</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Práctica 4 — Programación Orientada a Objetos en Java</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_4</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_4</guid>
+    <description><![CDATA[ Práctica guiada de Programación Orientada a Objetos en Java, incluyendo clases, relaciones, encapsulamiento y listas. ]]></description>
+    <pubDate>Fri, 11 Sep 2026 19:40:15 GMT</pubDate>
+  </item><item>
     <title>1. Clases Estándares Java.</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/1_ConceptosJavaClasesEstandares</link>
     <guid>https://quartz.jzhao.xyz/sis-211-s2/1_ConceptosJavaClasesEstandares</guid>
     <description><![CDATA[ Ejercicios y explicaciones para profundizar en la creación de clases, instanciación de objetos, buenas prácticas y herramientas estándar en Java. ]]></description>
-    <pubDate>Tue, 08 Sep 2026 14:54:48 GMT</pubDate>
-  </item><item>
-    <title>3. Composición y Agregación en Java</title>
-    <link>https://quartz.jzhao.xyz/sis-211-s2/3_CompositionAgregation</link>
-    <guid>https://quartz.jzhao.xyz/sis-211-s2/3_CompositionAgregation</guid>
-    <description><![CDATA[ Explicación detallada de la diferencia entre Composición y Agregación en Java. ]]></description>
-    <pubDate>Tue, 08 Sep 2026 14:46:47 GMT</pubDate>
+    <pubDate>Tue, 08 Sep 2026 19:29:40 GMT</pubDate>
   </item><item>
     <title>2. Ejercicios de Clases Estándares Java</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/2_EjerciciosClasesEstandaresJava</link>
     <guid>https://quartz.jzhao.xyz/sis-211-s2/2_EjerciciosClasesEstandaresJava</guid>
     <description><![CDATA[ Ejercicios prácticos para profundizar en la creación de clases, instanciación de objetos y buenas prácticas en Java. ]]></description>
-    <pubDate>Tue, 08 Sep 2026 14:46:32 GMT</pubDate>
+    <pubDate>Tue, 08 Sep 2026 19:29:40 GMT</pubDate>
+  </item><item>
+    <title>3. Composición y Agregación en Java</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/3_CompositionAgregation</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/3_CompositionAgregation</guid>
+    <description><![CDATA[ Explicación detallada de la diferencia entre Composición y Agregación en Java. ]]></description>
+    <pubDate>Tue, 08 Sep 2026 19:29:40 GMT</pubDate>
   </item><item>
     <title>Ejercicios Básicos de Programación</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/EjemplosBasicos</link>
@@ -58,12 +64,6 @@
     <link>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</link>
     <guid>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</guid>
     <description><![CDATA[ Examen final de Programación II Pregunta 1 3 / 3 pts ¿Cuál de las siguientes clases pertenece al paquete java.lang y puede utilizarse sin importarla explícitamente? ArrayList HashMap String (correcta) Scanner NOTE Explicación Pregunta 1 El paquete java.lang se importa automáticamente en todos los pr... ]]></description>
-    <pubDate>Mon, 06 Jul 2026 16:37:43 GMT</pubDate>
-  </item><item>
-    <title>SEGUNDO_PARCIAL</title>
-    <link>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</link>
-    <guid>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</guid>
-    <description><![CDATA[ SEGUNDO PARCIAL SIS-211 G-2 Pregunta 1 ¿Qué principio de la POO garantiza que los detalles internos de una clase no puedan ser accedidos directamente desde afuera? Abstraccion Herencia Encapsulamiento Polimorfismo NOTE Explicación Pregunta 1 El encapsulamiento es el principio que oculta el estado in... ]]></description>
     <pubDate>Mon, 06 Jul 2026 16:37:43 GMT</pubDate>
   </item>
     </channel>
