@@ -1,14 +1,7 @@
 ---
 title: "Resumen — Streams en Java"
 description: "Comprensión profunda de Java Streams desde cero hasta pipelines funcionales."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -30,11 +23,11 @@ Esto funciona…
 
 pero tiene problemas:
 
-* mucho código repetitivo,
-* lógica mezclada,
-* difícil de encadenar,
-* poca expresividad,
-* más propenso a errores.
+- mucho código repetitivo,
+- lógica mezclada,
+- difícil de encadenar,
+- poca expresividad,
+- más propenso a errores.
 
 ---
 
@@ -161,11 +154,11 @@ Los datos fluyen a través de transformaciones.
 
 Esto es EXACTAMENTE lo que hacen:
 
-* Spark,
-* Pandas,
-* TensorFlow pipelines,
-* RxJava,
-* Kafka Streams.
+- Spark,
+- Pandas,
+- TensorFlow pipelines,
+- RxJava,
+- Kafka Streams.
 
 ---
 
@@ -187,9 +180,9 @@ Transforman el flujo.
 
 Ejemplos:
 
-* `filter`
-* `map`
-* `sorted`
+- `filter`
+- `map`
+- `sorted`
 
 ---
 
@@ -199,10 +192,10 @@ Produce resultado final.
 
 Ejemplos:
 
-* `forEach`
-* `count`
-* `collect`
-* `average`
+- `forEach`
+- `count`
+- `collect`
+- `average`
 
 ---
 
@@ -419,10 +412,10 @@ Pipeline de procesamiento
 
 # EXACTAMENTE igual a:
 
-* ETL,
-* pipelines ML,
-* Spark,
-* procesamiento Big Data.
+- ETL,
+- pipelines ML,
+- Spark,
+- procesamiento Big Data.
 
 ---
 
@@ -527,9 +520,9 @@ no es óptimo.
 
 # Entonces existen:
 
-* `mapToInt`
-* `mapToDouble`
-* `mapToLong`
+- `mapToInt`
+- `mapToDouble`
+- `mapToLong`
 
 ---
 
@@ -600,11 +593,11 @@ dataset.stream()
 
 # Esto se usa muchísimo en:
 
-* Spark,
-* bases de datos,
-* NLP,
-* análisis de logs,
-* pipelines distribuidas.
+- Spark,
+- bases de datos,
+- NLP,
+- análisis de logs,
+- pipelines distribuidas.
 
 ---
 
@@ -721,10 +714,10 @@ Aquí está la conexión importante.
 
 Streams introduce conceptos usados en:
 
-* Spark,
-* Hadoop,
-* Flink,
-* Kafka Streams.
+- Spark,
+- Hadoop,
+- Flink,
+- Kafka Streams.
 
 ---
 
@@ -794,9 +787,9 @@ Divide trabajo entre múltiples hilos.
 
 # Similar a:
 
-* Spark workers,
-* procesamiento distribuido,
-* multicore computing.
+- Spark workers,
+- procesamiento distribuido,
+- multicore computing.
 
 ---
 
@@ -824,13 +817,13 @@ MODELAR PIPELINES DE PROCESAMIENTO DE DATOS
 
 Y eso es exactamente lo que ocurre en:
 
-* Machine Learning,
-* Big Data,
-* ETL,
-* analytics,
-* sistemas distribuidos,
-* motores de recomendación,
-* IA moderna.
+- Machine Learning,
+- Big Data,
+- ETL,
+- analytics,
+- sistemas distribuidos,
+- motores de recomendación,
+- IA moderna.
 
 ---
 

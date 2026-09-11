@@ -4,7 +4,7 @@ date: 2026-05-27
 tags: [Java, Interfaces Gráficas, POO, Event-Driven Programming]
 ---
 
-Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas** (GUI). Swing forma parte de las JFC (Java Foundation Classes) y ofrece un conjunto amplio de componentes ligeros (`javax.swing.*`) implementados completamente en Java. A diferencia de AWT, Swing no depende de componentes nativos del sistema operativo, lo que garantiza una apariencia consistente y una mayor flexibilidad (pluggable *look & feel*) en todas las plataformas. La arquitectura de Swing sigue un modelo *MVC* (Modelo-Vista-Controlador): cada componente separa su modelo de datos, la vista (apariencia) y el controlador (gestión de eventos). Los elementos clave de Swing son: **contenedores de alto nivel** (como `JFrame` o `JDialog`), **paneles y contenedores intermedios** (`JPanel`, etc.), y **componentes atómicos** (botones, etiquetas, campos de texto, tablas, etc.). El sistema de eventos se basa en el *modelo de delegación*: un componente fuente genera un evento (clic, teclado, ratón) que es capturado por un *listener* registrado.
+Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas** (GUI). Swing forma parte de las JFC (Java Foundation Classes) y ofrece un conjunto amplio de componentes ligeros (`javax.swing.*`) implementados completamente en Java. A diferencia de AWT, Swing no depende de componentes nativos del sistema operativo, lo que garantiza una apariencia consistente y una mayor flexibilidad (pluggable _look & feel_) en todas las plataformas. La arquitectura de Swing sigue un modelo _MVC_ (Modelo-Vista-Controlador): cada componente separa su modelo de datos, la vista (apariencia) y el controlador (gestión de eventos). Los elementos clave de Swing son: **contenedores de alto nivel** (como `JFrame` o `JDialog`), **paneles y contenedores intermedios** (`JPanel`, etc.), y **componentes atómicos** (botones, etiquetas, campos de texto, tablas, etc.). El sistema de eventos se basa en el _modelo de delegación_: un componente fuente genera un evento (clic, teclado, ratón) que es capturado por un _listener_ registrado.
 
 ## Componentes principales
 
@@ -20,7 +20,7 @@ Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas*
 
 - **JPanel**: Contenedor genérico (ligero) que extiende `JComponent`. Sirve para agrupar componentes; por defecto utiliza un `FlowLayout`. Es ideal para organizar sub-áreas dentro de la ventana. Por ejemplo, se puede crear un panel con `JPanel panel = new JPanel();` y agregarle botones, etiquetas, etc.
 
-- **JButton**: Botón pulsable estándar (es un *AbstractButton*). Permite que el usuario realice una acción al hacer clic. Se puede configurar texto, iconos y asociarle un `ActionListener`. Por ejemplo:
+- **JButton**: Botón pulsable estándar (es un _AbstractButton_). Permite que el usuario realice una acción al hacer clic. Se puede configurar texto, iconos y asociarle un `ActionListener`. Por ejemplo:
 
   ```java
   JButton boton = new JButton("Aceptar");
@@ -32,7 +32,7 @@ Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas*
 
 - **JLabel**: Etiqueta de texto o imagen. `JLabel` muestra una cadena corta o un icono y **no responde a eventos de entrada** (no es interactiva). Se emplea para etiquetas, títulos o para acompañar otros campos. Ejemplo: `new JLabel("Nombre:")`.
 
-- **JTextField**: Campo de texto de una sola línea para entrada del usuario. Es básico y dispara un `ActionEvent` al pulsar Enter. Se usa para recibir texto breve. Ejemplo: 
+- **JTextField**: Campo de texto de una sola línea para entrada del usuario. Es básico y dispara un `ActionEvent` al pulsar Enter. Se usa para recibir texto breve. Ejemplo:
 
   ```java
   JTextField campo = new JTextField(20); // 20 columnas
@@ -40,7 +40,7 @@ Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas*
   panel.add(campo);
   ```
 
-- **JTextArea**: Área de texto multilínea editable. A diferencia de `JTextField`, permite introducir varias líneas. Se usa para textos largos o logs. Normalmente se coloca dentro de un `JScrollPane` para barras de desplazamiento. Por ejemplo: 
+- **JTextArea**: Área de texto multilínea editable. A diferencia de `JTextField`, permite introducir varias líneas. Se usa para textos largos o logs. Normalmente se coloca dentro de un `JScrollPane` para barras de desplazamiento. Por ejemplo:
 
   ```java
   JTextArea area = new JTextArea(5, 30);
@@ -61,7 +61,7 @@ Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas*
   frame.setJMenuBar(menuBar);
   ```
 
-- **JTable**: Componente para mostrar/edit tabla bidimensional de datos. Permite ordenar, editar, filtrar celdas. Generalmente se coloca dentro de un `JScrollPane`. Por ejemplo, se define un modelo de datos (`TableModel`) y se crea la tabla: 
+- **JTable**: Componente para mostrar/edit tabla bidimensional de datos. Permite ordenar, editar, filtrar celdas. Generalmente se coloca dentro de un `JScrollPane`. Por ejemplo, se define un modelo de datos (`TableModel`) y se crea la tabla:
 
   ```java
   String[] cols = {"ID","Nombre","Edad"};
@@ -80,13 +80,13 @@ Java Swing es la biblioteca estándar de Java para crear **interfaces gráficas*
 
 ## Layout Managers
 
-Swing usa *layout managers* para disponer componentes en contenedores. No hay posiciones absolutas (por defecto), sino gestores que organizan componentes según reglas. Los más comunes son:
+Swing usa _layout managers_ para disponer componentes en contenedores. No hay posiciones absolutas (por defecto), sino gestores que organizan componentes según reglas. Los más comunes son:
 
-| Gestor           | Descripción breve                                                                                                                     | Uso típico                                         |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| **BorderLayout** | Divide el espacio en 5 zonas: norte, sur, este, oeste y centro. El área central absorbe el espacio sobrante.                          | Ventanas con encabezado, pie y panel central. (Es el layout por defecto de `JFrame`.) |
-| **FlowLayout**   | Organiza componentes en una fila (y luego salta a la siguiente) alineados horizontalmente. Es el layout por defecto de cada `JPanel`. | Formularios simples donde se añaden componentes de izquierda a derecha. |
-| **GridLayout**   | Crea una cuadrícula (mismo ancho y alto para cada celda) con un número fijo de filas y columnas.                                      | Formularios tipo tabla uniforme (por ejemplo, botones en filas iguales). |
+| Gestor           | Descripción breve                                                                                                                     | Uso típico                                                                               |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **BorderLayout** | Divide el espacio en 5 zonas: norte, sur, este, oeste y centro. El área central absorbe el espacio sobrante.                          | Ventanas con encabezado, pie y panel central. (Es el layout por defecto de `JFrame`.)    |
+| **FlowLayout**   | Organiza componentes en una fila (y luego salta a la siguiente) alineados horizontalmente. Es el layout por defecto de cada `JPanel`. | Formularios simples donde se añaden componentes de izquierda a derecha.                  |
+| **GridLayout**   | Crea una cuadrícula (mismo ancho y alto para cada celda) con un número fijo de filas y columnas.                                      | Formularios tipo tabla uniforme (por ejemplo, botones en filas iguales).                 |
 | **BoxLayout**    | Coloca componentes en una sola fila o columna (uno tras otro) y respeta tamaños máximos. Permite alinearlos vertical/horizontalmente. | Listas verticales o barras de herramientas, cuando se requiera alineación personalizada. |
 
 Cuando diseñamos la GUI, elegimos el layout según la distribución deseada. Por ejemplo, una barra de menú arriba, un panel central y un botón abajo puede usarse con `BorderLayout`. Un formulario con etiquetas y campos alineados puede usar `GridLayout` o una combinación de `FlowLayout` y `BoxLayout`.
@@ -103,7 +103,7 @@ Para casos complejos se pueden anidar varios `JPanel` con distintos layouts, o u
 
 ## Eventos y Listeners
 
-Swing sigue el *modelo de delegación de eventos*: cada componente (fuente) que genera un evento notifica a los listeners registrados. Por ejemplo, al hacer clic en un botón se crea un `ActionEvent` que es enviado a todos los `ActionListener` del botón. De forma genérica: 
+Swing sigue el _modelo de delegación de eventos_: cada componente (fuente) que genera un evento notifica a los listeners registrados. Por ejemplo, al hacer clic en un botón se crea un `ActionEvent` que es enviado a todos los `ActionListener` del botón. De forma genérica:
 
 - **Fuente de evento**: componente Swing donde ocurre la acción (p.ej. JButton).
 - **Objeto Evento**: instancia de clase evento (`ActionEvent`, `MouseEvent`, `KeyEvent`, etc.) que contiene información sobre el evento.
@@ -131,7 +131,7 @@ También se pueden usar expresiones lambda (Java 8+): `boton.addActionListener(e
 Swing permite personalizar la apariencia visual de los componentes:
 
 - **Colores, fuentes, tamaños**: Cada componente ofrece métodos `setBackground(Color)`, `setForeground(Color)`, `setFont(Font)`, etc., para ajustar sus propiedades visuales. Por ejemplo: `label.setForeground(Color.RED);`.
-- **Look and Feel**: Swing ofrece *Look & Feel* que definen la apariencia global. Podemos cambiarlo con `UIManager.setLookAndFeel(...)`. Por ejemplo, para aplicar el estilo metálico:
+- **Look and Feel**: Swing ofrece _Look & Feel_ que definen la apariencia global. Podemos cambiarlo con `UIManager.setLookAndFeel(...)`. Por ejemplo, para aplicar el estilo metálico:
 
   ```java
   try {
@@ -139,9 +139,10 @@ Swing permite personalizar la apariencia visual de los componentes:
   } catch (Exception e) { e.printStackTrace(); }
   SwingUtilities.updateComponentTreeUI(frame);
   ```
-  El método `setLookAndFeel` recibe el nombre de clase completo de la implementación (sistema, Metal, Nimbus, Windows, etc.). Después de cambiarlo es conveniente actualizar la interfaz con `SwingUtilities.updateComponentTreeUI(...)`. Por ejemplo, el blog *SwingFacil* muestra cómo seleccionar dinámicamente un L&F y actualizar la ventana.
 
-- **UIManager**: Gestiona el L&F y los *defaults* de la interfaz. Además, permite obtener o modificar valores por defecto (colores, bordes) mediante `UIManager.put(key, value)`. Para diseños consistentes, se puede establecer el tema al inicio de la aplicación.
+  El método `setLookAndFeel` recibe el nombre de clase completo de la implementación (sistema, Metal, Nimbus, Windows, etc.). Después de cambiarlo es conveniente actualizar la interfaz con `SwingUtilities.updateComponentTreeUI(...)`. Por ejemplo, el blog _SwingFacil_ muestra cómo seleccionar dinámicamente un L&F y actualizar la ventana.
+
+- **UIManager**: Gestiona el L&F y los _defaults_ de la interfaz. Además, permite obtener o modificar valores por defecto (colores, bordes) mediante `UIManager.put(key, value)`. Para diseños consistentes, se puede establecer el tema al inicio de la aplicación.
 
 Ejemplo: cambiar la fuente de todos los componentes:
 
@@ -156,9 +157,9 @@ Con estas técnicas podemos adaptar el aspecto de la aplicación a necesidades d
 
 ## Buenas prácticas en GUI
 
-- **Separación lógica – presentación (MVC)**: Mantener el código limpio separando la lógica de negocio del código de interfaz. Swing usa un modelo MVC interno: el *Modelo* contiene los datos, la *Vista* dibuja el componente y el *Controlador* maneja interacciones. Por ejemplo, para una tabla (`JTable`), el `TableModel` gestiona los datos independientemente de la visualización.
+- **Separación lógica – presentación (MVC)**: Mantener el código limpio separando la lógica de negocio del código de interfaz. Swing usa un modelo MVC interno: el _Modelo_ contiene los datos, la _Vista_ dibuja el componente y el _Controlador_ maneja interacciones. Por ejemplo, para una tabla (`JTable`), el `TableModel` gestiona los datos independientemente de la visualización.
 
-- **Evitar bloqueos en la interfaz**: Todas las llamadas a métodos de Swing deben ejecutarse en el *Event Dispatch Thread* (EDT). Swing no es *thread-safe*, por lo que las actualizaciones de la GUI deben realizarse en este hilo. Además, las tareas largas o que consumen tiempo **no deben ejecutarse en el EDT**, pues congelarían la interfaz. Para operaciones de fondo (cálculos largos, acceso a base de datos, etc.) es recomendable usar `SwingWorker` o ejecutar un hilo aparte.
+- **Evitar bloqueos en la interfaz**: Todas las llamadas a métodos de Swing deben ejecutarse en el _Event Dispatch Thread_ (EDT). Swing no es _thread-safe_, por lo que las actualizaciones de la GUI deben realizarse en este hilo. Además, las tareas largas o que consumen tiempo **no deben ejecutarse en el EDT**, pues congelarían la interfaz. Para operaciones de fondo (cálculos largos, acceso a base de datos, etc.) es recomendable usar `SwingWorker` o ejecutar un hilo aparte.
 
 - **SwingWorker**: Es una clase diseñada para ejecutar tareas en segundo plano sin bloquear la GUI. Heredamos de `SwingWorker<Resultado, Progreso>` y sobreescribimos `doInBackground()` (hilo de fondo) y `done()` (invocado en el EDT al finalizar). SwingWorker facilita comunicar resultados intermedios al EDT y soporta cancelación. Ejemplo esquemático:
 
@@ -188,20 +189,21 @@ En resumen, **siempre interactúe con Swing desde el hilo de eventos** y utilice
 
 ## Tabla comparativa de Layout Managers
 
-A continuación una tabla resumen de los principales *LayoutManager* mencionados:
+A continuación una tabla resumen de los principales _LayoutManager_ mencionados:
 
-| Gestor            | Disposición                                            | Ventajas                           | Cuándo usar                                        |
-|-------------------|--------------------------------------------------------|------------------------------------|----------------------------------------------------|
-| **BorderLayout**  | Zonas: Norte, Sur, Este, Oeste, Centro                 | Sencillo para estructura típica de ventana (encabezado, pies, panel principal). | Aplicaciones con 5 regiones principales (menú arriba, panel central, etc.). |
-| **FlowLayout**    | Fila horizontal que envuelve; alineación por defecto centro | Muy sencillo, respeta tamaño preferido de componentes. | Formularios simples o botones alineados en fila.  |
-| **GridLayout**    | Rejilla de filas y columnas iguales                    | Componentes del mismo tamaño; fácil de crear formularios uniformes. | Formularios tipo tabla (p. ej., etiquetas + campos). |
-| **BoxLayout**     | Fila o columna de componentes (inline o vertical)    | Controla alineación y espaciado; respeta tamaños máximos. | Listas verticales/horizontales complejas, barras de herramientas.|
+| Gestor           | Disposición                                                 | Ventajas                                                                        | Cuándo usar                                                                 |
+| ---------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **BorderLayout** | Zonas: Norte, Sur, Este, Oeste, Centro                      | Sencillo para estructura típica de ventana (encabezado, pies, panel principal). | Aplicaciones con 5 regiones principales (menú arriba, panel central, etc.). |
+| **FlowLayout**   | Fila horizontal que envuelve; alineación por defecto centro | Muy sencillo, respeta tamaño preferido de componentes.                          | Formularios simples o botones alineados en fila.                            |
+| **GridLayout**   | Rejilla de filas y columnas iguales                         | Componentes del mismo tamaño; fácil de crear formularios uniformes.             | Formularios tipo tabla (p. ej., etiquetas + campos).                        |
+| **BoxLayout**    | Fila o columna de componentes (inline o vertical)           | Controla alineación y espaciado; respeta tamaños máximos.                       | Listas verticales/horizontales complejas, barras de herramientas.           |
 
-Estos gestores cubren la mayor parte (≈80%) de interfaces básicas de Swing. Según la regla de Pareto, los componentes más usados (y sus layouts asociados) suelen ser: `JFrame`, `JPanel`, `JButton`, `JLabel`, `JTextField`, los cuales, con los layouts de arriba, permiten construir la mayoría de ventanas comunes. 
+Estos gestores cubren la mayor parte (≈80%) de interfaces básicas de Swing. Según la regla de Pareto, los componentes más usados (y sus layouts asociados) suelen ser: `JFrame`, `JPanel`, `JButton`, `JLabel`, `JTextField`, los cuales, con los layouts de arriba, permiten construir la mayoría de ventanas comunes.
 
 ## Ejercicios prácticos
 
 - **Ventana simple con `JFrame` y un botón**: Crear un `JFrame`, establecer operación de cierre, tamaño, y agregar un `JButton`. Ejemplo:
+
   ```java
   JFrame frame = new JFrame("Mi ventana");
   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -212,6 +214,7 @@ Estos gestores cubren la mayor parte (≈80%) de interfaces básicas de Swing. S
   ```
 
 - **Formulario con `JTextField` y `JButton`**: Diseñar un panel con etiquetas y campos de texto. Por ejemplo, un formulario de login:
+
   ```java
   JPanel panel = new JPanel(new GridLayout(3, 2, 5, 5));
   panel.add(new JLabel("Usuario:"));
@@ -225,6 +228,7 @@ Estos gestores cubren la mayor parte (≈80%) de interfaces básicas de Swing. S
   ```
 
 - **Interfaz con `GridLayout`**: Organizar elementos en grilla. Por ejemplo, crear una calculadora sencilla:
+
   ```java
   JPanel grid = new JPanel(new GridLayout(4, 3, 2, 2));
   for (int i = 1; i <= 9; i++) {
@@ -251,11 +255,11 @@ Estos gestores cubren la mayor parte (≈80%) de interfaces básicas de Swing. S
 
 ## Ejercicios de aprendizaje acelerado
 
-- **Active Recall:** *¿Cuál es la diferencia entre `JFrame` y `JPanel`?*  
-  Un `JFrame` es una ventana principal de nivel superior (basada en `java.awt.Frame`) que tiene bordes, botones de minimizar/cerrar y contiene un *content pane*. En cambio, un `JPanel` es un contenedor intermedio que agrupa componentes dentro de una ventana; no es una ventana por sí mismo y suele usar por defecto `FlowLayout`. En resumen, `JFrame` crea la ventana en sí, y `JPanel` organiza áreas dentro de esa ventana.
+- **Active Recall:** _¿Cuál es la diferencia entre `JFrame` y `JPanel`?_  
+  Un `JFrame` es una ventana principal de nivel superior (basada en `java.awt.Frame`) que tiene bordes, botones de minimizar/cerrar y contiene un _content pane_. En cambio, un `JPanel` es un contenedor intermedio que agrupa componentes dentro de una ventana; no es una ventana por sí mismo y suele usar por defecto `FlowLayout`. En resumen, `JFrame` crea la ventana en sí, y `JPanel` organiza áreas dentro de esa ventana.
 
-- **Feynman Technique:** *Explicar `LayoutManager` a un principiante.*  
-  Un *layout manager* en Swing es como un planificador que organiza los componentes en la ventana. En lugar de indicar coordenadas exactas, le decimos al contenedor qué gestor usar, y este coloca automáticamente los componentes según reglas definidas. Por ejemplo, `FlowLayout` los pone uno al lado del otro horizontalmente y luego salta a la siguiente línea; es como hacer filas de objetos. `GridLayout` los pone en una rejilla con filas y columnas iguales, como un tablero de ajedrez; cada “casilla” tiene el mismo tamaño. `BorderLayout` tiene 5 zonas (norte, sur, este, oeste, centro), como repartir el espacio de la ventana en un esquema de «norte/centro/sur» y «oeste/este/centro». Cada gestor se elige según cómo queramos distribuir los elementos en la ventana. Así, el layout manager libera al programador de calcular posiciones exactas; es como elegir un diseño predeterminado para nuestra GUI.
+- **Feynman Technique:** _Explicar `LayoutManager` a un principiante._  
+  Un _layout manager_ en Swing es como un planificador que organiza los componentes en la ventana. En lugar de indicar coordenadas exactas, le decimos al contenedor qué gestor usar, y este coloca automáticamente los componentes según reglas definidas. Por ejemplo, `FlowLayout` los pone uno al lado del otro horizontalmente y luego salta a la siguiente línea; es como hacer filas de objetos. `GridLayout` los pone en una rejilla con filas y columnas iguales, como un tablero de ajedrez; cada “casilla” tiene el mismo tamaño. `BorderLayout` tiene 5 zonas (norte, sur, este, oeste, centro), como repartir el espacio de la ventana en un esquema de «norte/centro/sur» y «oeste/este/centro». Cada gestor se elige según cómo queramos distribuir los elementos en la ventana. Así, el layout manager libera al programador de calcular posiciones exactas; es como elegir un diseño predeterminado para nuestra GUI.
 
-- **Principio de Pareto:** *¿Qué 20% de componentes cubre el 80% de interfaces básicas?*  
-  Los componentes más frecuentes en GUIs sencillas de Swing suelen ser: **`JFrame`**, **`JPanel`**, **`JButton`**, **`JLabel`**, **`JTextField`**. Con estos (ventana, paneles, botones, etiquetas y campos de texto) podemos construir la mayoría de formularios y ventanas típicas. Efectivamente, la biblioteca Swing destaca por ofrecer *“un vasto conjunto de componentes”* como botones y campos de texto; de ellos, esos cinco permiten cubrir gran parte del 80% de usos prácticos básicos.
+- **Principio de Pareto:** _¿Qué 20% de componentes cubre el 80% de interfaces básicas?_  
+  Los componentes más frecuentes en GUIs sencillas de Swing suelen ser: **`JFrame`**, **`JPanel`**, **`JButton`**, **`JLabel`**, **`JTextField`**. Con estos (ventana, paneles, botones, etiquetas y campos de texto) podemos construir la mayoría de formularios y ventanas típicas. Efectivamente, la biblioteca Swing destaca por ofrecer _“un vasto conjunto de componentes”_ como botones y campos de texto; de ellos, esos cinco permiten cubrir gran parte del 80% de usos prácticos básicos.

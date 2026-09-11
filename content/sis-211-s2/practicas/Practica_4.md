@@ -3,7 +3,6 @@ title: "Práctica 4 — Programación Orientada a Objetos en Java"
 description: "Práctica guiada de Programación Orientada a Objetos en Java, incluyendo clases, relaciones, encapsulamiento y listas."
 ---
 
-
 ## Programación Orientada a Objetos en Java: Clases, Relaciones, Encapsulamiento y Listas
 
 - **Asignatura:** Técnicas de Programación II
@@ -14,10 +13,11 @@ description: "Práctica guiada de Programación Orientada a Objetos en Java, inc
 ---
 
 > [!NOTE]
+>
 > # Entregable
-> 
+>
 > El estudiante debe entregar un proyecto Java que contenga:
-> 
+>
 > ```text
 > src/
 > └── main/
@@ -30,15 +30,15 @@ description: "Práctica guiada de Programación Orientada a Objetos en Java, inc
 >             ├── Car.java
 >             └── Main.java
 > ```
-> 
+>
 > El proyecto debe contener:
-> 
-> * Los ejercicios desarrollados.
-> * El reto integrador.
-> * El ejercicio introductorio de herencia.
-> * Código correctamente indentado.
-> * Nombres de clases, métodos y variables claros.
-> * Comentarios únicamente cuando sean necesarios para explicar una parte importante del código.
+>
+> - Los ejercicios desarrollados.
+> - El reto integrador.
+> - El ejercicio introductorio de herencia.
+> - Código correctamente indentado.
+> - Nombres de clases, métodos y variables claros.
+> - Comentarios únicamente cuando sean necesarios para explicar una parte importante del código.
 
 ---
 
@@ -48,11 +48,11 @@ La Programación Orientada a Objetos (POO) es un paradigma de programación que 
 
 Por ejemplo, si queremos desarrollar un sistema para una universidad, podemos identificar objetos como:
 
-* Estudiante
-* Docente
-* Materia
-* Carrera
-* Universidad
+- Estudiante
+- Docente
+- Materia
+- Carrera
+- Universidad
 
 Cada objeto puede tener **datos** que describen su estado y **acciones** que puede realizar.
 
@@ -88,18 +88,18 @@ Durante esta práctica aprenderemos progresivamente:
 
 Al finalizar la práctica, el estudiante será capaz de:
 
-* Crear clases en Java.
-* Definir atributos y métodos.
-* Crear objetos a partir de una clase.
-* Utilizar constructores.
-* Comprender la relación entre una clase y sus objetos.
-* Relacionar diferentes clases mediante agregación y composición.
-* Utilizar modificadores de acceso.
-* Aplicar encapsulamiento mediante `private`, getters y setters.
-* Crear y manipular listas de objetos utilizando `List` y `ArrayList`.
-* Recorrer colecciones de objetos.
-* Comprender conceptualmente qué es la herencia.
-* Crear una clase hija sencilla utilizando `extends`.
+- Crear clases en Java.
+- Definir atributos y métodos.
+- Crear objetos a partir de una clase.
+- Utilizar constructores.
+- Comprender la relación entre una clase y sus objetos.
+- Relacionar diferentes clases mediante agregación y composición.
+- Utilizar modificadores de acceso.
+- Aplicar encapsulamiento mediante `private`, getters y setters.
+- Crear y manipular listas de objetos utilizando `List` y `ArrayList`.
+- Recorrer colecciones de objetos.
+- Comprender conceptualmente qué es la herencia.
+- Crear una clase hija sencilla utilizando `extends`.
 
 ---
 
@@ -107,17 +107,17 @@ Al finalizar la práctica, el estudiante será capaz de:
 
 Antes de comenzar se debe contar con:
 
-* Java 21 instalado.
-* Un IDE como IntelliJ IDEA, VS Code o Eclipse.
-* Conocimientos básicos de:
+- Java 21 instalado.
+- Un IDE como IntelliJ IDEA, VS Code o Eclipse.
+- Conocimientos básicos de:
 
-  * variables
-  * tipos de datos
-  * `if`
-  * ciclos
-  * métodos
-  * `String`
-  * arreglos básicos
+  - variables
+  - tipos de datos
+  - `if`
+  - ciclos
+  - métodos
+  - `String`
+  - arreglos básicos
 
 ---
 
@@ -140,9 +140,9 @@ public class Student {
 
 La clase indica que un estudiante tendrá:
 
-* `name`
-* `studentId`
-* `age`
+- `name`
+- `studentId`
+- `age`
 
 Pero la clase todavía no representa a un estudiante específico.
 
@@ -1460,21 +1460,20 @@ Responder al finalizar la práctica:
 13. ¿Qué función cumple `super()`?
 14. ¿Por qué la herencia permite reutilizar código?
 
-
 ---
 
 # 33. Criterios de evaluación sugeridos
 
 La práctica puede evaluarse considerando:
 
-| Criterio | Porcentaje | Descripción |
-|---|---:|---|
-| Clases, atributos y métodos | 20% | El estudiante demuestra que puede crear clases, atributos, métodos, constructores y objetos. |
-| Agregación y composición | 20% | El estudiante puede relacionar objetos de diferentes clases y comprende la diferencia conceptual entre ambas relaciones. |
-| Modificadores de acceso y encapsulamiento | 20% | Los atributos están correctamente protegidos y se utilizan getters/setters cuando corresponde. |
-| Collections y List | 25% | El estudiante puede crear listas de objetos, agregar, eliminar, buscar y recorrer elementos. |
-| Introducción a herencia | 10% | El estudiante comprende `extends`, `super` y la relación entre clase padre e hija. |
-| Orden y calidad del código | 5% | El código presenta nombres claros, indentación correcta y una estructura comprensible. |
+| Criterio                                  | Porcentaje | Descripción                                                                                                              |
+| ----------------------------------------- | ---------: | ------------------------------------------------------------------------------------------------------------------------ |
+| Clases, atributos y métodos               |        20% | El estudiante demuestra que puede crear clases, atributos, métodos, constructores y objetos.                             |
+| Agregación y composición                  |        20% | El estudiante puede relacionar objetos de diferentes clases y comprende la diferencia conceptual entre ambas relaciones. |
+| Modificadores de acceso y encapsulamiento |        20% | Los atributos están correctamente protegidos y se utilizan getters/setters cuando corresponde.                           |
+| Collections y List                        |        25% | El estudiante puede crear listas de objetos, agregar, eliminar, buscar y recorrer elementos.                             |
+| Introducción a herencia                   |        10% | El estudiante comprende `extends`, `super` y la relación entre clase padre e hija.                                       |
+| Orden y calidad del código                |         5% | El código presenta nombres claros, indentación correcta y una estructura comprensible.                                   |
 
 ---
 

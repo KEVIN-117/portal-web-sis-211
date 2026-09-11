@@ -17,12 +17,14 @@ Es una relación “tiene-un” **débil** o **flexible**.
 El objeto contenido **puede existir independientemente** del objeto contenedor.
 
 **Características:**
+
 - Relación de tipo “todo-parte”, pero la parte puede vivir sola.
 - Si se destruye el objeto contenedor, los objetos contenidos **no se destruyen**.
 - Se representa en UML con un **rombo vacío** (◇).
 
-**Ejemplo de la vida real:**  
-- Un `Departamento` tiene `Empleados`.  
+**Ejemplo de la vida real:**
+
+- Un `Departamento` tiene `Empleados`.
 - Si se elimina el departamento, los empleados pueden seguir existiendo (pueden ser reasignados a otro departamento).
 
 **Ejemplo en código:**
@@ -66,12 +68,14 @@ Es una relación “tiene-un” **fuerte** o **estricta**.
 El objeto contenido **no puede existir sin** el objeto contenedor. Su ciclo de vida está completamente ligado.
 
 **Características:**
+
 - Relación de tipo “todo-parte” fuerte.
 - Si se destruye el objeto contenedor, los objetos contenidos **también se destruyen**.
 - Se representa en UML con un **rombo relleno** (◆).
 
-**Ejemplo de la vida real:**  
-- Un `Coche` tiene un `Motor`.  
+**Ejemplo de la vida real:**
+
+- Un `Coche` tiene un `Motor`.
 - Si se destruye el coche, el motor también deja de tener sentido (normalmente se destruye con él).
 
 **Ejemplo en código:**
@@ -110,14 +114,14 @@ El `Motor` se crea **dentro** del constructor de `Coche`. No existe fuera de él
 
 ### Diferencia clave (resumen)
 
-| Aspecto                  | Agregación                          | Composición                          |
-|--------------------------|-------------------------------------|--------------------------------------|
-| Fuerza de la relación    | Débil                               | Fuerte                               |
-| Ciclo de vida            | Independiente                       | Dependiente                          |
-| ¿Quién crea el objeto?   | Generalmente fuera                  | Generalmente dentro del contenedor   |
-| Símbolo UML              | Rombo vacío ◇                       | Rombo relleno ◆                      |
-| Ejemplo típico           | Universidad ↔ Estudiantes           | Casa ↔ Habitaciones                  |
-|                          | Equipo ↔ Jugadores                  | Libro ↔ Páginas                      |
+| Aspecto                | Agregación                | Composición                        |
+| ---------------------- | ------------------------- | ---------------------------------- |
+| Fuerza de la relación  | Débil                     | Fuerte                             |
+| Ciclo de vida          | Independiente             | Dependiente                        |
+| ¿Quién crea el objeto? | Generalmente fuera        | Generalmente dentro del contenedor |
+| Símbolo UML            | Rombo vacío ◇             | Rombo relleno ◆                    |
+| Ejemplo típico         | Universidad ↔ Estudiantes | Casa ↔ Habitaciones                |
+|                        | Equipo ↔ Jugadores        | Libro ↔ Páginas                    |
 
 ---
 
@@ -188,7 +192,7 @@ class Casa {
     public Casa(String direccion) {
         this.direccion = direccion;
         this.habitaciones = new ArrayList<>();
-        
+
         // Las habitaciones se crean junto con la casa
         habitaciones.add(new Habitacion("Sala"));
         habitaciones.add(new Habitacion("Cocina"));
@@ -209,6 +213,7 @@ class Casa {
 ### Recopilación de ejercicios
 
 #### Ejercicio 1 – Identificar el tipo de relación
+
 Indica si las siguientes relaciones son **Agregación** o **Composición** y justifica:
 
 1. Un `Equipo` tiene `Jugadores`
@@ -218,7 +223,9 @@ Indica si las siguientes relaciones son **Agregación** o **Composición** y jus
 5. Un `Pedido` tiene `LineasDePedido`
 
 #### Ejercicio 2 – Agregación: Biblioteca y Libros
+
 Crea:
+
 - Clase `Libro` (titulo, autor)
 - Clase `Biblioteca` que tenga una lista de libros (agregación)
 - Métodos para agregar libros, buscar por título y mostrar todos los libros.
@@ -226,7 +233,9 @@ Crea:
 Los libros deben poder crearse independientemente de la biblioteca.
 
 #### Ejercicio 3 – Composición: Computadora
+
 Crea:
+
 - Clase `Procesador` (marca, nucleos)
 - Clase `MemoriaRAM` (capacidadGB)
 - Clase `Computadora` que **componga** un procesador y una memoria RAM (se crean dentro del constructor de Computadora).
@@ -234,6 +243,7 @@ Crea:
 No debe ser posible crear un `Procesador` o `MemoriaRAM` fuera de la `Computadora`.
 
 #### Ejercicio 4 – Mixto (Agregación + Composición)
+
 Diseña un sistema de **Curso Online**:
 
 - `Curso` tiene:
@@ -243,6 +253,7 @@ Diseña un sistema de **Curso Online**:
 Implementa las clases necesarias y un método que muestre toda la información del curso.
 
 #### Ejercicio 5 – Sistema de Hotel (más completo)
+
 Crea un pequeño sistema con las siguientes relaciones:
 
 - `Hotel` **compone** varias `Habitacion` (composición)
@@ -250,6 +261,7 @@ Crea un pequeño sistema con las siguientes relaciones:
 - Cada `Habitacion` puede estar ocupada por un `Huesped`
 
 Implementa métodos para:
+
 - Registrar un huésped
 - Asignar una habitación a un huésped
 - Mostrar el estado del hotel (habitaciones ocupadas y libres)

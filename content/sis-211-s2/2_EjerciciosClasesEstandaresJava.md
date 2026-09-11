@@ -3,7 +3,6 @@ title: 2 Ejercicios de Clases Estándares Java
 description: Ejercicios prácticos para profundizar en la creación de clases, instanciación de objetos y buenas prácticas en Java.
 ---
 
-
 ### Explicación breve (para dar en clase)
 
 En Java, **todo** gira alrededor de clases y objetos.
@@ -19,15 +18,15 @@ En Java, **todo** gira alrededor de clases y objetos.
 
 **Estándares importantes de Java (buenas prácticas)**:
 
-| Elemento              | Convención                          | Ejemplo correcto          |
-|-----------------------|-------------------------------------|---------------------------|
-| Nombre de clase       | PascalCase                          | `Persona`, `CuentaBancaria` |
-| Nombre de atributo/método | camelCase                        | `nombreCompleto`, `calcularEdad()` |
-| Constantes            | UPPER_SNAKE_CASE                    | `MAX_VELOCIDAD`           |
-| Paquetes              | minúsculas                          | `com.empresa.proyecto`    |
-| Atributos             | Preferiblemente `private`           | Encapsulación básica      |
-| Constructores         | Mismo nombre que la clase           | `public Persona(...)`     |
-| Métodos get/set       | `getNombre()`, `setNombre()`        | Acceso controlado         |
+| Elemento                  | Convención                   | Ejemplo correcto                   |
+| ------------------------- | ---------------------------- | ---------------------------------- |
+| Nombre de clase           | PascalCase                   | `Persona`, `CuentaBancaria`        |
+| Nombre de atributo/método | camelCase                    | `nombreCompleto`, `calcularEdad()` |
+| Constantes                | UPPER_SNAKE_CASE             | `MAX_VELOCIDAD`                    |
+| Paquetes                  | minúsculas                   | `com.empresa.proyecto`             |
+| Atributos                 | Preferiblemente `private`    | Encapsulación básica               |
+| Constructores             | Mismo nombre que la clase    | `public Persona(...)`              |
+| Métodos get/set           | `getNombre()`, `setNombre()` | Acceso controlado                  |
 
 Regla de oro: **Una clase = una responsabilidad clara**.
 
@@ -38,7 +37,9 @@ Regla de oro: **Una clase = una responsabilidad clara**.
 **Objetivo de esta sesión**: Practicar la creación de clases, atributos, constructores, métodos e instanciación de objetos.
 
 #### Ejercicio 1 – Clase básica `Persona` (Nivel: Fácil)
+
 Crea una clase llamada `Persona` con:
+
 - Atributos: `nombre` (String), `edad` (int)
 - Un constructor que reciba nombre y edad
 - Un método `saludar()` que imprima:  
@@ -48,7 +49,9 @@ Crea una clase llamada `Persona` con:
 ---
 
 #### Ejercicio 2 – Clase `Rectangulo` (Nivel: Fácil-Medio)
+
 Crea una clase `Rectangulo` con:
+
 - Atributos privados: `base` y `altura` (double)
 - Constructor que reciba base y altura
 - Métodos:
@@ -61,7 +64,9 @@ En el `main`, crea un rectángulo de base 5.0 y altura 3.0 y muestra su informac
 ---
 
 #### Ejercicio 3 – Clase `CuentaBancaria` (Nivel: Medio)
+
 Crea una clase `CuentaBancaria` con:
+
 - Atributos privados: `titular` (String), `saldo` (double)
 - Constructor que reciba el titular e inicialice el saldo en 0
 - Métodos:
@@ -71,6 +76,7 @@ Crea una clase `CuentaBancaria` con:
   - `mostrarEstado()` → imprime titular y saldo
 
 En el `main`:
+
 1. Crea una cuenta para "Carlos"
 2. Deposita 1500
 3. Retira 300
@@ -80,7 +86,9 @@ En el `main`:
 ---
 
 #### Ejercicio 4 – Clase `Producto` + múltiples instancias (Nivel: Medio)
+
 Crea una clase `Producto` con:
+
 - Atributos: `nombre`, `precio`, `stock`
 - Constructor
 - Método `vender(int cantidad)` → reduce el stock si hay suficiente, si no imprime mensaje de error
@@ -92,7 +100,9 @@ En el `main` crea **tres productos** diferentes, realiza varias operaciones de v
 ---
 
 #### Ejercicio 5 – Clase `Estudiante` con validaciones (Nivel: Medio-Alto)
+
 Crea una clase `Estudiante` con:
+
 - Atributos privados: `nombre`, `nota` (double entre 0 y 10)
 - Constructor
 - Método `setNota(double nota)` → solo permite notas entre 0 y 10. Si está fuera de rango, no la cambia e imprime un mensaje de error.

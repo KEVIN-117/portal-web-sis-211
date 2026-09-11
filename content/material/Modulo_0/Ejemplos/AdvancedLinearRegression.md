@@ -7,11 +7,11 @@ tags: ["Regresión Lineal", "Java", "Machine Learning", "POO", "Clases", "Objeto
 
 Lo que aprenderemos es:
 
-* Creacion e interaccion con clases las base de la POO
-* Implementar un modelo de regresión lineal desde cero
-* Calcular automáticamente los parámetros del modelo (**w** y **b**)
-* Aplicar lógica matemática en código Java
-* Entender cómo un modelo “aprende” a partir de datos
+- Creacion e interaccion con clases las base de la POO
+- Implementar un modelo de regresión lineal desde cero
+- Calcular automáticamente los parámetros del modelo (**w** y **b**)
+- Aplicar lógica matemática en código Java
+- Entender cómo un modelo “aprende” a partir de datos
 
 ---
 
@@ -54,13 +54,14 @@ $$
 $$
 b = \bar{y} - w \bar{x}
 $$
+
 ---
 
 ### 🔍 ¿Qué significa esto?
 
-* `x̄` → promedio de x
-* `ȳ` → promedio de y
-* `m` → número de datos
+- `x̄` → promedio de x
+- `ȳ` → promedio de y
+- `m` → número de datos
 
 Básicamente estamos encontrando la **mejor línea que se ajusta a los datos**
 
@@ -223,10 +224,10 @@ Nuestro programa ahora:
 
 ## ⚠️ **Errores comunes**
 
-* División por cero (si todos los x son iguales)
-* No usar `double`
-* Lista vacía
-* Olvidar llamar a `entrenar()`
+- División por cero (si todos los x son iguales)
+- No usar `double`
+- Lista vacía
+- Olvidar llamar a `entrenar()`
 
 ---
 
@@ -266,5 +267,5 @@ public double calcularError(List<House> datos) {
 
 ## 🌱 **Mini desafío extra**
 
-* Mostrar cuál dato tiene mayor error
-* Mostrar todos los errores
+- Mostrar cuál dato tiene mayor error
+- Mostrar todos los errores

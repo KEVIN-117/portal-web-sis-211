@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 3"
 description: "Un sistema de análisis de sensores IoT para Machine Learning utilizando Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -22,10 +15,10 @@ Una empresa tecnológica especializada en Internet de las Cosas (IoT) está desa
 
 Estos sensores recopilan información constantemente sobre:
 
-* temperatura,
-* humedad,
-* presión,
-* calidad del aire.
+- temperatura,
+- humedad,
+- presión,
+- calidad del aire.
 
 Antes de entrenar modelos de Machine Learning, los datos deben pasar por una fase llamada:
 
@@ -43,16 +36,17 @@ Tu equipo será responsable de construir una mini pipeline usando Java Streams.
 
 Al finalizar este laboratorio, el estudiante será capaz de:
 
-* Comprender el concepto de pipeline de datos.
-* Utilizar Streams para procesar datasets.
-* Aplicar:
+- Comprender el concepto de pipeline de datos.
+- Utilizar Streams para procesar datasets.
+- Aplicar:
 
-  * `filter`
-  * `map`
-  * `sorted`
-  * `limit`
-  * `average`
-* Comprender cómo Java Streams se relaciona con procesamiento de datos real.
+  - `filter`
+  - `map`
+  - `sorted`
+  - `limit`
+  - `average`
+
+- Comprender cómo Java Streams se relaciona con procesamiento de datos real.
 
 ---
 
@@ -84,16 +78,16 @@ La empresa recibe datos desde múltiples sensores.
 
 Cada registro contiene:
 
-* nombre del sensor,
-* valor medido.
+- nombre del sensor,
+- valor medido.
 
 El sistema deberá:
 
-* detectar valores críticos,
-* transformar unidades,
-* calcular promedios,
-* ordenar resultados,
-* generar rankings.
+- detectar valores críticos,
+- transformar unidades,
+- calcular promedios,
+- ordenar resultados,
+- generar rankings.
 
 ---
 
@@ -581,8 +575,8 @@ Convertir temperaturas a Strings:
 
 Mostrar únicamente temperaturas:
 
-* mayores al promedio,
-* ordenadas descendentemente.
+- mayores al promedio,
+- ordenadas descendentemente.
 
 ---
 
@@ -632,10 +626,10 @@ La empresa necesita detectar sensores críticos prioritarios.
 
 Mostrar:
 
-* únicamente sensores TEMP,
-* con temperatura mayor a 40,
-* convertidos a Fahrenheit,
-* ordenados de mayor a menor.
+- únicamente sensores TEMP,
+- con temperatura mayor a 40,
+- convertidos a Fahrenheit,
+- ordenados de mayor a menor.
 
 ---
 
@@ -650,14 +644,14 @@ Mostrar:
 
 # Conceptos aprendidos
 
-* Streams
-* pipelines
-* filter
-* map
-* mapToDouble
-* sorted
-* limit
-* average
-* Comparator
-* procesamiento funcional de datasets
-* simulación de procesamiento IoT y ML
+- Streams
+- pipelines
+- filter
+- map
+- mapToDouble
+- sorted
+- limit
+- average
+- Comparator
+- procesamiento funcional de datasets
+- simulación de procesamiento IoT y ML

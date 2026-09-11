@@ -4,7 +4,6 @@ title: "Pilares de la POO"
 tags: ["POO", "Java", "Arquitectura de Software", "Desarrollo Full Stack"]
 ---
 
-
 ## **1. Sintaxis de Java y la Filosofía del Código Limpio**
 
 ![alt text](material/modulo_2/image.png)
@@ -21,23 +20,23 @@ El módulo dos de nuestra materia se centra en diseñar sistemas reutilizables y
 
 ```java
 
-// Ejemplo de código con deficiencias arquitectónicas y duplicación  
-class Perro {  
-    private int edad;  
-    private double peso;  
+// Ejemplo de código con deficiencias arquitectónicas y duplicación
+class Perro {
+    private int edad;
+    private double peso;
 
-    void hacerSonido() {  
-        System.out.println("Ladra");  
-    }  
+    void hacerSonido() {
+        System.out.println("Ladra");
+    }
 }
 
-class Gato {  
-    private int edad;  
-    private double peso;  
+class Gato {
+    private int edad;
+    private double peso;
 
-    void hacerSonido() {  
-        System.out.println("Miauu");  
-    }  
+    void hacerSonido() {
+        System.out.println("Miauu");
+    }
 }
 ```
 
@@ -52,27 +51,27 @@ El primer muro de defensa en el diseño de software es el encapsulamiento. Este 
 Imaginemos una máquina expendedora de bebidas. Como usuarios, solo vemos la ranura para insertar monedas y los botones para seleccionar el producto. No tenemos acceso directo a los engranajes internos, la caja fuerte del dinero o los circuitos electrónicos.[16] Si tuviéramos acceso directo, podríamos alterar el funcionamiento de la máquina, romperla o extraer productos sin pagar.[16] En Java, el encapsulamiento previene que otras partes del código alteren el estado interno de un objeto de forma inválida.
 
 ```java
-// Aplicación del Encapsulamiento siguiendo Clean Code  
-public class CuentaBancaria {  
+// Aplicación del Encapsulamiento siguiendo Clean Code
+public class CuentaBancaria {
     private double saldo; // Atributo protegido del acceso directo
 
-    public CuentaBancaria(double saldoInicial) {  
-        if (saldoInicial >= 0) {  
-            this.saldo = saldoInicial;  
-        } else {  
-            this.saldo = 0;  
-        }  
+    public CuentaBancaria(double saldoInicial) {
+        if (saldoInicial >= 0) {
+            this.saldo = saldoInicial;
+        } else {
+            this.saldo = 0;
+        }
     }
 
-    public void depositar(double monto) {  
-        if (monto > 0) {  
-            this.saldo += monto; // Modificación controlada del estado  
-        }  
+    public void depositar(double monto) {
+        if (monto > 0) {
+            this.saldo += monto; // Modificación controlada del estado
+        }
     }
 
-    public double getSaldo() {  
-        return this.saldo;  
-    }  
+    public double getSaldo() {
+        return this.saldo;
+    }
 }
 ```
 
@@ -85,31 +84,31 @@ El segundo pilar de la POO es la herencia. Se define como el mecanismo mediante 
 Volviendo a nuestro problema del zoológico, la herencia nos permite abstraer las características compartidas en una clase general llamada `Animal`.[11] En términos de la vida real, es como la genealogía humana: un padre transmite características fundamentales a su hijo, y este desarrolla rasgos específicos que lo distinguen, sin perder su estructura base.[11]
 
 ```java
-// Implementación de Herencia en Java  
-class Animal {  
-    protected String nombre; // Accesible por subclases  
+// Implementación de Herencia en Java
+class Animal {
+    protected String nombre; // Accesible por subclases
 
-    public Animal(String nombre) {  
-        this.nombre = nombre;  
+    public Animal(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void hacerSonido() {  
-        System.out.println("Sonido genérico");  
-    }  
+    public void hacerSonido() {
+        System.out.println("Sonido genérico");
+    }
 }
 
-class Perro extends Animal {  
+class Perro extends Animal {
     private String raza;
 
-    public Perro(String nombre, String raza) {  
-        super(nombre); // Invocación al constructor de la superclase  
-        this.raza = raza;  
+    public Perro(String nombre, String raza) {
+        super(nombre); // Invocación al constructor de la superclase
+        this.raza = raza;
     }
 
-    @Override  
-    public void hacerSonido() {  
-        System.out.println("El perro ladra");  
-    }  
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra");
+    }
 }
 ```
 
@@ -133,12 +132,12 @@ En Java, el polimorfismo se manifiesta en dos dimensiones técnicas que todo des
 
 Para una comprensión absoluta, se presenta la diferenciación mecánica entre ambos paradigmas.
 
-| Característica Técnica | Polimorfismo Estático | Polimorfismo Dinámico |
-| :---- | :---- | :---- |
-| **Definición Operativa** | La resolución de la llamada al método ocurre en **tiempo de compilación**.[14] | La resolución de la llamada al método ocurre en **tiempo de ejecución** (runtime).[14] |
-| **Mecanismo Subyacente** | Sobrecarga de métodos (Overloading).[14] | Sobrescritura de métodos (Overriding).[14] |
+| Característica Técnica   | Polimorfismo Estático                                                                           | Polimorfismo Dinámico                                                                                |
+| :----------------------- | :---------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| **Definición Operativa** | La resolución de la llamada al método ocurre en **tiempo de compilación**.[14]                  | La resolución de la llamada al método ocurre en **tiempo de ejecución** (runtime).[14]               |
+| **Mecanismo Subyacente** | Sobrecarga de métodos (Overloading).[14]                                                        | Sobrescritura de métodos (Overriding).[14]                                                           |
 | **Estructura de Firmas** | Mismo nombre de método, pero obligatoriamente diferentes parámetros (tipo, número o ambos).[14] | Idéntico nombre, idénticos parámetros e idéntico tipo de retorno que el método de la superclase.[14] |
-| **Ámbito Jerárquico** | Sucede típicamente dentro de los límites de una misma clase.[14] | Requiere una jerarquía de herencia entre una clase padre y una clase hija.[14] |
+| **Ámbito Jerárquico**    | Sucede típicamente dentro de los límites de una misma clase.[14]                                | Requiere una jerarquía de herencia entre una clase padre y una clase hija.[14]                       |
 
 El polimorfismo dinámico es el pilar de la flexibilidad arquitectónica. Utilizando el ejemplo de la anotación @Override, la Máquina Virtual de Java (JVM) emplea un mecanismo de enlace tardío (late binding).[14] Cuando el código invoca un método a través de una variable de referencia de la clase padre, la JVM ignora el tipo de la variable y determina qué método ejecutar basándose en el tipo del objeto físico creado en memoria.[14]
 
@@ -150,16 +149,16 @@ Consideremos otro ejemplo humanizado que detalla la reducción de la carga cogni
 
 ```java
 
-// Tratamiento uniforme mediante Polimorfismo  
-List<Persona> personal = new ArrayList<>();  
-personal.add(new Deportista("Laura"));  
+// Tratamiento uniforme mediante Polimorfismo
+List<Persona> personal = new ArrayList<>();
+personal.add(new Deportista("Laura"));
 personal.add(new Informatico("Miguel"));
 
-double sumaVelocidades = 0;  
-for (Persona p : personal) {  
-    // El polimorfismo ejecuta dinámicamente el comportamiento adecuado  
+double sumaVelocidades = 0;
+for (Persona p : personal) {
+    // El polimorfismo ejecuta dinámicamente el comportamiento adecuado
     sumaVelocidades += p.correr();
-}  
+}
 double promedio = sumaVelocidades / personal.size();
 ```
 
@@ -185,28 +184,28 @@ Imaginemos habilidades en el mundo real. Ser un "volador" o un "nadador" no defi
 
 La solución es la interfaz.[11] Declaramos interface Volador { void volar(); }. Ahora, la clase Pajaro puede heredar genéticamente de Animal e, independientemente, implementar la interfaz Volador (class Pajaro extends Animal implements Volador).[11]
 
-| Dimensión Arquitectónica | Clases Abstractas | Interfaces |
-| :---- | :---- | :---- |
-| **Naturaleza del Vínculo** | Establece una relación ontológica: *"Es un"* (Is-a). | Define una capacidad operativa: *"Puede hacer"* (Can-do). |
-| **Herencia y Composición** | Limitado estrictamente a herencia simple por clase. | Permite implementación múltiple; una clase puede adoptar *n* interfaces. |
-| **Preservación del Estado** | Soporta variables de instancia para retener estado mutable. | No conserva estado; solo admite constantes globales (public static final). |
-| **Mecanismo de Inicialización** | Dispone de constructores para inicializar su estado base. | Carece de constructores en su totalidad. |
-| **Propósito Industrial** | Compartir código base sustancial y evitar duplicación de propiedades. | Desacoplar arquitecturas, forjar contratos (APIs) y lograr polimorfismo transversal. |
+| Dimensión Arquitectónica        | Clases Abstractas                                                     | Interfaces                                                                           |
+| :------------------------------ | :-------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
+| **Naturaleza del Vínculo**      | Establece una relación ontológica: _"Es un"_ (Is-a).                  | Define una capacidad operativa: _"Puede hacer"_ (Can-do).                            |
+| **Herencia y Composición**      | Limitado estrictamente a herencia simple por clase.                   | Permite implementación múltiple; una clase puede adoptar _n_ interfaces.             |
+| **Preservación del Estado**     | Soporta variables de instancia para retener estado mutable.           | No conserva estado; solo admite constantes globales (public static final).           |
+| **Mecanismo de Inicialización** | Dispone de constructores para inicializar su estado base.             | Carece de constructores en su totalidad.                                             |
+| **Propósito Industrial**        | Compartir código base sustancial y evitar duplicación de propiedades. | Desacoplar arquitecturas, forjar contratos (APIs) y lograr polimorfismo transversal. |
 
 ## **7. Programación Funcional: Lambdas y Streams en Java**
 
 La evolución de Java hacia la programación moderna introdujo características del paradigma funcional, complementando magníficamente la POO. En la industria, las operaciones repetitivas sobre colecciones de datos han sido optimizadas para ser más legibles y concisas.[14]
 
-El uso de **Lambdas** permite pasar bloques de código (funciones anónimas) como si fuesen datos, especialmente al trabajar con *Interfaces Funcionales* (interfaces con un único método abstracto).[29] Sin embargo, la verdadera revolución radica en la **Stream API**.[14]
+El uso de **Lambdas** permite pasar bloques de código (funciones anónimas) como si fuesen datos, especialmente al trabajar con _Interfaces Funcionales_ (interfaces con un único método abstracto).[29] Sin embargo, la verdadera revolución radica en la **Stream API**.[14]
 
 Un Stream representa una secuencia de elementos que admite operaciones de agregación secuenciales y paralelas. A diferencia de las colecciones que almacenan datos, los Streams procesan datos.[14] Retomando nuestro ejemplo polimórfico de calcular la velocidad promedio de una lista heterogénea de personas (deportistas e informáticos), la programación funcional nos permite reducir múltiples líneas de un bucle for a una expresión declarativa asombrosa [14]:
 
 ```java
 
-// El poder combinado del Polimorfismo y la Programación Funcional  
-double promedioVelocidad = personal.stream()  
-                                  .mapToDouble(Persona::correr)  
-                                  .average()  
+// El poder combinado del Polimorfismo y la Programación Funcional
+double promedioVelocidad = personal.stream()
+                                  .mapToDouble(Persona::correr)
+                                  .average()
                                   .orElse(0.0);
 ```
 
@@ -266,7 +265,7 @@ SWING es un testimonio brillante de la superioridad de la POO. A diferencia de e
 
 La dinámica operativa de una interfaz gráfica difiere de los flujos secuenciales convencionales. Al compilar y ejecutar una aplicación SWING, el código no avanza de forma lineal; en su lugar, se delega el control a un hilo especial conocido como el Hilo Despachador de Eventos (Event Dispatch Thread - EDT). La aplicación permanece "congelada" en un bucle infinito a la espera de interacciones físicas del usuario, como pulsaciones de teclado, movimientos de ratón o clics en botones.
 
-Para capturar estas interacciones, Java se apoya en una implementación nativa del patrón de diseño *Observer*, materializado a través de Interfaces. Cuando un usuario interactúa con un JButton, el botón busca en su registro interno si algún objeto externo ha manifestado interés en ser notificado de dicho evento. Para registrar dicho interés, el desarrollador crea un objeto que implemente la interfaz ActionListener, garantizando la existencia del método actionPerformed(). Con la introducción de las Lambdas en Java 8 (programación funcional), la verbosidad de estas escuchas se reduce drásticamente, permitiendo vincular un bloque lógico conciso directamente a la acción del componente, logrando una interfaz de usuario completamente reactiva, limpia y desacoplada de la lógica de negocio subyacente.
+Para capturar estas interacciones, Java se apoya en una implementación nativa del patrón de diseño _Observer_, materializado a través de Interfaces. Cuando un usuario interactúa con un JButton, el botón busca en su registro interno si algún objeto externo ha manifestado interés en ser notificado de dicho evento. Para registrar dicho interés, el desarrollador crea un objeto que implemente la interfaz ActionListener, garantizando la existencia del método actionPerformed(). Con la introducción de las Lambdas en Java 8 (programación funcional), la verbosidad de estas escuchas se reduce drásticamente, permitiendo vincular un bloque lógico conciso directamente a la acción del componente, logrando una interfaz de usuario completamente reactiva, limpia y desacoplada de la lógica de negocio subyacente.
 
 ## **11. Proyecto Integrador: Diseño y Código de un Sistema de Combate RPG**
 
@@ -278,30 +277,30 @@ El primer paso arquitectónico es aislar las características inmutables que com
 
 ```java
 
-// Entidad base del ecosistema RPG  
-public abstract class Character {  
-    protected String name;  
+// Entidad base del ecosistema RPG
+public abstract class Character {
+    protected String name;
     private int healthPoints;
 
-    public Character(String name, int initialHealth) {  
-        this.name = name;  
-        this.healthPoints = initialHealth;  
+    public Character(String name, int initialHealth) {
+        this.name = name;
+        this.healthPoints = initialHealth;
     }
 
-    // Encapsulamiento y protección de la lógica de impacto  
-    public void takeDamage(int damageAmount) {  
-        if (damageAmount > 0) {  
-            this.healthPoints = Math.max(0, this.healthPoints - damageAmount);  
-            System.out.println(" " + this.name + " recibe " + damageAmount + " de daño.");  
-        }  
+    // Encapsulamiento y protección de la lógica de impacto
+    public void takeDamage(int damageAmount) {
+        if (damageAmount > 0) {
+            this.healthPoints = Math.max(0, this.healthPoints - damageAmount);
+            System.out.println(" " + this.name + " recibe " + damageAmount + " de daño.");
+        }
     }
 
-    public boolean isAlive() {  
-        return this.healthPoints > 0;  
+    public boolean isAlive() {
+        return this.healthPoints > 0;
     }
 
-    // Contrato polimórfico obligatorio para las subclases  
-    public abstract void displayStatus();  
+    // Contrato polimórfico obligatorio para las subclases
+    public abstract void displayStatus();
 }
 ```
 
@@ -313,13 +312,13 @@ Las mecánicas ofensivas en un RPG son extremadamente heterogéneas.[45] Algunos
 
 ```java
 
-// Interfaces que actúan como certificaciones de habilidades de combate  
-public interface PhysicalAttacker {  
-    void executeMeleeAttack(Character target);  
+// Interfaces que actúan como certificaciones de habilidades de combate
+public interface PhysicalAttacker {
+    void executeMeleeAttack(Character target);
 }
 
-public interface MagicalCaster {  
-    void castSpell(Character target);  
+public interface MagicalCaster {
+    void castSpell(Character target);
 }
 ```
 
@@ -331,26 +330,26 @@ Procedemos a instanciar las subclases funcionales derivadas del esqueleto abstra
 
 ```java
 
-// Subclase especializada: El Guerrero  
-public class Warrior extends Character implements PhysicalAttacker {  
+// Subclase especializada: El Guerrero
+public class Warrior extends Character implements PhysicalAttacker {
     private int attackPower;
 
-    public Warrior(String name, int health, int attackPower) {  
-        super(name, health); // Inicialización del estado padre  
-        this.attackPower = attackPower;  
+    public Warrior(String name, int health, int attackPower) {
+        super(name, health); // Inicialización del estado padre
+        this.attackPower = attackPower;
     }
 
-    @Override  
-    public void executeMeleeAttack(Character target) {  
-        System.out.println("⚔️ [Acción] " + super.name + " asesta un golpe colosal.");  
-        // Delegamos la gestión del impacto al objeto receptor (Encapsulamiento)  
-        target.takeDamage(this.attackPower);  
+    @Override
+    public void executeMeleeAttack(Character target) {
+        System.out.println("⚔️ [Acción] " + super.name + " asesta un golpe colosal.");
+        // Delegamos la gestión del impacto al objeto receptor (Encapsulamiento)
+        target.takeDamage(this.attackPower);
     }
 
-    @Override  
-    public void displayStatus() {  
-        System.out.println("[Guerrero] " + super.name + " | HP Restante: " + super.isAlive());  
-    }  
+    @Override
+    public void displayStatus() {
+        System.out.println("[Guerrero] " + super.name + " | HP Restante: " + super.isAlive());
+    }
 }
 ```
 
@@ -360,36 +359,36 @@ El clímax de nuestra aplicación reside en el bucle principal o BattleEngine.[4
 
 ```java
 
-import java.util.ArrayList;  
+import java.util.ArrayList;
 import java.util.List;
 
-public class BattleEngine {  
-    public static void runSimulation() {  
-        // Asignación polimórfica: Tratar a las entidades por su tipo base  
-        Warrior knight = new Warrior("Sir Lancelot", 150, 30);  
+public class BattleEngine {
+    public static void runSimulation() {
+        // Asignación polimórfica: Tratar a las entidades por su tipo base
+        Warrior knight = new Warrior("Sir Lancelot", 150, 30);
         Warrior goblin = new Warrior("Goblin Saqueador", 90, 15);
 
-        List<Character> combatants = new ArrayList<>();  
-        combatants.add(knight);  
+        List<Character> combatants = new ArrayList<>();
+        combatants.add(knight);
         combatants.add(goblin);
 
-        System.out.println("====== INICIO DE LA BATALLA ======");  
-          
-        // Bucle vital (Game Loop)  
-        while(knight.isAlive() && goblin.isAlive()) {  
-            knight.executeMeleeAttack(goblin);  
-              
-            if(goblin.isAlive()) {  
-                goblin.executeMeleeAttack(knight);  
-            }  
+        System.out.println("====== INICIO DE LA BATALLA ======");
+
+        // Bucle vital (Game Loop)
+        while(knight.isAlive() && goblin.isAlive()) {
+            knight.executeMeleeAttack(goblin);
+
+            if(goblin.isAlive()) {
+                goblin.executeMeleeAttack(knight);
+            }
         }
 
-        System.out.println("n====== ESTADO FINAL ======");  
-        // Iteración polimórfica limpia y genérica  
-        for(Character entity : combatants) {  
-            entity.displayStatus(); // Se resuelve dinámicamente en tiempo de ejecución  
-        }  
-    }  
+        System.out.println("n====== ESTADO FINAL ======");
+        // Iteración polimórfica limpia y genérica
+        for(Character entity : combatants) {
+            entity.displayStatus(); // Se resuelve dinámicamente en tiempo de ejecución
+        }
+    }
 }
 ```
 
@@ -409,50 +408,50 @@ Sigan programando con pasión, cuestionen siempre la estructura detrás de la si
 
 ### **Fuentes citadas**
 
-1. Netflix & Spotify's Secrets to Scaling: Master Service Decomposition - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=6DQzFUDkQB8](https://www.youtube.com/watch?v=6DQzFUDkQB8)  
-2. 5 Microservices Examples: Amazon, Netflix, Uber, Spotify & Etsy - SayOne Technologies, acceso: abril 16, 2026, [https://www.sayonetech.com/blog/5-microservices-examples-amazon-netflix-uber-spotify-and-etsy/](https://www.sayonetech.com/blog/5-microservices-examples-amazon-netflix-uber-spotify-and-etsy/)  
-3. Netflix's Tech Stack: A Developer's Guide to Learning from the Streaming Giant, acceso: abril 16, 2026, [https://dev.to/saudibytes/netflixs-tech-stack-a-developers-guide-to-learning-from-the-streaming-giant-2m6i](https://dev.to/saudibytes/netflixs-tech-stack-a-developers-guide-to-learning-from-the-streaming-giant-2m6i)  
-4. Java Full Stack Developer Course - DataCamp, acceso: abril 16, 2026, [https://www.datacamp.com/es/tracks/java-developer](https://www.datacamp.com/es/tracks/java-developer)  
-5. Clean Code Best Practices and Examples in Java - Medium, acceso: abril 16, 2026, [https://medium.com/@samuelcatalano/clean-code-best-practices-and-examples-in-java-e04e1ae70835](https://medium.com/@samuelcatalano/clean-code-best-practices-and-examples-in-java-e04e1ae70835)  
-6. Learn Java: Inheritance and Polymorphism Cheatsheet | Codecademy, acceso: abril 16, 2026, [https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)  
-7. "The Clean Code Talks -- Inheritance, Polymorphism, & Testing" : r/programming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/programming/comments/2j0ehe/the_clean_code_talks_inheritance_polymorphism/](https://www.reddit.com/r/programming/comments/2j0ehe/the_clean_code_talks_inheritance_polymorphism/)  
-8. 1. Principio Abierto/Cerrado (Open/Closed Principle - OCP), acceso: abril 16, 2026, [https://www.tutorialesprogramacionya.com/disenosoftware/principiossolid/tema6.html](https://www.tutorialesprogramacionya.com/disenosoftware/principiossolid/tema6.html)  
-9. Java POO explicado con ejemplos del mundo real (sin teoría aburrida) - StudyCode Pro, acceso: abril 16, 2026, [https://studycodepro.com/blog/java-poo-ejemplos-mundo-real-sin-teoria-aburrida/](https://studycodepro.com/blog/java-poo-ejemplos-mundo-real-sin-teoria-aburrida/)  
-10. Introducción a POO en Java: Objetos y clases - OpenWebinars, acceso: abril 16, 2026, [https://openwebinars.net/blog/introduccion-a-poo-en-java-objetos-y-clases/](https://openwebinars.net/blog/introduccion-a-poo-en-java-objetos-y-clases/)  
-11. 🧬 Módulo 2: Pilares de la Programación Orientada a Objetos  
-12. Mastering Inheritance in Java: A Beginner's Guide to Code Reusability - DEV Community, acceso: abril 16, 2026, [https://dev.to/mukeshb/mastering-inheritance-in-java-a-beginners-guide-to-code-reusability-1ihl](https://dev.to/mukeshb/mastering-inheritance-in-java-a-beginners-guide-to-code-reusability-1ihl)  
-13. POO en Java: Clases, objetos, encapsulación, herencia y abstracción | DataCamp, acceso: abril 16, 2026, [https://www.datacamp.com/es/tutorial/oop-in-java](https://www.datacamp.com/es/tutorial/oop-in-java)  
-14. Java Programming: Structures, Algorithms, and Design Patterns  
-15. Java OOP for Gaming Character Movement in a Real Time RPG - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=0x5u2BPqkMs](https://www.youtube.com/watch?v=0x5u2BPqkMs)  
-16. Java OOP Explained: Principles, Examples, and Best Practices - Udacity, acceso: abril 16, 2026, [https://www.udacity.com/blog/2025/11/java-oop-explained-principles-examples-and-best-practices.html](https://www.udacity.com/blog/2025/11/java-oop-explained-principles-examples-and-best-practices.html)  
-17. Introducción a POO en Java: Herencia y polimorfismo | OpenWebinars, acceso: abril 16, 2026, [https://openwebinars.net/blog/introduccion-a-poo-en-java-herencia-y-polimorfismo/](https://openwebinars.net/blog/introduccion-a-poo-en-java-herencia-y-polimorfismo/)  
-18. Java inheritance vs. composition: How to choose | InfoWorld, acceso: abril 16, 2026, [https://www.infoworld.com/article/2261980/java-challenger-7-debugging-java-inheritance.html](https://www.infoworld.com/article/2261980/java-challenger-7-debugging-java-inheritance.html)  
-19. Composition vs Inheritance: OOP Guide with Examples | DigitalOcean, acceso: abril 16, 2026, [https://www.digitalocean.com/community/tutorials/composition-vs-inheritance](https://www.digitalocean.com/community/tutorials/composition-vs-inheritance)  
-20. Mastering Inheritance and Polymorphism in Java | by Liezel Shaw | Medium, acceso: abril 16, 2026, [https://medium.com/@liezelshaw_45834/mastering-inheritance-and-polymorphism-in-java-abfcd2fce408](https://medium.com/@liezelshaw_45834/mastering-inheritance-and-polymorphism-in-java-abfcd2fce408)  
-21. Inheritance and Polymorphism (Java Tutorial) - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=gc216ndOrb4](https://www.youtube.com/watch?v=gc216ndOrb4)  
-22. From Java to Go: Why Composition is Preferred Over Inheritance - DEV Community, acceso: abril 16, 2026, [https://dev.to/leapcell/from-java-to-go-why-composition-is-preferred-over-inheritance-17h4](https://dev.to/leapcell/from-java-to-go-why-composition-is-preferred-over-inheritance-17h4)  
-23. Composition over Inheritance - Example in game development - CKhang, acceso: abril 16, 2026, [https://www.ckhang.com/blog/2020/composition-over-inheritance/](https://www.ckhang.com/blog/2020/composition-over-inheritance/)  
-24. Java Polymorphism Fully Explained In 7 Minutes - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=jhDUxynEQRI](https://www.youtube.com/watch?v=jhDUxynEQRI)  
-25. Unlocking the Potential of Polymorphism: Exploring 5 Practical Use-Cases for Code Reusability and Flexibility — Part 2 | by Mohsin Ali | Medium, acceso: abril 16, 2026, [https://medium.com/@mohsin_ali/unlocking-the-potential-of-polymorphism-exploring-5-practical-use-cases-for-code-reusability-and-736fce2801b1](https://medium.com/@mohsin_ali/unlocking-the-potential-of-polymorphism-exploring-5-practical-use-cases-for-code-reusability-and-736fce2801b1)  
-26. Types of Polymorphism in Java Explained with Examples (2026) - upGrad, acceso: abril 16, 2026, [https://www.upgrad.com/blog/types-of-polymorphism-in-java/](https://www.upgrad.com/blog/types-of-polymorphism-in-java/)  
-27. Netflix está construido en Java : r/programming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/programming/comments/1kk88p8/netflix_is_built_on_java/?tl=es-419](https://www.reddit.com/r/programming/comments/1kk88p8/netflix_is_built_on_java/?tl=es-419)  
-28. Java Interview Questions and Answers - GeeksforGeeks, acceso: abril 16, 2026, [https://www.geeksforgeeks.org/java/java-interview-questions/](https://www.geeksforgeeks.org/java/java-interview-questions/)  
-29. Mastering Interfaces in Java: The Blueprint Behind Clean Code | by Mittul Sharma - Medium, acceso: abril 16, 2026, [https://medium.com/@mittulsharma07/mastering-interfaces-in-java-the-blueprint-behind-clean-code-95567c6f103b](https://medium.com/@mittulsharma07/mastering-interfaces-in-java-the-blueprint-behind-clean-code-95567c6f103b)  
-30. Understanding Java Interface with Practical Examples | by Shankar Singla - Medium, acceso: abril 16, 2026, [https://medium.com/@shankar.singla1709/understanding-java-interface-with-practical-examples-d8850865330d](https://medium.com/@shankar.singla1709/understanding-java-interface-with-practical-examples-d8850865330d)  
-31. Liskov substitution principle | Computer Science | Research Starters - EBSCO, acceso: abril 16, 2026, [https://www.ebsco.com/research-starters/computer-science/liskov-substitution-principle](https://www.ebsco.com/research-starters/computer-science/liskov-substitution-principle)  
-32. SOLID Design Principles Explained: The Liskov Substitution Principle with Code Examples, acceso: abril 16, 2026, [https://stackify.com/solid-design-liskov-substitution-principle/](https://stackify.com/solid-design-liskov-substitution-principle/)  
-33. Understanding S.O.L.I.D. Principles with Real-Life Analogies | by Md Khaled Hasan Manna, acceso: abril 16, 2026, [https://medium.com/@khmannaict13/understanding-s-o-l-i-d-principles-with-real-life-analogies-f851e8976a11](https://medium.com/@khmannaict13/understanding-s-o-l-i-d-principles-with-real-life-analogies-f851e8976a11)  
-34. Liskov Substitution Principle Tutorial with Java Coding Example for Beginners - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=qc5V5LwIeHY](https://www.youtube.com/watch?v=qc5V5LwIeHY)  
-35. Making the Liskov Substitution Principle Happy and Sad, acceso: abril 16, 2026, [https://www.cs.ubc.ca/~ebani/papers/LiskofHappySad_ICSE-SEET_2018.pdf](https://www.cs.ubc.ca/~ebani/papers/LiskofHappySad_ICSE-SEET_2018.pdf)  
-36. Principios SOLID: (3) Liskov Substitution Principle - Secture, acceso: abril 16, 2026, [https://secture.com/principios-solid-3-liskov-substitution-principle/](https://secture.com/principios-solid-3-liskov-substitution-principle/)  
-37. ¿En qué se diferencia el Principio de Sustitución de Liskov del Principio de Segregación de la Interfaz? : r/learnprogramming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/learnprogramming/comments/rzb07j/where_does_liskov_substitution_principle_differ/?tl=es-419](https://www.reddit.com/r/learnprogramming/comments/rzb07j/where_does_liskov_substitution_principle_differ/?tl=es-419)  
-38. Master Polymorphism in Java With Examples | by Swatee Chand | Edureka - Medium, acceso: abril 16, 2026, [https://medium.com/edureka/polymorphism-in-java-9559e3641b9b](https://medium.com/edureka/polymorphism-in-java-9559e3641b9b)  
-39. Spring Boot and Microservices Developer Roadmap 2026 | Complete Java Backend Roadmap for 2026 - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=ok-16vPWXW0](https://www.youtube.com/watch?v=ok-16vPWXW0)  
-40. 7 Spring Boot Patterns That Will Dominate Microservices in 2026 (With Code) | by Dolly | Stackademic, acceso: abril 16, 2026, [https://blog.stackademic.com/7-spring-boot-patterns-that-will-dominate-microservices-in-2026-with-code-f1edb988a558](https://blog.stackademic.com/7-spring-boot-patterns-that-will-dominate-microservices-in-2026-with-code-f1edb988a558)  
-41. Programación en Lenguaje Java. Tema 8. Herencia y polimorfismo - Unican-OCW, acceso: abril 16, 2026, [https://ocw.unican.es/pluginfile.php/2330/course/section/2281/cap8-herencia.pdf](https://ocw.unican.es/pluginfile.php/2330/course/section/2281/cap8-herencia.pdf)  
-42. OOP for Beginners: A Game-Based Approach to Learning | by Rinto ..., acceso: abril 16, 2026, [https://medium.com/@rintoprie/oop-for-beginners-a-game-based-approach-to-learning-01acf2643cd6](https://medium.com/@rintoprie/oop-for-beginners-a-game-based-approach-to-learning-01acf2643cd6)  
-43. How to represent an object with actions that can only be used in a specific situation?, acceso: abril 16, 2026, [https://softwareengineering.stackexchange.com/questions/311957/how-to-represent-an-object-with-actions-that-can-only-be-used-in-a-specific-situ](https://softwareengineering.stackexchange.com/questions/311957/how-to-represent-an-object-with-actions-that-can-only-be-used-in-a-specific-situ)  
-44. Using inheritance and polymorphism to solve a common game problem - Stack Overflow, acceso: abril 16, 2026, [https://stackoverflow.com/questions/2768748/using-inheritance-and-polymorphism-to-solve-a-common-game-problem](https://stackoverflow.com/questions/2768748/using-inheritance-and-polymorphism-to-solve-a-common-game-problem)  
+1. Netflix & Spotify's Secrets to Scaling: Master Service Decomposition - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=6DQzFUDkQB8](https://www.youtube.com/watch?v=6DQzFUDkQB8)
+2. 5 Microservices Examples: Amazon, Netflix, Uber, Spotify & Etsy - SayOne Technologies, acceso: abril 16, 2026, [https://www.sayonetech.com/blog/5-microservices-examples-amazon-netflix-uber-spotify-and-etsy/](https://www.sayonetech.com/blog/5-microservices-examples-amazon-netflix-uber-spotify-and-etsy/)
+3. Netflix's Tech Stack: A Developer's Guide to Learning from the Streaming Giant, acceso: abril 16, 2026, [https://dev.to/saudibytes/netflixs-tech-stack-a-developers-guide-to-learning-from-the-streaming-giant-2m6i](https://dev.to/saudibytes/netflixs-tech-stack-a-developers-guide-to-learning-from-the-streaming-giant-2m6i)
+4. Java Full Stack Developer Course - DataCamp, acceso: abril 16, 2026, [https://www.datacamp.com/es/tracks/java-developer](https://www.datacamp.com/es/tracks/java-developer)
+5. Clean Code Best Practices and Examples in Java - Medium, acceso: abril 16, 2026, [https://medium.com/@samuelcatalano/clean-code-best-practices-and-examples-in-java-e04e1ae70835](https://medium.com/@samuelcatalano/clean-code-best-practices-and-examples-in-java-e04e1ae70835)
+6. Learn Java: Inheritance and Polymorphism Cheatsheet | Codecademy, acceso: abril 16, 2026, [https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet](https://www.codecademy.com/learn/learn-java/modules/learn-java-inheritance-and-polymorphism/cheatsheet)
+7. "The Clean Code Talks -- Inheritance, Polymorphism, & Testing" : r/programming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/programming/comments/2j0ehe/the_clean_code_talks_inheritance_polymorphism/](https://www.reddit.com/r/programming/comments/2j0ehe/the_clean_code_talks_inheritance_polymorphism/)
+8. 1. Principio Abierto/Cerrado (Open/Closed Principle - OCP), acceso: abril 16, 2026, [https://www.tutorialesprogramacionya.com/disenosoftware/principiossolid/tema6.html](https://www.tutorialesprogramacionya.com/disenosoftware/principiossolid/tema6.html)
+9. Java POO explicado con ejemplos del mundo real (sin teoría aburrida) - StudyCode Pro, acceso: abril 16, 2026, [https://studycodepro.com/blog/java-poo-ejemplos-mundo-real-sin-teoria-aburrida/](https://studycodepro.com/blog/java-poo-ejemplos-mundo-real-sin-teoria-aburrida/)
+10. Introducción a POO en Java: Objetos y clases - OpenWebinars, acceso: abril 16, 2026, [https://openwebinars.net/blog/introduccion-a-poo-en-java-objetos-y-clases/](https://openwebinars.net/blog/introduccion-a-poo-en-java-objetos-y-clases/)
+11. 🧬 Módulo 2: Pilares de la Programación Orientada a Objetos
+12. Mastering Inheritance in Java: A Beginner's Guide to Code Reusability - DEV Community, acceso: abril 16, 2026, [https://dev.to/mukeshb/mastering-inheritance-in-java-a-beginners-guide-to-code-reusability-1ihl](https://dev.to/mukeshb/mastering-inheritance-in-java-a-beginners-guide-to-code-reusability-1ihl)
+13. POO en Java: Clases, objetos, encapsulación, herencia y abstracción | DataCamp, acceso: abril 16, 2026, [https://www.datacamp.com/es/tutorial/oop-in-java](https://www.datacamp.com/es/tutorial/oop-in-java)
+14. Java Programming: Structures, Algorithms, and Design Patterns
+15. Java OOP for Gaming Character Movement in a Real Time RPG - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=0x5u2BPqkMs](https://www.youtube.com/watch?v=0x5u2BPqkMs)
+16. Java OOP Explained: Principles, Examples, and Best Practices - Udacity, acceso: abril 16, 2026, [https://www.udacity.com/blog/2025/11/java-oop-explained-principles-examples-and-best-practices.html](https://www.udacity.com/blog/2025/11/java-oop-explained-principles-examples-and-best-practices.html)
+17. Introducción a POO en Java: Herencia y polimorfismo | OpenWebinars, acceso: abril 16, 2026, [https://openwebinars.net/blog/introduccion-a-poo-en-java-herencia-y-polimorfismo/](https://openwebinars.net/blog/introduccion-a-poo-en-java-herencia-y-polimorfismo/)
+18. Java inheritance vs. composition: How to choose | InfoWorld, acceso: abril 16, 2026, [https://www.infoworld.com/article/2261980/java-challenger-7-debugging-java-inheritance.html](https://www.infoworld.com/article/2261980/java-challenger-7-debugging-java-inheritance.html)
+19. Composition vs Inheritance: OOP Guide with Examples | DigitalOcean, acceso: abril 16, 2026, [https://www.digitalocean.com/community/tutorials/composition-vs-inheritance](https://www.digitalocean.com/community/tutorials/composition-vs-inheritance)
+20. Mastering Inheritance and Polymorphism in Java | by Liezel Shaw | Medium, acceso: abril 16, 2026, [https://medium.com/@liezelshaw_45834/mastering-inheritance-and-polymorphism-in-java-abfcd2fce408](https://medium.com/@liezelshaw_45834/mastering-inheritance-and-polymorphism-in-java-abfcd2fce408)
+21. Inheritance and Polymorphism (Java Tutorial) - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=gc216ndOrb4](https://www.youtube.com/watch?v=gc216ndOrb4)
+22. From Java to Go: Why Composition is Preferred Over Inheritance - DEV Community, acceso: abril 16, 2026, [https://dev.to/leapcell/from-java-to-go-why-composition-is-preferred-over-inheritance-17h4](https://dev.to/leapcell/from-java-to-go-why-composition-is-preferred-over-inheritance-17h4)
+23. Composition over Inheritance - Example in game development - CKhang, acceso: abril 16, 2026, [https://www.ckhang.com/blog/2020/composition-over-inheritance/](https://www.ckhang.com/blog/2020/composition-over-inheritance/)
+24. Java Polymorphism Fully Explained In 7 Minutes - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=jhDUxynEQRI](https://www.youtube.com/watch?v=jhDUxynEQRI)
+25. Unlocking the Potential of Polymorphism: Exploring 5 Practical Use-Cases for Code Reusability and Flexibility — Part 2 | by Mohsin Ali | Medium, acceso: abril 16, 2026, [https://medium.com/@mohsin_ali/unlocking-the-potential-of-polymorphism-exploring-5-practical-use-cases-for-code-reusability-and-736fce2801b1](https://medium.com/@mohsin_ali/unlocking-the-potential-of-polymorphism-exploring-5-practical-use-cases-for-code-reusability-and-736fce2801b1)
+26. Types of Polymorphism in Java Explained with Examples (2026) - upGrad, acceso: abril 16, 2026, [https://www.upgrad.com/blog/types-of-polymorphism-in-java/](https://www.upgrad.com/blog/types-of-polymorphism-in-java/)
+27. Netflix está construido en Java : r/programming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/programming/comments/1kk88p8/netflix_is_built_on_java/?tl=es-419](https://www.reddit.com/r/programming/comments/1kk88p8/netflix_is_built_on_java/?tl=es-419)
+28. Java Interview Questions and Answers - GeeksforGeeks, acceso: abril 16, 2026, [https://www.geeksforgeeks.org/java/java-interview-questions/](https://www.geeksforgeeks.org/java/java-interview-questions/)
+29. Mastering Interfaces in Java: The Blueprint Behind Clean Code | by Mittul Sharma - Medium, acceso: abril 16, 2026, [https://medium.com/@mittulsharma07/mastering-interfaces-in-java-the-blueprint-behind-clean-code-95567c6f103b](https://medium.com/@mittulsharma07/mastering-interfaces-in-java-the-blueprint-behind-clean-code-95567c6f103b)
+30. Understanding Java Interface with Practical Examples | by Shankar Singla - Medium, acceso: abril 16, 2026, [https://medium.com/@shankar.singla1709/understanding-java-interface-with-practical-examples-d8850865330d](https://medium.com/@shankar.singla1709/understanding-java-interface-with-practical-examples-d8850865330d)
+31. Liskov substitution principle | Computer Science | Research Starters - EBSCO, acceso: abril 16, 2026, [https://www.ebsco.com/research-starters/computer-science/liskov-substitution-principle](https://www.ebsco.com/research-starters/computer-science/liskov-substitution-principle)
+32. SOLID Design Principles Explained: The Liskov Substitution Principle with Code Examples, acceso: abril 16, 2026, [https://stackify.com/solid-design-liskov-substitution-principle/](https://stackify.com/solid-design-liskov-substitution-principle/)
+33. Understanding S.O.L.I.D. Principles with Real-Life Analogies | by Md Khaled Hasan Manna, acceso: abril 16, 2026, [https://medium.com/@khmannaict13/understanding-s-o-l-i-d-principles-with-real-life-analogies-f851e8976a11](https://medium.com/@khmannaict13/understanding-s-o-l-i-d-principles-with-real-life-analogies-f851e8976a11)
+34. Liskov Substitution Principle Tutorial with Java Coding Example for Beginners - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=qc5V5LwIeHY](https://www.youtube.com/watch?v=qc5V5LwIeHY)
+35. Making the Liskov Substitution Principle Happy and Sad, acceso: abril 16, 2026, [https://www.cs.ubc.ca/~ebani/papers/LiskofHappySad_ICSE-SEET_2018.pdf](https://www.cs.ubc.ca/~ebani/papers/LiskofHappySad_ICSE-SEET_2018.pdf)
+36. Principios SOLID: (3) Liskov Substitution Principle - Secture, acceso: abril 16, 2026, [https://secture.com/principios-solid-3-liskov-substitution-principle/](https://secture.com/principios-solid-3-liskov-substitution-principle/)
+37. ¿En qué se diferencia el Principio de Sustitución de Liskov del Principio de Segregación de la Interfaz? : r/learnprogramming - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/learnprogramming/comments/rzb07j/where_does_liskov_substitution_principle_differ/?tl=es-419](https://www.reddit.com/r/learnprogramming/comments/rzb07j/where_does_liskov_substitution_principle_differ/?tl=es-419)
+38. Master Polymorphism in Java With Examples | by Swatee Chand | Edureka - Medium, acceso: abril 16, 2026, [https://medium.com/edureka/polymorphism-in-java-9559e3641b9b](https://medium.com/edureka/polymorphism-in-java-9559e3641b9b)
+39. Spring Boot and Microservices Developer Roadmap 2026 | Complete Java Backend Roadmap for 2026 - YouTube, acceso: abril 16, 2026, [https://www.youtube.com/watch?v=ok-16vPWXW0](https://www.youtube.com/watch?v=ok-16vPWXW0)
+40. 7 Spring Boot Patterns That Will Dominate Microservices in 2026 (With Code) | by Dolly | Stackademic, acceso: abril 16, 2026, [https://blog.stackademic.com/7-spring-boot-patterns-that-will-dominate-microservices-in-2026-with-code-f1edb988a558](https://blog.stackademic.com/7-spring-boot-patterns-that-will-dominate-microservices-in-2026-with-code-f1edb988a558)
+41. Programación en Lenguaje Java. Tema 8. Herencia y polimorfismo - Unican-OCW, acceso: abril 16, 2026, [https://ocw.unican.es/pluginfile.php/2330/course/section/2281/cap8-herencia.pdf](https://ocw.unican.es/pluginfile.php/2330/course/section/2281/cap8-herencia.pdf)
+42. OOP for Beginners: A Game-Based Approach to Learning | by Rinto ..., acceso: abril 16, 2026, [https://medium.com/@rintoprie/oop-for-beginners-a-game-based-approach-to-learning-01acf2643cd6](https://medium.com/@rintoprie/oop-for-beginners-a-game-based-approach-to-learning-01acf2643cd6)
+43. How to represent an object with actions that can only be used in a specific situation?, acceso: abril 16, 2026, [https://softwareengineering.stackexchange.com/questions/311957/how-to-represent-an-object-with-actions-that-can-only-be-used-in-a-specific-situ](https://softwareengineering.stackexchange.com/questions/311957/how-to-represent-an-object-with-actions-that-can-only-be-used-in-a-specific-situ)
+44. Using inheritance and polymorphism to solve a common game problem - Stack Overflow, acceso: abril 16, 2026, [https://stackoverflow.com/questions/2768748/using-inheritance-and-polymorphism-to-solve-a-common-game-problem](https://stackoverflow.com/questions/2768748/using-inheritance-and-polymorphism-to-solve-a-common-game-problem)
 45. Design pattern for attacks as well as active/passive effects in an RPG? : r/gamedev - Reddit, acceso: abril 16, 2026, [https://www.reddit.com/r/gamedev/comments/70kodf/design_pattern_for_attacks_as_well_as/](https://www.reddit.com/r/gamedev/comments/70kodf/design_pattern_for_attacks_as_well_as/)
 
 [^ref]

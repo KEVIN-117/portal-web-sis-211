@@ -4,8 +4,6 @@ description: "Esta práctica tiene como objetivo introducir a los estudiantes en
 tags: ["Git", "GitHub", "Java", "Programación", "Control de versiones"]
 ---
 
-
-
 ## 1. Datos generales
 
 **Asignatura:** Tecnicas de Programación II | **Código:** SIS-211-S2
@@ -38,12 +36,12 @@ Al finalizar la práctica, el estudiante será capaz de:
 
 Antes de comenzar, el estudiante debe conocer:
 
-* Qué es un lenguaje de programación.
-* Variables y tipos de datos básicos.
-* Operadores aritméticos.
-* Condicionales básicos.
-* Uso básico de la terminal.
-* Conceptos básicos de programación.
+- Qué es un lenguaje de programación.
+- Variables y tipos de datos básicos.
+- Operadores aritméticos.
+- Condicionales básicos.
+- Uso básico de la terminal.
+- Conceptos básicos de programación.
 
 No es necesario tener experiencia previa con Git.
 
@@ -53,14 +51,15 @@ No es necesario tener experiencia previa con Git.
 
 Se utilizarán:
 
-* **Java JDK 21** o una versión LTS disponible en el laboratorio.
-* **Git**.
-* Una cuenta de **GitHub**.
-* Terminal:
+- **Java JDK 21** o una versión LTS disponible en el laboratorio.
+- **Git**.
+- Una cuenta de **GitHub**.
+- Terminal:
 
-  * PowerShell / CMD en Windows.
-  * Terminal en Linux/macOS.
-* Editor de código, por ejemplo VS Code, IntelliJ IDEA, Eclipse o Neovim.
+  - PowerShell / CMD en Windows.
+  - Terminal en Linux/macOS.
+
+- Editor de código, por ejemplo VS Code, IntelliJ IDEA, Eclipse o Neovim.
 
 La práctica puede realizarse completamente desde la terminal, lo cual es recomendable para que el estudiante comprenda qué está ocurriendo realmente.
 
@@ -223,6 +222,7 @@ Hola, mundo!
 Ahora convertiremos el proyecto Java en un repositorio Git.
 
 Ejecutar:
+
 > [!TIP]
 > Asegúrese de estar en la carpeta correcta antes de ejecutar los comandos de Git.
 
@@ -434,11 +434,10 @@ Universidad: UATF
 
 El objetivo es practicar:
 
-* `String`
-* `int`
-* variables
-* `System.out.println()`
-
+- `String`
+- `int`
+- variables
+- `System.out.println()`
 
 ```java
 public class Ejercicio01 {
@@ -455,7 +454,6 @@ public class Ejercicio01 {
     }
 }
 ```
-
 
 > [!TIP]
 > Se recomienda crear un commit después de completar cada ejercicio, siguiendo la convención de mensajes de commit como `feat: add exercise 01`, `feat: add exercise 02`, etc. Esto ayudará a mantener un historial claro y organizado del desarrollo de la práctica.
@@ -485,7 +483,8 @@ Módulo:
 
 > [!TIP]
 > Se recomienda utilizar variables para almacenar los resultados de las operaciones y luego imprimirlos. Esto permite una mejor organización del código y facilita la lectura.
-> Operadores aritméticos en Java incluyen 
+> Operadores aritméticos en Java incluyen
+>
 > - `+` para suma
 > - `-` para resta
 > - `*` para multiplicación
@@ -591,6 +590,7 @@ public class Ejercicio04 {
 > El operador `%` devuelve el residuo de la división. Si el residuo es 0, el número es par; de lo contrario, es impar.
 > Pero existe una forma más elegante de escribirlo utilizando lo que en programacio conocemos como manipulacion de bits. El operador `&` realiza una operación AND a nivel de bits. Si el último bit de un número es 0, entonces el número es par; si es 1, entonces es impar. Por lo tanto, podemos usar la expresión `(numero & 1) == 0` para determinar si un número es par.
 > Recomiendo al estudiante que investigue y pruebe esta alternativa para comprender mejor cómo funcionan los operadores a nivel de bits en Java.
+
 ---
 
 ## Ejercicio 05 — Mayor de tres números
@@ -693,9 +693,9 @@ practica-git-java
 
 Para esta práctica se recomienda no inicializarlo con:
 
-* README
-* `.gitignore`
-* License
+- README
+- `.gitignore`
+- License
 
 porque esos archivos ya existen localmente.
 
@@ -857,10 +857,11 @@ Ejemplo:
 Se implementó una calculadora básica que permite realizar operaciones de suma, resta, multiplicación y división entre dos números. Se utilizaron conceptos de Java como variables, operadores aritméticos, estructuras condicionales (`switch`), y manejo de entrada de datos con `Scanner`.
 
 Conceptos:
+
 - Variables y tipos de datos (`double`, `String`).
 - Operadores aritméticos (`+`, `-`, `*`, `/`).
 - Estructuras de control (`switch`, `if-else`).
-Pruebas:
+  Pruebas:
 - Se probaron diferentes operaciones con números positivos, negativos y decimales.
 - Se verificó el manejo de la división por cero.
 ```

@@ -1,10 +1,16 @@
 ---
 title: "Práctica 8: SearchEngine con Streams y Programación Funcional"
 description: "En esta práctica construiremos un motor de búsqueda de documentos de texto desde cero. La aplicación permitirá al usuario indexar archivos .txt desde su sistema de archivos, buscar por palabras clave y obtener resultados ordenados por relevancia. Lo que hace especial a este proyecto es que toda la lógica se implementará usando programación funcional: Streams, lambdas, method references, Optional y composición de funciones. No usaremos bucles for ni while para procesar datos; en su lugar, usaremos pipelines funcionales."
-tags: ["Programación Funcional", "Streams", "Optional", "Interfaces Funcionales", "Records", "Índice Invertido"]
+tags:
+  [
+    "Programación Funcional",
+    "Streams",
+    "Optional",
+    "Interfaces Funcionales",
+    "Records",
+    "Índice Invertido",
+  ]
 ---
-
-
 
 ## Tabla de Contenidos
 
@@ -85,7 +91,7 @@ Un **motor de búsqueda** es un sistema que permite encontrar información relev
 ![Search Engine Diagram](SearchEngineDiagram.png)
 
 1. **Indexación**: se leen los documentos, se extraen las palabras clave y se construye una estructura de datos que permite búsquedas rápidas.
-2. **Búsqueda**: el usuario escribe una consulta (*query*) y el sistema encuentra todos los documentos que contienen esas palabras.
+2. **Búsqueda**: el usuario escribe una consulta (_query_) y el sistema encuentra todos los documentos que contienen esas palabras.
 3. **Ranking**: los documentos encontrados se ordenan por relevancia según un algoritmo de puntuación.
 
 ---
@@ -96,11 +102,11 @@ Un **índice invertido** es una estructura de datos que mapea cada **palabra** (
 
 **Ejemplo:** Supongamos que tenemos 3 documentos:
 
-| Doc ID | Contenido |
-|--------|-----------|
-| doc1 | "java es un lenguaje de programación" |
-| doc2 | "python es un lenguaje interpretado" |
-| doc3 | "java y python son lenguajes populares" |
+| Doc ID | Contenido                               |
+| ------ | --------------------------------------- |
+| doc1   | "java es un lenguaje de programación"   |
+| doc2   | "python es un lenguaje interpretado"    |
+| doc3   | "java y python son lenguajes populares" |
 
 El índice invertido resultante sería:
 
@@ -118,6 +124,7 @@ El índice invertido resultante sería:
 > Sin un índice invertido, para buscar "java" tendríamos que recorrer **todos** los documentos palabra por palabra. Con el índice, simplemente buscamos la clave "java" en el mapa y obtenemos instantáneamente `{doc1, doc3}`. Esto convierte una operación O(n × m) en O(1).
 
 En Java, representamos esta estructura con un `Map<String, Set<String>>`:
+
 - La **clave** (`String`) es el término/palabra.
 - El **valor** (`Set<String>`) es el conjunto de IDs de documentos que contienen ese término.
 
@@ -129,12 +136,12 @@ La **programación funcional** es un paradigma donde el código se organiza alre
 
 **Principios clave que usaremos:**
 
-| Principio | Descripción | Ejemplo en Java |
-|-----------|-------------|-----------------|
-| **Funciones como valores** | Las funciones se pueden pasar como argumentos | `list.forEach(System.out::println)` |
-| **Inmutabilidad** | Los datos no se modifican después de crearse | `record Document(...)` |
-| **Composición** | Encadenar funciones pequeñas para crear operaciones complejas | `stream.filter(...).map(...).collect(...)` |
-| **Sin efectos secundarios** | Las funciones no modifican estado externo | `stream.map(x -> x * 2)` |
+| Principio                   | Descripción                                                   | Ejemplo en Java                            |
+| --------------------------- | ------------------------------------------------------------- | ------------------------------------------ |
+| **Funciones como valores**  | Las funciones se pueden pasar como argumentos                 | `list.forEach(System.out::println)`        |
+| **Inmutabilidad**           | Los datos no se modifican después de crearse                  | `record Document(...)`                     |
+| **Composición**             | Encadenar funciones pequeñas para crear operaciones complejas | `stream.filter(...).map(...).collect(...)` |
+| **Sin efectos secundarios** | Las funciones no modifican estado externo                     | `stream.map(x -> x * 2)`                   |
 
 **Lambdas** — Son funciones anónimas (sin nombre) que se pueden escribir de forma compacta:
 
@@ -163,12 +170,12 @@ list.forEach(System.out::println);
 
 Existen 4 tipos de method references:
 
-| Tipo | Sintaxis | Ejemplo |
-|------|----------|---------|
-| A un método estático | `Clase::metodoEstatico` | `Integer::parseInt` |
-| A un método de instancia de un objeto | `objeto::metodo` | `System.out::println` |
-| A un método de instancia de un tipo | `Tipo::metodo` | `String::toLowerCase` |
-| A un constructor | `Clase::new` | `ArrayList::new` |
+| Tipo                                  | Sintaxis                | Ejemplo               |
+| ------------------------------------- | ----------------------- | --------------------- |
+| A un método estático                  | `Clase::metodoEstatico` | `Integer::parseInt`   |
+| A un método de instancia de un objeto | `objeto::metodo`        | `System.out::println` |
+| A un método de instancia de un tipo   | `Tipo::metodo`          | `String::toLowerCase` |
+| A un constructor                      | `Clase::new`            | `ArrayList::new`      |
 
 ---
 
@@ -202,26 +209,26 @@ List<String> resultado = nombres.stream()
 
 **Operaciones intermedias más usadas:**
 
-| Operación | ¿Qué hace? | Ejemplo |
-|-----------|-------------|---------|
-| `filter(predicate)` | Conserva solo los elementos que cumplen la condición | `.filter(x -> x > 5)` |
-| `map(function)` | Transforma cada elemento | `.map(String::toUpperCase)` |
-| `flatMap(function)` | Transforma cada elemento en un stream y los combina en uno solo | `.flatMap(list -> list.stream())` |
-| `distinct()` | Elimina duplicados | `.distinct()` |
-| `sorted()` | Ordena los elementos | `.sorted(Comparator.reverseOrder())` |
-| `peek(consumer)` | Ejecuta una acción sin modificar el stream (útil para debugging) | `.peek(System.out::println)` |
-| `limit(n)` | Toma solo los primeros n elementos | `.limit(10)` |
+| Operación           | ¿Qué hace?                                                       | Ejemplo                              |
+| ------------------- | ---------------------------------------------------------------- | ------------------------------------ |
+| `filter(predicate)` | Conserva solo los elementos que cumplen la condición             | `.filter(x -> x > 5)`                |
+| `map(function)`     | Transforma cada elemento                                         | `.map(String::toUpperCase)`          |
+| `flatMap(function)` | Transforma cada elemento en un stream y los combina en uno solo  | `.flatMap(list -> list.stream())`    |
+| `distinct()`        | Elimina duplicados                                               | `.distinct()`                        |
+| `sorted()`          | Ordena los elementos                                             | `.sorted(Comparator.reverseOrder())` |
+| `peek(consumer)`    | Ejecuta una acción sin modificar el stream (útil para debugging) | `.peek(System.out::println)`         |
+| `limit(n)`          | Toma solo los primeros n elementos                               | `.limit(10)`                         |
 
 **Operaciones terminales más usadas:**
 
-| Operación | ¿Qué hace? | Ejemplo |
-|-----------|-------------|---------|
-| `toList()` | Recopila todos los elementos en una lista | `.toList()` |
-| `forEach(consumer)` | Ejecuta una acción por cada elemento | `.forEach(System.out::println)` |
-| `count()` | Cuenta los elementos | `.count()` |
-| `sum()` | Suma los elementos (solo en IntStream, LongStream, DoubleStream) | `.mapToInt(...).sum()` |
-| `anyMatch(predicate)` | ¿Algún elemento cumple la condición? | `.anyMatch(x -> x > 10)` |
-| `collect(collector)` | Recolecta elementos en una estructura específica | `.collect(Collectors.toSet())` |
+| Operación             | ¿Qué hace?                                                       | Ejemplo                         |
+| --------------------- | ---------------------------------------------------------------- | ------------------------------- |
+| `toList()`            | Recopila todos los elementos en una lista                        | `.toList()`                     |
+| `forEach(consumer)`   | Ejecuta una acción por cada elemento                             | `.forEach(System.out::println)` |
+| `count()`             | Cuenta los elementos                                             | `.count()`                      |
+| `sum()`               | Suma los elementos (solo en IntStream, LongStream, DoubleStream) | `.mapToInt(...).sum()`          |
+| `anyMatch(predicate)` | ¿Algún elemento cumple la condición?                             | `.anyMatch(x -> x > 10)`        |
+| `collect(collector)`  | Recolecta elementos en una estructura específica                 | `.collect(Collectors.toSet())`  |
 
 > **Concepto clave: Evaluación perezosa (lazy)**  
 > Las operaciones intermedias como `filter()` y `map()` **no se ejecutan inmediatamente**. Solo se ejecutan cuando se invoca una operación terminal como `toList()` o `forEach()`. Esto permite optimizaciones internas y evita procesamiento innecesario.
@@ -251,23 +258,24 @@ Optional.ofNullable(mapa.get("clave"))
 
 **Métodos más usados de Optional:**
 
-| Método | ¿Qué hace? |
-|--------|-------------|
-| `Optional.of(valor)` | Crea un Optional con un valor (no puede ser null) |
-| `Optional.ofNullable(valor)` | Crea un Optional que podría contener null |
-| `Optional.empty()` | Crea un Optional vacío |
-| `.isPresent()` | ¿Contiene un valor? |
-| `.ifPresent(consumer)` | Ejecuta una acción si hay valor |
+| Método                                 | ¿Qué hace?                                            |
+| -------------------------------------- | ----------------------------------------------------- |
+| `Optional.of(valor)`                   | Crea un Optional con un valor (no puede ser null)     |
+| `Optional.ofNullable(valor)`           | Crea un Optional que podría contener null             |
+| `Optional.empty()`                     | Crea un Optional vacío                                |
+| `.isPresent()`                         | ¿Contiene un valor?                                   |
+| `.ifPresent(consumer)`                 | Ejecuta una acción si hay valor                       |
 | `.ifPresentOrElse(consumer, runnable)` | Ejecuta una acción si hay valor, u otra si está vacío |
-| `.map(function)` | Transforma el valor si existe |
-| `.filter(predicate)` | Conserva el valor solo si cumple la condición |
-| `.orElse(default)` | Devuelve el valor o un valor por defecto |
+| `.map(function)`                       | Transforma el valor si existe                         |
+| `.filter(predicate)`                   | Conserva el valor solo si cumple la condición         |
+| `.orElse(default)`                     | Devuelve el valor o un valor por defecto              |
 
 ---
 
 ### Records en Java
 
 Un **record** es un tipo especial de clase introducido en Java 16 que sirve para representar **datos inmutables**. Java genera automáticamente:
+
 - El constructor
 - Los métodos de acceso (getters sin el prefijo `get`)
 - `equals()`, `hashCode()` y `toString()`
@@ -293,7 +301,7 @@ public record Persona(String nombre, int edad) {}
 ```
 
 > **¿Por qué usar records?**  
-> Son ideales para representar "portadores de datos" (*data carriers*) como resultados de búsqueda, documentos o configuraciones. Al ser inmutables, son seguros para usar en entornos multi-hilo y más fáciles de razonar.
+> Son ideales para representar "portadores de datos" (_data carriers_) como resultados de búsqueda, documentos o configuraciones. Al ser inmutables, son seguros para usar en entornos multi-hilo y más fáciles de razonar.
 
 ---
 
@@ -362,6 +370,7 @@ SearchEngine/
 
 > **¿Por qué empezamos con interfaces?**  
 > En ingeniería de software, un buen diseño comienza definiendo los **contratos** (qué hace cada componente) antes de escribir la implementación (cómo lo hace). Las interfaces nos permiten:
+>
 > - Definir qué métodos debe tener cada componente
 > - Permitir múltiples implementaciones (por ejemplo, dos algoritmos de ranking diferentes)
 > - Facilitar las pruebas y el mantenimiento del código
@@ -433,8 +442,8 @@ public interface ITextProcessor {
 > **Concepto clave: Método `default`**  
 > Un método `default` en una interfaz proporciona una **implementación predeterminada**. Las clases que implementen `ITextProcessor` heredan este método automáticamente sin necesidad de sobreescribirlo. Observa cómo `process()` **compone** dos operaciones (`tokenize` y `removeStopWords`) en un solo pipeline. Esto es **composición funcional**.
 
-> **¿Qué son las *stop words*?**  
-> Las *stop words* son palabras extremadamente comunes en un idioma que no aportan significado útil para la búsqueda. Por ejemplo, en español: "el", "la", "de", "en", "y". En inglés: "the", "a", "is", "and", "of". Si no las eliminamos, casi todos los documentos coincidirían con cualquier consulta.
+> **¿Qué son las _stop words_?**  
+> Las _stop words_ son palabras extremadamente comunes en un idioma que no aportan significado útil para la búsqueda. Por ejemplo, en español: "el", "la", "de", "en", "y". En inglés: "the", "a", "is", "and", "of". Si no las eliminamos, casi todos los documentos coincidirían con cualquier consulta.
 
 ---
 
@@ -501,7 +510,7 @@ public interface IIndexer {
 
 📄 **Archivo:** `src/core/interfaces/IRanker.java`
 
-El *ranker* es el componente que calcula la **relevancia** de un documento respecto a una consulta. Es una **interfaz funcional** porque tiene un único método abstracto.
+El _ranker_ es el componente que calcula la **relevancia** de un documento respecto a una consulta. Es una **interfaz funcional** porque tiene un único método abstracto.
 
 ```java
 package core.interfaces;
@@ -537,7 +546,7 @@ public interface IRanker {
 
 📄 **Archivo:** `src/core/interfaces/ISearcher.java`
 
-El *searcher* coordina todo el proceso de búsqueda: recibe la consulta del usuario, busca documentos candidatos en el índice, calcula la relevancia con el ranker y retorna los resultados ordenados.
+El _searcher_ coordina todo el proceso de búsqueda: recibe la consulta del usuario, busca documentos candidatos en el índice, calcula la relevancia con el ranker y retorna los resultados ordenados.
 
 ```java
 package core.interfaces;
@@ -554,7 +563,7 @@ public interface ISearcher {
 ```
 
 > **Sobrecarga de métodos:**  
-> Observa que hay dos versiones de `search()`: una que recibe solo la consulta y otra que además recibe un límite de resultados. Esto se llama **sobrecarga** (*method overloading*) y permite al usuario elegir el nivel de control que necesita.
+> Observa que hay dos versiones de `search()`: una que recibe solo la consulta y otra que además recibe un límite de resultados. Esto se llama **sobrecarga** (_method overloading_) y permite al usuario elegir el nivel de control que necesita.
 
 ---
 
@@ -629,7 +638,7 @@ public record Document(
 > ```
 
 > **Concepto: UUID**  
-> `UUID` (*Universally Unique Identifier*) genera un identificador único de 128 bits como `"550e8400-e29b-41d4-a716-446655440000"`. Es prácticamente imposible que se generen dos UUIDs iguales, lo que lo hace ideal para identificar documentos sin necesidad de un contador global.
+> `UUID` (_Universally Unique Identifier_) genera un identificador único de 128 bits como `"550e8400-e29b-41d4-a716-446655440000"`. Es prácticamente imposible que se generen dos UUIDs iguales, lo que lo hace ideal para identificar documentos sin necesidad de un contador global.
 
 ---
 
@@ -966,6 +975,7 @@ invertedIndex.computeIfAbsent(term, _k -> new HashSet<>()).add(document.getId())
 ```
 
 Este método hace lo siguiente en una sola línea:
+
 - Si la clave `term` **no existe** en el mapa, crea un nuevo `HashSet<>()` y lo asocia a esa clave.
 - Si la clave `term` **ya existe**, simplemente retorna el `Set` existente.
 - En ambos casos, retorna el `Set`, sobre el cual llamamos `.add(document.getId())`.
@@ -1106,7 +1116,7 @@ queryTerms.stream()                                      // 1. Stream de términ
 
 📄 **Archivo:** `src/ranking/TfIdfRanker.java`
 
-**TF-IDF** (*Term Frequency — Inverse Document Frequency*) es un algoritmo más sofisticado que no solo cuenta las ocurrencias, sino que también pondera la **rareza** de cada término en el corpus completo.
+**TF-IDF** (_Term Frequency — Inverse Document Frequency_) es un algoritmo más sofisticado que no solo cuenta las ocurrencias, sino que también pondera la **rareza** de cada término en el corpus completo.
 
 **Intuición:** Si la palabra "java" aparece en solo 2 de 100 documentos, es muy específica y debería tener más peso. Pero si la palabra "software" aparece en 80 de 100 documentos, es muy común y debería tener menos peso.
 
@@ -1121,8 +1131,9 @@ Score del documento = Σ TF-IDF(queryTerm_i)
 ```
 
 Donde:
+
 - **N** = número total de documentos en el corpus
-- **DF(term)** = número de documentos que contienen el término (*Document Frequency*)
+- **DF(term)** = número de documentos que contienen el término (_Document Frequency_)
 
 ```java
 package ranking;
@@ -1233,7 +1244,7 @@ queryTerms.stream()
 ```
 
 > **¿Por qué `1 + df` en vez de solo `df`?**  
-> Para evitar la división por cero. Si un término del query no aparece en ningún documento del índice (`df = 0`), la fórmula sin el `+1` sería `log(N/0)` = infinito. El `+1` es una técnica de **suavizado** (*smoothing*) común en recuperación de información.
+> Para evitar la división por cero. Si un término del query no aparece en ningún documento del índice (`df = 0`), la fórmula sin el `+1` sería `log(N/0)` = infinito. El `+1` es una técnica de **suavizado** (_smoothing_) común en recuperación de información.
 
 > **¿Por qué `Math.log` (logaritmo natural)?**  
 > El logaritmo comprime la escala: si un término aparece en 1 de 1000 documentos (`IDF = log(1000/2) ≈ 6.2`) vs. en 500 de 1000 (`IDF = log(1000/501) ≈ 0.69`), el término raro obtiene un peso ~9 veces mayor que el común, en lugar de 500 veces mayor sin el logaritmo. Esto evita que la rareza domine excesivamente el puntaje.
@@ -1347,6 +1358,7 @@ queryTerms.stream()                                          // 1. ["java", "pro
 
 > **Concepto clave: `Optional.stream()`**  
 > En el paso 5, `indexer.findDocument(docId)` retorna un `Optional<IDocument>`. El método `.stream()` de `Optional` convierte:
+>
 > - `Optional.of(doc)` → `Stream.of(doc)` (stream con un elemento)
 > - `Optional.empty()` → `Stream.empty()` (stream vacío)
 >
@@ -1363,7 +1375,7 @@ queryTerms.stream()                                          // 1. ["java", "pro
 La clase `App` es el punto de entrada de la aplicación. Implementa una interfaz de consola interactiva usando un **dispatch table** — un patrón funcional que reemplaza las cadenas de `if-else` o `switch-case` con un `Map<String, Runnable>`.
 
 > **Concepto: Dispatch Table**  
-> Un *dispatch table* es un `Map` que asocia una **clave** (la opción del menú) con una **acción** (la función a ejecutar). En vez de escribir:
+> Un _dispatch table_ es un `Map` que asocia una **clave** (la opción del menú) con una **acción** (la función a ejecutar). En vez de escribir:
 >
 > ```java
 > // ❌ Forma imperativa
@@ -1390,6 +1402,7 @@ La clase `App` es el punto de entrada de la aplicación. Implementa una interfaz
 > ```
 >
 > **Ventajas:**
+>
 > - Agregar una nueva opción es solo agregar una línea al mapa.
 > - La lógica de despacho es genérica y no cambia.
 > - Es más fácil de mantener y extender.
@@ -1858,17 +1871,17 @@ public class App {
 
 **Patrones funcionales destacados en la clase `App`:**
 
-| Patrón | Dónde se usa | Explicación |
-|--------|-------------|-------------|
-| **Dispatch table** | `MAIN_ACTIONS`, `INDEX_ACTIONS` | Mapas que asocian opciones del menú con acciones |
-| **Method references** | `App::searchDocuments`, `System.out::println` | Referencias a métodos como valores del mapa |
-| **Optional + ifPresentOrElse** | `runMainLoop()` | Ejecuta la acción si la opción es válida, o muestra error |
-| **Stream.of + forEach** | Menús, headers, status | Renderizar listas de información sin bucles |
-| **IntStream.range** | `displaySearchResults()` | Iterar con índice de forma funcional |
-| **Optional + filter + map** | `showDocumentPreview()` | Truncamiento condicional del contenido |
-| **parseIntSafe → Optional** | Selección de ranking/preview | Parseo seguro sin try-catch en el flujo principal |
-| **peek + count** | `indexFromFolder()` | Pipeline de indexación con logging lateral |
-| **Text blocks (""")** | Pantallas de bienvenida/salida | Strings multilinea (Java 15+) |
+| Patrón                         | Dónde se usa                                  | Explicación                                               |
+| ------------------------------ | --------------------------------------------- | --------------------------------------------------------- |
+| **Dispatch table**             | `MAIN_ACTIONS`, `INDEX_ACTIONS`               | Mapas que asocian opciones del menú con acciones          |
+| **Method references**          | `App::searchDocuments`, `System.out::println` | Referencias a métodos como valores del mapa               |
+| **Optional + ifPresentOrElse** | `runMainLoop()`                               | Ejecuta la acción si la opción es válida, o muestra error |
+| **Stream.of + forEach**        | Menús, headers, status                        | Renderizar listas de información sin bucles               |
+| **IntStream.range**            | `displaySearchResults()`                      | Iterar con índice de forma funcional                      |
+| **Optional + filter + map**    | `showDocumentPreview()`                       | Truncamiento condicional del contenido                    |
+| **parseIntSafe → Optional**    | Selección de ranking/preview                  | Parseo seguro sin try-catch en el flujo principal         |
+| **peek + count**               | `indexFromFolder()`                           | Pipeline de indexación con logging lateral                |
+| **Text blocks (""")**          | Pantallas de bienvenida/salida                | Strings multilinea (Java 15+)                             |
 
 ---
 
@@ -1990,7 +2003,7 @@ Quantum computing promises exponential speedups for specific problems like crypt
 
 ### Requisitos
 
-- **Java 17** o superior (el proyecto usa *records*, *text blocks* y `Pattern.results()`)
+- **Java 17** o superior (el proyecto usa _records_, _text blocks_ y `Pattern.results()`)
 
 ### Compilar desde la terminal
 
@@ -2020,14 +2033,14 @@ Una vez que la aplicación esté corriendo:
 
 ## Criterios de Evaluación
 
-| Criterio | Puntos | Descripción |
-|----------|--------|-------------|
-| **Interfaces completas** | 15 | Las 6 interfaces están correctamente definidas con sus métodos y documentación |
-| **Modelos de datos** | 15 | `Document` y `SearchResult` implementados como records, `TextProcessor` con pipeline funcional |
-| **Lectura de archivos** | 10 | `FileDocumentReader` usa NIO.2 y retorna `Stream<IDocument>` |
-| **Índice invertido** | 15 | `HashTableIndexer` construye y mantiene el índice correctamente con `computeIfAbsent` |
-| **Algoritmos de ranking** | 15 | Ambos rankers (`TF` y `TF-IDF`) calculan puntajes correctamente con streams |
-| **Motor de búsqueda** | 15 | `BasicSearcher` implementa el pipeline completo de búsqueda funcional |
-| **Aplicación de consola** | 10 | `App` funciona correctamente con dispatch table y todas las opciones del menú |
-| **Estilo funcional** | 5 | Uso consistente de streams, lambdas, method references y Optional en todo el proyecto |
-| **Total** | **100** | |
+| Criterio                  | Puntos  | Descripción                                                                                    |
+| ------------------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| **Interfaces completas**  | 15      | Las 6 interfaces están correctamente definidas con sus métodos y documentación                 |
+| **Modelos de datos**      | 15      | `Document` y `SearchResult` implementados como records, `TextProcessor` con pipeline funcional |
+| **Lectura de archivos**   | 10      | `FileDocumentReader` usa NIO.2 y retorna `Stream<IDocument>`                                   |
+| **Índice invertido**      | 15      | `HashTableIndexer` construye y mantiene el índice correctamente con `computeIfAbsent`          |
+| **Algoritmos de ranking** | 15      | Ambos rankers (`TF` y `TF-IDF`) calculan puntajes correctamente con streams                    |
+| **Motor de búsqueda**     | 15      | `BasicSearcher` implementa el pipeline completo de búsqueda funcional                          |
+| **Aplicación de consola** | 10      | `App` funciona correctamente con dispatch table y todas las opciones del menú                  |
+| **Estilo funcional**      | 5       | Uso consistente de streams, lambdas, method references y Optional en todo el proyecto          |
+| **Total**                 | **100** |                                                                                                |

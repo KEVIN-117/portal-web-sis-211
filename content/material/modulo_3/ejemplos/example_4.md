@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 4"
 description: "Análisis de transacciones financieras utilizando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -24,10 +17,10 @@ Cada día, miles de transacciones son procesadas por el sistema bancario.
 
 El departamento de análisis necesita construir una mini herramienta capaz de:
 
-* detectar transacciones sospechosas,
-* identificar montos elevados,
-* calcular estadísticas financieras,
-* generar listas de usuarios de riesgo.
+- detectar transacciones sospechosas,
+- identificar montos elevados,
+- calcular estadísticas financieras,
+- generar listas de usuarios de riesgo.
 
 El objetivo del laboratorio es aplicar Java Streams sobre un escenario muy cercano a sistemas reales de análisis financiero y Machine Learning.
 
@@ -37,17 +30,18 @@ El objetivo del laboratorio es aplicar Java Streams sobre un escenario muy cerca
 
 Al finalizar el laboratorio, el estudiante será capaz de:
 
-* Aplicar Streams sobre datasets financieros.
-* Utilizar:
+- Aplicar Streams sobre datasets financieros.
+- Utilizar:
 
-  * `filter`
-  * `map`
-  * `distinct`
-  * `reduce`
-  * `sum`
-  * `max`
-* Comprender cómo funcionan los pipelines de análisis financiero.
-* Relacionar Streams con sistemas de detección de anomalías.
+  - `filter`
+  - `map`
+  - `distinct`
+  - `reduce`
+  - `sum`
+  - `max`
+
+- Comprender cómo funcionan los pipelines de análisis financiero.
+- Relacionar Streams con sistemas de detección de anomalías.
 
 ---
 
@@ -55,9 +49,9 @@ Al finalizar el laboratorio, el estudiante será capaz de:
 
 Cada transacción bancaria contiene:
 
-* usuario,
-* monto,
-* indicador de sospecha.
+- usuario,
+- monto,
+- indicador de sospecha.
 
 El sistema deberá analizar estas transacciones para detectar posibles fraudes.
 
@@ -481,9 +475,9 @@ El sistema necesita generar un ranking de operaciones sospechosas críticas.
 
 Mostrar únicamente:
 
-* transacciones sospechosas,
-* mayores a 20,000,
-* ordenadas descendentemente.
+- transacciones sospechosas,
+- mayores a 20,000,
+- ordenadas descendentemente.
 
 ---
 
@@ -566,9 +560,9 @@ Convertir transacciones a mensajes personalizados:
 
 Mostrar únicamente usuarios que:
 
-* tengan transacciones sospechosas,
-* y montos mayores a 25,000,
-* sin repetir nombres.
+- tengan transacciones sospechosas,
+- y montos mayores a 25,000,
+- sin repetir nombres.
 
 ---
 
@@ -618,24 +612,24 @@ La fintech quiere generar una “Lista Roja”.
 
 Mostrar:
 
-* usuarios sospechosos,
-* con operaciones mayores a 15,000,
-* ordenados de mayor a menor monto,
-* sin repetir nombres.
+- usuarios sospechosos,
+- con operaciones mayores a 15,000,
+- ordenados de mayor a menor monto,
+- sin repetir nombres.
 
 ---
 
 # Conceptos aprendidos
 
-* Streams
-* filter
-* map
-* distinct
-* mapToDouble
-* sum
-* reduce
-* max
-* Comparator
-* pipelines financieras
-* análisis funcional de datasets
-* simulación de detección de fraude bancario
+- Streams
+- filter
+- map
+- distinct
+- mapToDouble
+- sum
+- reduce
+- max
+- Comparator
+- pipelines financieras
+- análisis funcional de datasets
+- simulación de detección de fraude bancario

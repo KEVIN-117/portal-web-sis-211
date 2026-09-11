@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 8"
 description: "Análisis de datos usando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -18,26 +11,26 @@ draft: false
 
 Una startup de Inteligencia Artificial está desarrollando un pequeño motor de análisis de datasets inspirado en frameworks como:
 
-* Apache Spark,
-* Pandas,
-* Scikit-learn,
-* TensorFlow Data Pipelines.
+- Apache Spark,
+- Pandas,
+- Scikit-learn,
+- TensorFlow Data Pipelines.
 
 Antes de entrenar modelos de Machine Learning, los científicos de datos necesitan analizar datasets para:
 
-* filtrar información,
-* calcular métricas,
-* generar rankings,
-* agrupar registros,
-* obtener estadísticas,
-* detectar patrones.
+- filtrar información,
+- calcular métricas,
+- generar rankings,
+- agrupar registros,
+- obtener estadísticas,
+- detectar patrones.
 
 Tu equipo desarrollará una versión simplificada de este sistema utilizando:
 
-* Programación Orientada a Objetos,
-* Java Streams,
-* programación funcional,
-* colecciones.
+- Programación Orientada a Objetos,
+- Java Streams,
+- programación funcional,
+- colecciones.
 
 El objetivo es construir un pequeño framework analítico capaz de procesar datasets reales.
 
@@ -47,18 +40,19 @@ El objetivo es construir un pequeño framework analítico capaz de procesar data
 
 Al finalizar el proyecto, el estudiante será capaz de:
 
-* Aplicar Streams en problemas complejos.
-* Diseñar pipelines funcionales.
-* Trabajar con datasets simulados.
-* Implementar:
+- Aplicar Streams en problemas complejos.
+- Diseñar pipelines funcionales.
+- Trabajar con datasets simulados.
+- Implementar:
 
-  * filtros,
-  * métricas,
-  * agrupaciones,
-  * rankings,
-  * estadísticas,
-  * transformaciones.
-* Relacionar Java Streams con sistemas reales de procesamiento de datos.
+  - filtros,
+  - métricas,
+  - agrupaciones,
+  - rankings,
+  - estadísticas,
+  - transformaciones.
+
+- Relacionar Java Streams con sistemas reales de procesamiento de datos.
 
 ---
 
@@ -70,12 +64,12 @@ Cada registro representa información de un estudiante.
 
 El dataset contiene:
 
-* nombre,
-* carrera,
-* horas de estudio,
-* asistencia,
-* promedio,
-* estado académico.
+- nombre,
+- carrera,
+- horas de estudio,
+- asistencia,
+- promedio,
+- estado académico.
 
 ---
 
@@ -93,9 +87,9 @@ El sistema debe incluir obligatoriamente:
 
 Ejemplo:
 
-* estudiantes aprobados,
-* estudiantes de alto rendimiento,
-* estudiantes en riesgo.
+- estudiantes aprobados,
+- estudiantes de alto rendimiento,
+- estudiantes en riesgo.
 
 ---
 
@@ -103,9 +97,9 @@ Ejemplo:
 
 Ejemplo:
 
-* promedio general,
-* promedio por carrera,
-* promedio de asistencia.
+- promedio general,
+- promedio por carrera,
+- promedio de asistencia.
 
 ---
 
@@ -113,8 +107,8 @@ Ejemplo:
 
 Ejemplo:
 
-* ranking académico,
-* top estudiantes.
+- ranking académico,
+- top estudiantes.
 
 ---
 
@@ -122,8 +116,8 @@ Ejemplo:
 
 Ejemplo:
 
-* agrupar por carrera,
-* agrupar por estado.
+- agrupar por carrera,
+- agrupar por estado.
 
 ---
 
@@ -131,9 +125,9 @@ Ejemplo:
 
 Ejemplo:
 
-* cantidad de aprobados,
-* porcentaje de reprobados,
-* promedio por grupo.
+- cantidad de aprobados,
+- porcentaje de reprobados,
+- promedio por grupo.
 
 ---
 
@@ -141,8 +135,8 @@ Ejemplo:
 
 Ejemplo:
 
-* Top 3 estudiantes,
-* Top 5 promedios.
+- Top 3 estudiantes,
+- Top 5 promedios.
 
 ---
 
@@ -150,9 +144,9 @@ Ejemplo:
 
 Ejemplo:
 
-* nombres en mayúsculas,
-* reportes personalizados,
-* transformación a DTOs.
+- nombres en mayúsculas,
+- reportes personalizados,
+- transformación a DTOs.
 
 ---
 
@@ -287,9 +281,9 @@ Mostrar estudiantes con asistencia menor a 70.
 
 Mostrar estudiantes que:
 
-* estén aprobados,
-* tengan promedio > 85,
-* asistencia > 90.
+- estén aprobados,
+- tengan promedio > 85,
+- asistencia > 90.
 
 ---
 
@@ -472,11 +466,11 @@ otro → EN RIESGO
 
 Construir una pipeline que:
 
-* filtre estudiantes aprobados,
-* promedio > 80,
-* ordene por promedio,
-* convierta nombres a mayúsculas,
-* obtenga Top 5.
+- filtre estudiantes aprobados,
+- promedio > 80,
+- ordene por promedio,
+- convierta nombres a mayúsculas,
+- obtenga Top 5.
 
 ---
 
@@ -547,35 +541,35 @@ Streams + Programación Funcional
 
 El proyecto debe utilizar:
 
-* `filter`
-* `map`
-* `sorted`
-* `groupingBy`
-* `counting`
-* `mapToDouble`
-* `average`
-* `max`
-* `limit`
-* `collect`
-* `Comparator`
+- `filter`
+- `map`
+- `sorted`
+- `groupingBy`
+- `counting`
+- `mapToDouble`
+- `average`
+- `max`
+- `limit`
+- `collect`
+- `Comparator`
 
 ---
 
 # Conceptos integrados en este proyecto
 
-* POO
-* Streams
-* Lambdas
-* Programación funcional
-* Pipelines
-* Aggregations
-* Analytics
-* Data Processing
-* Machine Learning preprocessing
-* Ranking systems
-* Estadísticas
-* Agrupaciones
-* Transformación de datasets
+- POO
+- Streams
+- Lambdas
+- Programación funcional
+- Pipelines
+- Aggregations
+- Analytics
+- Data Processing
+- Machine Learning preprocessing
+- Ranking systems
+- Estadísticas
+- Agrupaciones
+- Transformación de datasets
 
 ---
 
@@ -601,8 +595,8 @@ Un mini motor analítico estilo Big Data usando únicamente Java Streams.
 
 Y prácticamente habrán entendido las bases conceptuales de:
 
-* Spark,
-* Pandas,
-* pipelines ETL,
-* procesamiento funcional,
-* analytics modernos.
+- Spark,
+- Pandas,
+- pipelines ETL,
+- procesamiento funcional,
+- analytics modernos.

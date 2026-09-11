@@ -1,6 +1,7 @@
 # SEGUNDO PARCIAL SIS-211 G-2
 
 ### Pregunta 1
+
 ¿Qué principio de la POO garantiza que los detalles internos de una clase no puedan ser accedidos directamente desde afuera?
 
 - [ ] Abstraccion
@@ -15,6 +16,7 @@
 ---
 
 ### Pregunta 2
+
 ¿Cuál de los siguientes casos representa correctamente sobreescritura? (OVERRIDE)
 
 - [ ] Dos métodos con el mismo nombre, pero distintos parámetros
@@ -29,6 +31,7 @@
 ---
 
 ### Pregunta 3
+
 ¿Cual es el beneficio principal del polimorfismo?
 
 - [ ] Crear multiples objetos al mismo tiempo
@@ -43,6 +46,7 @@
 ---
 
 ### Pregunta 4
+
 ¿Cual de las siguientes clases no puede ser instanciada?
 
 - [ ] Clase concreta
@@ -57,10 +61,11 @@
 ---
 
 ### Pregunta 5
+
 ¿Que palabra clave se utiliza para evitar que una clase sea heredada?
 
 - [ ] static
-- [ ] private 
+- [ ] private
 - [x] final
 - [ ] abstract
 
@@ -71,6 +76,7 @@
 ---
 
 ### Pregunta 6
+
 ¿Cual es una forma valida de sobrecara (overload)?
 
 - [ ] Cambiar el tipo de retorno.
@@ -85,6 +91,7 @@
 ---
 
 ### Pregunta 7
+
 Sobre el uso de interfaces en java, ¿que afirmación es verdadera?
 
 - [ ] Una interfaz puede tener atributos privados.
@@ -99,6 +106,7 @@ Sobre el uso de interfaces en java, ¿que afirmación es verdadera?
 ---
 
 ### Pregunta 8
+
 ¿Que sucede cuando un atributo es protegido?
 
 - [ ] Solo se accede desde la misma clase.
@@ -113,6 +121,7 @@ Sobre el uso de interfaces en java, ¿que afirmación es verdadera?
 ---
 
 ### Pregunta 9
+
 Si una clase hereda de otra, ¿que constructor se invoca primero?
 
 - [ ] El constructor de la subclase.
@@ -127,6 +136,7 @@ Si una clase hereda de otra, ¿que constructor se invoca primero?
 ---
 
 ### Pregunta 10
+
 ¿Cual es el propósito de la palabra clave super?
 
 - [ ] Crear un objeto de la clase padre.
@@ -141,6 +151,7 @@ Si una clase hereda de otra, ¿que constructor se invoca primero?
 ---
 
 ### Pregunta 11
+
 Sobreescritura básica
 
 ```java
@@ -173,6 +184,7 @@ class Perro extends Animal{
 ---
 
 ### Pregunta 12
+
 Abstracción
 
 ```java
@@ -188,7 +200,7 @@ class Circulo extends Figura{
 
 ¿Cual completa correctamente?
 
-- [x] `public abstract double area();` *(Nota: Se asume que es abstract, ya que un método sin cuerpo en una clase abstracta debe llevar esa palabra clave y coincidir en tipo de retorno)*
+- [x] `public abstract double area();` _(Nota: Se asume que es abstract, ya que un método sin cuerpo en una clase abstracta debe llevar esa palabra clave y coincidir en tipo de retorno)_
 - [ ] `private double area();`
 - [ ] `public abstract int area();`
 - [ ] `public static double area();`
@@ -200,6 +212,7 @@ class Circulo extends Figura{
 ---
 
 ### Pregunta 13
+
 Llamada al constructor padre
 
 ```java
@@ -214,6 +227,7 @@ class Estudiante extends Persona {
 	}
 }
 ```
+
 - [x] `super(n);`
 - [ ] `this(n);`
 - [ ] `Persona(n);`
@@ -226,6 +240,7 @@ class Estudiante extends Persona {
 ---
 
 ### Pregunta 14
+
 Sobrecarga correcta
 
 ```java
@@ -248,6 +263,7 @@ class Calculadora{
 ---
 
 ### Pregunta 15
+
 Encapsulación
 
 ```java
@@ -258,24 +274,26 @@ class Cuenta{
 }
 ```
 
-- [x] `public double getSaldo(){return saldo;}` *(Añadiendo visibilidad habitual)*
+- [x] `public double getSaldo(){return saldo;}` _(Añadiendo visibilidad habitual)_
 - [ ] `private double getSaldo(){return saldo;}`
 - [ ] `public void getSaldo(double s){saldo = s;}`
 - [ ] `protected void saldo(){}`
 
 > [!NOTE]
 > **Explicación Pregunta 15**  
-> Un *getter* tiene como propósito devolver el valor de un atributo privado, por lo que su tipo de retorno debe coincidir con el del atributo (aquí `double`) y convencionalmente es público para que pueda ser leído desde afuera de la clase.
+> Un _getter_ tiene como propósito devolver el valor de un atributo privado, por lo que su tipo de retorno debe coincidir con el del atributo (aquí `double`) y convencionalmente es público para que pueda ser leído desde afuera de la clase.
 
 ---
 
 ### Pregunta 16
+
 Polimorfismo dinámico
 
 ```java
 Animal a = new Perro();
 // completar
 ```
+
 - [x] `a.sonido();`
 - [ ] `Perro.sonido();`
 - [ ] `Animal.sonido();`
@@ -288,6 +306,7 @@ Animal a = new Perro();
 ---
 
 ### Pregunta 17
+
 Método abstracto
 
 ```java
@@ -298,7 +317,7 @@ abstract class Ave{
 class Aguila extends Ave{
 	public void volar(){
 		System.out.println("Volando Alto");
-	}	
+	}
 }
 ```
 
@@ -314,16 +333,18 @@ class Aguila extends Ave{
 ---
 
 ### Pregunta 18
+
 Uso correcto de this
 
 ```java
 class Punto{
 	int x;
 	Punto(int x){
-        //completar		
+        //completar
 	}
 }
 ```
+
 - [x] `this.x = x;`
 - [ ] `x = this.x;`
 - [ ] `super.x = x;`
@@ -336,6 +357,7 @@ class Punto{
 ---
 
 ### Pregunta 19
+
 Polimorfismo con interfaces
 
 ```java
@@ -360,6 +382,7 @@ class Auto implements Vehiculo {
 ---
 
 ### Pregunta 20
+
 Clase final
 
 ```java

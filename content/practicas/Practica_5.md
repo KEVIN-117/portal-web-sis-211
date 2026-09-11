@@ -1,7 +1,15 @@
 ---
 title: "Practica 5: Sistema de Combate RPG"
 
-tags: ["POO", "Herencia", "Polimorfismo", "Clases Abstractas", "Interfaces", "Diseño Orientado a Objetos"]
+tags:
+  [
+    "POO",
+    "Herencia",
+    "Polimorfismo",
+    "Clases Abstractas",
+    "Interfaces",
+    "Diseño Orientado a Objetos",
+  ]
 ---
 
 ## 🧩 CONTEXTO DEL PROBLEMA
@@ -16,9 +24,9 @@ Se quiere desarrollar un sistema básico de combate tipo RPG donde modelamos dif
 
 Crea una carpeta llamada `models` y dentro de ella define las siguientes clases:
 
-* `Warrior`
-* `Wizard`
-* `Archer`
+- `Warrior`
+- `Wizard`
+- `Archer`
 
 Cada clase debe implementar el método:
 
@@ -32,8 +40,8 @@ Cada implementación debe imprimir un tipo de ataque diferente.
 
 ### ⚠️ Restricciones
 
-* No puedes usar herencia (por ahora)
-* Cada clase debe ser independiente
+- No puedes usar herencia (por ahora)
+- Cada clase debe ser independiente
 
 ---
 
@@ -68,9 +76,9 @@ Después de implementar las tres clases, responde:
 
 Cuando múltiples clases repiten estructura o comportamiento, el sistema se vuelve:
 
-* Difícil de mantener
-* Propenso a errores
-* Poco escalable
+- Difícil de mantener
+- Propenso a errores
+- Poco escalable
 
 ---
 
@@ -78,8 +86,8 @@ Cuando múltiples clases repiten estructura o comportamiento, el sistema se vuel
 
 Imagina que una empresa fabrica personajes:
 
-* Cada personaje se diseña desde cero
-* No hay plantilla base
+- Cada personaje se diseña desde cero
+- No hay plantilla base
 
 💥 Resultado: ineficiencia total
 
@@ -89,9 +97,9 @@ Imagina que una empresa fabrica personajes:
 
 Necesitamos:
 
-* Reutilizar código
-* Modelar lo que tienen en común
-* Evitar duplicación
+- Reutilizar código
+- Modelar lo que tienen en común
+- Evitar duplicación
 
 ➡️ Esto nos lleva a **Herencia**
 
@@ -111,18 +119,18 @@ class Character
 
 Esta clase debe contener:
 
-* `name` (String)
-* `health` (int)
-* `attackPower` (int)
-* método `attack()`
+- `name` (String)
+- `health` (int)
+- `attackPower` (int)
+- método `attack()`
 
 ---
 
 ### ⚠️ Restricciones importantes
 
-* Los atributos deben ser `private`
-* Se deben validar valores positivos
-* Se deben implementar getters y setters
+- Los atributos deben ser `private`
+- Se deben validar valores positivos
+- Se deben implementar getters y setters
 
 ---
 
@@ -164,9 +172,9 @@ public class Character {
 
 Modificar las clases:
 
-* `Warrior`
-* `Wizard`
-* `Archer`
+- `Warrior`
+- `Wizard`
+- `Archer`
 
 Para que:
 
@@ -232,8 +240,8 @@ private String name; // ❌ ya existe en Character
 
 👉 Piensa en un videojuego:
 
-* `Character` = plantilla base
-* `Warrior`, `Wizard`, `Archer` = especializaciones
+- `Character` = plantilla base
+- `Warrior`, `Wizard`, `Archer` = especializaciones
 
 No creas todo desde cero, **extiendes lo existente**.
 
@@ -241,9 +249,9 @@ No creas todo desde cero, **extiendes lo existente**.
 
 ### 🎯 Objetivo
 
-* ✔ Reutilización de código
-* ✔ Organización jerárquica
-* ✔ Reducción de duplicación
+- ✔ Reutilización de código
+- ✔ Organización jerárquica
+- ✔ Reducción de duplicación
 
 ---
 
@@ -325,9 +333,9 @@ Este `Main` logra:
 
 Los tests ya validan:
 
-* Estructura
-* Comportamiento
-* Diseño básico
+- Estructura
+- Comportamiento
+- Diseño básico
 
 👉 Nosotros los convertimos en **métricas de evaluación**
 
@@ -350,9 +358,9 @@ Los tests ya validan:
 
 ✔ Campos privados:
 
-* `name`
-* `health`
-* `attackPower`
+- `name`
+- `health`
+- `attackPower`
 
 | Condición   | Puntos |
 | ----------- | ------ |
@@ -367,10 +375,10 @@ Los tests ya validan:
 
 ✔ Métodos:
 
-* `getName()`
-* `getHealth()`
-* `getAttackPower()`
-* `attack()`
+- `getName()`
+- `getHealth()`
+- `getAttackPower()`
+- `attack()`
 
 ---
 
@@ -475,8 +483,8 @@ Warrior extends Character
 
 ✔ No repetir:
 
-* atributos
-* lógica
+- atributos
+- lógica
 
 ---
 
@@ -509,9 +517,9 @@ class Warrior {
 
 ✔ Instancia:
 
-* Warrior
-* Wizard
-* Archer
+- Warrior
+- Wizard
+- Archer
 
 ✔ Llama a `attack()`
 

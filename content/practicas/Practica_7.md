@@ -1,7 +1,16 @@
 ---
 title: "Practica 7: Mini Framework de Machine Learning en Java"
 
-tags: ["POO", "Herencia", "Polimorfismo", "Interfaces", "Clases Abstractas", "Programación Funcional", "Colecciones"]
+tags:
+  [
+    "POO",
+    "Herencia",
+    "Polimorfismo",
+    "Interfaces",
+    "Clases Abstractas",
+    "Programación Funcional",
+    "Colecciones",
+  ]
 ---
 
 ## 🎯 Objetivo de la Práctica
@@ -31,9 +40,9 @@ Al finalizar el laboratorio, el estudiante será capaz de:
 
 ## Recomendaciones
 
-* **Sigue el orden de los pasos:** Cada paso depende del anterior. No avances sin haber entendido el paso actual.
-* **Consistencia del Idioma:** Acorde al estándar de la industria, las variables, métodos, clases e interfaces deben estar escritas íntegramente en inglés técnico.
-* **No te asustes con los nombres:** "Machine Learning", "Regresión Lineal", etc. son solo nombres. La lógica que implementaremos es sencilla.
+- **Sigue el orden de los pasos:** Cada paso depende del anterior. No avances sin haber entendido el paso actual.
+- **Consistencia del Idioma:** Acorde al estándar de la industria, las variables, métodos, clases e interfaces deben estar escritas íntegramente en inglés técnico.
+- **No te asustes con los nombres:** "Machine Learning", "Regresión Lineal", etc. son solo nombres. La lógica que implementaremos es sencilla.
 
 ---
 
@@ -67,9 +76,9 @@ src/
 
 > 📌 **¿Por qué usar paquetes?** Porque en proyectos reales, tener todas las clases sueltas en una sola carpeta se vuelve caótico rápidamente. Los paquetes nos ayudan a:
 >
-> * Saber dónde buscar cada clase.
-> * Separar responsabilidades (contratos vs. implementaciones).
-> * Seguir buenas prácticas de la industria.
+> - Saber dónde buscar cada clase.
+> - Separar responsabilidades (contratos vs. implementaciones).
+> - Seguir buenas prácticas de la industria.
 
 **Regla importante:** La primera línea de cada archivo `.java` debe declarar a qué paquete pertenece usando la palabra reservada `package`. Por ejemplo, si el archivo está en la carpeta `core/`, su primera línea será `package core;`.
 
@@ -101,8 +110,8 @@ public interface Model {
 
 **¿Qué significa cada método?**
 
-* `train(...)`: Recibe datos de entrenamiento y sus respuestas correctas (labels). El modelo "aprende" de ellos.
-* `predict(...)`: Recibe datos nuevos y retorna predicciones (números).
+- `train(...)`: Recibe datos de entrenamiento y sus respuestas correctas (labels). El modelo "aprende" de ellos.
+- `predict(...)`: Recibe datos nuevos y retorna predicciones (números).
 
 #### 1.2 — Interfaz funcional: `EvaluationMetric`
 
@@ -176,9 +185,9 @@ public abstract class AbstractAlgorithm implements Model {
 
 **¿Qué hace esta clase?**
 
-* Guarda el nombre del algoritmo y si ya fue entrenado.
-* Ofrece un método `displayStatus()` que cualquier hijo puede usar.
-* **No implementa** `train()` ni `predict()` → eso lo harán las clases concretas.
+- Guarda el nombre del algoritmo y si ya fue entrenado.
+- Ofrece un método `displayStatus()` que cualquier hijo puede usar.
+- **No implementa** `train()` ni `predict()` → eso lo harán las clases concretas.
 
 ---
 
@@ -243,10 +252,10 @@ public class LinearRegression extends AbstractAlgorithm implements Exportable {
 
 **Puntos clave de este paso:**
 
-* ✅ Usamos `extends` para heredar de `AbstractAlgorithm`.
-* ✅ Usamos `implements Exportable` para marcar el modelo como exportable.
-* ✅ Llamamos a `super("Linear Regression")` para inicializar el nombre del padre.
-* ✅ Implementamos los dos métodos abstractos: `train()` y `predict()`.
+- ✅ Usamos `extends` para heredar de `AbstractAlgorithm`.
+- ✅ Usamos `implements Exportable` para marcar el modelo como exportable.
+- ✅ Llamamos a `super("Linear Regression")` para inicializar el nombre del padre.
+- ✅ Implementamos los dos métodos abstractos: `train()` y `predict()`.
 
 ---
 
@@ -307,9 +316,9 @@ public class DecisionTree extends AbstractAlgorithm {
 
 El orquestador va en el paquete `engine/` y es la clase que **administra múltiples modelos**. Aquí usaremos:
 
-* Un `ArrayList` para guardar los modelos registrados.
-* **Polimorfismo** para tratar todos los modelos de manera uniforme.
-* La interfaz marcadora para verificar si un modelo es exportable.
+- Un `ArrayList` para guardar los modelos registrados.
+- **Polimorfismo** para tratar todos los modelos de manera uniforme.
+- La interfaz marcadora para verificar si un modelo es exportable.
 
 ```java
 package engine;
@@ -364,10 +373,10 @@ public class MLFramework {
 
 **¿Qué conceptos de POO se ven aquí?**
 
-* **Colecciones:** Usamos `ArrayList<AbstractAlgorithm>` para guardar múltiples modelos.
-* **Polimorfismo:** El ciclo `for` recorre modelos de tipos diferentes (`LinearRegression`, `DecisionTree`) pero los trata a todos como `AbstractAlgorithm`.
-* **`instanceof`:** Verificamos en tiempo de ejecución si un objeto implementa la interfaz `Exportable`.
-* **Inyección de dependencias:** La métrica de evaluación se recibe como parámetro, no está fija dentro del método.
+- **Colecciones:** Usamos `ArrayList<AbstractAlgorithm>` para guardar múltiples modelos.
+- **Polimorfismo:** El ciclo `for` recorre modelos de tipos diferentes (`LinearRegression`, `DecisionTree`) pero los trata a todos como `AbstractAlgorithm`.
+- **`instanceof`:** Verificamos en tiempo de ejecución si un objeto implementa la interfaz `Exportable`.
+- **Inyección de dependencias:** La métrica de evaluación se recibe como parámetro, no está fija dentro del método.
 
 ---
 
@@ -465,15 +474,15 @@ Expanda la estructura actual resolviendo los siguientes requerimientos:
 
 Cree una nueva clase `NeuralNetwork` que herede de `AbstractAlgorithm` e implemente `Exportable`.
 
-* Debe estar en el paquete `models`.
-* Su constructor debe recibir un parámetro `int layers` (número de capas) y llamar a `super("Neural Network")`.
-* En el método `train()`, imprima: `"[Process] Training Neural Network with X layers"` (donde X es el número de capas) y marque `isTrained = true`.
-* En el método `predict()`, genere predicciones aleatorias (similar a `LinearRegression`).
-* Agregue una instancia de `NeuralNetwork` al pipeline en `App`.
+- Debe estar en el paquete `models`.
+- Su constructor debe recibir un parámetro `int layers` (número de capas) y llamar a `super("Neural Network")`.
+- En el método `train()`, imprima: `"[Process] Training Neural Network with X layers"` (donde X es el número de capas) y marque `isTrained = true`.
+- En el método `predict()`, genere predicciones aleatorias (similar a `LinearRegression`).
+- Agregue una instancia de `NeuralNetwork` al pipeline en `App`.
 
 ### Reto 2: Nueva Métrica Lambda — Mean Squared Error (MSE)
 
-En la clase `App`, defina una **segunda** expresión Lambda que calcule el *Mean Squared Error*:
+En la clase `App`, defina una **segunda** expresión Lambda que calcule el _Mean Squared Error_:
 
 $$MSE = \frac{1}{n} \sum_{i=1}^{n} (real_i - predicho_i)^2$$
 
@@ -485,8 +494,8 @@ Ejecute el pipeline **dos veces**: una con MAE y otra con MSE, para comparar res
 
 Agregue un `HashMap<String, Double>` dentro de la clase `MLFramework` para almacenar el nombre de cada modelo evaluado (como clave) y su error calculado (como valor).
 
-* Después de calcular el error de cada modelo, guárdelo en el mapa.
-* Cree un método `printSummary()` que recorra el `HashMap` usando `.forEach()` e imprima un resumen. Ejemplo de salida:
+- Después de calcular el error de cada modelo, guárdelo en el mapa.
+- Cree un método `printSummary()` que recorra el `HashMap` usando `.forEach()` e imprima un resumen. Ejemplo de salida:
 
 ```bash
 === SESSION SUMMARY ===
@@ -499,21 +508,21 @@ Neural Network -> Error: 0.52
 
 ## 📊 Rúbrica de Calificación (sobre 100 puntos)
 
-| Criterio | Descripción | Puntaje |
-| --- | --- | ---: |
-| Interfaces | Creación correcta de `Model`, `EvaluationMetric` y `Exportable` | 10 |
-| Clase Abstracta | `AbstractAlgorithm` implementa `Model`, usa `protected` y ofrece `displayStatus()` | 10 |
-| Herencia (`LinearRegression`) | Extiende `AbstractAlgorithm`, implementa `Exportable`, usa `super()` | 10 |
-| Herencia (`DecisionTree`) | Extiende `AbstractAlgorithm`, implementa `train()` y `predict()` | 10 |
-| Colecciones (`ArrayList`) | Uso correcto del `ArrayList` en `MLFramework` para el pipeline | 10 |
-| Polimorfismo | El pipeline recorre modelos distintos de forma uniforme | 10 |
-| Expresión Lambda (MAE) | Implementación correcta de la métrica con Lambda | 10 |
-| Estructura de Paquetes | Organización correcta en `core`, `base`, `models` y `engine` | 5 |
-| Clean Code | Nomenclatura en inglés, imports correctos y legibilidad | 5 |
-| Reto 1 — `NeuralNetwork` | Clase correcta con herencia y `Exportable` | 5 |
-| Reto 2 — Lambda MSE | Segunda métrica Lambda implementada correctamente | 5 |
-| Reto 3 — `HashMap` | Uso de `HashMap` con `.forEach()` para el resumen | 5 |
-| Flujo Principal | Ejecución completa y correcta del `App` | 5 |
+| Criterio                      | Descripción                                                                        | Puntaje |
+| ----------------------------- | ---------------------------------------------------------------------------------- | ------: |
+| Interfaces                    | Creación correcta de `Model`, `EvaluationMetric` y `Exportable`                    |      10 |
+| Clase Abstracta               | `AbstractAlgorithm` implementa `Model`, usa `protected` y ofrece `displayStatus()` |      10 |
+| Herencia (`LinearRegression`) | Extiende `AbstractAlgorithm`, implementa `Exportable`, usa `super()`               |      10 |
+| Herencia (`DecisionTree`)     | Extiende `AbstractAlgorithm`, implementa `train()` y `predict()`                   |      10 |
+| Colecciones (`ArrayList`)     | Uso correcto del `ArrayList` en `MLFramework` para el pipeline                     |      10 |
+| Polimorfismo                  | El pipeline recorre modelos distintos de forma uniforme                            |      10 |
+| Expresión Lambda (MAE)        | Implementación correcta de la métrica con Lambda                                   |      10 |
+| Estructura de Paquetes        | Organización correcta en `core`, `base`, `models` y `engine`                       |       5 |
+| Clean Code                    | Nomenclatura en inglés, imports correctos y legibilidad                            |       5 |
+| Reto 1 — `NeuralNetwork`      | Clase correcta con herencia y `Exportable`                                         |       5 |
+| Reto 2 — Lambda MSE           | Segunda métrica Lambda implementada correctamente                                  |       5 |
+| Reto 3 — `HashMap`            | Uso de `HashMap` con `.forEach()` para el resumen                                  |       5 |
+| Flujo Principal               | Ejecución completa y correcta del `App`                                            |       5 |
 
 ---
 
@@ -523,12 +532,12 @@ Este laboratorio demuestra que la Programación Orientada a Objetos no es única
 
 **Resumen de conceptos aplicados:**
 
-* ✅ **Interfaces** → Definimos contratos (`Model`, `EvaluationMetric`, `Exportable`).
-* ✅ **Clases Abstractas** → Centralizamos lógica común en `AbstractAlgorithm`.
-* ✅ **Herencia** → `LinearRegression` y `DecisionTree` extienden la clase base.
-* ✅ **Polimorfismo** → El pipeline procesa diferentes algoritmos con el mismo código.
-* ✅ **Colecciones** → `ArrayList` para el pipeline, `HashMap` para el resumen.
-* ✅ **Lambdas** → Pasamos comportamiento como parámetro de forma compacta.
-* ✅ **`instanceof`** → Verificamos capacidades en tiempo de ejecución.
+- ✅ **Interfaces** → Definimos contratos (`Model`, `EvaluationMetric`, `Exportable`).
+- ✅ **Clases Abstractas** → Centralizamos lógica común en `AbstractAlgorithm`.
+- ✅ **Herencia** → `LinearRegression` y `DecisionTree` extienden la clase base.
+- ✅ **Polimorfismo** → El pipeline procesa diferentes algoritmos con el mismo código.
+- ✅ **Colecciones** → `ArrayList` para el pipeline, `HashMap` para el resumen.
+- ✅ **Lambdas** → Pasamos comportamiento como parámetro de forma compacta.
+- ✅ **`instanceof`** → Verificamos capacidades en tiempo de ejecución.
 
 Frameworks reales como Scikit-learn, Weka y múltiples plataformas empresariales utilizan exactamente estos principios para construir software escalable, mantenible y reutilizable.

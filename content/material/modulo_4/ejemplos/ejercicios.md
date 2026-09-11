@@ -43,11 +43,11 @@ Comprender cómo crear una ventana básica usando `JFrame`.
 
 ### Conceptos trabajados
 
-* `JFrame`
-* método `setSize()`
-* método `setVisible()`
-* cierre de aplicación
-* herencia simple
+- `JFrame`
+- método `setSize()`
+- método `setVisible()`
+- cierre de aplicación
+- herencia simple
 
 ---
 
@@ -85,10 +85,10 @@ public class VentanaBasica extends JFrame {
 
 El estudiante aprende:
 
-* que `JFrame` representa una ventana;
-* que una GUI es un objeto;
-* que Swing utiliza herencia;
-* que una ventana necesita configuración explícita.
+- que `JFrame` representa una ventana;
+- que una GUI es un objeto;
+- que Swing utiliza herencia;
+- que una ventana necesita configuración explícita.
 
 ---
 
@@ -96,9 +96,9 @@ El estudiante aprende:
 
 Modificar:
 
-* tamaño;
-* título;
-* posición (`setLocation()`).
+- tamaño;
+- título;
+- posición (`setLocation()`).
 
 ---
 
@@ -110,10 +110,10 @@ Aprender a insertar componentes visuales.
 
 ### Conceptos
 
-* `JPanel`
-* `JButton`
-* `JLabel`
-* `JTextField`
+- `JPanel`
+- `JButton`
+- `JLabel`
+- `JTextField`
 
 ---
 
@@ -157,9 +157,9 @@ public class ComponentesBasicos extends JFrame {
 
 ### Qué aprende el estudiante
 
-* Los componentes no se agregan directamente “sueltos”.
-* `JPanel` funciona como contenedor.
-* Los componentes son objetos reutilizables.
+- Los componentes no se agregan directamente “sueltos”.
+- `JPanel` funciona como contenedor.
+- Los componentes son objetos reutilizables.
 
 ---
 
@@ -212,7 +212,7 @@ public class EjemploFlowLayout extends JFrame {
 
 Cuando no hay espacio:
 
-* baja a la siguiente línea.
+- baja a la siguiente línea.
 
 ---
 
@@ -367,15 +367,15 @@ public class EventoBoton extends JFrame {
 
 Swing usa:
 
-* componentes;
-* eventos;
-* listeners.
+- componentes;
+- eventos;
+- listeners.
 
 El botón:
 
-* genera un evento;
-* el listener lo escucha;
-* se ejecuta una acción.
+- genera un evento;
+- el listener lo escucha;
+- se ejecuta una acción.
 
 ---
 
@@ -434,9 +434,9 @@ public class ContadorClicks extends JFrame {
 
 Aquí ya se introduce:
 
-* expresiones lambda;
-* programación funcional básica;
-* simplificación de listeners.
+- expresiones lambda;
+- programación funcional básica;
+- simplificación de listeners.
 
 Esto conecta directamente con el módulo moderno de Java 8+.
 
@@ -452,10 +452,10 @@ Esto conecta directamente con el módulo moderno de Java 8+.
 
 Aplicar:
 
-* `GridLayout`
-* `JTextField`
-* `JButton`
-* eventos
+- `GridLayout`
+- `JTextField`
+- `JButton`
+- eventos
 
 ---
 
@@ -463,14 +463,14 @@ Aplicar:
 
 El usuario escribe:
 
-* nombre;
-* correo;
-* edad.
+- nombre;
+- correo;
+- edad.
 
 Luego:
 
-* presiona “Registrar”;
-* los datos aparecen en un `JTextArea`.
+- presiona “Registrar”;
+- los datos aparecen en un `JTextArea`.
 
 ---
 
@@ -478,19 +478,19 @@ Luego:
 
 ### Conceptos
 
-* `GridLayout`
-* eventos
-* parsing numérico
-* validaciones
+- `GridLayout`
+- eventos
+- parsing numérico
+- validaciones
 
 ---
 
 ## Operaciones
 
-* suma
-* resta
-* multiplicación
-* división
+- suma
+- resta
+- multiplicación
+- división
 
 ---
 
@@ -498,10 +498,10 @@ Luego:
 
 ### Conceptos avanzados
 
-* `DefaultListModel`
-* `JList`
-* persistencia simple
-* modularización
+- `DefaultListModel`
+- `JList`
+- persistencia simple
+- modularización
 
 ---
 
@@ -614,7 +614,7 @@ Eventos → Controlador
 
 Si una tarea tarda mucho:
 
-* la interfaz se congela.
+- la interfaz se congela.
 
 ---
 

@@ -1,5 +1,4 @@
 ---
-
 title: Practica Aula 1
 ---
 
@@ -12,22 +11,26 @@ En este desafío, debes leer un número entero, un número decimal y una cadena 
 > [!NOTE]
 > Recomendamos completar los cursos [Java Stdin y Stdout](https://www.hackerrank.com/challenges/java-stdin-and-stdout-1) I antes de intentar este desafío.
 
+### Formato de entrada:
 
-### Formato de entrada: 
-Hay tres líneas de entrada: 
-1. La primera línea contiene un entero. 
-2. La segunda línea contiene un número decimal. 
-3. La tercera línea contiene una cadena de texto. 
-### Formato de salida 
-Hay tres líneas de salida: 
-1. En la primera línea, imprime «Cadena:» seguida de la cadena de texto original leída desde la entrada estándar. 
-2. En la segunda línea, imprime «Número decimal:» seguida del número decimal original leído desde la entrada estándar. 
-3. En la tercera línea, imprime «Entero:» seguida del entero original leído desde la entrada estándar. 
+Hay tres líneas de entrada:
+
+1. La primera línea contiene un entero.
+2. La segunda línea contiene un número decimal.
+3. La tercera línea contiene una cadena de texto.
+
+### Formato de salida
+
+Hay tres líneas de salida:
+
+1. En la primera línea, imprime «Cadena:» seguida de la cadena de texto original leída desde la entrada estándar.
+2. En la segunda línea, imprime «Número decimal:» seguida del número decimal original leído desde la entrada estándar.
+3. En la tercera línea, imprime «Entero:» seguida del entero original leído desde la entrada estándar.
 
 Para simplificar el problema, se proporciona una parte del código en el editor.
 
 > [!NOTE]
-> Si utilizas el método `nextLine()` inmediatamente después del método `nextInt()`, recuerda que `nextInt()` lee tokens enteros; por lo tanto, el último carácter de salto de línea de esa línea de entrada entera aún se encuentra en la cola del búfer de entrada y la siguiente llamada a `nextLine()` leerá el resto de la línea entera (que está vacía). 
+> Si utilizas el método `nextLine()` inmediatamente después del método `nextInt()`, recuerda que `nextInt()` lee tokens enteros; por lo tanto, el último carácter de salto de línea de esa línea de entrada entera aún se encuentra en la cola del búfer de entrada y la siguiente llamada a `nextLine()` leerá el resto de la línea entera (que está vacía).
 
 #### Entrada de ejemplo
 
@@ -74,15 +77,18 @@ En este desafío, ponemos a prueba tus conocimientos sobre el uso de sentencias 
 ### Tareas:
 
 Dado un entero `n`. Realiza las siguientes acciones condicionales:
+
 - si `n` es impar, imprime "Weird".
 - si `n` es par y está en el rango de 2 a 5, imprime "Not Weird".
 - si `n` es par y está en el rango de 6 a 20, imprime "Weird".
 - si `n` es par y es mayor que 20, imprime "Not Weird".
 
 ### Formato de entrada
+
 Un solo entero, `n`.
 
 ### Formato de salida
+
 Una sola línea que contiene la cadena "Weird" o "Not Weird" según las condiciones del problema.
 
 #### Sample Input 0
@@ -228,22 +234,24 @@ public class Ej3 {
 Java tiene 8 tipos de datos primitivos: **char, boolean, byte, short, int, long, float y double**.  
 Para este ejercicio, trabajaremos con los primitivos usados para almacenar valores enteros (**byte, short, int y long**):
 
-- Un **byte** es un entero con signo de 8 bits.  
-- Un **short** es un entero con signo de 16 bits.  
-- Un **int** es un entero con signo de 32 bits.  
-- Un **long** es un entero con signo de 64 bits.  
+- Un **byte** es un entero con signo de 8 bits.
+- Un **short** es un entero con signo de 16 bits.
+- Un **int** es un entero con signo de 32 bits.
+- Un **long** es un entero con signo de 64 bits.
 
 Dado un número entero de entrada, debes determinar qué tipos de datos primitivos son capaces de almacenarlo correctamente.
 
 Para comenzar, se te proporciona una parte de la solución en el editor.
 
-Referencia: `https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html` [(docs.oracle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fdocs.oracle.com%2Fjavase%2Ftutorial%2Fjava%2Fnutsandbolts%2Fdatatypes.html")  
+Referencia: `https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html` [(docs.oracle.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fdocs.oracle.com%2Fjavase%2Ftutorial%2Fjava%2Fnutsandbolts%2Fdatatypes.html")
 
-### **Formato de entrada**  
+### **Formato de entrada**
+
 La primera línea contiene un entero, `T`, que denota el número de casos de prueba.  
 Cada caso de prueba, `T`, consiste en una sola línea con un entero `n`, que puede ser arbitrariamente grande o pequeño.
 
-### **Formato de salida**  
+### **Formato de salida**
+
 Para cada variable de entrada `n` y el tipo de dato primitivo apropiado `dataType`, debes determinar si los primitivos dados son capaces de almacenarlo.  
 Si la respuesta es sí, entonces imprime:
 
@@ -273,7 +281,6 @@ n no puede ser almacenado en ningún lado.
 
 ---
 
-
 #### **Salida de ejemplo**
 
 ```bash
@@ -296,8 +303,9 @@ n no puede ser almacenado en ningún lado.
 * long
 ```
 
-**Explicación**  
-- El número **-150** puede ser almacenado en un **short**, un **int** o un **long**.  
+**Explicación**
+
+- El número **-150** puede ser almacenado en un **short**, un **int** o un **long**.
 - El número **213333333333333333333333333333333333333** es muy grande y está fuera del rango permitido para los tipos de datos primitivos discutidos en este problema.
 
 ---
@@ -330,6 +338,7 @@ public class Ej4 {
     }
 }
 ```
+
 ---
 
 ### Problema: Substring en Java
@@ -341,9 +350,10 @@ Encontrarás útil el método `substring` de la clase **String** para completar 
 La primera línea contiene una sola cadena que denota `s`.  
 La segunda línea contiene dos enteros separados por un espacio que representan los valores respectivos de `start` y `end`.
 
-**Restricciones**  
-- $(1 \leq |s| \leq 100)$  
-- $(0 \leq start < end \leq n)$  
+**Restricciones**
+
+- $(1 \leq |s| \leq 100)$
+- $(0 \leq start < end \leq n)$
 - La cadena `s` consiste únicamente en letras del alfabeto inglés (es decir, [a - z, A - Z]).
 
 **Formato de salida**  
@@ -388,50 +398,55 @@ public class Ej4 {
 
 ---
 
-
-
 ---
 
 ## Java Anagrams
 
 ### Definición de Anagramas
-Dos cadenas, **a** y **b**, se llaman *anagramas* si contienen exactamente los mismos caracteres con las mismas frecuencias.  
-En este desafío, la prueba **no distingue mayúsculas de minúsculas**.  
+
+Dos cadenas, **a** y **b**, se llaman _anagramas_ si contienen exactamente los mismos caracteres con las mismas frecuencias.  
+En este desafío, la prueba **no distingue mayúsculas de minúsculas**.
 
 - Ejemplo: Los anagramas de **CAT** son:  
-`CAT, ACT, tac, TCA, aTC, CtA`
+  `CAT, ACT, tac, TCA, aTC, CtA`
 
 ---
 
 ### Descripción de la función
+
 Debes completar la función **isAnagram** en el editor.
 
 ### Parámetros
-- `string a`: la primera cadena  
-- `string b`: la segunda cadena  
+
+- `string a`: la primera cadena
+- `string b`: la segunda cadena
 
 ### Retorno
-- `boolean`:  
-  - Si **a** y **b** son anagramas (ignorando mayúsculas/minúsculas), retorna `true`.  
+
+- `boolean`:
+  - Si **a** y **b** son anagramas (ignorando mayúsculas/minúsculas), retorna `true`.
   - En caso contrario, retorna `false`.
 
 ---
 
 ### Formato de entrada
-- La primera línea contiene una cadena `a`.  
+
+- La primera línea contiene una cadena `a`.
 - La segunda línea contiene una cadena `b`.
 
 ---
 
 ### Restricciones
-- $(1 \leq \text{length}(a), \text{length}(b) \leq 50)$  
-- Las cadenas consisten únicamente en caracteres alfabéticos ingleses.  
+
+- $(1 \leq \text{length}(a), \text{length}(b) \leq 50)$
+- Las cadenas consisten únicamente en caracteres alfabéticos ingleses.
 - La comparación **NO** debe ser sensible a mayúsculas/minúsculas.
 
-
 ### Formato de salida
-Imprime:  
-- `"Anagrams"` si las cadenas son anagramas.  
+
+Imprime:
+
+- `"Anagrams"` si las cadenas son anagramas.
 - `"Not Anagrams"` si no lo son.
 
 ---
@@ -439,74 +454,86 @@ Imprime:
 ### Casos de ejemplo
 
 #### Ejemplo 0
+
 **Entrada**
+
 ```
 anagram
 margana
 ```
 
 **Salida**
+
 ```
 Anagrams
 ```
 
 **Explicación**
+
 | Carácter | Frecuencia en `anagram` | Frecuencia en `margana` |
-|----------|--------------------------|--------------------------|
-| A/a      | 3                        | 3                        |
-| G/g      | 1                        | 1                        |
-| N/n      | 1                        | 1                        |
-| M/m      | 1                        | 1                        |
-| R/r      | 1                        | 1                        |
+| -------- | ----------------------- | ----------------------- |
+| A/a      | 3                       | 3                       |
+| G/g      | 1                       | 1                       |
+| N/n      | 1                       | 1                       |
+| M/m      | 1                       | 1                       |
+| R/r      | 1                       | 1                       |
 
 Las dos cadenas contienen las mismas letras con las mismas frecuencias → **Anagrams**.
 
 ---
 
 #### Ejemplo 1
+
 **Entrada**
+
 ```
 anagramm
 marganaa
 ```
 
 **Salida**
+
 ```
 Not Anagrams
 ```
 
 **Explicación**
+
 | Carácter | Frecuencia en `anagramm` | Frecuencia en `marganaa` |
-|----------|---------------------------|---------------------------|
-| A/a      | 3                         | 4                         |
-| G/g      | 1                         | 1                         |
-| N/n      | 1                         | 1                         |
-| M/m      | 2                         | 1                         |
-| R/r      | 1                         | 1                         |
+| -------- | ------------------------ | ------------------------ |
+| A/a      | 3                        | 4                        |
+| G/g      | 1                        | 1                        |
+| N/n      | 1                        | 1                        |
+| M/m      | 2                        | 1                        |
+| R/r      | 1                        | 1                        |
 
 Las frecuencias de **a** y **m** no coinciden → **Not Anagrams**.
 
 ---
 
 #### Ejemplo 2
+
 **Entrada**
+
 ```
 Hello
 hello
 ```
 
 **Salida**
+
 ```
 Anagrams
 ```
 
 **Explicación**
+
 | Carácter | Frecuencia en `Hello` | Frecuencia en `hello` |
-|----------|------------------------|------------------------|
-| E/e      | 1                      | 1                      |
-| H/h      | 1                      | 1                      |
-| L/l      | 2                      | 2                      |
-| O/o      | 1                      | 1                      |
+| -------- | --------------------- | --------------------- |
+| E/e      | 1                     | 1                     |
+| H/h      | 1                     | 1                     |
+| L/l      | 2                     | 2                     |
+| O/o      | 1                     | 1                     |
 
 Las dos cadenas contienen las mismas letras con las mismas frecuencias → **Anagrams**.
 

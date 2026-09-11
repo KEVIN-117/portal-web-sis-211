@@ -1,12 +1,7 @@
 ---
 title: "Ejemplo 1"
 description: "Un mini sistema de análisis de estudiantes utilizando Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17"
-]
+tags: ["java", "streams", "poo", "java-17"]
 draft: false
 ---
 
@@ -20,10 +15,10 @@ El departamento académico necesita un pequeño sistema que permita analizar rá
 
 Como desarrolladores junior del equipo, deberán construir un módulo capaz de:
 
-* filtrar estudiantes,
-* obtener estadísticas,
-* transformar datos,
-* y generar reportes rápidos.
+- filtrar estudiantes,
+- obtener estadísticas,
+- transformar datos,
+- y generar reportes rápidos.
 
 El objetivo principal del laboratorio es comprender cómo funcionan los Streams en Java aplicando Programación Orientada a Objetos.
 
@@ -33,16 +28,17 @@ El objetivo principal del laboratorio es comprender cómo funcionan los Streams 
 
 Al finalizar el laboratorio, el estudiante será capaz de:
 
-* Crear clases orientadas a objetos.
-* Trabajar con `ArrayList`.
-* Utilizar `stream()`.
-* Aplicar operaciones:
+- Crear clases orientadas a objetos.
+- Trabajar con `ArrayList`.
+- Utilizar `stream()`.
+- Aplicar operaciones:
 
-  * `filter`
-  * `map`
-  * `count`
-  * `collect`
-* Comprender el flujo funcional de procesamiento de datos.
+  - `filter`
+  - `map`
+  - `count`
+  - `collect`
+
+- Comprender el flujo funcional de procesamiento de datos.
 
 ---
 
@@ -52,9 +48,9 @@ La universidad cuenta con una lista de estudiantes candidatos a becas.
 
 Cada estudiante posee:
 
-* nombre,
-* promedio académico,
-* edad.
+- nombre,
+- promedio académico,
+- edad.
 
 El sistema deberá analizar estos datos mediante Streams.
 
@@ -424,8 +420,8 @@ La universidad quiere generar una “Lista VIP”.
 
 Mostrar únicamente estudiantes que:
 
-* tengan promedio mayor a 85,
-* y sean menores de 22 años.
+- tengan promedio mayor a 85,
+- y sean menores de 22 años.
 
 ## Resultado esperado
 
@@ -449,13 +445,13 @@ condicion1 && condicion2
 
 # Conceptos aprendidos en este laboratorio
 
-* POO
-* Encapsulamiento
-* ArrayList
-* Streams
-* filter
-* map
-* count
-* toList
-* Expresiones lambda
-* Programación funcional básica
+- POO
+- Encapsulamiento
+- ArrayList
+- Streams
+- filter
+- map
+- count
+- toList
+- Expresiones lambda
+- Programación funcional básica

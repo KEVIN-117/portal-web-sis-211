@@ -4,18 +4,17 @@ title: "Practica 4: Sistema Inteligente de Recomendación de Cursos"
 tags: ["POO", "ArrayList", "HashMap", "Recomendación", "Machine Learning"]
 ---
 
-
 ## 🧪 **Laboratorio en Casa**
 
 ## 🎯 **Objetivo**
 
 El estudiante será capaz de:
 
-* Aplicar **POO (clases, objetos, métodos)**
-* Usar **ArrayList y HashMap**
-* Implementar una lógica de **recomendación (tipo Machine Learning básico)**
-* Diseñar un sistema modular
-* Encontrar errores en el código
+- Aplicar **POO (clases, objetos, métodos)**
+- Usar **ArrayList y HashMap**
+- Implementar una lógica de **recomendación (tipo Machine Learning básico)**
+- Diseñar un sistema modular
+- Encontrar errores en el código
 
 ---
 
@@ -27,12 +26,12 @@ Vamos a simular un sistema que:
 
 💡 Ejemplo:
 
-* Estudiante: le gusta `programación`, `IA`
-* Curso: contiene `programación`, `bases de datos`
+- Estudiante: le gusta `programación`, `IA`
+- Curso: contiene `programación`, `bases de datos`
 
 👉 Resultado:
 
-* Coincidencia → recomendado
+- Coincidencia → recomendado
 
 ---
 
@@ -40,10 +39,10 @@ Vamos a simular un sistema que:
 
 Esto es una versión básica de:
 
-* Sistemas de recomendación
-* Similaridad entre conjuntos
+- Sistemas de recomendación
+- Similaridad entre conjuntos
 
-* Regla:
+- Regla:
 
 ```plaintext
 score = cantidad de coincidencias
@@ -248,11 +247,11 @@ public class Main {
 
 👉 Técnicamente hicieron:
 
-* ✔ POO Basica
-* ✔ Uso combinado de `ArrayList` y `HashMap`
-* ✔ Sistema de scoring
-* ✔ Ordenamiento
-* ✔ Lógica tipo ML
+- ✔ POO Basica
+- ✔ Uso combinado de `ArrayList` y `HashMap`
+- ✔ Sistema de scoring
+- ✔ Ordenamiento
+- ✔ Lógica tipo ML
 
 💥 Esto es un **recomendador real simplificado**
 
@@ -260,9 +259,9 @@ public class Main {
 
 ## ⚠️ **Errores comunes**
 
-* No convertir a minúsculas
-* No inicializar listas
-* No entender `HashMap<Curso, Integer>`
+- No convertir a minúsculas
+- No inicializar listas
+- No entender `HashMap<Curso, Integer>`
 
 ---
 

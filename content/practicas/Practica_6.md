@@ -1,7 +1,15 @@
 ---
 title: "Practica 6: Sistema de Pagos con Clases Abstractas"
 
-tags: ["POO", "Herencia", "Polimorfismo", "Clases Abstractas", "Interfaces", "Diseño Orientado a Objetos"]
+tags:
+  [
+    "POO",
+    "Herencia",
+    "Polimorfismo",
+    "Clases Abstractas",
+    "Interfaces",
+    "Diseño Orientado a Objetos",
+  ]
 ---
 
 ## 🎯 Objetivo de la Práctica
@@ -161,7 +169,7 @@ public class PaymentSystemTest {
     @Test
     public void testCryptoPaymentLowAmount() {
         CryptoPayment crypto = new CryptoPayment("Satoshi", "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
-        
+
         assertFalse(crypto.processPayment(5.0), "Crypto payment must fail if it is less than 10.0");
         assertTrue(crypto.processPayment(15.0), "Crypto payment must be successful if it is greater than or equal to 10.0");
     }
@@ -211,12 +219,12 @@ public class PaymentSystemTest {
 
 - **`CryptoPaymentTest` (15 pts)**
   - Si `amount < 10.0`: retorna `false` y muestra  
-     `Crypto payment failed: Amount must be at least $10.0`.
+    `Crypto payment failed: Amount must be at least $10.0`.
   - Si `amount >= 10.0`: retorna `true` y genera recibo.
 
 - **`CashPaymentTest` (15 pts)**
   - Si `amount > 1000`: retorna `false` y muestra  
-     `Cash payment failed: Amount exceeds the limit of $1000.`
+    `Cash payment failed: Amount exceeds the limit of $1000.`
   - Si `amount <= 1000`: retorna `true` y genera recibo.
 
 - **`StoreTest` (35 pts)**
@@ -253,8 +261,8 @@ El entorno de evaluación usa JUnit 5 y Hamcrest.
 - **Asserters disponibles:**  
   `assertEquals`, `assertTrue`, `assertFalse`, `assertNotNull`, etc.
 - **Mensajes de error:**  
-  Los tests validan mensajes de texto exactos como:  
-  - `Crypto payment failed: Amount must be at least $10.0`  
+  Los tests validan mensajes de texto exactos como:
+  - `Crypto payment failed: Amount must be at least $10.0`
   - `Cash payment failed: Amount exceeds the limit of $1000.`
 
 > **Tip:** Para evitar errores, usa las cadenas de mensaje y los valores exactos que se muestran en los tests.

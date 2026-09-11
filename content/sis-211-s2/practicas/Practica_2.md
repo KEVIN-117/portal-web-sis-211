@@ -4,8 +4,6 @@ description: "En esta práctica construiremos una pequeña aplicación en Java q
 tags: ["Git", "GitHub", "Java", "Programación", "Control de versiones"]
 ---
 
-
-
 ## 1. Datos generales
 
 **Asignatura:** Tecnicas de Programación II
@@ -32,17 +30,17 @@ No utilizaremos librerías de Inteligencia Artificial ni modelos matemáticos co
 
 Nuestro programa recibirá información de un estudiante, como:
 
-* Edad.
-* Cantidad de horas de estudio.
-* Porcentaje de asistencia.
-* Nota promedio.
-* Cantidad de tareas completadas.
+- Edad.
+- Cantidad de horas de estudio.
+- Porcentaje de asistencia.
+- Nota promedio.
+- Cantidad de tareas completadas.
 
 A partir de estos datos, el programa calculará un **puntaje de riesgo** y determinará si el estudiante presenta:
 
-* Riesgo bajo.
-* Riesgo medio.
-* Riesgo alto.
+- Riesgo bajo.
+- Riesgo medio.
+- Riesgo alto.
 
 La aplicación funcionará como una versión extremadamente sencilla de un sistema predictivo.
 
@@ -148,10 +146,10 @@ Java
 
 El estudiante debe contar con:
 
-* JDK instalado.
-* Un editor de código o IDE.
-* Terminal o consola.
-* Conocimientos básicos de cómo crear una carpeta y ejecutar comandos.
+- JDK instalado.
+- Un editor de código o IDE.
+- Terminal o consola.
+- Conocimientos básicos de cómo crear una carpeta y ejecutar comandos.
 
 No es necesario tener conocimientos previos de Machine Learning.
 
@@ -295,7 +293,6 @@ Modificar los valores para representar tus propios datos.
 
 Por ejemplo:
 
-
 ```bash
 Nombre: Tu nombre
 Edad: Tu edad
@@ -309,11 +306,11 @@ El programa debe mostrar correctamente todos los datos, compila y ejecuta el pro
 
 > [!TIP]
 > Para compilar y ejecutar el programa, utiliza los siguientes comandos en la terminal:
+>
 > ```bash
 > javac MiniIA.java
 > java MiniIA
 > ```
->
 
 ---
 
@@ -833,7 +830,6 @@ public class MiniIA {
 }
 ```
 
-
 ---
 
 # 16. Ejercicio 4 — Mejorando la Mini-IA
@@ -1321,7 +1317,7 @@ Utilizar `while`.
 
 Cosigo final:
 
-```java {27-33}    
+```java {27-33}
 import java.util.Scanner;
 
 public class MiniIA {
@@ -1364,6 +1360,7 @@ public class MiniIA {
 > [!WARNING]
 > Recuerda que las validaciones son importantes para garantizar que los datos ingresados sean correctos y evitar errores en el análisis posterior.
 > Tus validaciones deben ser similares a la de `notaPromedio`, pero adaptadas a cada variable según sus rangos válidos.
+
 ---
 
 # 23. Parte IX — do-while
@@ -1610,10 +1607,10 @@ public class MiniIA {
 ```
 
 > [!WARNING]
+>
 > - Este es un ejemplo de cómo podría lucir el programa final. Puedes modificarlo y mejorarlo según tus necesidades, siempre y cuando cumpla con los objetivos del laboratorio.
 > - Se eliminan algunas lineas de codigo realizadas en secciones anteriores, debido a que solo son para explicación y no son necesarias en el programa final.
 > - Recuerda que las validaciones de datos deben estar presentes para garantizar que los datos ingresados sean correctos y evitar errores en el análisis posterior.
-
 
 ---
 
@@ -1861,13 +1858,13 @@ Datos + Resultados conocidos
 
 Esta diferencia será importante para comprender posteriormente conceptos como:
 
-* Dataset.
-* Features.
-* Labels.
-* Entrenamiento.
-* Modelo.
-* Predicción.
-* Clasificación.
+- Dataset.
+- Features.
+- Labels.
+- Entrenamiento.
+- Modelo.
+- Predicción.
+- Clasificación.
 
 ---
 
@@ -1881,8 +1878,6 @@ Si ejecutas `ls` en la raíz del proyecto, deberías ver:
 MiniIA.java
 README.md
 ```
-
-
 
 ---
 
@@ -1969,6 +1964,7 @@ La idea es que el estudiante empiece a comprender que antes de construir un mode
 # 33. Resultado esperado
 
 Al terminar este laboratorio, el estudiante habrá construido desde cero una pequeña aplicación interactiva en Java capaz de:
+
 ```bash
                     ┌──────────────┐
                     │    USUARIO  │
@@ -2000,6 +1996,5 @@ Al terminar este laboratorio, el estudiante habrá construido desde cero una peq
                     │ Alto        │
                     └──────────────┘
 ```
-
 
 <h1 class="text-center"> Buena suerte y disfruten aprendiendo Git, GitHub y Java! </h1>

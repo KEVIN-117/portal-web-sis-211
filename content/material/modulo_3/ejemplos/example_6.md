@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 6"
 description: "Análisis de modelos de Machine Learning usando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -22,25 +15,25 @@ Una empresa de Inteligencia Artificial está desarrollando una plataforma capaz 
 
 El sistema trabaja con múltiples algoritmos, por ejemplo:
 
-* Random Forest,
-* Redes Neuronales,
-* SVM,
-* KNN.
+- Random Forest,
+- Redes Neuronales,
+- SVM,
+- KNN.
 
 Todos los modelos comparten ciertas características generales, como:
 
-* nombre,
-* accuracy,
-* tiempo de entrenamiento.
+- nombre,
+- accuracy,
+- tiempo de entrenamiento.
 
 Sin embargo, cada modelo pertenece a un tipo diferente.
 
 La empresa necesita construir un sistema que permita analizar modelos usando:
 
-* Programación Orientada a Objetos,
-* herencia,
-* polimorfismo,
-* Java Streams.
+- Programación Orientada a Objetos,
+- herencia,
+- polimorfismo,
+- Java Streams.
 
 Este ejercicio conecta directamente POO con programación funcional moderna.
 
@@ -50,18 +43,19 @@ Este ejercicio conecta directamente POO con programación funcional moderna.
 
 Al finalizar este laboratorio, el estudiante será capaz de:
 
-* Aplicar herencia y polimorfismo.
-* Utilizar clases abstractas.
-* Trabajar con Streams sobre jerarquías de objetos.
-* Aplicar:
+- Aplicar herencia y polimorfismo.
+- Utilizar clases abstractas.
+- Trabajar con Streams sobre jerarquías de objetos.
+- Aplicar:
 
-  * `filter`
-  * `map`
-  * `sorted`
-  * `count`
-  * `average`
-  * `instanceof`
-* Comprender cómo Streams trabaja sobre tipos abstractos.
+  - `filter`
+  - `map`
+  - `sorted`
+  - `count`
+  - `average`
+  - `instanceof`
+
+- Comprender cómo Streams trabaja sobre tipos abstractos.
 
 ---
 
@@ -71,18 +65,18 @@ La plataforma almacena distintos modelos de Machine Learning.
 
 Todos comparten:
 
-* nombre,
-* accuracy,
-* tiempo de entrenamiento.
+- nombre,
+- accuracy,
+- tiempo de entrenamiento.
 
 Pero existen distintos tipos de modelos.
 
 El sistema deberá:
 
-* detectar modelos más precisos,
-* generar rankings,
-* calcular promedios,
-* identificar tipos específicos.
+- detectar modelos más precisos,
+- generar rankings,
+- calcular promedios,
+- identificar tipos específicos.
 
 ---
 
@@ -245,9 +239,9 @@ List<ModeloML>
 
 puede almacenar:
 
-* `RandomForest`
-* `NeuralNetwork`
-* `SVM`
+- `RandomForest`
+- `NeuralNetwork`
+- `SVM`
 
 gracias al polimorfismo.
 
@@ -485,9 +479,9 @@ El sistema quiere detectar modelos élite.
 
 Mostrar modelos:
 
-* con accuracy mayor a 92,
-* ordenados descendentemente,
-* mostrar únicamente Top 3.
+- con accuracy mayor a 92,
+- ordenados descendentemente,
+- mostrar únicamente Top 3.
 
 ---
 
@@ -598,9 +592,9 @@ Convertir modelos en mensajes personalizados:
 
 Mostrar modelos:
 
-* con accuracy mayor al promedio,
-* que sean `NeuralNetwork`,
-* ordenados por accuracy.
+- con accuracy mayor al promedio,
+- que sean `NeuralNetwork`,
+- ordenados por accuracy.
 
 ---
 
@@ -649,10 +643,10 @@ La empresa quiere construir un “Hall of Fame”.
 
 Mostrar únicamente modelos:
 
-* `NeuralNetwork`,
-* accuracy mayor a 95,
-* ordenados de mayor a menor,
-* mostrar únicamente nombres.
+- `NeuralNetwork`,
+- accuracy mayor a 95,
+- ordenados de mayor a menor,
+- mostrar únicamente nombres.
 
 ---
 
@@ -667,15 +661,15 @@ Neural Net Alpha
 
 # Conceptos aprendidos
 
-* Herencia
-* Polimorfismo
-* Clases abstractas
-* Streams
-* filter
-* map
-* sorted
-* average
-* instanceof
-* groupingBy
-* pipelines orientadas a objetos
-* análisis funcional aplicado a IA y Machine Learning
+- Herencia
+- Polimorfismo
+- Clases abstractas
+- Streams
+- filter
+- map
+- sorted
+- average
+- instanceof
+- groupingBy
+- pipelines orientadas a objetos
+- análisis funcional aplicado a IA y Machine Learning

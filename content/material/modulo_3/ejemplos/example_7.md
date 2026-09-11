@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 7"
 description: "Análisis de datos usando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -34,10 +27,10 @@ En sistemas reales, antes de entrenar modelos, los datos pasan por múltiples et
 
 Tu equipo desarrollará una versión simplificada de este proceso utilizando:
 
-* POO,
-* Streams,
-* colecciones,
-* programación funcional.
+- POO,
+- Streams,
+- colecciones,
+- programación funcional.
 
 Este laboratorio integra prácticamente todos los conceptos vistos hasta ahora.
 
@@ -47,18 +40,19 @@ Este laboratorio integra prácticamente todos los conceptos vistos hasta ahora.
 
 Al finalizar el laboratorio, el estudiante será capaz de:
 
-* Trabajar con Streams anidados.
-* Procesar estructuras complejas.
-* Aplicar:
+- Trabajar con Streams anidados.
+- Procesar estructuras complejas.
+- Aplicar:
 
-  * `map`
-  * `flatMap`
-  * `reduce`
-  * `sorted`
-  * `average`
-  * `max`
-* Comprender procesamiento funcional de datasets.
-* Relacionar Java Streams con pipelines reales de Machine Learning.
+  - `map`
+  - `flatMap`
+  - `reduce`
+  - `sorted`
+  - `average`
+  - `max`
+
+- Comprender procesamiento funcional de datasets.
+- Relacionar Java Streams con pipelines reales de Machine Learning.
 
 ---
 
@@ -68,8 +62,8 @@ Cada registro del dataset representa una muestra de datos para entrenamiento.
 
 Cada muestra contiene:
 
-* un label,
-* una lista de features numéricas.
+- un label,
+- una lista de features numéricas.
 
 Ejemplo:
 
@@ -537,9 +531,9 @@ La startup quiere detectar registros premium.
 
 Mostrar samples:
 
-* con más de 3 features,
-* cuya suma total sea mayor a 1.5,
-* ordenados por suma descendente.
+- con más de 3 features,
+- cuya suma total sea mayor a 1.5,
+- ordenados por suma descendente.
 
 ---
 
@@ -623,9 +617,9 @@ Crear mensajes personalizados:
 
 Mostrar samples:
 
-* cuyo promedio de features sea mayor a 0.5,
-* ordenados descendentemente,
-* mostrar únicamente labels.
+- cuyo promedio de features sea mayor a 0.5,
+- ordenados descendentemente,
+- mostrar únicamente labels.
 
 ---
 
@@ -706,23 +700,23 @@ La startup quiere generar un “Dataset Elite”.
 
 Mostrar únicamente samples:
 
-* con más de 3 features,
-* promedio mayor a 0.5,
-* ordenados por promedio descendentemente,
-* mostrar únicamente labels.
+- con más de 3 features,
+- promedio mayor a 0.5,
+- ordenados por promedio descendentemente,
+- mostrar únicamente labels.
 
 ---
 
 # Conceptos aprendidos
 
-* Streams anidados
-* flatMap
-* map
-* filter
-* sorted
-* max
-* average
-* reduce
-* pipelines funcionales
-* procesamiento de datasets
-* simulación real de preprocessing para Machine Learning
+- Streams anidados
+- flatMap
+- map
+- filter
+- sorted
+- max
+- average
+- reduce
+- pipelines funcionales
+- procesamiento de datasets
+- simulación real de preprocessing para Machine Learning

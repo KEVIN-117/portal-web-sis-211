@@ -8,13 +8,13 @@ tags: ["JAVA", "Sockets", "GUI"]
 
 Al finalizar las prácticas, el estudiante deberá ser capaz de:
 
-* Comprender el modelo cliente-servidor.
-* Implementar comunicación TCP y UDP.
-* Enviar y recibir datos mediante streams.
-* Diseñar servidores concurrentes.
-* Manejar múltiples clientes simultáneamente.
-* Aplicar buenas prácticas de programación de red.
-* Separar lógica de comunicación y lógica de negocio.
+- Comprender el modelo cliente-servidor.
+- Implementar comunicación TCP y UDP.
+- Enviar y recibir datos mediante streams.
+- Diseñar servidores concurrentes.
+- Manejar múltiples clientes simultáneamente.
+- Aplicar buenas prácticas de programación de red.
+- Separar lógica de comunicación y lógica de negocio.
 
 ---
 
@@ -31,10 +31,10 @@ Comprender cómo se establece una conexión básica entre cliente y servidor.
 
 Uso de:
 
-* `ServerSocket`
-* `Socket`
-* `OutputStream`
-* conexión bloqueante (`accept()`)
+- `ServerSocket`
+- `Socket`
+- `OutputStream`
+- conexión bloqueante (`accept()`)
 
 ---
 
@@ -159,9 +159,9 @@ public class ClienteBienvenida {
 
 Modificar el servidor para que envíe:
 
-* nombre del estudiante
-* fecha actual
-* mensaje personalizado
+- nombre del estudiante
+- fecha actual
+- mensaje personalizado
 
 Ejemplo:
 
@@ -176,8 +176,8 @@ Fecha: 2026-05-26
 
 Ahora los estudiantes ya deben comprender que:
 
-* TCP mantiene conexión
-* ambos extremos pueden enviar y recibir
+- TCP mantiene conexión
+- ambos extremos pueden enviar y recibir
 
 ---
 
@@ -258,11 +258,11 @@ public class ServidorEcho {
 
 Los estudiantes deben extender el servidor para:
 
-* convertir texto a MAYÚSCULAS
-* convertir texto a minúsculas
-* contar caracteres
-* verificar palíndromos
-* invertir cadenas
+- convertir texto a MAYÚSCULAS
+- convertir texto a minúsculas
+- contar caracteres
+- verificar palíndromos
+- invertir cadenas
 
 ---
 
@@ -278,11 +278,11 @@ Aquí comienza la parte verdaderamente interesante.
 
 Introducir:
 
-* `BufferedReader`
-* `PrintWriter`
-* comunicación continua
-* ciclos infinitos
-* protocolo simple de mensajes
+- `BufferedReader`
+- `PrintWriter`
+- comunicación continua
+- ciclos infinitos
+- protocolo simple de mensajes
 
 ---
 
@@ -359,11 +359,11 @@ public class ServidorChat {
 
 Los estudiantes pueden implementar:
 
-* comandos especiales (`/hora`, `/fecha`)
-* autenticación básica
-* nombres de usuario
-* historial de mensajes
-* mensajes privados
+- comandos especiales (`/hora`, `/fecha`)
+- autenticación básica
+- nombres de usuario
+- historial de mensajes
+- mensajes privados
 
 ---
 
@@ -489,9 +489,9 @@ public class ServidorConcurrente {
 
 Pedir a los estudiantes:
 
-* abrir varios clientes simultáneamente
-* observar ejecución paralela
-* identificar qué hilo atiende cada cliente
+- abrir varios clientes simultáneamente
+- observar ejecución paralela
+- identificar qué hilo atiende cada cliente
 
 Esto ayuda muchísimo a comprender concurrencia real.
 
@@ -509,9 +509,9 @@ Ahora introduces comunicación sin conexión.
 
 Comprender:
 
-* comunicación no orientada a conexión
-* datagramas
-* transmisión rápida
+- comunicación no orientada a conexión
+- datagramas
+- transmisión rápida
 
 ---
 
@@ -677,10 +677,10 @@ catch(IOException e) {
 
 Siempre cerrar:
 
-* streams
-* sockets
-* readers
-* writers
+- streams
+- sockets
+- readers
+- writers
 
 ---
 
@@ -688,9 +688,9 @@ Siempre cerrar:
 
 No mezclar:
 
-* lógica de red
-* interfaz
-* lógica de negocio
+- lógica de red
+- interfaz
+- lógica de negocio
 
 ---
 
@@ -702,14 +702,14 @@ Una excelente práctica final sería:
 
 Características:
 
-* múltiples clientes
-* concurrencia
-* salas
-* autenticación
-* mensajes privados
-* broadcast
-* logs
-* comandos especiales
+- múltiples clientes
+- concurrencia
+- salas
+- autenticación
+- mensajes privados
+- broadcast
+- logs
+- comandos especiales
 
 ---
 

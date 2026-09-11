@@ -1,13 +1,7 @@
 ---
 title: "Resumen — Programación de Sockets en Java"
 description: "Comprensión profunda de los conceptos, uso de sockets TCP y UDP, concurrencia y buenas prácticas."
-tags: [
-    "java",
-    "sockets",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "sockets", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -17,22 +11,21 @@ draft: false
 
 ![alt text](material/modulo_5/image.png)
 
-
-Un *socket* es un punto final (endpoint) de comunicación bidireccional entre dos procesos (posiblemente en máquinas distintas) en una red. Se puede imaginar como un “enchufe” virtual que conecta dos aplicaciones, facilitando el envío y recepción de datos. Los sockets permiten que las aplicaciones se comuniquen de forma eficiente independientemente de su ubicación, siempre que compartan un protocolo común. El modelo típico es *cliente-servidor*: el **servidor** crea un socket ligado a una dirección IP y un puerto, luego *escucha* y *acepta* conexiones entrantes; el **cliente**, por su parte, crea un socket sin un puerto predefinido y se conecta al socket del servidor utilizando su IP y puerto. Una vez establecida la conexión, ambos extremos pueden leer y escribir datos a través de sus sockets.
+Un _socket_ es un punto final (endpoint) de comunicación bidireccional entre dos procesos (posiblemente en máquinas distintas) en una red. Se puede imaginar como un “enchufe” virtual que conecta dos aplicaciones, facilitando el envío y recepción de datos. Los sockets permiten que las aplicaciones se comuniquen de forma eficiente independientemente de su ubicación, siempre que compartan un protocolo común. El modelo típico es _cliente-servidor_: el **servidor** crea un socket ligado a una dirección IP y un puerto, luego _escucha_ y _acepta_ conexiones entrantes; el **cliente**, por su parte, crea un socket sin un puerto predefinido y se conecta al socket del servidor utilizando su IP y puerto. Una vez establecida la conexión, ambos extremos pueden leer y escribir datos a través de sus sockets.
 
 Existen principalmente dos tipos de sockets según el protocolo de transporte:
 
 - **Sockets TCP (Stream Sockets):** utilizan TCP, un protocolo orientado a la conexión, fiable y ordenado. Antes de intercambiar datos, cliente y servidor establecen una conexión permanente (“handshake”), garantizando que los datos no se pierdan y lleguen en orden. Es ideal para aplicaciones que requieren integridad de datos (por ejemplo, transferencia de archivos, HTTP, correo electrónico).
 - **Sockets UDP (Datagram Sockets):** utilizan UDP, un protocolo sin conexión y de baja sobrecarga. Cada envío es independiente (como enviar postales), por lo que no existe una sesión permanente y **no hay garantía de entrega ni orden**. UDP es más rápido y eficiente cuando se pueden tolerar pérdidas (por ejemplo, streaming de video, juegos en línea, consultas DNS).
 
-| Característica        | TCP (Stream Socket)           | UDP (Datagram Socket)             |
-|-----------------------|-------------------------------|-----------------------------------|
-| Orientación           | Conexión establecida (handshake)  | Sin conexión (cada mensaje es independiente) |
-| Fiabilidad            | Alta, retransmisiones automáticas | Baja, sin retransmisiones automáticas |
-| Orden de entrega      | Garantizado                   | No garantizado       |
-| Control de flujo      | Sí (buffer y ventana TCP)     | No explícito (solo tamaño de paquete) |
-| Sobreposición/velocidad | Mayor sobrecarga, más lento  | Menor sobrecarga, más rápido      |
-| Ejemplos de uso       | HTTP, FTP, SMTP, SSH         | VoIP, streaming, DNS, juegos      |
+| Característica          | TCP (Stream Socket)               | UDP (Datagram Socket)                        |
+| ----------------------- | --------------------------------- | -------------------------------------------- |
+| Orientación             | Conexión establecida (handshake)  | Sin conexión (cada mensaje es independiente) |
+| Fiabilidad              | Alta, retransmisiones automáticas | Baja, sin retransmisiones automáticas        |
+| Orden de entrega        | Garantizado                       | No garantizado                               |
+| Control de flujo        | Sí (buffer y ventana TCP)         | No explícito (solo tamaño de paquete)        |
+| Sobreposición/velocidad | Mayor sobrecarga, más lento       | Menor sobrecarga, más rápido                 |
+| Ejemplos de uso         | HTTP, FTP, SMTP, SSH              | VoIP, streaming, DNS, juegos                 |
 
 ## 2. Sockets en Java
 
@@ -44,11 +37,13 @@ Java proporciona soporte nativo para programación de sockets en el paquete `jav
 - **`DatagramPacket`**: encapsula un mensaje (un array de bytes) y la información de direccionamiento (IP y puerto destino u origen) para envíos UDP. Se utiliza tanto para recibir (llenando un buffer con datos entrantes) como para enviar (incorporando los datos y la dirección destino).
 
 Para la comunicación TCP se utilizan los flujos de E/S asociados al socket. Por ejemplo, tras conectar, se puede hacer:
+
 ```java
 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 ```
-Así el servidor y el cliente pueden leer líneas de texto con `in.readLine()` y enviar con `out.println(...)`. (*Nota:* cerrar el socket mediante `close()` cierra también automáticamente sus streams de entrada y salida). 
+
+Así el servidor y el cliente pueden leer líneas de texto con `in.readLine()` y enviar con `out.println(...)`. (_Nota:_ cerrar el socket mediante `close()` cierra también automáticamente sus streams de entrada y salida).
 
 **Ejemplo básico (TCP):** a continuación se muestra un servidor TCP que acepta una conexión y comunica un mensaje simple, y un cliente que se conecta y recibe la respuesta. Los comentarios explican cada paso.
 
@@ -118,7 +113,7 @@ En sockets TCP el flujo habitual es:
 
 Este modelo permite comunicación **bidireccional**: cada lado puede simultáneamente enviar y recibir mensajes (usualmente en turnos coordinados). La conexión persiste hasta que uno de los extremos cierra su socket.
 
-**Ejemplo práctico – Chat simple:** el siguiente código ilustra un chat muy básico de un cliente con un servidor. El cliente lee mensajes del teclado y los envía al servidor; el servidor lee cada mensaje, lo imprime y le envía de vuelta (por ejemplo, como eco). Ambos bucles terminan si el cliente cierra la conexión o envía un mensaje de salida. 
+**Ejemplo práctico – Chat simple:** el siguiente código ilustra un chat muy básico de un cliente con un servidor. El cliente lee mensajes del teclado y los envía al servidor; el servidor lee cada mensaje, lo imprime y le envía de vuelta (por ejemplo, como eco). Ambos bucles terminan si el cliente cierra la conexión o envía un mensaje de salida.
 
 ```java
 // Servidor multimensaje (chat simple con eco)
@@ -170,7 +165,7 @@ public class ChatClient {
 }
 ```
 
-Este ejemplo muestra un *servidor echo* que atiende un solo cliente de forma secuencial. Para manejar múltiples clientes, es necesario introducir concurrencia (hilos), como se verá en la sección siguiente. 
+Este ejemplo muestra un _servidor echo_ que atiende un solo cliente de forma secuencial. Para manejar múltiples clientes, es necesario introducir concurrencia (hilos), como se verá en la sección siguiente.
 
 ## 4. Sockets UDP
 
@@ -274,13 +269,13 @@ while (true) {
 }
 ```
 
-En este ejemplo, **cada conexión aceptada** inicia un nuevo hilo (una instancia de `Thread`) que maneja los flujos de E/S del cliente. Mientras tanto, el bucle principal puede volver a `accept()` nuevas conexiones. Como indica la literatura, *“Para atender varias peticiones simultáneas, el servidor debe usar hilos…”*. Una implementación clásica es definir una clase `Worker` que herede de `Thread` y reciba el objeto `Socket` en su constructor, como se describe en tutoriales de Oracle y manuales de Java.
+En este ejemplo, **cada conexión aceptada** inicia un nuevo hilo (una instancia de `Thread`) que maneja los flujos de E/S del cliente. Mientras tanto, el bucle principal puede volver a `accept()` nuevas conexiones. Como indica la literatura, _“Para atender varias peticiones simultáneas, el servidor debe usar hilos…”_. Una implementación clásica es definir una clase `Worker` que herede de `Thread` y reciba el objeto `Socket` en su constructor, como se describe en tutoriales de Oracle y manuales de Java.
 
 ## 6. Buenas prácticas
 
 Al programar con sockets en Java se deben seguir ciertas recomendaciones para garantizar robustez y seguridad:
 
-- **Manejo de excepciones:** Todas las operaciones de red pueden lanzar `IOException` (por ejemplo, al conectar, leer, o enviar). Es esencial rodear los bloques de E/S con `try-catch` y manejar errores apropiadamente (por ejemplo, imprimiendo mensajes de error o registrándolos) para evitar que la aplicación termine abruptamente. Es común usar *try-with-resources* en Java 7+ para que `Socket`/`ServerSocket` y flujos se cierren automáticamente al finalizar el bloque.
+- **Manejo de excepciones:** Todas las operaciones de red pueden lanzar `IOException` (por ejemplo, al conectar, leer, o enviar). Es esencial rodear los bloques de E/S con `try-catch` y manejar errores apropiadamente (por ejemplo, imprimiendo mensajes de error o registrándolos) para evitar que la aplicación termine abruptamente. Es común usar _try-with-resources_ en Java 7+ para que `Socket`/`ServerSocket` y flujos se cierren automáticamente al finalizar el bloque.
 - **Cierre adecuado de sockets:** Siempre cerrar los sockets y streams en un bloque `finally` o en try-with-resources. El método `close()` libera el puerto y otros recursos del sistema operativo. Tras `close()`, se lanzan excepciones si se intenta leer o escribir, y el socket no puede reutilizarse. Por ejemplo, al final de los ejemplos anteriores se cierra explícitamente el `Socket` y el `ServerSocket`.
 - **Validación de datos y seguridad:** No confiar en datos no verificados provenientes de la red. Limitar el tamaño de las entradas (para evitar buffers overflow), filtrar caracteres peligrosos si corresponden, y manejar correctamente los formatos de mensajes. Para comunicaciones sensibles, considerar el uso de SSL/TLS (`SSLSocket`) en lugar de sockets simples (Java ofrece JSSE para sockets seguros). También se debe validar la identidad del cliente/servidor si es necesario (por ejemplo, mediante certificados o credenciales).
 - **Separación de lógica:** Mantener separadas la **lógica de red** (cómo enviar/recibir bytes, formatos de mensaje, gestión de conexión) de la **lógica de aplicación** (procesamiento del mensaje, negocio de la aplicación). Esto facilita el mantenimiento y prueba del código. Por ejemplo, en el hilo trabajador del servidor es buena idea delegar el procesamiento del contenido a métodos o clases aparte.
@@ -298,5 +293,4 @@ En resumen, una programación de sockets segura y eficiente en Java consiste en 
 
 Estos ejercicios consolidan la comprensión práctica de los conceptos anteriores. Para resolverlos, puede partir de los ejemplos mostrados y adaptarlos según las indicaciones.
 
-**Fuentes:** La presente síntesis se basa en la documentación oficial de Oracle (paquete `java.net`) y tutoriales de sockets en Java, así como en materiales educativos y libros especializados. Se han citado definiciones formales y ejemplos relevantes para aclarar cada concepto técnico. 
-
+**Fuentes:** La presente síntesis se basa en la documentación oficial de Oracle (paquete `java.net`) y tutoriales de sockets en Java, así como en materiales educativos y libros especializados. Se han citado definiciones formales y ejemplos relevantes para aclarar cada concepto técnico.

@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 2"
 description: "Un sistema de análisis de rendimiento estudiantil utilizando Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -24,16 +17,16 @@ El objetivo es analizar patrones de rendimiento estudiantil utilizando programac
 
 Cada estudiante tendrá información relacionada con:
 
-* horas de estudio,
-* porcentaje de asistencia,
-* nota final.
+- horas de estudio,
+- porcentaje de asistencia,
+- nota final.
 
 El departamento académico desea usar esta información para detectar:
 
-* estudiantes en riesgo,
-* estudiantes destacados,
-* promedios generales,
-* rankings académicos.
+- estudiantes en riesgo,
+- estudiantes destacados,
+- promedios generales,
+- rankings académicos.
 
 ---
 
@@ -41,16 +34,17 @@ El departamento académico desea usar esta información para detectar:
 
 Al finalizar el laboratorio, el estudiante será capaz de:
 
-* Trabajar con Streams sobre objetos complejos.
-* Aplicar:
+- Trabajar con Streams sobre objetos complejos.
+- Aplicar:
 
-  * `filter`
-  * `map`
-  * `average`
-  * `max`
-  * `sorted`
-* Comprender cómo Streams puede usarse en análisis de datos.
-* Relacionar Java Streams con procesamiento básico usado en Machine Learning.
+  - `filter`
+  - `map`
+  - `average`
+  - `max`
+  - `sorted`
+
+- Comprender cómo Streams puede usarse en análisis de datos.
+- Relacionar Java Streams con procesamiento básico usado en Machine Learning.
 
 ---
 
@@ -60,10 +54,10 @@ El sistema universitario almacena registros académicos.
 
 Cada registro contiene:
 
-* nombre del estudiante,
-* horas de estudio semanales,
-* porcentaje de asistencia,
-* nota final.
+- nombre del estudiante,
+- horas de estudio semanales,
+- porcentaje de asistencia,
+- nota final.
 
 La universidad desea generar reportes automáticos usando Streams.
 
@@ -523,8 +517,8 @@ Crear lista únicamente de nombres.
 
 Mostrar únicamente estudiantes que:
 
-* tengan asistencia mayor a 80,
-* y nota mayor a 85.
+- tengan asistencia mayor a 80,
+- y nota mayor a 85.
 
 ---
 
@@ -576,9 +570,9 @@ La universidad quiere generar una “Lista de excelencia”.
 
 Mostrar estudiantes que:
 
-* tengan nota mayor a 90,
-* asistencia mayor a 90,
-* y estudien más de 10 horas.
+- tengan nota mayor a 90,
+- asistencia mayor a 90,
+- y estudien más de 10 horas.
 
 ---
 
@@ -593,13 +587,13 @@ Elena
 
 # Conceptos aprendidos
 
-* Streams
-* filter
-* map
-* mapToDouble
-* average
-* max
-* sorted
-* Comparator
-* referencias a métodos
-* programación funcional aplicada a datasets
+- Streams
+- filter
+- map
+- mapToDouble
+- average
+- max
+- sorted
+- Comparator
+- referencias a métodos
+- programación funcional aplicada a datasets

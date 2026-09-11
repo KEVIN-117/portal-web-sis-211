@@ -1,13 +1,23 @@
 ---
 title: "Práctica 9: Swing - Parte 1"
 description: "En esta práctica construiremos una aplicación de escritorio completa usando Swing. La aplicación será una calculadora avanzada que implementará diferentes formas de manejar eventos, interfaces de usuario con diferentes layouts y componentes, y se estructurará siguiendo principios de diseño orientado a objetos. Además, aplicaremos programación funcional en el manejo de eventos y utilizaremos Streams para procesar colecciones de datos."
-tags: ["POO", "Herencia", "Polimorfismo", "Interfaces", "Clases Abstractas", "Programación Funcional", "Colecciones", "Streams"]
+tags:
+  [
+    "POO",
+    "Herencia",
+    "Polimorfismo",
+    "Interfaces",
+    "Clases Abstractas",
+    "Programación Funcional",
+    "Colecciones",
+    "Streams",
+  ]
 ---
 
 # Formulario de Presentación Personal con Java Swing
 
 **Materia:** SIS-211  
-**Tema:** Interfaces Gráficas de Usuario — Fundamentos de Java Swing  
+**Tema:** Interfaces Gráficas de Usuario — Fundamentos de Java Swing
 
 ---
 
@@ -84,13 +94,13 @@ Antes de empezar a programar, comprendamos los conceptos fundamentales detrás d
 
 Los componentes de Swing se encuentran en el paquete `javax.swing`. Algunas clases clave incluyen:
 
-| Clase | Propósito |
-|-------|-----------|
-| `JFrame` | La ventana principal de la aplicación |
-| `JPanel` | Un contenedor para agrupar y organizar otros componentes |
-| `JLabel` | Muestra texto o una imagen (no editable) |
-| `JTextField` | Un campo de entrada de texto de una sola línea |
-| `JButton` | Un botón que se puede hacer clic |
+| Clase         | Propósito                                                          |
+| ------------- | ------------------------------------------------------------------ |
+| `JFrame`      | La ventana principal de la aplicación                              |
+| `JPanel`      | Un contenedor para agrupar y organizar otros componentes           |
+| `JLabel`      | Muestra texto o una imagen (no editable)                           |
+| `JTextField`  | Un campo de entrada de texto de una sola línea                     |
+| `JButton`     | Un botón que se puede hacer clic                                   |
 | `JOptionPane` | Cuadros de diálogo predefinidos (alertas, confirmaciones, entrada) |
 
 > **Idea clave:** Cada elemento visual que ves en una aplicación Swing es un **componente**. Los componentes se organizan en una jerarquía tipo árbol: el `JFrame` es la raíz, los `JPanel` son las ramas, y los componentes individuales (etiquetas, botones, campos) son las hojas.
@@ -137,15 +147,15 @@ frame.setVisible(true);                            // Mostrar la ventana
 
 **Métodos importantes:**
 
-| Método | Qué hace |
-|--------|----------|
-| `setTitle(String)` | Establece el texto de la barra de título |
-| `setSize(width, height)` | Establece las dimensiones de la ventana en píxeles |
+| Método                          | Qué hace                                           |
+| ------------------------------- | -------------------------------------------------- |
+| `setTitle(String)`              | Establece el texto de la barra de título           |
+| `setSize(width, height)`        | Establece las dimensiones de la ventana en píxeles |
 | `setDefaultCloseOperation(...)` | Define qué sucede cuando el usuario hace clic en ✕ |
-| `setLocationRelativeTo(null)` | Centra la ventana en la pantalla |
-| `setVisible(true)` | Hace que la ventana aparezca |
-| `setLayout(LayoutManager)` | Establece cómo se organizan los componentes hijos |
-| `add(Component)` | Agrega un componente hijo a la ventana |
+| `setLocationRelativeTo(null)`   | Centra la ventana en la pantalla                   |
+| `setVisible(true)`              | Hace que la ventana aparezca                       |
+| `setLayout(LayoutManager)`      | Establece cómo se organizan los componentes hijos  |
+| `add(Component)`                | Agrega un componente hijo a la ventana             |
 
 > **Importante:** `setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)` asegura que el proceso Java termine cuando se cierra la ventana. Sin esto, el programa seguiría ejecutándose invisiblemente en segundo plano.
 
@@ -163,6 +173,7 @@ panel.add(new JButton("Click me"));
 ```
 
 **¿Por qué usar paneles?**
+
 - **Organización:** Agrupar componentes relacionados (por ejemplo, una etiqueta y su campo de texto juntos).
 - **Control de layout:** Cada panel puede tener su propio `LayoutManager`, permitiendo que diferentes secciones de tu ventana usen diferentes arreglos.
 - **Estilo visual:** Los paneles pueden tener fondos, bordes y pintura personalizada (como nuestro fondo con degradado).
@@ -175,15 +186,16 @@ Un **Layout Manager** es un objeto que controla **cómo se posicionan y dimensio
 
 **Layout Managers comunes:**
 
-| Layout | Descripción | Ideal para |
-|--------|-------------|------------|
-| `FlowLayout` | Coloca componentes de izquierda a derecha, saltando a la siguiente línea | Filas simples de botones |
-| `GridLayout(rows, cols)` | Organiza componentes en una cuadrícula de celdas iguales | Tablas, calculadoras |
-| `BorderLayout` | Divide el contenedor en 5 regiones: NORTH, SOUTH, EAST, WEST, CENTER | Estructura de ventana principal |
-| `GridBagLayout` | El más flexible — cada componente tiene su propio tamaño y restricciones de posición | Formularios complejos |
-| `null` (sin layout) | Estableces posiciones exactas en píxeles con `setBounds()` | ❌ Evitar — no se redimensiona |
+| Layout                   | Descripción                                                                          | Ideal para                      |
+| ------------------------ | ------------------------------------------------------------------------------------ | ------------------------------- |
+| `FlowLayout`             | Coloca componentes de izquierda a derecha, saltando a la siguiente línea             | Filas simples de botones        |
+| `GridLayout(rows, cols)` | Organiza componentes en una cuadrícula de celdas iguales                             | Tablas, calculadoras            |
+| `BorderLayout`           | Divide el contenedor en 5 regiones: NORTH, SOUTH, EAST, WEST, CENTER                 | Estructura de ventana principal |
+| `GridBagLayout`          | El más flexible — cada componente tiene su propio tamaño y restricciones de posición | Formularios complejos           |
+| `null` (sin layout)      | Estableces posiciones exactas en píxeles con `setBounds()`                           | ❌ Evitar — no se redimensiona  |
 
 **En este proyecto usamos:**
+
 - **`BorderLayout`** para la estructura de la ventana principal (el fondo llena todo el centro).
 - **`GridBagLayout`** para el formulario, porque nos permite alinear etiquetas en una columna y campos de texto en otra, con control total sobre el espaciado.
 
@@ -234,7 +246,7 @@ button.addActionListener(e -> System.out.println("Button was clicked!"));
 Usuario hace clic → Swing crea un ActionEvent → Se ejecuta el código de tu listener
 ```
 
-> **¿Por qué lambdas?** La interfaz `ActionListener` tiene un solo método (`actionPerformed`), lo que la convierte en una *interfaz funcional*. Java nos permite reemplazar toda la clase anónima con una expresión lambda concisa `e -> { ... }`.
+> **¿Por qué lambdas?** La interfaz `ActionListener` tiene un solo método (`actionPerformed`), lo que la convierte en una _interfaz funcional_. Java nos permite reemplazar toda la clase anónima con una expresión lambda concisa `e -> { ... }`.
 
 En nuestro proyecto, simplificamos esto aún más con un método personalizado `setOnClickListener(Runnable)` que oculta el parámetro `ActionEvent` ya que no lo usamos:
 
@@ -262,12 +274,12 @@ JOptionPane.showMessageDialog(parentFrame, "Invalid input!", "Error", JOptionPan
 
 **Parámetros de `showMessageDialog`:**
 
-| Parámetro | Qué significa |
-|-----------|---------------|
+| Parámetro     | Qué significa                                                                          |
+| ------------- | -------------------------------------------------------------------------------------- |
 | `parentFrame` | La ventana "dueña" del diálogo (se centra sobre ella). Usa `this` dentro de un JFrame. |
-| `message` | El texto a mostrar |
-| `title` | El texto de la barra de título del diálogo |
-| `messageType` | El ícono a mostrar (`INFORMATION_MESSAGE`, `WARNING_MESSAGE`, `ERROR_MESSAGE`) |
+| `message`     | El texto a mostrar                                                                     |
+| `title`       | El texto de la barra de título del diálogo                                             |
+| `messageType` | El ícono a mostrar (`INFORMATION_MESSAGE`, `WARNING_MESSAGE`, `ERROR_MESSAGE`)         |
 
 ---
 
@@ -442,7 +454,7 @@ public class InputField extends JTextField {
 
 **Conceptos nuevos aquí:**
 
-- **`setCaretColor()`** — El *caret* es el cursor parpadeante dentro del campo de texto. Lo configuramos en un tono azul.
+- **`setCaretColor()`** — El _caret_ es el cursor parpadeante dentro del campo de texto. Lo configuramos en un tono azul.
 
 - **`CompoundBorder`** — Combina dos bordes en uno. Aquí combinamos:
   - Un `LineBorder` exterior (una línea delgada de color alrededor del campo)
@@ -526,6 +538,7 @@ public class Button extends JButton {
   ```
 
   Esto permite a los usuarios escribir código limpio como:
+
   ```java
   button.setOnClickListener(() -> System.out.println("Clicked!"));
   ```
@@ -721,7 +734,7 @@ Ahora agrega los métodos de inicialización:
 ```
 
 > **¿Qué es un Look & Feel?**  
-> Un *Look & Feel* (L&F) define la apariencia visual de todos los componentes de Swing — fuentes, colores, formas de botones, estilos de barras de desplazamiento, etc. `NimbusLookAndFeel` es un tema moderno y multiplataforma incluido en Java que hace que las aplicaciones se vean más pulidas que el aspecto "Metal" por defecto. El `try-catch` es necesario porque el L&F podría no estar disponible en todos los sistemas.
+> Un _Look & Feel_ (L&F) define la apariencia visual de todos los componentes de Swing — fuentes, colores, formas de botones, estilos de barras de desplazamiento, etc. `NimbusLookAndFeel` es un tema moderno y multiplataforma incluido en Java que hace que las aplicaciones se vean más pulidas que el aspecto "Metal" por defecto. El `try-catch` es necesario porque el L&F podría no estar disponible en todos los sistemas.
 
 > **`setMinimumSize`** evita que el usuario reduzca la ventana a un tamaño donde el formulario se vuelva inutilizable. Esta es una buena práctica de **accesibilidad**.
 
@@ -830,14 +843,17 @@ Este es el método más largo. Crea todos los componentes visuales y los organiz
 **Este método es largo, así que recorrámoslo sección por sección:**
 
 **1. Crear dos paneles anidados:**
+
 ```java
 Panel backgroundPanel = new Panel(..., true);   // Fondo con degradado — visible
 Panel formPanel = new Panel(false);              // Contenedor del formulario — transparente
 formPanel.setOpaque(false);                      // Hacerlo verdaderamente transparente
 ```
+
 El panel del formulario se ubica encima del panel de fondo. Al hacerlo transparente (`setOpaque(false)`), el degradado se ve a través.
 
 **2. Crear los campos del formulario usando arrays y un Stream:**
+
 ```java
 String[] labelTexts = { "Nombre:", "Apellido:", "Edad:", "Carrera:" };
 String[] fieldKeys  = { "nombre", "apellido", "edad", "carrera" };
@@ -852,9 +868,10 @@ Stream.iterate(0, i -> i + 1).limit(labelTexts.length).forEach(i -> {
 });
 ```
 
-En lugar de repetir el mismo código 4 veces, usamos arrays paralelos e iteramos sobre ellos. Este es el **principio DRY** (*Don't Repeat Yourself* — No te repitas).
+En lugar de repetir el mismo código 4 veces, usamos arrays paralelos e iteramos sobre ellos. Este es el **principio DRY** (_Don't Repeat Yourself_ — No te repitas).
 
 **3. Características de accesibilidad:**
+
 ```java
 inputField.setToolTipText(tooltips[i]);                           // Muestra pista al pasar mouse
 inputField.getAccessibleContext().setAccessibleName(labelTexts[i]); // Para lectores de pantalla
@@ -864,6 +881,7 @@ label.setLabelFor(inputField);                                     // Asocia eti
 Estas tres líneas hacen el formulario más **accesible** para usuarios con discapacidades. Los lectores de pantalla pueden anunciar "Nombre: campo de texto" cuando el usuario navega hacia él.
 
 **4. Method references para las acciones de los botones:**
+
 ```java
 submitButton.setOnClickListener(this::handleSubmit);
 clearButton.setOnClickListener(this::handleClear);
@@ -957,7 +975,7 @@ Leer todos los campos → recortar espacios en blanco
 
 **Conceptos clave:**
 
-- **`.trim()`** — Elimina espacios en blanco al inicio y final. Sin esto, un usuario podría escribir "   " (solo espacios) y pasaría la verificación de vacío.
+- **`.trim()`** — Elimina espacios en blanco al inicio y final. Sin esto, un usuario podría escribir " " (solo espacios) y pasaría la verificación de vacío.
 
 - **`Integer.parseInt(edad)`** — Intenta convertir el string de edad a un entero. Si el usuario escribió "abc" o "12.5", esto lanza una `NumberFormatException`.
 
@@ -1030,7 +1048,7 @@ public class App {
 
 ### Requisitos
 
-- **Java 17** o superior (usa *text blocks*)
+- **Java 17** o superior (usa _text blocks_)
 
 ### Compilar desde la terminal
 
@@ -1074,12 +1092,14 @@ Los siguientes desafíos deben ser implementados y serán evaluados durante la r
 Agrega un quinto campo al formulario: **Email** (`Correo electrónico`).
 
 **Requisitos:**
+
 - Agrega una nueva etiqueta `"Email:"` y un nuevo `InputField` al formulario.
 - El campo de email debe incluirse en la validación (no puede estar vacío).
 - El valor del email debe aparecer en el diálogo `JOptionPane` de información junto con los demás campos.
 - El layout debe mantenerse limpio y alineado.
 
 **Pistas:**
+
 - Mira los arrays `labelTexts`, `fieldKeys` y `tooltips` en `buildFormPanel()`. ¿Qué necesitas agregar a cada uno?
 - Recuerda actualizar el formato del mensaje en `handleSubmit()`.
 
@@ -1093,11 +1113,13 @@ Agrega un quinto campo al formulario: **Email** (`Correo electrónico`).
 Cambia el degradado del fondo para usar un **par de colores diferente** a tu elección.
 
 **Requisitos:**
+
 - Los dos colores del degradado deben ser visiblemente diferentes a los actuales.
 - El texto (etiquetas, título) debe seguir siendo claramente legible sobre el nuevo fondo.
 - Incluye un breve comentario en el código explicando qué colores elegiste y por qué.
 
 **Pistas:**
+
 - Busca `new Panel(new Color(...), new Color(...), true)` en `buildFormPanel()`.
 - El constructor de `Color` recibe valores RGB de 0 a 255: `new Color(rojo, verde, azul)`.
 - Puedes usar una herramienta como [Google Color Picker](https://g.co/kgs/FjZFzM) para encontrar colores que te gusten.
@@ -1113,11 +1135,13 @@ Cambia el degradado del fondo para usar un **par de colores diferente** a tu ele
 Agrega un contador que rastree **cuántas veces** el formulario ha sido enviado exitosamente, y muéstralo en la ventana.
 
 **Requisitos:**
+
 - Agrega un `Label` en la parte inferior del formulario que muestre: `"Envíos exitosos: 0"`.
 - Cada vez que `handleSubmit()` tenga éxito (pase todas las validaciones y muestre el diálogo de información), el contador aumenta en 1 y la etiqueta se actualiza.
 - El contador solo debe aumentar en envíos **exitosos** (no cuando la validación falla).
 
 **Pistas:**
+
 - Necesitarás una nueva variable de instancia: `private int submitCount = 0;`
 - Necesitarás una referencia de `Label` almacenada como variable de instancia para que `handleSubmit()` pueda actualizarla.
 - Usa `label.setText("Envíos exitosos: " + submitCount)` para actualizar el texto.
@@ -1133,12 +1157,14 @@ Agrega un contador que rastree **cuántas veces** el formulario ha sido enviado 
 Reemplaza el campo de texto de Carrera (`InputField`) con una **lista desplegable** (`JComboBox`) que contenga opciones de carrera predefinidas.
 
 **Requisitos:**
+
 - El dropdown debe contener al menos 5 opciones de carrera (ej: "Ingeniería de Sistemas", "Ingeniería Industrial", "Medicina", "Derecho", "Arquitectura").
 - La carrera seleccionada debe aparecer en el diálogo `JOptionPane` de información.
 - El dropdown debe ser visualmente consistente con el resto del formulario (fuente, tamaño).
 - El botón "Limpiar" debe reiniciar el dropdown a su primera opción.
 
 **Pistas:**
+
 - `JComboBox<String>` es el componente dropdown de Swing:
   ```java
   String[] careers = {"Ingeniería de Sistemas", "Medicina", ...};
@@ -1152,13 +1178,13 @@ Reemplaza el campo de texto de Carrera (`InputField`) con una **lista desplegabl
 
 ## Criterios de Evaluación
 
-| Criterio | Puntos | Descripción |
-|----------|--------|-------------|
-| **Creación correcta de la interfaz** | 30 | La ventana se muestra correctamente con todos los componentes requeridos: 4 etiquetas, 4 campos de entrada, título, fondo con degradado y jerarquía de paneles bien estructurada. La ventana se cierra correctamente. |
-| **Uso adecuado de componentes** | 20 | Uso correcto de `JLabel`, `JTextField`, `JButton`, `JPanel`. Los componentes están organizados con un Layout Manager (no layout `null`). Los componentes personalizados extienden clases de Swing correctamente con herencia. |
-| **Evento funcional** | 25 | El botón "Mostrar Información" funciona correctamente: valida campos vacíos, valida edad numérica y muestra la información en un `JOptionPane`. El botón "Limpiar" vacía todos los campos. |
-| **Desafío 1** — Agregar campo Email | 5 | El campo de email está agregado, validado y mostrado en el diálogo de salida. |
-| **Desafío 2** — Cambiar colores del degradado | 5 | El degradado usa nuevos colores legibles con un comentario justificativo. |
-| **Desafío 3** — Contador de envíos | 7 | La etiqueta del contador se actualiza correctamente solo en envíos exitosos. |
-| **Desafío 4** — Dropdown de carrera | 8 | `JComboBox` reemplaza el campo de texto, funciona con la validación, salida y limpieza. |
-| **Total** | **100** | |
+| Criterio                                      | Puntos  | Descripción                                                                                                                                                                                                                   |
+| --------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Creación correcta de la interfaz**          | 30      | La ventana se muestra correctamente con todos los componentes requeridos: 4 etiquetas, 4 campos de entrada, título, fondo con degradado y jerarquía de paneles bien estructurada. La ventana se cierra correctamente.         |
+| **Uso adecuado de componentes**               | 20      | Uso correcto de `JLabel`, `JTextField`, `JButton`, `JPanel`. Los componentes están organizados con un Layout Manager (no layout `null`). Los componentes personalizados extienden clases de Swing correctamente con herencia. |
+| **Evento funcional**                          | 25      | El botón "Mostrar Información" funciona correctamente: valida campos vacíos, valida edad numérica y muestra la información en un `JOptionPane`. El botón "Limpiar" vacía todos los campos.                                    |
+| **Desafío 1** — Agregar campo Email           | 5       | El campo de email está agregado, validado y mostrado en el diálogo de salida.                                                                                                                                                 |
+| **Desafío 2** — Cambiar colores del degradado | 5       | El degradado usa nuevos colores legibles con un comentario justificativo.                                                                                                                                                     |
+| **Desafío 3** — Contador de envíos            | 7       | La etiqueta del contador se actualiza correctamente solo en envíos exitosos.                                                                                                                                                  |
+| **Desafío 4** — Dropdown de carrera           | 8       | `JComboBox` reemplaza el campo de texto, funciona con la validación, salida y limpieza.                                                                                                                                       |
+| **Total**                                     | **100** |                                                                                                                                                                                                                               |

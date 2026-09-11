@@ -1,13 +1,24 @@
 ---
 title: "Práctica 9: Swing - Parte 2"
 description: "En esta práctica analizaremos código existente, identificaremos patrones de diseño, refactorizaremos y aplicaremos técnicas de programación funcional, incluyendo el uso de Streams y method references. El objetivo es comprender mejor el patrón Strategy, el patron Observer, la programación orientada a objetos y las herramientas modernas de Java. Lo que estaremos construyendo es un detector básico de emociones."
-tags: ["POO", "Herencia", "Polimorfismo", "Interfaces", "Clases Abstractas", "Programación Funcional", "Colecciones", "Streams", "Patrón Strategy"]
+tags:
+  [
+    "POO",
+    "Herencia",
+    "Polimorfismo",
+    "Interfaces",
+    "Clases Abstractas",
+    "Programación Funcional",
+    "Colecciones",
+    "Streams",
+    "Patrón Strategy",
+  ]
 ---
 
 # Práctica de Laboratorio: Detector Básico de Emociones
 
 **Materia:** SIS-211  
-**Tema:** Patrón Strategy, Interfaces, Streams y Clasificación Heurística  
+**Tema:** Patrón Strategy, Interfaces, Streams y Clasificación Heurística
 
 ---
 
@@ -76,7 +87,7 @@ En esta práctica construiremos un **Detector Básico de Emociones** — una apl
 
 Aunque parezca simple, este proyecto introduce conceptos fundamentales de **Inteligencia Artificial** y **arquitectura de software** que se usan en sistemas del mundo real:
 
-- Los asistentes virtuales (Siri, Alexa, ChatGPT) analizan texto para detectar el *sentimiento* del usuario.
+- Los asistentes virtuales (Siri, Alexa, ChatGPT) analizan texto para detectar el _sentimiento_ del usuario.
 - Las redes sociales clasifican comentarios como positivos, negativos o neutros.
 - Los sistemas de atención al cliente detectan enojo o frustración para priorizar tickets.
 
@@ -96,21 +107,22 @@ Antes de empezar a programar, comprendamos los conceptos clave que usaremos a lo
 
 ### ¿Qué es el Procesamiento de Lenguaje Natural (NLP)?
 
-El **Procesamiento de Lenguaje Natural** (*Natural Language Processing* o NLP) es una rama de la Inteligencia Artificial que se enfoca en la interacción entre computadoras y el lenguaje humano. Su objetivo es que las máquinas puedan "entender", interpretar y generar texto.
+El **Procesamiento de Lenguaje Natural** (_Natural Language Processing_ o NLP) es una rama de la Inteligencia Artificial que se enfoca en la interacción entre computadoras y el lenguaje humano. Su objetivo es que las máquinas puedan "entender", interpretar y generar texto.
 
 Es tal como lo hace ChatGPT: recibe texto, lo analiza para extraer significado, y genera una respuesta coherente. En nuestro proyecto, aplicamos NLP de forma muy básica: buscamos palabras clave en el texto para inferir la emoción.
 
 **Algunos usos comunes de NLP:**
 
-| Aplicación | Ejemplo |
-|------------|---------|
+| Aplicación              | Ejemplo                                                   |
+| ----------------------- | --------------------------------------------------------- |
 | Análisis de sentimiento | Detectar si una reseña de producto es positiva o negativa |
-| Chatbots | Comprender preguntas del usuario y responder |
-| Traducción automática | Google Translate |
-| Corrector ortográfico | Sugerencias de escritura en el teclado del celular |
-| Búsqueda web | Entender qué busca el usuario cuando escribe una consulta |
+| Chatbots                | Comprender preguntas del usuario y responder              |
+| Traducción automática   | Google Translate                                          |
+| Corrector ortográfico   | Sugerencias de escritura en el teclado del celular        |
+| Búsqueda web            | Entender qué busca el usuario cuando escribe una consulta |
 
 En nuestro proyecto aplicamos NLP de forma muy básica:
+
 1. **Normalización:** Convertimos el texto a minúsculas (`.toLowerCase()`) para que "FELIZ", "Feliz" y "feliz" sean tratados igual.
 2. **Búsqueda de patrones léxicos:** Buscamos si ciertas palabras clave aparecen en el texto.
 
@@ -123,6 +135,7 @@ En nuestro proyecto aplicamos NLP de forma muy básica:
 **Clasificar** significa asignar una **categoría** (clase) a un dato de entrada según ciertas reglas o patrones aprendidos.
 
 En nuestro caso:
+
 - **Dato de entrada:** Un texto escrito por el usuario
 - **Categorías posibles:** Joy (Alegría), Sadness (Tristeza), Neutral
 - **Regla de clasificación:** Contar palabras clave de cada emoción y asignar la que tenga más coincidencias
@@ -138,16 +151,19 @@ En nuestro caso:
 Una **heurística** es una regla práctica o "atajo" que nos permite llegar a una solución razonable sin necesidad de un análisis exhaustivo. No garantiza la respuesta perfecta, pero funciona bien en la mayoría de los casos.
 
 En nuestro detector, las heurísticas son:
-- "Si el texto contiene las palabras *happy*, *joy* o *delighted*, probablemente expresa **alegría**."
-- "Si contiene *sad*, *depressed* o *unhappy*, probablemente expresa **tristeza**."
+
+- "Si el texto contiene las palabras _happy_, _joy_ o _delighted_, probablemente expresa **alegría**."
+- "Si contiene _sad_, _depressed_ o _unhappy_, probablemente expresa **tristeza**."
 - "Si no contiene ninguna palabra clave, es **neutral**."
 
 **Ventajas de las heurísticas:**
+
 - Son fáciles de entender e implementar
 - No requieren datos de entrenamiento (a diferencia del machine learning)
 - Son rápidas de ejecutar
 
 **Limitaciones:**
+
 - No capturan contexto ("No estoy feliz" contiene "feliz" pero expresa tristeza)
 - Dependen de un diccionario predefinido (si falta una palabra, no se detecta)
 - No entienden ironía ni sarcasmo
@@ -156,7 +172,7 @@ En nuestro detector, las heurísticas son:
 
 ### ¿Qué es una Interfaz en Java?
 
-Una **interfaz** en Java es un **contrato** que define qué métodos debe tener una clase, sin especificar *cómo* los implementa. Es como un plano o acuerdo: "cualquier clase que firme este contrato debe proveer estos métodos".
+Una **interfaz** en Java es un **contrato** que define qué métodos debe tener una clase, sin especificar _cómo_ los implementa. Es como un plano o acuerdo: "cualquier clase que firme este contrato debe proveer estos métodos".
 
 ```java
 // Contrato: todo detector de emociones DEBE tener un método detectEmotion
@@ -167,9 +183,9 @@ public interface IEmotionDetector {
 
 **¿Por qué usar interfaces?**
 
-1. **Desacoplamiento:** El código que usa un `IEmotionDetector` no necesita saber *qué clase concreta* es. Solo sabe que tiene el método `detectEmotion()`.
+1. **Desacoplamiento:** El código que usa un `IEmotionDetector` no necesita saber _qué clase concreta_ es. Solo sabe que tiene el método `detectEmotion()`.
 2. **Extensibilidad:** Puedes crear múltiples implementaciones (un detector simple, uno avanzado con IA, uno para otro idioma) sin cambiar el código que las consume.
-3. **Testabilidad:** Puedes crear implementaciones "falsas" (*mocks*) para pruebas.
+3. **Testabilidad:** Puedes crear implementaciones "falsas" (_mocks_) para pruebas.
 
 ```java
 // Cualquier clase que implemente esta interfaz DEBE tener el método analyzeEmotion:
@@ -207,6 +223,7 @@ Imagina que tu jefe te pide agregar detección de "enojo". Con el patrón Strate
 3. **¡Listo!** No modificaste `EmotionDetectorEngine` ni ninguna otra clase existente.
 
 Esto cumple con el **Principio Abierto/Cerrado (OCP):**
+
 - **Abierto** a extensión: puedes agregar nuevas emociones fácilmente
 - **Cerrado** a modificación: no necesitas cambiar código existente
 
@@ -216,11 +233,12 @@ Esto cumple con el **Principio Abierto/Cerrado (OCP):**
 
 ### ¿Qué es el Patrón de Diseño Observer?
 
-El **patrón Observer** (Observador) es un patrón de diseño de comportamiento que define una relación de dependencia de uno a muchos entre objetos, de forma que cuando un objeto (el **Sujeto** o *Subject*) cambia su estado, todos sus dependientes (los **Observadores** o *Observers*) son notificados y actualizados automáticamente.
+El **patrón Observer** (Observador) es un patrón de diseño de comportamiento que define una relación de dependencia de uno a muchos entre objetos, de forma que cuando un objeto (el **Sujeto** o _Subject_) cambia su estado, todos sus dependientes (los **Observadores** o _Observers_) son notificados y actualizados automáticamente.
 
 Este patrón permite el **desacoplamiento total**: el sujeto que emite el evento no sabe quién lo está escuchando ni cómo reaccionará, solo se encarga de avisar.
 
 **Componentes en nuestro proyecto:**
+
 - **Sujeto/Publisher (`ChangeEmotionEventManager`):** Mantiene el registro de los escuchas y les distribuye las notificaciones.
 - **Interfaz Observer (`ChangeEmotionEventListener`):** Define el contrato que firman los observadores (`onEmotionChanged`).
 - **Observador concreto (`Window`):** Implementa la interfaz y actualiza la UI cuando recibe una notificación del motor.
@@ -234,12 +252,13 @@ Este patrón permite el **desacoplamiento total**: el sujeto que emite el evento
 En Java Swing, no se posicionan los componentes usando coordenadas fijas (píxeles), ya que las ventanas pueden cambiar de tamaño. En su lugar, se utilizan **Layout Managers** (administradores de diseño) que distribuyen los elementos de forma elástica y adaptativa.
 
 El **`BorderLayout`** divide el contenedor en 5 regiones geográficas:
+
 - **`NORTH` (Norte):** Parte superior. Usualmente para títulos o barras de herramientas.
 - **`SOUTH` (Sur):** Parte inferior. Usualmente para pies de página o barras de estado.
 - **`EAST` (Este) y `WEST` (Oeste):** Laterales.
 - **`CENTER` (Centro):** Ocupa todo el espacio restante. Es el área principal de trabajo.
 
-**Regla de oro de BorderLayout:** Cada región de un `BorderLayout` puede contener **únicamente un componente**. Si agregas más de un componente a la misma posición (por ejemplo, dos elementos en `BorderLayout.CENTER`), el último reemplazará al anterior, provocando que no se muestren o se superpongan incorrectamente. 
+**Regla de oro de BorderLayout:** Cada región de un `BorderLayout` puede contener **únicamente un componente**. Si agregas más de un componente a la misma posición (por ejemplo, dos elementos en `BorderLayout.CENTER`), el último reemplazará al anterior, provocando que no se muestren o se superpongan incorrectamente.
 
 Para colocar múltiples componentes en una sola región, debes agruparlos dentro de un sub-panel (`Panel` o `JPanel`) intermedio que administre su propio diseño.
 
@@ -251,15 +270,15 @@ Los **Streams** permiten procesar colecciones de datos de forma funcional, sin b
 
 **Operaciones que usaremos:**
 
-| Operación | ¿Qué hace? | Ejemplo |
-|-----------|-------------|---------|
-| `Stream.of(array)` | Crea un stream a partir de un array | `Stream.of(keywords)` |
-| `.filter(predicate)` | Conserva solo elementos que cumplen la condición | `.filter(lowerText::contains)` |
-| `.count()` | Cuenta cuántos elementos pasaron el filtro | `.count()` |
-| `.map(function)` | Transforma cada elemento | `.map(s -> s.analyzeEmotion(text))` |
-| `.max(comparator)` | Encuentra el elemento máximo según un criterio | `.max(comparing score)` |
-| `.orElse(default)` | Provee un valor por defecto si el resultado está vacío | `.orElse(new Emotion("Neutral", 0))` |
-| `.toList()` | Recopila los resultados en una lista | `.toList()` |
+| Operación            | ¿Qué hace?                                             | Ejemplo                              |
+| -------------------- | ------------------------------------------------------ | ------------------------------------ |
+| `Stream.of(array)`   | Crea un stream a partir de un array                    | `Stream.of(keywords)`                |
+| `.filter(predicate)` | Conserva solo elementos que cumplen la condición       | `.filter(lowerText::contains)`       |
+| `.count()`           | Cuenta cuántos elementos pasaron el filtro             | `.count()`                           |
+| `.map(function)`     | Transforma cada elemento                               | `.map(s -> s.analyzeEmotion(text))`  |
+| `.max(comparator)`   | Encuentra el elemento máximo según un criterio         | `.max(comparing score)`              |
+| `.orElse(default)`   | Provee un valor por defecto si el resultado está vacío | `.orElse(new Emotion("Neutral", 0))` |
+| `.toList()`          | Recopila los resultados en una lista                   | `.toList()`                          |
 
 **Ejemplo de nuestro proyecto — contar palabras clave en un texto:**
 
@@ -348,6 +367,7 @@ BasicEmotionDetector/
 ```
 
 > **Organización de paquetes:**
+>
 > - **`domain`** contiene el dominio del problema: modelos, interfaces y estrategias independientes de la presentación.
 > - **`core`** contiene la lógica operativa central y la implementación del patrón Observer.
 > - **`components`** contiene clases Swing personalizadas reutilizables para garantizar una estética premium.
@@ -432,6 +452,7 @@ public interface IEmotionStrategy {
 ```
 
 **Solo tiene un método:**
+
 - **`analyzeEmotion(String text)`** — Recibe un texto, lo analiza buscando palabras clave de una emoción específica, y retorna un objeto `Emotion` con el nombre de esa emoción y cuántas palabras clave encontró.
 
 > **Principio de responsabilidad única:** Cada estrategia solo se preocupa por **una emoción**. `JoyStrategy` solo busca alegría, `SadnessStrategy` solo busca tristeza. Esto hace que cada clase sea simple, fácil de entender y fácil de probar.
@@ -455,16 +476,17 @@ public interface IEmotionDetector {
 ```
 
 **Solo tiene un método:**
+
 - **`detectEmotion(String text)`** — Recibe un texto, ejecuta todas las estrategias disponibles, y retorna la `Emotion` con el mayor puntaje.
 
 > **¿Cuál es la diferencia entre `IEmotionStrategy` y `IEmotionDetector`?**
 >
-> | | `IEmotionStrategy` | `IEmotionDetector` |
-> |---|---|---|
-> | **Responsabilidad** | Analiza **una** emoción | Coordina **todas** las estrategias |
-> | **Cantidad** | Múltiples (una por emoción) | Una sola instancia |
-> | **Retorna** | El score de **su** emoción | La emoción **ganadora** |
-> | **Ejemplo** | `JoyStrategy`, `SadnessStrategy` | `EmotionDetectorEngine` |
+> |                     | `IEmotionStrategy`               | `IEmotionDetector`                 |
+> | ------------------- | -------------------------------- | ---------------------------------- |
+> | **Responsabilidad** | Analiza **una** emoción          | Coordina **todas** las estrategias |
+> | **Cantidad**        | Múltiples (una por emoción)      | Una sola instancia                 |
+> | **Retorna**         | El score de **su** emoción       | La emoción **ganadora**            |
+> | **Ejemplo**         | `JoyStrategy`, `SadnessStrategy` | `EmotionDetectorEngine`            |
 
 ---
 
@@ -509,18 +531,23 @@ public class JoyStrategy implements IEmotionStrategy {
 **Desglosemos paso a paso:**
 
 **1. Declaración de palabras clave:**
+
 ```java
 private final String[] joyKeywords = { "happy", "joy", "delighted", ... };
 ```
+
 Un array con las palabras que asociamos con alegría. `final` significa que esta referencia no puede cambiar después de la inicialización.
 
 **2. Normalización del texto:**
+
 ```java
 String lowerText = text.toLowerCase();
 ```
+
 Convertimos todo el texto a minúsculas. Así, "HAPPY", "Happy" y "happy" se tratan igual. Esta es la operación de NLP más básica: **normalización**.
 
 **3. Pipeline funcional de conteo:**
+
 ```java
 score = (int) Stream.of(joyKeywords)      // 1. Crear stream del array de keywords
                .filter(lowerText::contains) // 2. Quedarse solo con las que están en el texto
@@ -550,9 +577,11 @@ Resultado: new Emotion("Joy", 2)
 ```
 
 **4. Retornar el resultado:**
+
 ```java
 return new Emotion("Joy", score);
 ```
+
 Siempre retorna una emoción con nombre `"Joy"` — la diferencia está en el `score`. Si el texto no contiene ninguna palabra clave de alegría, el score será `0`.
 
 > **`(int)` — ¿Por qué el cast?**  
@@ -602,6 +631,7 @@ public class SadnessStrategy implements IEmotionStrategy {
 
 > **¿Notas el patrón?**  
 > Ambas estrategias hacen exactamente lo mismo con diferentes datos:
+>
 > 1. Definir un array de palabras clave
 > 2. Normalizar el texto con `toLowerCase()`
 > 3. Contar coincidencias con `Stream.of(...).filter(...).count()`
@@ -697,6 +727,7 @@ Implementaremos la infraestructura de eventos para el patrón Observer, una util
 ---
 
 ### Paso 5.1: Crear la utilidad `Pair`
+
 📄 **Archivo:** `src/core/utils/Pair.java`
 
 Clase genérica para almacenar dos objetos relacionados (como un par de colores de inicio y fin para el degradado).
@@ -723,6 +754,7 @@ public class Pair<K, V> {
 ---
 
 ### Paso 5.2: Crear la interfaz del Observer
+
 📄 **Archivo:** `src/domain/listener/ChangeEmotionEventListener.java`
 
 La interfaz que define qué método debe implementar cualquier observador que desee reaccionar a cambios de emociones detectados.
@@ -742,6 +774,7 @@ public interface ChangeEmotionEventListener {
 ---
 
 ### Paso 5.3: Crear el gestor de eventos (`ChangeEmotionEventManager`)
+
 📄 **Archivo:** `src/core/ChangeEmotionEventManager.java`
 
 Esta clase mantiene el listado de observadores registrados (`listeners`) y se encarga de iterar sobre ellos y notificarlos cuando se dispara un evento.
@@ -780,10 +813,13 @@ public class ChangeEmotionEventManager {
 ---
 
 ### Paso 5.4: Crear los componentes estilizados personalizados
+
 Para dar a la interfaz de usuario una apariencia premium moderna, crearemos subclases de Swing con valores de diseño predeterminados coherentes.
 
 #### 1. Botón Personalizado (`Button`)
+
 📄 **Archivo:** `src/components/Button.java`
+
 ```java
 package components;
 
@@ -824,7 +860,9 @@ public class Button extends JButton {
 ```
 
 #### 2. Etiqueta Personalizada (`Label`)
+
 📄 **Archivo:** `src/components/Label.java`
+
 ```java
 package components;
 
@@ -851,7 +889,9 @@ public class Label extends JLabel {
 ```
 
 #### 3. Panel con Degradado Dinámico (`Panel`)
+
 📄 **Archivo:** `src/components/Panel.java`
+
 ```java
 package components;
 
@@ -913,6 +953,7 @@ public class Panel extends JPanel {
 ## Parte 6 — Ventana Principal de la Aplicación
 
 ### Paso 6.1: Crear la interfaz gráfica (`Window`)
+
 📄 **Archivo:** `src/Window.java`
 
 La ventana principal es un observador registrado del motor. Implementa `ChangeEmotionEventListener` para reaccionar al evento de cambio de emoción y aplica `BorderLayout` de forma estricta, usando sub-paneles para evitar colisiones visuales de los componentes.
@@ -1153,9 +1194,10 @@ public class Window extends JFrame implements ChangeEmotionEventListener {
 ## Parte 7 — Punto de Entrada Gráfico
 
 ### Paso 7.1: Crear la clase `App`
+
 📄 **Archivo:** `src/App.java`
 
-Lanza la interfaz gráfica en el hilo de despacho de eventos de Swing (*Event Dispatch Thread* o EDT) para garantizar la seguridad de hilos (thread-safety).
+Lanza la interfaz gráfica en el hilo de despacho de eventos de Swing (_Event Dispatch Thread_ o EDT) para garantizar la seguridad de hilos (thread-safety).
 
 ```java
 import javax.swing.SwingUtilities;
@@ -1175,12 +1217,14 @@ public class App {
 ## Parte 8 — Compilación y Ejecución de la UI
 
 ### Compilar desde la terminal
+
 ```bash
 # Compilar todo el código organizado en paquetes
 javac -d bin src/core/utils/*.java src/domain/model/*.java src/domain/interfaces/*.java src/domain/listener/*.java src/domain/strategies/*.java src/core/*.java src/components/*.java src/Window.java src/App.java
 ```
 
 ### Ejecutar la aplicación
+
 ```bash
 java -cp bin App
 ```
@@ -1194,11 +1238,13 @@ Los siguientes desafíos aplican al proyecto con interfaz gráfica Swing y el pa
 ---
 
 ### Desafío 1: Agregar la emoción Enojo (`AngerStrategy`) y su color en la UI
+
 **Dificultad:** ⭐ Fácil | **Puntos:** 5
 
 Crea la estrategia para la emoción de enojo y haz que el degradado cambie a un rojo intenso al detectarse.
 
 **Requisitos:**
+
 1. Crea `src/domain/strategies/AngerStrategy.java` que implemente `IEmotionStrategy` con palabras como `"angry"`, `"furious"`, `"rage"`, `"enojado"`, `"furioso"`, `"molesto"`.
 2. Agrégala a la lista de estrategias de `Window.java`.
 3. El motor `EmotionDetectorEngine` ya tiene definido el mapeo de color para `"Anger"` (`#8B0000` y `#FF4444`). Asegúrate de que las palabras clave de la estrategia coincidan exactamente con este nombre.
@@ -1207,11 +1253,13 @@ Crea la estrategia para la emoción de enojo y haz que el degradado cambie a un 
 ---
 
 ### Desafío 2: Porcentaje de confianza dinámico en el UI
+
 **Dificultad:** ⭐⭐ Intermedio | **Puntos:** 7
 
 Muestra qué tan seguro está el detector calculando el porcentaje de palabras coincidentes respecto al diccionario disponible de la emoción.
 
 **Requisitos:**
+
 1. Modifica la clase `Emotion` para guardar un campo `confidence` (de tipo `double`) e inicialízalo en el constructor.
 2. Modifica cada estrategia (`JoyStrategy`, `SadnessStrategy`, etc.) para calcular la confianza:
    `double confidence = ((double) score / totalDePalabrasClaveEnDiccionario) * 100;`
@@ -1220,11 +1268,13 @@ Muestra qué tan seguro está el detector calculando el porcentaje de palabras c
 ---
 
 ### Desafío 3: Historial de detecciones en la interfaz gráfica
+
 **Dificultad:** ⭐⭐⭐ Difícil | **Puntos:** 7
 
 Crea un historial visual que guarde un registro de las últimas detecciones del usuario dentro de la misma ventana de Swing.
 
 **Requisitos:**
+
 1. Crea una sección pequeña o panel lateral/inferior usando `BorderLayout.EAST` o `BorderLayout.SOUTH` que represente un "Historial".
 2. Cada vez que el motor notifique una nueva emoción (`onEmotionChanged`), agrega una etiqueta con el nombre de la emoción y el puntaje a este panel.
 3. Asegúrate de limitar el historial para que solo muestre las últimas 3 o 4 emociones para que no sature la ventana de la aplicación.
@@ -1233,11 +1283,13 @@ Crea un historial visual que guarde un registro de las últimas detecciones del 
 ---
 
 ### Desafío 4: Animación de parpadeo suave al resetear (Clear)
+
 **Dificultad:** ⭐⭐ Intermedio | **Puntos:** 6
 
 Modifica la acción de limpieza para realizar un efecto visual interactivo.
 
 **Requisitos:**
+
 1. Al hacer clic en "Clear", el fondo no debe cambiar bruscamente. Implementa un pequeño `javax.swing.Timer` que cambie temporalmente el fondo a un color grisáceo muy claro y regrese gradualmente (durante unos 300 ms) al degradado neutral.
 2. Esto introduce a los estudiantes al concepto de programación asíncrona mediante temporizadores en la cola de eventos de Swing.
 
@@ -1245,13 +1297,13 @@ Modifica la acción de limpieza para realizar un efecto visual interactivo.
 
 ## Criterios de Evaluación
 
-| Criterio | Puntos | Descripción |
-|---|---|---|
-| **Creación correcta de la interfaz y layouts** | 30 | Las interfaces `IEmotionStrategy`, `IEmotionDetector` y `ChangeEmotionEventListener` están correctamente creadas. El diseño visual en `Window.java` implementa `BorderLayout` sin superposiciones y con sub-paneles bien estructurados. |
-| **Uso adecuado de componentes y diseño Swing** | 20 | Los componentes heredan correctamente de clases nativas de Swing en el paquete `components`. Se aplica encapsulamiento y el look and feel Nimbus correctamente. |
-| **Arquitectura de patrones (Strategy y Observer)** | 25 | El motor ejecuta de forma polimórfica las estrategias. El motor es independiente del sistema gráfico y notifica los cambios mediante eventos. El registro y eliminación de observadores funciona correctamente. |
-| **Desafío 1** — AngerStrategy | 5 | Nueva estrategia implementada y mapeada visualmente en tonos rojos en la UI al ejecutarse. |
-| **Desafío 2** — Confianza en el UI | 7 | Cálculo preciso del porcentaje de palabras clave y renderizado con formato numérico en la UI. |
-| **Desafío 3** — Historial en UI | 7 | Lista dinámica de las últimas detecciones mostrada de manera integrada dentro del diseño elástico. |
-| **Desafío 4** — Animación con Timer | 6 | Implementación de transición o efecto visual interactivo mediante Swing Timer al resetear. |
-| **Total** | **100** | |
+| Criterio                                           | Puntos  | Descripción                                                                                                                                                                                                                             |
+| -------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Creación correcta de la interfaz y layouts**     | 30      | Las interfaces `IEmotionStrategy`, `IEmotionDetector` y `ChangeEmotionEventListener` están correctamente creadas. El diseño visual en `Window.java` implementa `BorderLayout` sin superposiciones y con sub-paneles bien estructurados. |
+| **Uso adecuado de componentes y diseño Swing**     | 20      | Los componentes heredan correctamente de clases nativas de Swing en el paquete `components`. Se aplica encapsulamiento y el look and feel Nimbus correctamente.                                                                         |
+| **Arquitectura de patrones (Strategy y Observer)** | 25      | El motor ejecuta de forma polimórfica las estrategias. El motor es independiente del sistema gráfico y notifica los cambios mediante eventos. El registro y eliminación de observadores funciona correctamente.                         |
+| **Desafío 1** — AngerStrategy                      | 5       | Nueva estrategia implementada y mapeada visualmente en tonos rojos en la UI al ejecutarse.                                                                                                                                              |
+| **Desafío 2** — Confianza en el UI                 | 7       | Cálculo preciso del porcentaje de palabras clave y renderizado con formato numérico en la UI.                                                                                                                                           |
+| **Desafío 3** — Historial en UI                    | 7       | Lista dinámica de las últimas detecciones mostrada de manera integrada dentro del diseño elástico.                                                                                                                                      |
+| **Desafío 4** — Animación con Timer                | 6       | Implementación de transición o efecto visual interactivo mediante Swing Timer al resetear.                                                                                                                                              |
+| **Total**                                          | **100** |                                                                                                                                                                                                                                         |

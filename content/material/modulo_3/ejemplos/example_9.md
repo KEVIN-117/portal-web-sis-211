@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 9"
 description: "Análisis de datos usando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -22,19 +15,19 @@ Una startup de Inteligencia Artificial recibe diariamente archivos `.csv` con in
 
 Antes de entrenar modelos de Machine Learning, el sistema debe:
 
-* leer archivos,
-* limpiar datos,
-* filtrar registros inválidos,
-* transformar información,
-* calcular estadísticas,
-* generar rankings.
+- leer archivos,
+- limpiar datos,
+- filtrar registros inválidos,
+- transformar información,
+- calcular estadísticas,
+- generar rankings.
 
 Tu equipo desarrollará un mini sistema ETL usando:
 
-* Java NIO,
-* Streams,
-* programación funcional,
-* procesamiento de archivos reales.
+- Java NIO,
+- Streams,
+- programación funcional,
+- procesamiento de archivos reales.
 
 Este laboratorio es extremadamente importante porque conecta Java Streams con procesamiento de datos del mundo real.
 
@@ -44,20 +37,21 @@ Este laboratorio es extremadamente importante porque conecta Java Streams con pr
 
 Al finalizar este laboratorio, los estudiantes podrán:
 
-* Leer archivos usando `Files.lines()`.
-* Procesar datasets reales.
-* Convertir texto → objetos.
-* Construir pipelines funcionales.
-* Aplicar:
+- Leer archivos usando `Files.lines()`.
+- Procesar datasets reales.
+- Convertir texto → objetos.
+- Construir pipelines funcionales.
+- Aplicar:
 
-  * `filter`
-  * `map`
-  * `sorted`
-  * `limit`
-  * `collect`
-  * `groupingBy`
-  * `average`
-* Entender cómo funcionan sistemas ETL reales.
+  - `filter`
+  - `map`
+  - `sorted`
+  - `limit`
+  - `collect`
+  - `groupingBy`
+  - `average`
+
+- Entender cómo funcionan sistemas ETL reales.
 
 ---
 
@@ -568,14 +562,14 @@ Construir una pipeline estilo Spark.
 
 El pipeline debe:
 
-* leer archivo,
-* ignorar líneas vacías,
-* convertir a objetos,
-* filtrar aprobados,
-* ordenar descendentemente,
-* obtener Top 5,
-* convertir nombres a MAYÚSCULAS,
-* exportar resultado.
+- leer archivo,
+- ignorar líneas vacías,
+- convertir a objetos,
+- filtrar aprobados,
+- ordenar descendentemente,
+- obtener Top 5,
+- convertir nombres a MAYÚSCULAS,
+- exportar resultado.
 
 ---
 
@@ -619,17 +613,17 @@ output
 
 # Conceptos avanzados aprendidos
 
-* `Files.lines()`
-* Java NIO
-* procesamiento de archivos
-* ETL
-* Streams reales
-* parsing
-* pipelines funcionales
-* datasets reales
-* transformación de texto → objetos
-* analytics sobre archivos
-* simulación de preprocessing ML
+- `Files.lines()`
+- Java NIO
+- procesamiento de archivos
+- ETL
+- Streams reales
+- parsing
+- pipelines funcionales
+- datasets reales
+- transformación de texto → objetos
+- analytics sobre archivos
+- simulación de preprocessing ML
 
 ---
 
@@ -637,13 +631,13 @@ output
 
 Este laboratorio se parece muchísimo a:
 
-* Spark DataFrames,
-* Pandas pipelines,
-* ETL empresariales,
-* procesamiento de logs,
-* análisis CSV,
-* pipelines de Machine Learning,
-* sistemas de analytics modernos.
+- Spark DataFrames,
+- Pandas pipelines,
+- ETL empresariales,
+- procesamiento de logs,
+- análisis CSV,
+- pipelines de Machine Learning,
+- sistemas de analytics modernos.
 
 ---
 
@@ -669,9 +663,9 @@ Un mini motor ETL estilo Big Data usando únicamente Java moderno.
 
 Y habrán entendido las bases conceptuales de:
 
-* Spark,
-* ETL,
-* procesamiento distribuido,
-* pipelines ML,
-* analytics modernas,
-* procesamiento funcional de datasets.
+- Spark,
+- ETL,
+- procesamiento distribuido,
+- pipelines ML,
+- analytics modernas,
+- procesamiento funcional de datasets.

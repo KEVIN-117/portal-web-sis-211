@@ -1,14 +1,7 @@
 ---
 title: "Ejemplo 5"
 description: "Análisis de películas y tendencias de visualización usando Programación Funcional con Java Streams."
-tags: [
-    "java",
-    "streams",
-    "poo",
-    "java-17",
-    "analisis-datos",
-    "machine-learning"
-]
+tags: ["java", "streams", "poo", "java-17", "analisis-datos", "machine-learning"]
 draft: false
 ---
 
@@ -22,17 +15,17 @@ Una plataforma de streaming similar a Netflix está desarrollando un módulo de 
 
 El departamento de analítica necesita procesar información relacionada con:
 
-* películas,
-* ratings,
-* géneros,
-* cantidad de vistas.
+- películas,
+- ratings,
+- géneros,
+- cantidad de vistas.
 
 El objetivo es construir una mini herramienta capaz de:
 
-* detectar películas populares,
-* generar rankings,
-* calcular estadísticas,
-* analizar tendencias de visualización.
+- detectar películas populares,
+- generar rankings,
+- calcular estadísticas,
+- analizar tendencias de visualización.
 
 Este laboratorio se enfoca en usar Streams para simular sistemas modernos de recomendación y análisis de plataformas digitales.
 
@@ -42,17 +35,18 @@ Este laboratorio se enfoca en usar Streams para simular sistemas modernos de rec
 
 Al finalizar el laboratorio, el estudiante será capaz de:
 
-* Aplicar Streams sobre datasets multimedia.
-* Utilizar:
+- Aplicar Streams sobre datasets multimedia.
+- Utilizar:
 
-  * `filter`
-  * `map`
-  * `distinct`
-  * `sorted`
-  * `max`
-  * `average`
-* Comprender pipelines de análisis de contenido.
-* Relacionar Streams con motores de recomendación.
+  - `filter`
+  - `map`
+  - `distinct`
+  - `sorted`
+  - `max`
+  - `average`
+
+- Comprender pipelines de análisis de contenido.
+- Relacionar Streams con motores de recomendación.
 
 ---
 
@@ -60,10 +54,10 @@ Al finalizar el laboratorio, el estudiante será capaz de:
 
 Cada película contiene:
 
-* título,
-* género,
-* rating,
-* cantidad de vistas.
+- título,
+- género,
+- rating,
+- cantidad de vistas.
 
 La plataforma desea analizar tendencias y comportamiento de usuarios.
 
@@ -466,9 +460,9 @@ La plataforma quiere recomendar películas premium.
 
 Mostrar únicamente películas:
 
-* con rating mayor a 8,
-* ordenadas por rating,
-* limitadas al Top 3.
+- con rating mayor a 8,
+- ordenadas por rating,
+- limitadas al Top 3.
 
 ---
 
@@ -541,9 +535,9 @@ Obtener lista únicamente de títulos.
 
 Mostrar películas:
 
-* con más de 1,500,000 vistas,
-* rating mayor a 8,
-* ordenadas por vistas.
+- con más de 1,500,000 vistas,
+- rating mayor a 8,
+- ordenadas por vistas.
 
 ---
 
@@ -624,10 +618,10 @@ La plataforma quiere crear un “Top Trending”.
 
 Mostrar películas:
 
-* con rating mayor a 8,
-* más de 1,600,000 vistas,
-* ordenadas por vistas descendentes,
-* mostrar únicamente títulos.
+- con rating mayor a 8,
+- más de 1,600,000 vistas,
+- ordenadas por vistas descendentes,
+- mostrar únicamente títulos.
 
 ---
 
@@ -643,16 +637,16 @@ Joker
 
 # Conceptos aprendidos
 
-* Streams
-* filter
-* map
-* distinct
-* sorted
-* limit
-* max
-* average
-* groupingBy
-* Comparator
-* pipelines de recomendación
-* análisis de contenido multimedia
-* simulación de analytics tipo Netflix
+- Streams
+- filter
+- map
+- distinct
+- sorted
+- limit
+- max
+- average
+- groupingBy
+- Comparator
+- pipelines de recomendación
+- análisis de contenido multimedia
+- simulación de analytics tipo Netflix

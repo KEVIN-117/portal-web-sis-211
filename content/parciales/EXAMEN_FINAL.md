@@ -1,6 +1,7 @@
 # Examen final de Programación II
 
 ### Pregunta 1
+
 **3 / 3 pts**  
 ¿Cuál de las siguientes clases pertenece al paquete `java.lang` y puede utilizarse sin importarla explícitamente?
 
@@ -16,6 +17,7 @@
 ---
 
 ### Pregunta 2
+
 ¿Qué modificador de acceso permite que un atributo sea accesible solamente dentro de la misma clase?
 
 - [ ] `public`
@@ -30,6 +32,7 @@
 ---
 
 ### Pregunta 3
+
 **0 / 3 pts**  
 Un atributo declarado con el modificador `protected` puede ser accedido principalmente desde:
 
@@ -45,6 +48,7 @@ Un atributo declarado con el modificador `protected` puede ser accedido principa
 ---
 
 ### Pregunta 4
+
 **0 / 3 pts**  
 ¿Cuál es la característica principal de un atributo declarado como `static`?
 
@@ -60,6 +64,7 @@ Un atributo declarado con el modificador `protected` puede ser accedido principa
 ---
 
 ### Pregunta 5
+
 **0 / 3 pts**  
 Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 
@@ -75,6 +80,7 @@ Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 ---
 
 ### Pregunta 6
+
 **3 / 3 pts**  
 ¿Cuál es la principal ventaja de `ArrayList` frente a un arreglo tradicional?
 
@@ -90,6 +96,7 @@ Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 ---
 
 ### Pregunta 7
+
 **3 / 3 pts**  
 ¿Qué método de `ArrayList` se utiliza para añadir un elemento al final de la lista?
 
@@ -105,6 +112,7 @@ Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 ---
 
 ### Pregunta 8
+
 **0 / 3 pts**  
 ¿Cuál es la función principal de `HashMap` en Java?
 
@@ -120,6 +128,7 @@ Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 ---
 
 ### Pregunta 9
+
 **0 / 3 pts**  
 ¿Qué ocurre si se inserta en un `HashMap` un nuevo valor utilizando una clave que ya existe?
 
@@ -135,6 +144,7 @@ Respecto a las clases `static` en Java, ¿cuál afirmación es correcta?
 ---
 
 ### Pregunta 10
+
 **0 / 3 pts**  
 En programación orientada a objetos, la abstracción consiste en:
 
@@ -150,6 +160,7 @@ En programación orientada a objetos, la abstracción consiste en:
 ---
 
 ### Pregunta 11
+
 **0 / 3 pts**  
 ¿Qué principio de programación orientada a objetos busca proteger los atributos de una clase y controlar su acceso?
 
@@ -165,6 +176,7 @@ En programación orientada a objetos, la abstracción consiste en:
 ---
 
 ### Pregunta 12
+
 **3 / 3 pts**  
 La herencia permite principalmente:
 
@@ -180,6 +192,7 @@ La herencia permite principalmente:
 ---
 
 ### Pregunta 13
+
 **3 / 3 pts**  
 El polimorfismo permite que:
 
@@ -195,6 +208,7 @@ El polimorfismo permite que:
 ---
 
 ### Pregunta 14
+
 **0 / 3 pts**  
 ¿Cuándo ocurre la sobrecarga de métodos?
 
@@ -210,6 +224,7 @@ El polimorfismo permite que:
 ---
 
 ### Pregunta 15
+
 **3 / 3 pts**  
 ¿Cuál condición es necesaria para sobrescribir correctamente un método heredado?
 
@@ -225,6 +240,7 @@ El polimorfismo permite que:
 ---
 
 ### Pregunta 16
+
 **0 / 3 pts**  
 Seleccione las afirmaciones correctas sobre las clases abstractas.
 
@@ -240,6 +256,7 @@ Seleccione las afirmaciones correctas sobre las clases abstractas.
 ---
 
 ### Pregunta 17
+
 **0 / 3 pts**  
 Seleccione las afirmaciones correctas sobre las interfaces en Java.
 
@@ -255,6 +272,7 @@ Seleccione las afirmaciones correctas sobre las interfaces en Java.
 ---
 
 ### Pregunta 18
+
 **0 / 3 pts**  
 ¿Qué caracteriza a una interfaz funcional?
 
@@ -270,6 +288,7 @@ Seleccione las afirmaciones correctas sobre las interfaces en Java.
 ---
 
 ### Pregunta 19
+
 **3 / 3 pts**  
 ¿Cuál de las siguientes expresiones puede utilizarse para representar una implementación de una interfaz funcional?
 
@@ -285,6 +304,7 @@ Seleccione las afirmaciones correctas sobre las interfaces en Java.
 ---
 
 ### Pregunta 20
+
 **0 / 3 pts**  
 Seleccione las afirmaciones correctas sobre la relación entre herencia e interfaces.
 
@@ -300,6 +320,7 @@ Seleccione las afirmaciones correctas sobre la relación entre herencia e interf
 ---
 
 ### Pregunta 21
+
 **5 / 15 pts**  
 Implemente una clase `CuentaBancaria` aplicando encapsulamiento. La clase debe tener los atributos privados titular y saldo. Incluya un `constructor`, `getters`, un método `depositar(double monto)` que solo acepte montos positivos y un método `retirar(double monto)` que solo permita retirar dinero si el monto es positivo y no supera el saldo disponible. Finalmente, cree un método `mostrarResumen()` que devuelva los datos principales de la cuenta.
 
@@ -356,6 +377,7 @@ public class CuentaBancaria {
 ---
 
 ### Pregunta 22
+
 **0 / 15 pts**  
 Diseñe una solución usando abstracción, herencia, sobrescritura y polimorfismo. Cree una clase abstracta `Empleado` con los atributos `nombre` y `salarioBase`, además de un método abstracto `calcularSalario()`. Cree las clases `Desarrollador` y `Gerente` que hereden de `Empleado`. El desarrollador debe recibir un bono fijo y el gerente una comisión porcentual sobre su salario base. En una clase principal, almacene distintos empleados en un `ArrayList<Empleado>` y recorra la lista mostrando el nombre y el salario calculado de cada uno.
 
@@ -428,6 +450,7 @@ public class Main {
 ---
 
 ### Pregunta 23
+
 **0 / 10 pts**  
 Implemente una interfaz funcional llamada `OperacionMatematica` con un único método `operar(double a, double b)`. En una clase principal, cree mediante expresiones lambda las operaciones de suma, resta y multiplicación. Guarde las operaciones en un `HashMap<String, OperacionMatematica>`, utilizando como claves "suma", "resta" y "multiplicacion". Luego solicite dos números, ejecute las tres operaciones y muestre los resultados.
 
@@ -460,7 +483,7 @@ public class MainOperaciones {
         System.out.println("Suma: " + operaciones.get("suma").operar(num1, num2));
         System.out.println("Resta: " + operaciones.get("resta").operar(num1, num2));
         System.out.println("Multiplicación: " + operaciones.get("multiplicacion").operar(num1, num2));
-        
+
         sc.close();
     }
 }
