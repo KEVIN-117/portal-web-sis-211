@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><title>Guía de Laboratorio: Evolución de un Sistema en Java con POO, Herencia y Patrones</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Portal Web SIS-211"/><meta property="og:title" content="Guía de Laboratorio: Evolución de un Sistema en Java con POO, Herencia y Patrones"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Guía de Laboratorio: Evolución de un Sistema en Java con POO, Herencia y Patrones"/><meta name="twitter:description" content="Guía práctica y pedagógica paso a paso para la evolución progresiva de un sistema académico en Java: desde clases y encapsulación hasta herencia, separación de responsabilidades (SRP), base de datos en memoria extensible (OCP) y el patrón Singleton."/><meta property="og:description" content="Guía práctica y pedagógica paso a paso para la evolución progresiva de un sistema académico en Java: desde clases y encapsulación hasta herencia, separación de responsabilidades (SRP), base de datos en memoria extensible (OCP) y el patrón Singleton."/><meta property="og:image:alt" content="Guía práctica y pedagógica paso a paso para la evolución progresiva de un sistema académico en Java: desde clases y encapsulación hasta herencia, separación de responsabilidades (SRP), base de datos en memoria extensible (OCP) y el patrón Singleton."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Guía práctica y pedagógica paso a paso para la evolución progresiva de un sistema académico en Java: desde clases y encapsulación hasta herencia, separación de responsabilidades (SRP), base de datos en memoria extensible (OCP) y el patrón Singleton."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Portal Web SIS-211</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Search</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-1668"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-1668" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../sis-211-s2/">sis 211 s2</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../sis-211-s2/ejemplos-solucion-problemas/">ejemplos solucion problemas</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Ejemplo de solución de problemas con POO e Inheritance</a></div></nav><h1 class="article-title">Guía de Laboratorio: Evolución de un Sistema en Java con POO, Herencia y Patrones</h1><p show-comma="true" class="content-meta"><time datetime="2026-09-15T02:48:16.688Z">Sep 14, 2026</time><span>17 min read</span></p><ul class="tags"><li><a href="../../tags/java" class="internal tag-link">java</a></li><li><a href="../../tags/poo" class="internal tag-link">poo</a></li><li><a href="../../tags/herencia" class="internal tag-link">herencia</a></li><li><a href="../../tags/encapsulacion" class="internal tag-link">encapsulacion</a></li><li><a href="../../tags/srp" class="internal tag-link">srp</a></li><li><a href="../../tags/ocp" class="internal tag-link">ocp</a></li><li><a href="../../tags/solid" class="internal tag-link">solid</a></li><li><a href="../../tags/singleton" class="internal tag-link">singleton</a></li><li><a href="../../tags/patrones-de-diseno" class="internal tag-link">patrones-de-diseno</a></li><li><a href="../../tags/colecciones" class="internal tag-link">colecciones</a></li><li><a href="../../tags/hashmap" class="internal tag-link">hashmap</a></li><li><a href="../../tags/estructuras-de-datos" class="internal tag-link">estructuras-de-datos</a></li><li><a href="../../tags/sis-211-s2" class="internal tag-link">sis-211-s2</a></li><li><a href="../../tags/guia-laboratorio" class="internal tag-link">guia-laboratorio</a></li><li><a href="../../tags/ejemplos-solucion-problemas" class="internal tag-link">ejemplos-solucion-problemas</a></li></ul></div></div><article class="popover-hint"><h1 id="guía-de-laboratorio">Guía de Laboratorio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guía-de-laboratorio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="evolución-de-un-sistema-de-estudiantes-en-java">Evolución de un sistema de estudiantes en Java<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#evolución-de-un-sistema-de-estudiantes-en-java" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout info" data-callout="info">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Ficha Técnica de la Práctica </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>Asignatura:</strong> Programación Orientada a Objetos</li>
+<li><strong>Lenguaje:</strong> Java</li>
+<li><strong>Nivel:</strong> Principiantes</li>
+<li><strong>Enfoque Pedagógico:</strong> Evolución incremental guiada por requisitos, refactorización limpia y buenas prácticas de diseño.</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h1 id="1-problema">1. Problema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-problema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Una universidad necesita desarrollar un pequeño sistema para administrar información de las personas que forman parte de la institución.</p>
+<p>Inicialmente, el sistema solamente debe permitir registrar estudiantes.</p>
+<p>Cada estudiante posee información básica:</p>
+<ul>
+<li>Nombre.</li>
+<li>Edad.</li>
+<li>Carrera.</li>
+</ul>
+<p>A medida que el sistema evoluciona aparecen nuevas necesidades.</p>
+<p>La universidad también necesita registrar docentes. Al mismo tiempo, el sistema comienza a incorporar más funcionalidades, por lo que algunas clases empiezan a asumir demasiadas responsabilidades.</p>
+<p>Posteriormente se necesita almacenar la información temporalmente en memoria. Para evitar trabajar todavía con una base de datos externa, se construirá una pequeña base de datos simulada utilizando las colecciones de Java.</p>
+<p>Finalmente, se requiere que exista una única instancia de esta base de datos en memoria para que todos los componentes del sistema trabajen sobre el mismo almacenamiento.</p>
+<p>El sistema deberá evolucionar progresivamente hasta llegar a una estructura similar a:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    subgraph Dominio [\&quot;🏛️ Dominio Institucional\&quot;]\r\n        Univ[\&quot;Universidad\&quot;]\r\n        Person[\&quot;Person\&quot;]\r\n        Student[\&quot;Student (Estudiante)\&quot;]\r\n        Teacher[\&quot;Teacher (Docente)\&quot;]\r\n        \r\n        Univ --> Person\r\n        Person --> Student\r\n        Person --> Teacher\r\n    end\r\n\r\n    subgraph Repositorios [\&quot;📂 Capa de Repositorios\&quot;]\r\n        SR[\&quot;StudentRepository\&quot;]\r\n        TR[\&quot;TeacherRepository\&quot;]\r\n        BR[\&quot;BookRepository\&quot;]\r\n        \r\n        Student -.-> SR\r\n        Teacher -.-> TR\r\n    end\r\n\r\n    subgraph Almacenamiento [\&quot;💾 Almacenamiento Centralizado\&quot;]\r\n        DB[\&quot;InMemoryDatabase (Instancia Única / Singleton)\&quot;]\r\n        \r\n        SR --> DB\r\n        TR --> DB\r\n        BR --> DB\r\n        \r\n        subgraph Tablas [\&quot;Colecciones Simuladas (Tablas)\&quot;]\r\n            T_Students[\&quot;students HashMap&amp;lt;ID, Student&amp;gt;\&quot;]\r\n            T_Teachers[\&quot;teachers HashMap&amp;lt;ID, Teacher&amp;gt;\&quot;]\r\n            T_Books[\&quot;books HashMap&amp;lt;ID, Book&amp;gt;\&quot;]\r\n        end\r\n        \r\n        DB --> T_Students\r\n        DB --> T_Teachers\r\n        DB --> T_Books\r\n    end\r\n\r\n    style Dominio stroke:#2b6cb0,stroke-width:1px\r\n    style Repositorios stroke:#b7791f,stroke-width:1px\r\n    style Almacenamiento stroke:#4a5568,stroke-width:1px&quot;">flowchart TD
+    subgraph Dominio [&quot;🏛️ Dominio Institucional&quot;]
+        Univ[&quot;Universidad&quot;]
+        Person[&quot;Person&quot;]
+        Student[&quot;Student (Estudiante)&quot;]
+        Teacher[&quot;Teacher (Docente)&quot;]
+        
+        Univ --> Person
+        Person --> Student
+        Person --> Teacher
+    end
+
+    subgraph Repositorios [&quot;📂 Capa de Repositorios&quot;]
+        SR[&quot;StudentRepository&quot;]
+        TR[&quot;TeacherRepository&quot;]
+        BR[&quot;BookRepository&quot;]
+        
+        Student -.-> SR
+        Teacher -.-> TR
+    end
+
+    subgraph Almacenamiento [&quot;💾 Almacenamiento Centralizado&quot;]
+        DB[&quot;InMemoryDatabase (Instancia Única / Singleton)&quot;]
+        
+        SR --> DB
+        TR --> DB
+        BR --> DB
+        
+        subgraph Tablas [&quot;Colecciones Simuladas (Tablas)&quot;]
+            T_Students[&quot;students HashMap&amp;lt;ID, Student&amp;gt;&quot;]
+            T_Teachers[&quot;teachers HashMap&amp;lt;ID, Teacher&amp;gt;&quot;]
+            T_Books[&quot;books HashMap&amp;lt;ID, Book&amp;gt;&quot;]
+        end
+        
+        DB --> T_Students
+        DB --> T_Teachers
+        DB --> T_Books
+    end
+
+    style Dominio stroke:#2b6cb0,stroke-width:1px
+    style Repositorios stroke:#b7791f,stroke-width:1px
+    style Almacenamiento stroke:#4a5568,stroke-width:1px
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Propósito Formativo </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>El propósito de la práctica no es construir un sistema completo, sino comprender cómo un programa puede mejorar progresivamente a medida que aparecen nuevos requisitos.</p>
+</div>
+</blockquote>
+<hr/>
+<h1 id="2-objetivos">2. Objetivos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-objetivos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Al finalizar la práctica, el estudiante deberá ser capaz de:</p>
+<ol>
+<li>Crear clases y objetos en Java.</li>
+<li>Aplicar encapsulación mediante atributos privados y métodos de acceso.</li>
+<li>Comprender y utilizar herencia.</li>
+<li>Identificar responsabilidades diferentes dentro de un sistema.</li>
+<li>Comprender de manera introductoria los principios SRP y OCP.</li>
+<li>Utilizar <code>List</code>, <code>Map</code> y <code>HashMap</code>.</li>
+<li>Simular una base de datos utilizando estructuras de datos en memoria.</li>
+<li>Comprender el propósito del patrón Singleton.</li>
+<li>Analizar cómo un sistema puede evolucionar desde una solución sencilla hacia una solución mejor organizada.</li>
+</ol>
+<hr/>
+<h1 id="3-conceptos-que-se-trabajarán">3. Conceptos que se trabajarán<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-conceptos-que-se-trabajarán" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>La práctica se desarrollará siguiendo esta secuencia:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>1. Student</span></span>
+<span data-line><span>   ↓</span></span>
+<span data-line><span>2. Encapsulación</span></span>
+<span data-line><span>   ↓</span></span>
+<span data-line><span>3. Person → Student / Teacher</span></span>
+<span data-line><span>   ↓</span></span>
+<span data-line><span>4. Separación de responsabilidades</span></span>
+<span data-line><span>   ↓</span></span>
+<span data-line><span>5. Extensión del sistema + almacenamiento en memoria</span></span>
+<span data-line><span>   ↓</span></span>
+<span data-line><span>6. Singleton</span></span></code></pre></figure>
+<p>La práctica se concentra principalmente en:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Categoría</th><th style="text-align:left;">Conceptos Abordados</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>POO</strong></td><td style="text-align:left;">Clases y objetos, Encapsulación, Herencia</td></tr><tr><td style="text-align:left;"><strong>Principios de diseño</strong></td><td style="text-align:left;">Single Responsibility Principle (SRP), Open/Closed Principle (OCP)</td></tr><tr><td style="text-align:left;"><strong>Colecciones</strong></td><td style="text-align:left;"><code>List</code>, <code>Map</code>, <code>HashMap</code></td></tr><tr><td style="text-align:left;"><strong>Patrón de diseño</strong></td><td style="text-align:left;">Singleton</td></tr></tbody></table></div>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>POO</span></span>
+<span data-line><span>├── Clases y objetos</span></span>
+<span data-line><span>├── Encapsulación</span></span>
+<span data-line><span>└── Herencia</span></span>
+<span data-line> </span>
+<span data-line><span>Principios de diseño</span></span>
+<span data-line><span>├── Single Responsibility Principle</span></span>
+<span data-line><span>└── Open/Closed Principle</span></span>
+<span data-line> </span>
+<span data-line><span>Colecciones</span></span>
+<span data-line><span>├── List</span></span>
+<span data-line><span>├── Map</span></span>
+<span data-line><span>└── HashMap</span></span>
+<span data-line> </span>
+<span data-line><span>Patrón de diseño</span></span>
+<span data-line><span>└── Singleton</span></span></code></pre></figure>
+<hr/>
+<h1 id="4-etapa-1--crear-la-clase-student">4. Etapa 1 — Crear la clase Student<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-etapa-1--crear-la-clase-student" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="situación-inicial">Situación inicial<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#situación-inicial" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La universidad necesita registrar estudiantes.</p>
+<p>Cada estudiante debe almacenar:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>├── name</span></span>
+<span data-line><span>├── age</span></span>
+<span data-line><span>└── career</span></span></code></pre></figure>
+<p>También debe ser posible mostrar su información.</p>
+<p>En esta primera etapa no se introducirá todavía ningún concepto adicional.</p>
+<p>El objetivo es comprender la relación entre:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\r\n    Clase[\&quot;📘 Clase (Molde / Plantilla)\&quot;] -->|Instanciación con new| Objeto[\&quot;📦 Objeto (Instancia concreta)\&quot;]\r\n    Objeto --> Atributos[\&quot;🏷️ Atributos (name, age, career)\&quot;]\r\n    Objeto --> Metodos[\&quot;⚙️ Métodos (mostrar información)\&quot;]\r\n\r\n    style Clase stroke:#4a5568\r\n    style Objeto stroke:#2b6cb0\r\n    style Atributos stroke:#c05621\r\n    style Metodos stroke:#276749&quot;">flowchart LR
+    Clase[&quot;📘 Clase (Molde / Plantilla)&quot;] -->|Instanciación con new| Objeto[&quot;📦 Objeto (Instancia concreta)&quot;]
+    Objeto --> Atributos[&quot;🏷️ Atributos (name, age, career)&quot;]
+    Objeto --> Metodos[&quot;⚙️ Métodos (mostrar información)&quot;]
+
+    style Clase stroke:#4a5568
+    style Objeto stroke:#2b6cb0
+    style Atributos stroke:#c05621
+    style Metodos stroke:#276749
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Estructura de clase inicial:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1UrGOwyAM_RXkqVX5gmyndrmlS7eKxQouQQ1QGXI3RP33IySRwrX1Zr_n9x4yI7RBEzTQ9hjjyaJhdIqVF7nKTFzSoMknMa7jqQ55zNYb4dFRDdjMRUNv2S0yEW-hmha78Pvtb2G3Fz_B6v8aJchu4yxXN1k77OtNQ-mc2Vl1Zr2gX2YCs9YLcix6HzbjortJ9C54nA2WqB8Yi1H9jIr6BAmGrYYm8UASHLHDqYVRQeooHwIaBRr5rkAq6EO4l0m5o20VTAoP9NcQ3CrCYTAdNDfsY-6Gh8ZEyzeYKc8_usSofg" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<h2 id="actividades">Actividades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#actividades" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Crear la clase <code>Student</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Crear una clase <code>Main</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Desde <code>Main</code>, crear varios objetos <code>Student</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Asignar diferentes datos a cada estudiante.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mostrar la información de los estudiantes.</li>
+</ul>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Preguntas de análisis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>¿Qué representa la clase <code>Student</code>?</li>
+<li>¿Qué representa un objeto <code>Student</code>?</li>
+<li>¿Cuál es la diferencia entre una clase y un objeto?</li>
+<li>¿Qué ocurre si existen varios objetos de la misma clase?</li>
+</ol>
+</div>
+</blockquote>
+<hr/>
+<h1 id="5-etapa-2--encapsulación">5. Etapa 2 — Encapsulación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-etapa-2--encapsulación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="problema">Problema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>En la versión anterior, cualquier parte del programa puede acceder directamente a los atributos del estudiante.</p>
+<p>Esto significa que el objeto no tiene control sobre su propio estado.</p>
+<p>Por ejemplo, conceptualmente podría ocurrir:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── name  ← puede modificarse directamente</span></span>
+<span data-line><span>├── age   ← puede modificarse directamente</span></span>
+<span data-line><span>└── career</span></span></code></pre></figure>
+<p>Esto permite introducir información incorrecta.</p>
+<p>Por ejemplo:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>age = -50</span></span></code></pre></figure>
+<p>El sistema debería impedir ese tipo de situaciones.</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNqVkr1uE0EQx19ltDRBsiHBCoKTEmRiFxShwCEFHMVkd3xe-bxj7e6ZjzglHVKUlg8Bz5AG0SDhN8kLwCMwd-cDxyhIXHUz-5__zP52jpVmQypRw5yf6xH6CAe91KcO5AvFUeZxOoIHLlBWeIanqbr48AYG1kHfaZyGIkdtF-cONrpaU2DoWU868vVUPWtsys9UacsODu6v5vsv4paY7i3Ojc24DMk7lmJot3fn-2zs0GpcluOEXCQI0n1o8-h5Dt0YfWkwiIWRwxuYEexAe3tzrX-lKz1hEDFSWXLx9tOPL6fQDxENyxU1u2BDrFrclHi2-JxbwytG5Ez5-xee3yhMTej9a9jjKwnJkYxeiv8D0q2rIcmkrHEOA4qSF12g2M1oQyCsN6glVVV_hvniKybw_RsZNLC7A5v35tAjbYNMcJyqQ5Tr17On6mTVphFVRg8ZalIywiOSFXrFMsPPj-_OliF6wbmPgtVJb6px1_u0Nt4l38PG9PHUyIuJZ7MNHjB6e1REhqm3M_znG8WXOf3Z3yDkx5Rco-0OdeiyaPUVG13nDm7dvqtaKvPWqCT6glpqQn6CZaiEUhzRhFKVpMqgH6eqlaqceVxldI4hWC30xGGK7gnzpDHxXGQjlQwxDxIV1R17FmWhlpKTX5UOPjA" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<h2 id="objetivo">Objetivo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#objetivo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Modificar la clase <code>Student</code> para proteger sus datos.</p>
+<p>El estudiante deberá utilizar:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    Private[\&quot;🔒 private\&quot;] -->|Garantiza| Proteccion[\&quot;Protección del estado interno\&quot;]\r\n    Getters[\&quot;📖 getters\&quot;] -->|Permite| Consulta[\&quot;Consulta controlada de información\&quot;]\r\n    Setters[\&quot;✏️ setters\&quot;] -->|Permite| Modificacion[\&quot;Modificación supervisada con validación\&quot;]\r\n\r\n    style Private stroke:#c53030\r\n    style Getters stroke:#2b6cb0\r\n    style Setters stroke:#276749&quot;">flowchart TD
+    Private[&quot;🔒 private&quot;] -->|Garantiza| Proteccion[&quot;Protección del estado interno&quot;]
+    Getters[&quot;📖 getters&quot;] -->|Permite| Consulta[&quot;Consulta controlada de información&quot;]
+    Setters[&quot;✏️ setters&quot;] -->|Permite| Modificacion[&quot;Modificación supervisada con validación&quot;]
+
+    style Private stroke:#c53030
+    style Getters stroke:#2b6cb0
+    style Setters stroke:#276749
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>La validación debe realizarse dentro de la propia clase.</p>
+<p>Por ejemplo, la edad no debería aceptar valores negativos.</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1UbGuwjAM_JXIE4jyA90QLG95CxvKYjUmjWhi5KQwVPw7SSkSRcWb7853lj1Aw4aghqbDGA8OraDXooPKNWLqmHpDIanhDZfaHpO4YFVATzPcZSVaWtI2KETyyWwspf_ssFqrl2ZGxon8iFqrGzvzbbGzxSEnf48XYlpoeXI_rvQzfqJn-y8YxZbvf-HMqzn3gAqsOAN1kp4q8CQeSwuDhtRSvhzUGgzKRUOloWO-jMh4d9doKA5XDCdm_zYR7m0L9Rm7mLv-ajDR9LaX5PEEsxWSIA" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<h2 id="actividades-1">Actividades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#actividades-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Modificar los atributos de <code>Student</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Crear los métodos necesarios para consultar y modificar los datos.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Agregar validaciones sencillas.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Probar qué ocurre al intentar introducir datos inválidos.</li>
+</ul>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Preguntas de análisis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>¿Por qué los atributos deberían estar protegidos?</li>
+<li>¿Qué problema resuelve <code>private</code>?</li>
+<li>¿Por qué no debemos permitir que cualquier parte del programa modifique directamente los atributos?</li>
+<li>¿Dónde debería realizarse la validación de los datos?</li>
+</ol>
+</div>
+</blockquote>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Concepto clave </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>La <strong>encapsulación</strong> consiste en proteger el estado interno de un objeto y controlar cómo ese estado puede ser consultado o modificado.</p>
+</div>
+</blockquote>
+<hr/>
+<h1 id="6-etapa-3--introducir-herencia">6. Etapa 3 — Introducir herencia<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-etapa-3--introducir-herencia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="nuevo-requisito">Nuevo requisito<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nuevo-requisito" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La universidad también necesita registrar docentes.</p>
+<p>Ahora tenemos dos tipos de personas:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>Teacher</span></span></code></pre></figure>
+<p>Ambos comparten información:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>name</span></span>
+<span data-line><span>age</span></span></code></pre></figure>
+<p>Pero cada uno tiene información adicional.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>└── career</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Teacher</span></span>
+<span data-line><span>└── specialty</span></span></code></pre></figure>
+<p>Si mantenemos toda la información duplicada, tendremos:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>├── name</span></span>
+<span data-line><span>├── age</span></span>
+<span data-line><span>└── career</span></span>
+<span data-line> </span>
+<span data-line><span>Teacher</span></span>
+<span data-line><span>├── name</span></span>
+<span data-line><span>├── age</span></span>
+<span data-line><span>└── specialty</span></span></code></pre></figure>
+<p>Existe duplicación.</p>
+<h2 id="solución">Solución<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#solución" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Identificar la información común y crear una clase <code>Person</code>.</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    Person[\&quot;👤 Person (name, age)\&quot;]\r\n    Student[\&quot;🎓 Student (career)\&quot;]\r\n    Teacher[\&quot;👨‍🏫 Teacher (specialty)\&quot;]\r\n\r\n    Person -->| extends|Student\r\n    Person -->| extends|Teacher\r\n\r\n    style Person stroke:#4a5568,stroke-width:2px\r\n    style Student stroke:#2b6cb0\r\n    style Teacher stroke:#276749&quot;">flowchart TD
+    Person[&quot;👤 Person (name, age)&quot;]
+    Student[&quot;🎓 Student (career)&quot;]
+    Teacher[&quot;👨‍🏫 Teacher (specialty)&quot;]
+
+    Person -->| extends|Student
+    Person -->| extends|Teacher
+
+    style Person stroke:#4a5568,stroke-width:2px
+    style Student stroke:#2b6cb0
+    style Teacher stroke:#276749
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>La estructura conceptual será:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNqFk8FPwyAUxv8V8ry42F6miY54cZs7GpN5MlxIeVKyFhqgumXuf5d2RaXZlFP53u9976O0eyiMQKBQVNy5peLS8ppZpklYvUae0TqjyT6q3crX3iotieY1JrrSnnCZaFcS_VPgLifk2JUU3VD8ZTgh70aJscWD7ByC_7i9Kwxj085D95CeZe1bgYE9eZiCW0Q7nrvo1bPhh3Ji8W-MF-RFifZ0DNdgoXjld-Mk61g4G-aHGHv9EWm43_vPPP9-P5Tg1qMW7hQU0ydQBJ3fVRhx563ZIL14vLudrWbZcZt_KOFLOm22aU-cHZumy-XNfJUycXRkVvPZ9HoRGchAWiWAettiBjXamndb2DPwJYZPFSgDwe2GQcagMmbTK_2lqILBITg0XL8aU0cTa1pZAn3jlQu7thHc4_CbHJHDFzg2DD4" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<h2 id="actividades-2">Actividades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#actividades-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Crear la clase <code>Person</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mover a <code>Person</code> los atributos que sean comunes.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Modificar <code>Student</code> para que herede de <code>Person</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Crear <code>Teacher</code> como una nueva clase que también herede de <code>Person</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Cada clase hija debe conservar sus propios datos específicos.</li>
+</ul>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Preguntas de análisis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>¿Qué información tienen en común <code>Student</code> y <code>Teacher</code>?</li>
+<li>¿Qué información pertenece únicamente a <code>Student</code>?</li>
+<li>¿Qué información pertenece únicamente a <code>Teacher</code>?</li>
+<li>¿Por qué no necesitamos declarar nuevamente <code>name</code> y <code>age</code> en las clases hijas?</li>
+<li>¿Qué representa <code>extends</code>?</li>
+<li>¿Qué función cumple <code>super</code>?</li>
+</ol>
+</div>
+</blockquote>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Concepto clave </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>La <strong>herencia</strong> permite reutilizar características comunes de una clase existente en nuevas clases relacionadas.</p>
+<p>En esta práctica se utilizará la herencia principalmente para <strong>reutilizar atributos y comportamiento común</strong>.</p>
+<p>Todavía no se estudiarán abstracción ni polimorfismo.</p>
+</div>
+</blockquote>
+<hr/>
+<h1 id="7-etapa-4--separación-de-responsabilidades">7. Etapa 4 — Separación de responsabilidades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-etapa-4--separación-de-responsabilidades" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="nuevo-problema">Nuevo problema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nuevo-problema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>El sistema empieza a crecer.</p>
+<p>Ahora necesitamos guardar y mostrar información de estudiantes.</p>
+<p>Una primera solución podría colocar muchas operaciones dentro de <code>Student</code>:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNqNkk1OAzEMha8SmQ1I0wUt3cyCRSmqWCCQygqCkJu4M1EzySg_KqjqDbgCp-AI3IST4CkUWEBV7-y871nPygqU1wQlzK1fqhpDEjdjGaQTXDHPqoBtLSZen1mMUdxJeH95FtfBzyw1WIpuTGLqZ4EUhgo1ikNWb-bxSML91qur6cMINVtMU9bk0l-votc7FVftMasu3NyHBpV5e3VCkxUUmTPoEu0g-0xe-pgCBmF-OexABoxMMgbNyF47ThgY5aj21Q9Zf25NY9x_BDn9ffT0ZOnn4pzEL6g8oOGABlR8tr2l0aku--0jFFAFo6FMIVMBDXHeroWVhFRTw0tKCZxsIaGQYL1fbCaqMzdKwpodWnS33jdbk-BzVUM5Rxu5y63GRGOD_BW-JOsPgOa5EA" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── información del estudiante</span></span>
+<span data-line><span>├── mostrar información</span></span>
+<span data-line><span>├── guardar estudiante</span></span>
+<span data-line><span>├── buscar estudiante</span></span>
+<span data-line><span>└── eliminar estudiante</span></span></code></pre></figure>
+<p>Esto provoca que una sola clase tenga demasiadas responsabilidades.</p>
+<h2 id="nueva-idea">Nueva idea<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nueva-idea" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Separar las responsabilidades.</p>
+<p>La estructura conceptual será:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Student</span></span>
+<span data-line><span>   │</span></span>
+<span data-line><span>   └── representa al estudiante</span></span>
+<span data-line> </span>
+<span data-line><span>StudentRepository</span></span>
+<span data-line><span>   │</span></span>
+<span data-line><span>   └── se encarga del almacenamiento</span></span></code></pre></figure>
+<p>Podemos representarlo así:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\r\n    Student[\&quot;Student Representa datos\&quot;]\r\n    Repository[\&quot;StudentRepository Gestiona almacenamiento\&quot;]\r\n\r\n    Student --> Repository\r\n\r\n    style Student stroke:#2b6cb0\r\n    style Repository stroke:#d69e2e&quot;">flowchart LR
+    Student[&quot;Student Representa datos&quot;]
+    Repository[&quot;StudentRepository Gestiona almacenamiento&quot;]
+
+    Student --> Repository
+
+    style Student stroke:#2b6cb0
+    style Repository stroke:#d69e2e
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<h2 id="single-responsibility-principle">Single Responsibility Principle<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#single-responsibility-principle" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>En esta etapa se introduce de manera inicial el principio:</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Single Responsibility Principle — SRP </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Una clase debería tener una responsabilidad principal y una razón principal para cambiar.</p>
+</div>
+</blockquote>
+<p>Por tanto:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    C1[\&quot;Student\&quot;] --> R1[\&quot;Responsabilidad: representar un estudiante\&quot;]\r\n    C2[\&quot;StudentRepository\&quot;] --> R2[\&quot;Responsabilidad: almacenar estudiantes\&quot;]\r\n\r\n    style C1 stroke:#3182ce\r\n    style C2 stroke:#d69e2e&quot;">flowchart TD
+    C1[&quot;Student&quot;] --> R1[&quot;Responsabilidad: representar un estudiante&quot;]
+    C2[&quot;StudentRepository&quot;] --> R2[&quot;Responsabilidad: almacenar estudiantes&quot;]
+
+    style C1 stroke:#3182ce
+    style C2 stroke:#d69e2e
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<h2 id="actividades-3">Actividades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#actividades-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Crear una clase <code>StudentRepository</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Trasladar a ella las operaciones relacionadas con el almacenamiento.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Mantener en <code>Student</code> únicamente las responsabilidades relacionadas con el propio objeto.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Analizar qué responsabilidades pertenecen a cada clase.</li>
+</ul>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Preguntas de análisis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>¿Qué responsabilidad tiene <code>Student</code>?</li>
+<li>¿Qué responsabilidad tiene <code>StudentRepository</code>?</li>
+<li>¿Qué problemas aparecen cuando una clase intenta hacerlo todo?</li>
+<li>¿Qué ventajas obtenemos al separar responsabilidades?</li>
+</ol>
+</div>
+</blockquote>
+<hr/>
+<h1 id="8-etapa-5--extensión-del-sistema-y-base-de-datos-en-memoria">8. Etapa 5 — Extensión del sistema y base de datos en memoria<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-etapa-5--extensión-del-sistema-y-base-de-datos-en-memoria" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="nuevo-problema-1">Nuevo problema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nuevo-problema-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La universidad necesita almacenar varios tipos de información.</p>
+<p>Hasta este momento tenemos:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>students</span></span>
+<span data-line><span>teachers</span></span></code></pre></figure>
+<p>Pero el sistema también podría crecer.</p>
+<p>Por ejemplo, la universidad puede administrar:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>students</span></span>
+<span data-line><span>teachers</span></span>
+<span data-line><span>books</span></span></code></pre></figure>
+<p>Más adelante podría existir:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>courses</span></span>
+<span data-line><span>classrooms</span></span>
+<span data-line><span>libraries</span></span>
+<span data-line><span>equipment</span></span></code></pre></figure>
+<p>Por ahora no utilizaremos una base de datos real.</p>
+<p>Vamos a construir una pequeña <strong>base de datos en memoria</strong> utilizando las colecciones de Java.</p>
+<hr/>
+<h2 id="81-primera-aproximación-una-colección">8.1. Primera aproximación: una colección<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#81-primera-aproximación-una-colección" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Una colección puede almacenar varios objetos:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">List</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Student</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span></code></pre></figure>
+<p>Conceptualmente:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>students</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── Student</span></span>
+<span data-line><span>├── Student</span></span>
+<span data-line><span>├── Student</span></span>
+<span data-line><span>└── Student</span></span></code></pre></figure>
+<p>Una <code>List</code> es adecuada cuando necesitamos trabajar principalmente con una secuencia de elementos.</p>
+<p>Sin embargo, aparece un nuevo problema:</p>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Desafío de Búsqueda Secuencial </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>¿Cómo encontramos rápidamente un estudiante específico sin tener que recorrer toda la lista uno por uno?</p>
+</div>
+</blockquote>
+<p>Necesitamos identificarlo mediante un ID.</p>
+<hr/>
+<h2 id="82-utilizar-hashmap">8.2. Utilizar HashMap<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#82-utilizar-hashmap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>En lugar de almacenar únicamente una lista, podemos relacionar un identificador con un objeto:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>ID → Objeto</span></span></code></pre></figure>
+<p>Por ejemplo:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>S001 → Student</span></span>
+<span data-line><span>S002 → Student</span></span>
+<span data-line><span>S003 → Student</span></span></code></pre></figure>
+<p>Esto puede representarse mediante:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">Map</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">String, Student</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">></span></span></code></pre></figure>
+<p>La estructura permite pensar en:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\r\n    subgraph Claves [\&quot;Clave (ID)\&quot;]\r\n        K1[\&quot;S001\&quot;]\r\n        K2[\&quot;S002\&quot;]\r\n        K3[\&quot;S003\&quot;]\r\n    end\r\n\r\n    subgraph Valores [\&quot;Valor Objeto Student\&quot;]\r\n        V1[\&quot;Student 1\&quot;]\r\n        V2[\&quot;Student 2\&quot;]\r\n        V3[\&quot;Student 3\&quot;]\r\n    end\r\n\r\n    K1 --->|\&quot;Acceso directo O(1)\&quot;| V1\r\n    K2 --->|\&quot;Acceso directo O(1)\&quot;| V2\r\n    K3 --->|\&quot;Acceso directo O(1)\&quot;| V3\r\n\r\n    style Claves stroke:#4a5568\r\n    style Valores stroke:#319795&quot;">flowchart LR
+    subgraph Claves [&quot;Clave (ID)&quot;]
+        K1[&quot;S001&quot;]
+        K2[&quot;S002&quot;]
+        K3[&quot;S003&quot;]
+    end
+
+    subgraph Valores [&quot;Valor Objeto Student&quot;]
+        V1[&quot;Student 1&quot;]
+        V2[&quot;Student 2&quot;]
+        V3[&quot;Student 3&quot;]
+    end
+
+    K1 --->|&quot;Acceso directo O(1)&quot;| V1
+    K2 --->|&quot;Acceso directo O(1)&quot;| V2
+    K3 --->|&quot;Acceso directo O(1)&quot;| V3
+
+    style Claves stroke:#4a5568
+    style Valores stroke:#319795
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>De esta forma podemos seleccionar directamente un registro mediante su identificador.</p>
+<hr/>
+<h1 id="83-simular-tablas">8.3. Simular tablas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#83-simular-tablas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Ahora llevaremos la idea un paso más allá.</p>
+<p>En lugar de tener un único <code>HashMap</code>, tendremos varias colecciones organizadas por nombre.</p>
+<p>La estructura conceptual será:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── &quot;students&quot;</span></span>
+<span data-line><span>│      └── Map&lt;idStudent, Student></span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── &quot;teachers&quot;</span></span>
+<span data-line><span>│      └── Map&lt;idTeacher, Teacher></span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>└── &quot;books&quot;</span></span>
+<span data-line><span>       └── Map&lt;idBook, Book></span></span></code></pre></figure>
+<p>Podemos interpretar cada entrada principal como una especie de “tabla”.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>                InMemoryDatabase</span></span>
+<span data-line><span>                       │</span></span>
+<span data-line><span>           ┌───────────┼───────────┐</span></span>
+<span data-line><span>           ↓           ↓           ↓</span></span>
+<span data-line><span>       students     teachers      books</span></span>
+<span data-line><span>           │           │           │</span></span>
+<span data-line><span>           ↓           ↓           ↓</span></span>
+<span data-line><span>        HashMap      HashMap      HashMap</span></span>
+<span data-line><span>           │           │           │</span></span>
+<span data-line><span>           ↓           ↓           ↓</span></span>
+<span data-line><span>         S001        T001         B001</span></span>
+<span data-line><span>         S002        T002         B002</span></span></code></pre></figure>
+<p>Así conseguimos una estructura semejante a:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>&quot;students&quot; → {</span></span>
+<span data-line><span>    &quot;S001&quot; → Student</span></span>
+<span data-line><span>    &quot;S002&quot; → Student</span></span>
+<span data-line><span>    &quot;S003&quot; → Student</span></span>
+<span data-line><span>}</span></span>
+<span data-line> </span>
+<span data-line><span>&quot;teachers&quot; → {</span></span>
+<span data-line><span>    &quot;T001&quot; → Teacher</span></span>
+<span data-line><span>    &quot;T002&quot; → Teacher</span></span>
+<span data-line><span>}</span></span>
+<span data-line> </span>
+<span data-line><span>&quot;books&quot; → {</span></span>
+<span data-line><span>    &quot;B001&quot; → Book</span></span>
+<span data-line><span>    &quot;B002&quot; → Book</span></span>
+<span data-line><span>}</span></span></code></pre></figure>
+<hr/>
+<h1 id="84-estructura-general">8.4. Estructura general<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#84-estructura-general" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Conceptualmente, la base de datos tendrá una estructura equivalente a:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Map</span></span>
+<span data-line><span> │</span></span>
+<span data-line><span> ├── nombre de tabla</span></span>
+<span data-line><span> │       │</span></span>
+<span data-line><span> │       └── colección de registros</span></span>
+<span data-line><span> │</span></span>
+<span data-line><span> ├── &quot;students&quot;</span></span>
+<span data-line><span> │       └── HashMap</span></span>
+<span data-line><span> │</span></span>
+<span data-line><span> ├── &quot;teachers&quot;</span></span>
+<span data-line><span> │       └── HashMap</span></span>
+<span data-line><span> │</span></span>
+<span data-line><span> └── &quot;books&quot;</span></span>
+<span data-line><span>         └── HashMap</span></span></code></pre></figure>
+<p>La idea puede representarse como:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;graph TD\r\n    DB[\&quot;InMemoryDatabase\\n(Gestor de Colecciones)\&quot;]\r\n\r\n    DB --> Students[\&quot;'students'\&quot;]\r\n    DB --> Teachers[\&quot;'teachers'\&quot;]\r\n    DB --> Books[\&quot;'books'\&quot;]\r\n\r\n    Students --> StudentsMap[\&quot;HashMap&amp;lt;String, Student&amp;gt;\&quot;]\r\n    Teachers --> TeachersMap[\&quot;HashMap&amp;lt;String, Teacher&amp;gt;\&quot;]\r\n    Books --> BooksMap[\&quot;HashMap&amp;lt;String, Book&amp;gt;\&quot;]\r\n\r\n    StudentsMap --> S1[\&quot;'S001' → Student\&quot;]\r\n    StudentsMap --> S2[\&quot;'S002' → Student\&quot;]\r\n\r\n    TeachersMap --> T1[\&quot;'T001' → Teacher\&quot;]\r\n    TeachersMap --> T2[\&quot;'T002' → Teacher\&quot;]\r\n\r\n    BooksMap --> B1[\&quot;'B001' → Book\&quot;]\r\n    BooksMap --> B2[\&quot;'B002' → Book\&quot;]\r\n\r\n    style DB stroke:#1e40af,stroke-width:2px\r\n    style Students stroke:#92400e\r\n    style Teachers stroke:#92400e\r\n    style Books stroke:#92400e&quot;">graph TD
+    DB[&quot;InMemoryDatabase\n(Gestor de Colecciones)&quot;]
+
+    DB --> Students[&quot;'students'&quot;]
+    DB --> Teachers[&quot;'teachers'&quot;]
+    DB --> Books[&quot;'books'&quot;]
+
+    Students --> StudentsMap[&quot;HashMap&amp;lt;String, Student&amp;gt;&quot;]
+    Teachers --> TeachersMap[&quot;HashMap&amp;lt;String, Teacher&amp;gt;&quot;]
+    Books --> BooksMap[&quot;HashMap&amp;lt;String, Book&amp;gt;&quot;]
+
+    StudentsMap --> S1[&quot;'S001' → Student&quot;]
+    StudentsMap --> S2[&quot;'S002' → Student&quot;]
+
+    TeachersMap --> T1[&quot;'T001' → Teacher&quot;]
+    TeachersMap --> T2[&quot;'T002' → Teacher&quot;]
+
+    BooksMap --> B1[&quot;'B001' → Book&quot;]
+    BooksMap --> B2[&quot;'B002' → Book&quot;]
+
+    style DB stroke:#1e40af,stroke-width:2px
+    style Students stroke:#92400e
+    style Teachers stroke:#92400e
+    style Books stroke:#92400e
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h1 id="85-insertar-y-buscar-información">8.5. Insertar y buscar información<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#85-insertar-y-buscar-información" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Las operaciones principales de nuestra base de datos pueden conceptualizarse de la siguiente forma:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>insert(&quot;students&quot;, &quot;S001&quot;, student)</span></span>
+<span data-line><span>       │          │       │</span></span>
+<span data-line><span>       │          │       └── registro</span></span>
+<span data-line><span>       │          └─────────── ID</span></span>
+<span data-line><span>       └────────────────────── tabla</span></span></code></pre></figure>
+<p>Para buscar:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>find(&quot;students&quot;, &quot;S001&quot;)</span></span>
+<span data-line><span>      │          │</span></span>
+<span data-line><span>      │          └──────────── ID</span></span>
+<span data-line><span>      └─────────────────────── tabla</span></span></code></pre></figure>
+<p>El flujo será:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    A[\&quot;Operación (insert / find)\&quot;] --> B{\&quot;Seleccionar tabla\&quot;}\r\n\r\n    B -->|\&quot;students\&quot;| C[\&quot;HashMap de estudiantes\&quot;]\r\n    B -->|\&quot;teachers\&quot;| D[\&quot;HashMap de docentes\&quot;]\r\n    B -->|\&quot;books\&quot;| E[\&quot;HashMap de libros\&quot;]\r\n\r\n    C --> F[\&quot;Buscar o Guardar por ID\&quot;]\r\n    D --> G[\&quot;Buscar o Guardar por ID\&quot;]\r\n    E --> H[\&quot;Buscar o Guardar por ID\&quot;]\r\n\r\n    style A stroke:#4a5568\r\n    style B stroke:#c05621\r\n    style C stroke:#2b6cb0\r\n    style D stroke:#276749\r\n    style E stroke:#97266d&quot;">flowchart TD
+    A[&quot;Operación (insert / find)&quot;] --> B{&quot;Seleccionar tabla&quot;}
+
+    B -->|&quot;students&quot;| C[&quot;HashMap de estudiantes&quot;]
+    B -->|&quot;teachers&quot;| D[&quot;HashMap de docentes&quot;]
+    B -->|&quot;books&quot;| E[&quot;HashMap de libros&quot;]
+
+    C --> F[&quot;Buscar o Guardar por ID&quot;]
+    D --> G[&quot;Buscar o Guardar por ID&quot;]
+    E --> H[&quot;Buscar o Guardar por ID&quot;]
+
+    style A stroke:#4a5568
+    style B stroke:#c05621
+    style C stroke:#2b6cb0
+    style D stroke:#276749
+    style E stroke:#97266d
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>Por ejemplo, conceptualmente:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>find(&quot;students&quot;, &quot;S002&quot;)</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>tabla students</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>HashMap</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>clave S002</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>Student</span></span></code></pre></figure>
+<hr/>
+<h1 id="86-añadir-una-nueva-entidad">8.6. Añadir una nueva entidad<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#86-añadir-una-nueva-entidad" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Para comprobar que nuestro diseño puede extenderse, agregaremos una nueva entidad:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Book</span></span></code></pre></figure>
+<p>Un libro puede tener:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Book</span></span>
+<span data-line><span>├── title</span></span>
+<span data-line><span>├── author</span></span>
+<span data-line><span>└── year</span></span></code></pre></figure>
+<p>Estructura de la clase <code>Book</code>:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1kc8KwjAMxl-l5KQ4X2A3xTfQi9JLWGNXXFfJMkGG727XbWBFc8v3Nb_86QBVMAQlVA123cGhZfSadatiJE3tQ7ipYdHG2B6FXWuVOGnol4G91IEzx7WinoSZuLEkp5GxWqupMnO7xf1st1aP4Mw3ZZca_sXMdjbdb9A5jhgxcdpvRnKWLfLiFxRg2RkohXsqwBN7HFMYNEhNnjSUGgzyTUOhoYkXTUo6sKs0jIQ7tpcQ_ALh0Nsayis2Xcz6u0Gh-X-mJ683TSyNKQ" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<p>Ahora la base de datos contará con:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>students</span></span>
+<span data-line><span>teachers</span></span>
+<span data-line><span>books</span></span></code></pre></figure>
+<p>El sistema debe permitir almacenar libros sin modificar la estructura fundamental de la base de datos.</p>
+<hr/>
+<h1 id="87-openclosed-principle">8.7. Open/Closed Principle<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#87-openclosed-principle" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Esta etapa introduce de forma inicial el principio:</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Open/Closed Principle — OCP </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Una estructura de software debería estar <strong>abierta para su extensión</strong>, pero <strong>cerrada para su modificación</strong>. Debe ser posible incorporar nuevas funcionalidades o entidades sin alterar constantemente el código previamente desarrollado y probado.</p>
+</div>
+</blockquote>
+<p>Nuestro sistema debe permitir que aparezca:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>students</span></span>
+<span data-line><span>teachers</span></span>
+<span data-line><span>books</span></span></code></pre></figure>
+<p>sin tener que reconstruir toda la lógica de almacenamiento.</p>
+<p>La idea importante es:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    subgraph PrincipioOCP [\&quot;Evolución mediante Extensión (OCP)\&quot;]\r\n\r\n        S_Base[\&quot;🧱 Sistema existente (InMemoryDatabase) Se mantiene funcionando y sin alteraciones estructurales\&quot;]\r\n        S_Ext[\&quot;✨ Nueva funcionalidad (Entidad Book + BookRepository) Se integra agregando una nueva colección sin reescribir la BD\&quot;]\r\n        \r\n        S_Base -.->|Soporta sin cambios| S_Ext\r\n    end\r\n    style S_Base stroke:#4a5568\r\n    style S_Ext stroke:#22543d&quot;">flowchart TD
+    subgraph PrincipioOCP [&quot;Evolución mediante Extensión (OCP)&quot;]
+
+        S_Base[&quot;🧱 Sistema existente (InMemoryDatabase) Se mantiene funcionando y sin alteraciones estructurales&quot;]
+        S_Ext[&quot;✨ Nueva funcionalidad (Entidad Book + BookRepository) Se integra agregando una nueva colección sin reescribir la BD&quot;]
+        
+        S_Base -.->|Soporta sin cambios| S_Ext
+    end
+    style S_Base stroke:#4a5568
+    style S_Ext stroke:#22543d
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Sistema existente</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>se mantiene funcionando</span></span>
+<span data-line> </span>
+<span data-line><span>Nueva funcionalidad</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>se agrega mediante extensión</span></span></code></pre></figure>
+<h2 id="actividades-4">Actividades<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#actividades-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Crear la entidad <code>Book</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Crear un repositorio para libros (<code>BookRepository</code>).</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Agregar una nueva colección dentro de la base de datos en memoria.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Guardar libros mediante un identificador.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Buscar libros mediante su identificador.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Comprobar que estudiantes, docentes y libros pueden coexistir dentro de la misma base de datos.</li>
+</ul>
+<blockquote class="callout question" data-callout="question">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Preguntas de análisis </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li>¿Por qué utilizamos un <code>Map</code> para representar las tablas?</li>
+<li>¿Por qué cada tabla puede utilizar un <code>HashMap</code>?</li>
+<li>¿Qué ventaja tiene buscar utilizando un ID?</li>
+<li>¿Qué diferencia existe entre utilizar una <code>List</code> y utilizar un <code>HashMap</code>?</li>
+<li>¿Qué representa la clave de un <code>HashMap</code>?</li>
+<li>¿Qué representa el valor de un <code>HashMap</code>?</li>
+<li>¿Por qué nuestra estructura se parece conceptualmente a una base de datos?</li>
+<li>¿Qué significa que los datos están almacenados “en memoria”?</li>
+<li>¿Qué ocurre con los datos cuando termina el programa?</li>
+<li>¿Cómo podemos agregar una nueva entidad como <code>Book</code>?</li>
+</ol>
+</div>
+</blockquote>
+<hr/>
+<h1 id="9-etapa-6--singleton">9. Etapa 6 — Singleton<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-etapa-6--singleton" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<h2 id="nuevo-problema-2">Nuevo problema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nuevo-problema-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Ahora tenemos una base de datos en memoria.</p>
+<p>Pero aparece un problema.</p>
+<p>Si diferentes partes del programa crean diferentes objetos <code>InMemoryDatabase</code>, podríamos terminar con varios almacenamientos independientes:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>          InMemoryDatabase 1</span></span>
+<span data-line><span>                 │</span></span>
+<span data-line><span>          ┌──────┴───────┐</span></span>
+<span data-line><span>          │             │</span></span>
+<span data-line><span>       students      teachers</span></span>
+<span data-line> </span>
+<span data-line> </span>
+<span data-line><span>          InMemoryDatabase 2</span></span>
+<span data-line><span>                 │</span></span>
+<span data-line><span>          ┌──────┴───────┐</span></span>
+<span data-line><span>          │             │</span></span>
+<span data-line><span>       students      teachers</span></span></code></pre></figure>
+<p>Esto significa que ambos objetos podrían contener información diferente.</p>
+<p>Queremos exactamente lo contrario:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>                    InMemoryDatabase</span></span>
+<span data-line><span>                           │</span></span>
+<span data-line><span>             ┌──────────────┼──────────────┐</span></span>
+<span data-line><span>             ↓             ↓             ↓</span></span>
+<span data-line><span>          Student       Teacher         Book</span></span>
+<span data-line><span>        Repository    Repository      Repository</span></span></code></pre></figure>
+<p>Todos los componentes deben trabajar sobre <strong>la misma instancia</strong>.</p>
+<hr/>
+<h1 id="91-patrón-singleton">9.1. Patrón Singleton<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#91-patrón-singleton" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Para resolver esta situación utilizaremos el patrón de diseño <strong>Singleton</strong>.</p>
+<p>La idea fundamental es:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\r\n    C[\&quot;🏛️ Una Clase\&quot;] -->|Garantiza| I[\&quot;🔒 Una Única Instancia\&quot;]\r\n    I -->|Ofrece| A[\&quot;🌐 Acceso Compartido Global\&quot;]\r\n\r\n    style C stroke:#4a5568\r\n    style I stroke:#d69e2e\r\n    style A stroke:#276749&quot;">flowchart LR
+    C[&quot;🏛️ Una Clase&quot;] -->|Garantiza| I[&quot;🔒 Una Única Instancia&quot;]
+    I -->|Ofrece| A[&quot;🌐 Acceso Compartido Global&quot;]
+
+    style C stroke:#4a5568
+    style I stroke:#d69e2e
+    style A stroke:#276749
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Una clase</span></span>
+<span data-line><span>    ↓</span></span>
+<span data-line><span>una única instancia</span></span>
+<span data-line><span>    ↓</span></span>
+<span data-line><span>acceso compartido</span></span></code></pre></figure>
+<p>Conceptualmente:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;graph TD\r\n    DB[\&quot;InMemoryDatabase (Única instancia compartida)\&quot;]\r\n\r\n    SR[\&quot;StudentRepository\&quot;]\r\n    TR[\&quot;TeacherRepository\&quot;]\r\n    BR[\&quot;BookRepository\&quot;]\r\n\r\n    SR --> DB\r\n    TR --> DB\r\n    BR --> DB\r\n\r\n    style DB stroke:#6b46c1,stroke-width:2px\r\n    style SR stroke:#2b6cb0\r\n    style TR stroke:#276749\r\n    style BR stroke:#c05621&quot;">graph TD
+    DB[&quot;InMemoryDatabase (Única instancia compartida)&quot;]
+
+    SR[&quot;StudentRepository&quot;]
+    TR[&quot;TeacherRepository&quot;]
+    BR[&quot;BookRepository&quot;]
+
+    SR --> DB
+    TR --> DB
+    BR --> DB
+
+    style DB stroke:#6b46c1,stroke-width:2px
+    style SR stroke:#2b6cb0
+    style TR stroke:#276749
+    style BR stroke:#c05621
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>De esta manera:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>StudentRepository ───┐</span></span>
+<span data-line><span>                     │</span></span>
+<span data-line><span>TeacherRepository ───┼──→ InMemoryDatabase</span></span>
+<span data-line><span>                     │</span></span>
+<span data-line><span>BookRepository ──────┘</span></span></code></pre></figure>
+<p>Todos utilizan el mismo almacenamiento.</p>
+<hr/>
+<h1 id="92-estructura-conceptual-del-singleton">9.2. Estructura conceptual del Singleton<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#92-estructura-conceptual-del-singleton" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>La clase <code>InMemoryDatabase</code> deberá cumplir tres condiciones:</p>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Tres Condiciones Fundamentales del Patrón Singleton </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ol>
+<li><strong>Constructor privado:</strong> No permitir que cualquier clase cree libremente nuevas instancias (<code>private InMemoryDatabase()</code>).</li>
+<li><strong>Instancia estática única:</strong> Mantener internamente la única instancia compartida (<code>private static InMemoryDatabase instance</code>).</li>
+<li><strong>Punto de acceso global:</strong> Proporcionar una forma controlada de obtener esa instancia mediante un método estático (<code>public static InMemoryDatabase getInstance()</code>).</li>
+</ol>
+</div>
+</blockquote>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>1. No permitir que cualquier clase cree libremente</span></span>
+<span data-line><span>   nuevas instancias.</span></span>
+<span data-line> </span>
+<span data-line><span>2. Mantener internamente la única instancia.</span></span>
+<span data-line> </span>
+<span data-line><span>3. Proporcionar una forma de obtener esa instancia.</span></span></code></pre></figure>
+<p>Estructura de la clase con el patrón aplicado:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1kT1uwzAMha8icLJR9wKes2QIOnQrtDASo6ixJIOSAxRGfPbKtgzEDcpJ_PneI6gRVNAELagOYzxYNIxOsvQix1ITR38iF_jngAnPGEmMW3-O95gwWfU6ZX3ueEW74RP202di600jnt8f529SaZpEhjuKO-avclU_t9-Kv6F0LI5V_bLNjsibEadq9V4dG1Eyq7dlBJMKrGtxD1bv-Iv1-j-6LvQGPKABw1ZDm3igBhyxwzmFUUK6kiMJrQSNfJPQSOhCuC2V5fZWSZgVevRfIbhNhMNgrtBesIs5G3qNicrXrSOPX-EInG8" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<p>La representación conceptual es:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── instance</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── students</span></span>
+<span data-line><span>├── teachers</span></span>
+<span data-line><span>└── books</span></span></code></pre></figure>
+<p>Y el acceso será:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>getInstance()</span></span>
+<span data-line><span>      ↓</span></span>
+<span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>      ↓</span></span>
+<span data-line><span>misma instancia</span></span></code></pre></figure>
+<hr/>
+<h1 id="93-comprobar-que-existe-una-única-instancia">9.3. Comprobar que existe una única instancia<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#93-comprobar-que-existe-una-única-instancia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>El estudiante deberá crear dos referencias a la base de datos.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">InMemoryDatabase database1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> InMemoryDatabase.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">getInstance</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">InMemoryDatabase database2 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> InMemoryDatabase.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">getInstance</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>database1</span></span>
+<span data-line><span>database2</span></span></code></pre></figure>
+<p>Ambas deberían apuntar al mismo objeto:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\r\n    Ref1[\&quot;database1\&quot;] ---> DB[\&quot;📦 InMemoryDatabase\\n(Misma instancia en memoria)\&quot;]\r\n    Ref2[\&quot;database2\&quot;] ---> DB\r\n\r\n    style DB stroke:#6b46c1,stroke-width:2px\r\n    style Ref1 stroke:#2b6cb0\r\n    style Ref2 stroke:#2b6cb0&quot;">flowchart LR
+    Ref1[&quot;database1&quot;] ---> DB[&quot;📦 InMemoryDatabase\n(Misma instancia en memoria)&quot;]
+    Ref2[&quot;database2&quot;] ---> DB
+
+    style DB stroke:#6b46c1,stroke-width:2px
+    style Ref1 stroke:#2b6cb0
+    style Ref2 stroke:#2b6cb0
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p>La comprobación conceptual será:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>database1 == database2</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>       true</span></span></code></pre></figure>
+<hr/>
+<h1 id="94-comprobar-que-los-datos-son-compartidos">9.4. Comprobar que los datos son compartidos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#94-comprobar-que-los-datos-son-compartidos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Esta comprobación es todavía más importante.</p>
+<p>El flujo será:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1ks1O3TAQhV9l6hWVLrfQn00WSL0EVV1QpGRXeTPYQ7CI7XRso1aIh-lrdNm-WMc3N0FVIavYOd_xOZ48KBMtqUYl-lYoGGodDoxesw4gD5YcQ_HXxOuOyZGhpXvABBcpF-swZII3cIkuLKoJOTvjJvkEfVelvSgp5I6mmJxY_HhO2u6q9HO4JC-KFjNeYyI46l0YRpIor5-jrvItcQWvMkc4j36KgeZMbTT1rVILKdGPz876roHTLXQ0uJQZGeipypFW_cnJqVYb0OpjQK3WY_tO2HbXwNstuJCIs4jTXC3NwIIedoVf6S9R3OO9hK0WnwqyRRuBAowIf34FZ7C6ZgzGIRgpUlta_Df6vm4D77ZSNaQy5hfSr8fugUPu91u4ccG-kHpF2t3x00kf6j3JyAICz_cVwdJyN_-XO2C_f8oAoyCmTMT7ot9l8gl9HckrtVEDO6uazIU2yhN7rEv1oJUYeNKq0coi30lCrcYY7_Y7ZsSUnNHqURxk_l9j9IsJxzLcquYGxySrMlnMyx89Sx7_AjRC-s4" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>StudentRepository</span></span>
+<span data-line><span>       │</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>       │</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>insert Student S001</span></span></code></pre></figure>
+<p>Posteriormente:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>otro componente</span></span>
+<span data-line><span>       │</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>       │</span></span>
+<span data-line><span>       ↓</span></span>
+<span data-line><span>find Student S001</span></span></code></pre></figure>
+<p>El segundo componente debe encontrar el mismo estudiante.</p>
+<p>Esto demuestra que todos están utilizando el mismo almacenamiento.</p>
+<hr/>
+<h1 id="10-estructura-final-del-sistema">10. Estructura final del sistema<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10-estructura-final-del-sistema" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Al terminar la práctica, el sistema conceptual será:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>                           InMemoryDatabase</span></span>
+<span data-line><span>                                  │</span></span>
+<span data-line><span>                    ┌──────────────┼───────────────┐</span></span>
+<span data-line><span>                    ↓             ↓             ↓</span></span>
+<span data-line><span>                students       teachers        books</span></span>
+<span data-line><span>                    │             │             │</span></span>
+<span data-line><span>                    ↓             ↓             ↓</span></span>
+<span data-line><span>                 HashMap        HashMap        HashMap</span></span>
+<span data-line><span>                    │             │             │</span></span>
+<span data-line><span>                    ↓             ↓             ↓</span></span>
+<span data-line><span>                 S001           T001           B001</span></span>
+<span data-line><span>                 S002           T002           B002</span></span></code></pre></figure>
+<p>La relación entre las entidades y sus repositorios será:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    Person[\&quot;Person\&quot;]\r\n    Student[\&quot;Student\&quot;]\r\n    Teacher[\&quot;Teacher\&quot;]\r\n    Book[\&quot;Book\&quot;]\r\n\r\n    Person --> Student\r\n    Person --> Teacher\r\n\r\n    SR[\&quot;StudentRepository\&quot;]\r\n    TR[\&quot;TeacherRepository\&quot;]\r\n    BR[\&quot;BookRepository\&quot;]\r\n\r\n    Student --> SR\r\n    Teacher --> TR\r\n    Book --> BR\r\n\r\n    DB[\&quot;InMemoryDatabase\\n(Singleton)\&quot;]\r\n\r\n    SR --> DB\r\n    TR --> DB\r\n    BR --> DB\r\n\r\n    DB --> ST[\&quot;students\&quot;]\r\n    DB --> TE[\&quot;teachers\&quot;]\r\n    DB --> BO[\&quot;books\&quot;]\r\n\r\n    style Person stroke:#4a5568\r\n    style Student stroke:#2b6cb0\r\n    style Teacher stroke:#276749\r\n    style Book stroke:#c05621\r\n    style DB stroke:#6b46c1,stroke-width:2px&quot;">flowchart TD
+    Person[&quot;Person&quot;]
+    Student[&quot;Student&quot;]
+    Teacher[&quot;Teacher&quot;]
+    Book[&quot;Book&quot;]
+
+    Person --> Student
+    Person --> Teacher
+
+    SR[&quot;StudentRepository&quot;]
+    TR[&quot;TeacherRepository&quot;]
+    BR[&quot;BookRepository&quot;]
+
+    Student --> SR
+    Teacher --> TR
+    Book --> BR
+
+    DB[&quot;InMemoryDatabase\n(Singleton)&quot;]
+
+    SR --> DB
+    TR --> DB
+    BR --> DB
+
+    DB --> ST[&quot;students&quot;]
+    DB --> TE[&quot;teachers&quot;]
+    DB --> BO[&quot;books&quot;]
+
+    style Person stroke:#4a5568
+    style Student stroke:#2b6cb0
+    style Teacher stroke:#276749
+    style Book stroke:#c05621
+    style DB stroke:#6b46c1,stroke-width:2px
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNqFVM1u2zAMfhVBuzSYAwxpgTXGLk2dAD10G5CdBl9YibW12JJByduCLO8-2bG6ynFWnSx-P6QoWgcujESeclGBtZmCgqDOKdfMrz7GviJZo9khRLs13zpSumAaaoziSjsGRRR7X6D77HlXM3ZSRaAdwFeGM_bTKDm2uCs6B-8_lnfAkDZWHruP-Cxb10r03MnDCCBEGue976MXix_gyOLNMr4hiBJpugzboFBQuf24km0ALhbzjzH2erOklTG76XqcchVOAdC60tDZ9e8R6D-JHvQj1ob2GTh4AoujpNaBU-KcpbRHtIgLeYSGebxCG4XH4qtZ3KhTCt_Rh8HUN3SsiRQ-OZILTe0zJsMVMCUT9uXpBwrHCIUhOTG-z0rLS-rZoJ5s2fDvffozn4fZnYKGeXqttG5fYSBZR2aH6bv17cflZhlTwi8ROIssu1ltYk6Y18DZrJaL6_uY0w_Qi8kiu16vY8LZlQbyzV22vv2QnLbzX0q6Ml00v3nCC1KSp45aTHiNVEO35YecuxL9w8PTnEugXc6TnFc-fx_px0yJnB-9QwP6uzF1MCHTFiVPn6Gyftc2EhwOj96JcvwLvdygOg" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<hr/>
+<h1 id="11-desafío-integrador">11. Desafío integrador<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11-desafío-integrador" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Una vez terminadas las seis etapas, ampliar el sistema.</p>
+<p>La universidad ahora necesita registrar una nueva entidad:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>AdministrativeEmployee</span></span></code></pre></figure>
+<p>Debe cumplir las siguientes condiciones:</p>
+<iframe src="https://mermaid.live/embed?theme=dark&amp;look=classic&amp;mode=dark#pako:eNp1UcFOwzAM_ZXIXJhoLwgJVnEZ6nZG4oZysRqTRW2SKnEnptJ_p-vIRATz7T2_92I7IzReEVTQdBhjbVAHtDJIJ-Z6pRC9E89fZSk2yhpnIgdkc6Ct7Tt_JBKVoE8mp2LyLDnJOSb2VOUbB-O0cGgp441jgfrCTXnUlYf_jVbUY2BLjn937zRxfencrsRZnUliJvkTtxIHb1Q2YQKRjx2lhecxfUvVzfbpcb1bi1xzZZPkua_rh5cdFKCDUVBxGKgAS8HiCcIogfc0nw4qCQpDK6GQ0HnfLsxyLNNImOaEHt279zaFBD_oPVQf2MUZDb1Cpp-vPkumb8mlrXg" width="100%" height="480" style="border:0;" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>AdministrativeEmployee</span></span>
+<span data-line><span>        │</span></span>
+<span data-line><span>        ↓</span></span>
+<span data-line><span>      Person</span></span></code></pre></figure>
+<p>Debe tener información propia, por ejemplo:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>department</span></span></code></pre></figure>
+<p>También deberá:</p>
+<ol>
+<li>Crear su clase.</li>
+<li>Aplicar encapsulación.</li>
+<li>Utilizar herencia desde <code>Person</code>.</li>
+<li>Crear <code>AdministrativeRepository</code>.</li>
+<li>Agregar una nueva “tabla” en <code>InMemoryDatabase</code>.</li>
+<li>Utilizar un <code>HashMap</code>.</li>
+<li>Guardar registros mediante un ID.</li>
+<li>Buscar registros mediante un ID.</li>
+<li>Utilizar la misma instancia de <code>InMemoryDatabase</code>.</li>
+<li>Evitar modificar innecesariamente las clases existentes.</li>
+</ol>
+<p>La estructura final debería poder evolucionar hacia:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;graph TD\r\n    DB[\&quot;InMemoryDatabase (Singleton)\&quot;]\r\n    DB --> T1[\&quot;students\&quot;]\r\n    DB --> T2[\&quot;teachers\&quot;]\r\n    DB --> T3[\&quot;books\&quot;]\r\n    DB --> T4[\&quot;administrativeEmployees\&quot;]\r\n\r\n    style DB stroke:#6b46c1\r\n    style T4 stroke:#276749,stroke-dasharray: 5 5&quot;">graph TD
+    DB[&quot;InMemoryDatabase (Singleton)&quot;]
+    DB --> T1[&quot;students&quot;]
+    DB --> T2[&quot;teachers&quot;]
+    DB --> T3[&quot;books&quot;]
+    DB --> T4[&quot;administrativeEmployees&quot;]
+
+    style DB stroke:#6b46c1
+    style T4 stroke:#276749,stroke-dasharray: 5 5
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>InMemoryDatabase</span></span>
+<span data-line><span>│</span></span>
+<span data-line><span>├── students</span></span>
+<span data-line><span>├── teachers</span></span>
+<span data-line><span>├── books</span></span>
+<span data-line><span>└── administrativeEmployees</span></span></code></pre></figure>
+<hr/>
+<h1 id="12-preguntas-de-reflexión-final">12. Preguntas de reflexión final<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#12-preguntas-de-reflexión-final" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Responder con sus propias palabras:</p>
+<h3 id="fundamentos-y-encapsulación">Fundamentos y Encapsulación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fundamentos-y-encapsulación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p>¿Qué diferencia existe entre una clase y un objeto?</p>
+</li>
+<li>
+<p>¿Qué problema resuelve la encapsulación?</p>
+</li>
+<li>
+<p>¿Qué función cumple <code>private</code>?</p>
+</li>
+<li>
+<p>¿Por qué utilizamos getters y setters?</p>
+</li>
+</ol>
+<h3 id="herencia">Herencia<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#herencia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="5">
+<li>
+<p>¿Qué problema resuelve la herencia?</p>
+</li>
+<li>
+<p>¿Qué representa <code>Person</code> dentro de nuestro sistema?</p>
+</li>
+<li>
+<p>¿Qué significa que <code>Student</code> herede de <code>Person</code>?</p>
+</li>
+<li>
+<p>¿Qué función cumple <code>super</code>?</p>
+</li>
+</ol>
+<h3 id="principio-de-responsabilidad-única-srp">Principio de Responsabilidad Única (SRP)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principio-de-responsabilidad-única-srp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="9">
+<li>
+<p>¿Por qué separamos <code>Student</code> y <code>StudentRepository</code>?</p>
+</li>
+<li>
+<p>¿Qué responsabilidad tiene cada una de estas clases?</p>
+</li>
+<li>
+<p>¿Qué significa Single Responsibility Principle?</p>
+</li>
+</ol>
+<h3 id="colecciones-y-base-de-datos-en-memoria">Colecciones y Base de Datos en Memoria<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#colecciones-y-base-de-datos-en-memoria" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="12">
+<li>
+<p>¿Qué diferencia existe entre una <code>List</code> y un <code>HashMap</code>?</p>
+</li>
+<li>
+<p>¿Por qué utilizamos el ID como clave del <code>HashMap</code>?</p>
+</li>
+<li>
+<p>¿Por qué nuestra base de datos utiliza diferentes colecciones para estudiantes, docentes y libros?</p>
+</li>
+<li>
+<p>¿Qué ventaja obtenemos al organizar los datos como “tablas”?</p>
+</li>
+<li>
+<p>¿Qué significa que los datos estén almacenados en memoria?</p>
+</li>
+<li>
+<p>¿Qué ocurre con los datos cuando finaliza el programa?</p>
+</li>
+</ol>
+<h3 id="patrón-singleton">Patrón Singleton<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#patrón-singleton" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="18">
+<li>
+<p>¿Qué problema aparece si existen dos instancias de <code>InMemoryDatabase</code>?</p>
+</li>
+<li>
+<p>¿Qué problema intenta solucionar Singleton?</p>
+</li>
+<li>
+<p>¿Cómo podemos comprobar que dos variables apuntan a la misma instancia?</p>
+</li>
+</ol>
+<h3 id="principio-openclosed-ocp">Principio Open/Closed (OCP)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#principio-openclosed-ocp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol start="21">
+<li>
+<p>¿Qué significa Open/Closed Principle?</p>
+</li>
+<li>
+<p>¿Cómo conseguimos extender nuestro sistema agregando <code>Book</code> sin modificar completamente la estructura existente?</p>
+</li>
+</ol>
+<hr/>
+<h1 id="13-restricciones-de-la-práctica">13. Restricciones de la práctica<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#13-restricciones-de-la-práctica" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>Para mantener el enfoque en los fundamentos de POO, en esta práctica no se utilizarán:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">❌ Elementos No Permitidos</th><th style="text-align:left;">✔️ Elementos Permitidos y Requeridos</th></tr></thead><tbody><tr><td style="text-align:left;">Interfaces</td><td style="text-align:left;">Clases y Objetos estándar</td></tr><tr><td style="text-align:left;">Clases abstractas</td><td style="text-align:left;">Atributos privados y métodos de acceso (<code>getters</code>/<code>setters</code>)</td></tr><tr><td style="text-align:left;">Polimorfismo</td><td style="text-align:left;">Herencia directa mediante <code>extends</code></td></tr><tr><td style="text-align:left;">Métodos abstractos</td><td style="text-align:left;">Constructores con delegación mediante <code>super(...)</code></td></tr><tr><td style="text-align:left;"><code>@Override</code></td><td style="text-align:left;">Principio de Responsabilidad Única (SRP)</td></tr><tr><td style="text-align:left;">JDBC</td><td style="text-align:left;">Simulación de base de datos en memoria</td></tr><tr><td style="text-align:left;">MySQL / PostgreSQL</td><td style="text-align:left;">Colecciones Java: <code>List</code>, <code>Map</code> y <code>HashMap</code></td></tr><tr><td style="text-align:left;">Frameworks externos</td><td style="text-align:left;">Patrón Singleton artesanal en Java puro</td></tr></tbody></table></div>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>❌ Interfaces</span></span>
+<span data-line><span>❌ Clases abstractas</span></span>
+<span data-line><span>❌ Polimorfismo</span></span>
+<span data-line><span>❌ Métodos abstractos</span></span>
+<span data-line><span>❌ @Override</span></span>
+<span data-line><span>❌ JDBC</span></span>
+<span data-line><span>❌ MySQL</span></span>
+<span data-line><span>❌ PostgreSQL</span></span>
+<span data-line><span>❌ Frameworks</span></span></code></pre></figure>
+<p>El almacenamiento será únicamente en memoria:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="text" data-theme="github-light github-dark"><code data-language="text" data-theme="github-light github-dark" style="display:grid;"><span data-line><span>Java Collections</span></span>
+<span data-line><span>       │</span></span>
+<span data-line><span>       ├── List</span></span>
+<span data-line><span>       └── Map / HashMap</span></span></code></pre></figure>
+<hr/>
+<h1 id="14-resultado-esperado">14. Resultado esperado<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#14-resultado-esperado" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>El estudiante debe comprender que el sistema no fue construido completamente desde el principio.</p>
+<p>La solución evolucionó de acuerdo con las necesidades:</p>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\r\n    N1[\&quot;Student\&quot;] -->|\&quot;1. Necesitamos proteger sus datos\&quot;| N2[\&quot;Encapsulación\&quot;]\r\n    N2 -->|\&quot;2. Aparece Teacher con datos comunes\&quot;| N3[\&quot;Herencia (Person)\&quot;]\r\n    N3 -->|\&quot;3. Las clases asumen demasiadas responsabilidades\&quot;| N4[\&quot;Separación de Responsabilidades (SRP)\&quot;]\r\n    N4 -->|\&quot;4. Necesitamos almacenar datos temporalmente\&quot;| N5[\&quot;Colecciones (List / Map / HashMap)\&quot;]\r\n    N5 -->|\&quot;5. Necesitamos organizar diferentes tablas\&quot;| N6[\&quot;InMemoryDatabase\&quot;]\r\n    N6 -->|\&quot;6. Necesitamos una única base compartida\&quot;| N7[\&quot;Patrón Singleton\&quot;]\r\n    N7 -->|\&quot;7. Necesitamos agregar nuevas entidades sin alterar la base\&quot;| N8[\&quot;Open/Closed Principle (OCP)\&quot;]\r\n\r\n    style N1 stroke:#cbd5e0\r\n    style N2 stroke:#bee3f8\r\n    style N3 stroke:#b2f5ea\r\n    style N4 stroke:#faf089\r\n    style N5 stroke:#fbd38d\r\n    style N6 stroke:#fbb6ce\r\n    style N7 stroke:#d6bcfa\r\n    style N8 stroke:#9ae6b4&quot;">flowchart TD
+    N1[&quot;Student&quot;] -->|&quot;1. Necesitamos proteger sus datos&quot;| N2[&quot;Encapsulación&quot;]
+    N2 -->|&quot;2. Aparece Teacher con datos comunes&quot;| N3[&quot;Herencia (Person)&quot;]
+    N3 -->|&quot;3. Las clases asumen demasiadas responsabilidades&quot;| N4[&quot;Separación de Responsabilidades (SRP)&quot;]
+    N4 -->|&quot;4. Necesitamos almacenar datos temporalmente&quot;| N5[&quot;Colecciones (List / Map / HashMap)&quot;]
+    N5 -->|&quot;5. Necesitamos organizar diferentes tablas&quot;| N6[&quot;InMemoryDatabase&quot;]
+    N6 -->|&quot;6. Necesitamos una única base compartida&quot;| N7[&quot;Patrón Singleton&quot;]
+    N7 -->|&quot;7. Necesitamos agregar nuevas entidades sin alterar la base&quot;| N8[&quot;Open/Closed Principle (OCP)&quot;]
+
+    style N1 stroke:#cbd5e0
+    style N2 stroke:#bee3f8
+    style N3 stroke:#b2f5ea
+    style N4 stroke:#faf089
+    style N5 stroke:#fbd38d
+    style N6 stroke:#fbb6ce
+    style N7 stroke:#d6bcfa
+    style N8 stroke:#9ae6b4
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-125" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-1" class="toc-content overflow"><li class="depth-0"><a href="#guía-de-laboratorio" data-for="guía-de-laboratorio">Guía de Laboratorio</a></li><li class="depth-1"><a href="#evolución-de-un-sistema-de-estudiantes-en-java" data-for="evolución-de-un-sistema-de-estudiantes-en-java">Evolución de un sistema de estudiantes en Java</a></li><li class="depth-0"><a href="#1-problema" data-for="1-problema">1. Problema</a></li><li class="depth-0"><a href="#2-objetivos" data-for="2-objetivos">2. Objetivos</a></li><li class="depth-0"><a href="#3-conceptos-que-se-trabajarán" data-for="3-conceptos-que-se-trabajarán">3. Conceptos que se trabajarán</a></li><li class="depth-0"><a href="#4-etapa-1--crear-la-clase-student" data-for="4-etapa-1--crear-la-clase-student">4. Etapa 1 — Crear la clase Student</a></li><li class="depth-1"><a href="#situación-inicial" data-for="situación-inicial">Situación inicial</a></li><li class="depth-1"><a href="#actividades" data-for="actividades">Actividades</a></li><li class="depth-0"><a href="#5-etapa-2--encapsulación" data-for="5-etapa-2--encapsulación">5. Etapa 2 — Encapsulación</a></li><li class="depth-1"><a href="#problema" data-for="problema">Problema</a></li><li class="depth-1"><a href="#objetivo" data-for="objetivo">Objetivo</a></li><li class="depth-1"><a href="#actividades-1" data-for="actividades-1">Actividades</a></li><li class="depth-0"><a href="#6-etapa-3--introducir-herencia" data-for="6-etapa-3--introducir-herencia">6. Etapa 3 — Introducir herencia</a></li><li class="depth-1"><a href="#nuevo-requisito" data-for="nuevo-requisito">Nuevo requisito</a></li><li class="depth-1"><a href="#solución" data-for="solución">Solución</a></li><li class="depth-1"><a href="#actividades-2" data-for="actividades-2">Actividades</a></li><li class="depth-0"><a href="#7-etapa-4--separación-de-responsabilidades" data-for="7-etapa-4--separación-de-responsabilidades">7. Etapa 4 — Separación de responsabilidades</a></li><li class="depth-1"><a href="#nuevo-problema" data-for="nuevo-problema">Nuevo problema</a></li><li class="depth-1"><a href="#nueva-idea" data-for="nueva-idea">Nueva idea</a></li><li class="depth-1"><a href="#single-responsibility-principle" data-for="single-responsibility-principle">Single Responsibility Principle</a></li><li class="depth-1"><a href="#actividades-3" data-for="actividades-3">Actividades</a></li><li class="depth-0"><a href="#8-etapa-5--extensión-del-sistema-y-base-de-datos-en-memoria" data-for="8-etapa-5--extensión-del-sistema-y-base-de-datos-en-memoria">8. Etapa 5 — Extensión del sistema y base de datos en memoria</a></li><li class="depth-1"><a href="#nuevo-problema-1" data-for="nuevo-problema-1">Nuevo problema</a></li><li class="depth-1"><a href="#81-primera-aproximación-una-colección" data-for="81-primera-aproximación-una-colección">8.1. Primera aproximación: una colección</a></li><li class="depth-1"><a href="#82-utilizar-hashmap" data-for="82-utilizar-hashmap">8.2. Utilizar HashMap</a></li><li class="depth-0"><a href="#83-simular-tablas" data-for="83-simular-tablas">8.3. Simular tablas</a></li><li class="depth-0"><a href="#84-estructura-general" data-for="84-estructura-general">8.4. Estructura general</a></li><li class="depth-0"><a href="#85-insertar-y-buscar-información" data-for="85-insertar-y-buscar-información">8.5. Insertar y buscar información</a></li><li class="depth-0"><a href="#86-añadir-una-nueva-entidad" data-for="86-añadir-una-nueva-entidad">8.6. Añadir una nueva entidad</a></li><li class="depth-0"><a href="#87-openclosed-principle" data-for="87-openclosed-principle">8.7. Open/Closed Principle</a></li><li class="depth-1"><a href="#actividades-4" data-for="actividades-4">Actividades</a></li><li class="depth-0"><a href="#9-etapa-6--singleton" data-for="9-etapa-6--singleton">9. Etapa 6 — Singleton</a></li><li class="depth-1"><a href="#nuevo-problema-2" data-for="nuevo-problema-2">Nuevo problema</a></li><li class="depth-0"><a href="#91-patrón-singleton" data-for="91-patrón-singleton">9.1. Patrón Singleton</a></li><li class="depth-0"><a href="#92-estructura-conceptual-del-singleton" data-for="92-estructura-conceptual-del-singleton">9.2. Estructura conceptual del Singleton</a></li><li class="depth-0"><a href="#93-comprobar-que-existe-una-única-instancia" data-for="93-comprobar-que-existe-una-única-instancia">9.3. Comprobar que existe una única instancia</a></li><li class="depth-0"><a href="#94-comprobar-que-los-datos-son-compartidos" data-for="94-comprobar-que-los-datos-son-compartidos">9.4. Comprobar que los datos son compartidos</a></li><li class="depth-0"><a href="#10-estructura-final-del-sistema" data-for="10-estructura-final-del-sistema">10. Estructura final del sistema</a></li><li class="depth-0"><a href="#11-desafío-integrador" data-for="11-desafío-integrador">11. Desafío integrador</a></li><li class="depth-0"><a href="#12-preguntas-de-reflexión-final" data-for="12-preguntas-de-reflexión-final">12. Preguntas de reflexión final</a></li><li class="depth-2"><a href="#fundamentos-y-encapsulación" data-for="fundamentos-y-encapsulación">Fundamentos y Encapsulación</a></li><li class="depth-2"><a href="#herencia" data-for="herencia">Herencia</a></li><li class="depth-2"><a href="#principio-de-responsabilidad-única-srp" data-for="principio-de-responsabilidad-única-srp">Principio de Responsabilidad Única (SRP)</a></li><li class="depth-2"><a href="#colecciones-y-base-de-datos-en-memoria" data-for="colecciones-y-base-de-datos-en-memoria">Colecciones y Base de Datos en Memoria</a></li><li class="depth-2"><a href="#patrón-singleton" data-for="patrón-singleton">Patrón Singleton</a></li><li class="depth-2"><a href="#principio-openclosed-ocp" data-for="principio-openclosed-ocp">Principio Open/Closed (OCP)</a></li><li class="depth-0"><a href="#13-restricciones-de-la-práctica" data-for="13-restricciones-de-la-práctica">13. Restricciones de la práctica</a></li><li class="depth-0"><a href="#14-resultado-esperado" data-for="14-resultado-esperado">14. Resultado esperado</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}container;content;isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">
+        const socket = new WebSocket('ws://localhost:3001')
+        // reload(true) ensures resources like images and scripts are fetched again in firefox
+        socket.addEventListener('message', () => document.location.reload(true))
+      </script><script src="../../postscript.js" type="module" data-persist="true"></script></html>
