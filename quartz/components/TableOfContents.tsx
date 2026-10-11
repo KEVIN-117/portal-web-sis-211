@@ -30,14 +30,15 @@ export default ((opts?: Partial<Options>) => {
       return null
     }
 
+    const collapsed = fileData.collapseToc || displayClass === "mobile-only"
     const id = `toc-${numTocs++}`
     return (
       <div class={classNames(displayClass, "toc")}>
         <button
           type="button"
-          class={fileData.collapseToc ? "collapsed toc-header" : "toc-header"}
+          class={collapsed ? "collapsed toc-header" : "toc-header"}
           aria-controls={id}
-          aria-expanded={!fileData.collapseToc}
+          aria-expanded={!collapsed}
         >
           <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
           <svg
@@ -55,10 +56,7 @@ export default ((opts?: Partial<Options>) => {
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
-        <OverflowList
-          id={id}
-          class={fileData.collapseToc ? "collapsed toc-content" : "toc-content"}
-        >
+        <OverflowList id={id} class={collapsed ? "collapsed toc-content" : "toc-content"}>
           {fileData.toc.map((tocEntry) => (
             <li key={tocEntry.slug} class={`depth-${tocEntry.depth}`}>
               <a href={`#${tocEntry.slug}`} data-for={tocEntry.slug}>

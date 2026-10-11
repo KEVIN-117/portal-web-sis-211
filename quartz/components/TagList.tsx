@@ -5,8 +5,8 @@ import { classNames } from "../util/lang"
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
   if (tags && tags.length > 0) {
-    return (
-      <ul class={classNames(displayClass, "tags")}>
+    const tagLinks = (
+      <ul class={classNames(displayClass, "tags")} aria-label="Etiquetas de la página">
         {tags.map((tag) => {
           const linkDest = resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)
           return (
@@ -19,6 +19,17 @@ const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentPro
         })}
       </ul>
     )
+
+    if (fileData.slug === "sis-211-s2/practicas/Practica_5") {
+      return (
+        <details class="tag-disclosure">
+          <summary>Temas relacionados ({tags.length})</summary>
+          {tagLinks}
+        </details>
+      )
+    }
+
+    return tagLinks
   } else {
     return null
   }

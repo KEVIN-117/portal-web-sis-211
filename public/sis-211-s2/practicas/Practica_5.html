@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr"><head><title>Práctica 5: POO y Fundamentos de Java con Retos</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="SIS-211 · Aula digital"/><meta property="og:title" content="Práctica 5: POO y Fundamentos de Java con Retos"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Práctica 5: POO y Fundamentos de Java con Retos"/><meta name="twitter:description" content="Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad."/><meta property="og:description" content="Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad."/><meta property="og:image:alt" content="Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" data-persist="true"/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFOztBQUlGO0VBQ0U7RUFDQTtFQUNBIiwic291cmNlc0NvbnRlbnQiOlsiLmV4cGFuZC1idXR0b24ge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsb2F0OiByaWdodDtcbiAgcGFkZGluZzogMC40cmVtO1xuICBtYXJnaW46IDAuM3JlbTtcbiAgcmlnaHQ6IDA7IC8vIE5PVEU6IHJpZ2h0IHdpbGwgYmUgc2V0IGluIG1lcm1haWQuaW5saW5lLnRzXG4gIGNvbG9yOiB2YXIoLS1ncmF5KTtcbiAgYm9yZGVyLWNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICBib3JkZXI6IDFweCBzb2xpZDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBvcGFjaXR5OiAwO1xuICB0cmFuc2l0aW9uOiAwLjJzO1xuXG4gICYgPiBzdmcge1xuICAgIGZpbGw6IHZhcigtLWxpZ2h0KTtcbiAgICBmaWx0ZXI6IGNvbnRyYXN0KDAuMyk7XG4gIH1cblxuICAmOmhvdmVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgYm9yZGVyLWNvbG9yOiB2YXIoLS1zZWNvbmRhcnkpO1xuICB9XG5cbiAgJjpmb2N1cyB7XG4gICAgb3V0bGluZTogMDtcbiAgfVxufVxuXG5wcmUge1xuICAmOmhvdmVyID4gLmV4cGFuZC1idXR0b24ge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgdHJhbnNpdGlvbjogMC4ycztcbiAgfVxufVxuXG4jbWVybWFpZC1jb250YWluZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGNvbnRhaW46IGxheW91dDtcbiAgei1pbmRleDogOTk5O1xuICBsZWZ0OiAwO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgZGlzcGxheTogbm9uZTtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcblxuICAmLmFjdGl2ZSB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB9XG5cbiAgJiA+ICNtZXJtYWlkLXNwYWNlIHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgICBoZWlnaHQ6IDgwdmg7XG4gICAgd2lkdGg6IDgwdnc7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcblxuICAgICYgPiAubWVybWFpZC1jb250ZW50IHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="sis-211-s2/practicas/Practica_5"><a class="skip-link" href="#main-content">Saltar al contenido principal</a><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">SIS-211 · Aula digital</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>Buscar</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Busca algo" placeholder="Busca algo"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Modo oscuro"><title>Modo oscuro</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Modo claro"><title>Modo claro</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Modo lector"><title>Modo lector</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-114"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorador</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-114" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-1"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center" id="main-content" role="main" tabindex="-1"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../sis-211-s2/">sis 211 s2</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../sis-211-s2/practicas/">practicas</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Práctica 5: POO y Fundamentos de Java con Retos</a></div></nav><h1 class="article-title">Práctica 5: POO y Fundamentos de Java con Retos</h1><p show-comma="true" class="content-meta"><time datetime="2026-10-11T05:33:58.839Z">11 oct 2026</time><span>Se lee en 17 min</span></p><details class="tag-disclosure"><summary>Temas relacionados (22)</summary><ul class="tags" aria-label="Etiquetas de la página"><li><a href="../../tags/java" class="internal tag-link">java</a></li><li><a href="../../tags/poo" class="internal tag-link">poo</a></li><li><a href="../../tags/herencia" class="internal tag-link">herencia</a></li><li><a href="../../tags/encapsulacion" class="internal tag-link">encapsulacion</a></li><li><a href="../../tags/polimorfismo" class="internal tag-link">polimorfismo</a></li><li><a href="../../tags/clases-abstractas" class="internal tag-link">clases-abstractas</a></li><li><a href="../../tags/interfaces" class="internal tag-link">interfaces</a></li><li><a href="../../tags/srp" class="internal tag-link">srp</a></li><li><a href="../../tags/ocp" class="internal tag-link">ocp</a></li><li><a href="../../tags/solid" class="internal tag-link">solid</a></li><li><a href="../../tags/singleton" class="internal tag-link">singleton</a></li><li><a href="../../tags/patrones-de-diseno" class="internal tag-link">patrones-de-diseno</a></li><li><a href="../../tags/colecciones" class="internal tag-link">colecciones</a></li><li><a href="../../tags/hashmap" class="internal tag-link">hashmap</a></li><li><a href="../../tags/estructuras-de-datos" class="internal tag-link">estructuras-de-datos</a></li><li><a href="../../tags/inteligencia-artificial" class="internal tag-link">inteligencia-artificial</a></li><li><a href="../../tags/ciberseguridad" class="internal tag-link">ciberseguridad</a></li><li><a href="../../tags/reversing" class="internal tag-link">reversing</a></li><li><a href="../../tags/bytecode" class="internal tag-link">bytecode</a></li><li><a href="../../tags/sis-211-s2" class="internal tag-link">sis-211-s2</a></li><li><a href="../../tags/guia-laboratorio" class="internal tag-link">guia-laboratorio</a></li><li><a href="../../tags/ejemplos-solucion-problemas" class="internal tag-link">ejemplos-solucion-problemas</a></li></ul></details><div class="toc mobile-only"><button type="button" class="collapsed toc-header" aria-controls="toc-92" aria-expanded="false"><h3>Tabla de Contenidos</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="collapsed toc-content overflow"><li class="depth-0"><a href="#antes-de-empezar" data-for="antes-de-empezar">Antes de empezar</a></li><li class="depth-0"><a href="#2-entregables" data-for="2-entregables">2. Entregables</a></li><li class="depth-0"><a href="#3-criterios-de-calificación" data-for="3-criterios-de-calificación">3. Criterios de calificación</a></li><li class="depth-1"><a href="#31-creatividad" data-for="31-creatividad">3.1. Creatividad</a></li><li class="depth-0"><a href="#4-presentación" data-for="4-presentación">4. Presentación</a></li><li class="depth-1"><a href="#41-objetivo-general" data-for="41-objetivo-general">4.1. Objetivo general</a></li><li class="depth-1"><a href="#42-al-finalizar-podrás" data-for="42-al-finalizar-podrás">4.2. Al finalizar, podrás</a></li><li class="depth-1"><a href="#43-preparación" data-for="43-preparación">4.3. Preparación</a></li><li class="depth-0"><a href="#5-mapa-de-contenidos" data-for="5-mapa-de-contenidos">5. Mapa de contenidos</a></li><li class="depth-0"><a href="#6-ejercicios" data-for="6-ejercicios">6. Ejercicios</a></li><li class="depth-1"><a href="#bloque-a-objetos-y-relaciones" data-for="bloque-a-objetos-y-relaciones">Bloque A. Objetos y relaciones</a></li><li class="depth-1"><a href="#bloque-b-comportamientos-y-polimorfismo" data-for="bloque-b-comportamientos-y-polimorfismo">Bloque B. Comportamientos y polimorfismo</a></li><li class="depth-1"><a href="#bloque-c-modelado-y-colaboración-con-poo" data-for="bloque-c-modelado-y-colaboración-con-poo">Bloque C. Modelado y colaboración con POO</a></li><li class="depth-1"><a href="#bloque-d-ia-y-ciberseguridad-didáctica" data-for="bloque-d-ia-y-ciberseguridad-didáctica">Bloque D. IA y ciberseguridad didáctica</a></li><li class="depth-0"><a href="#7-ruta-sugerida" data-for="7-ruta-sugerida">7. Ruta sugerida</a></li><li class="depth-0"><a href="#8-lista-de-comprobación" data-for="8-lista-de-comprobación">8. Lista de comprobación</a></li><li class="depth-0"><a href="#9-cierre" data-for="9-cierre">9. Cierre</a></li><li class="overflow-end"></li></ul></div></div></div><article class="popover-hint"><h2 id="antes-de-empezar">Antes de empezar<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#antes-de-empezar" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad.</p>
+<p><strong>Atajos:</strong> <a href="#6-ejercicios" class="internal alias">Ver los 9 ejercicios</a> · <a href="#2-entregables" class="internal alias">Requisitos de entrega</a> · <a href="#3-criterios-de-calificaci%C3%B3n" class="internal alias">Criterios de evaluación</a> · <a href="#8-lista-de-comprobaci%C3%B3n" class="internal alias">Lista de comprobación</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Parámetro</th><th style="text-align:left;">Detalle</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>Asignatura</strong></td><td style="text-align:left;">Programación en Java</td></tr><tr><td style="text-align:left;"><strong>Modalidad</strong></td><td style="text-align:left;">Individual o parejas</td></tr><tr><td style="text-align:left;"><strong>Duración estimada</strong></td><td style="text-align:left;">4 a 5 horas, ajustable</td></tr></tbody></table></div>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Modalidad de trabajo </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Cada ejercicio se resuelve y entrega por separado. No existe una aplicación final que deba unirlos: la meta es practicar conceptos concretos, probarlos y explicar decisiones pequeñas de diseño.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="2-entregables">2. Entregables<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-entregables" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La entrega se realizará mediante un repositorio de GitHub. Publica la URL del repositorio en Classroom dentro de la actividad correspondiente.</p>
+<p>El repositorio debe incluir:</p>
+<ul>
+<li>Una carpeta independiente para cada ejercicio, con su código fuente.</li>
+<li>Un <code>README.md</code> con instrucciones para compilar y ejecutar cada ejercicio, la versión de Java utilizada y los datos ficticios de prueba.</li>
+<li>Las pruebas realizadas y una breve explicación de las decisiones de diseño solicitadas en cada consigna.</li>
+<li>En los ejercicios 7, 8 y 9, el prompt utilizado con el modelo, las sugerencias recibidas, cuáles verificaste y qué cambios aceptaste o descartaste.</li>
+<li>En cada ejercicio, si realizaste una extensión creativa, su descripción y la categoría que propones.</li>
+</ul>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Seguridad y privacidad </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>No incluyas contraseñas reales, tokens, datos personales, información privada ni código confidencial en el repositorio o en prompts enviados a un modelo.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="3-criterios-de-calificación">3. Criterios de calificación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-criterios-de-calificación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>La calificación base se distribuirá sobre 100 puntos. La creatividad se reconocerá aparte según la escala de la sección siguiente.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Criterio</th><th style="text-align:center;">Peso</th><th style="text-align:left;">Qué se calificará</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>Funcionamiento</strong></td><td style="text-align:center;">35 puntos</td><td style="text-align:left;">El programa compila, cumple la consigna y produce resultados correctos en casos normales.</td></tr><tr><td style="text-align:left;"><strong>Aplicación de Java y POO</strong></td><td style="text-align:center;">25 puntos</td><td style="text-align:left;">Uso adecuado de clases, encapsulamiento, relaciones, herencia, polimorfismo y demás conceptos solicitados.</td></tr><tr><td style="text-align:left;"><strong>Pruebas y casos límite</strong></td><td style="text-align:center;">15 puntos</td><td style="text-align:left;">Pruebas reproducibles, incluidos valores inválidos o situaciones límite pertinentes.</td></tr><tr><td style="text-align:left;"><strong>Organización y legibilidad</strong></td><td style="text-align:center;">10 puntos</td><td style="text-align:left;">Nombres claros, responsabilidades comprensibles, estructura del repositorio y <code>README.md</code> suficiente para ejecutar el trabajo.</td></tr><tr><td style="text-align:left;"><strong>Explicación y revisión crítica</strong></td><td style="text-align:center;">15 puntos</td><td style="text-align:left;">Justificación de decisiones; en ejercicios con IA, verificación de sugerencias y evidencia de qué se aceptó o descartó. En seguridad, respeto del alcance y análisis responsable.</td></tr></tbody></table></div>
+<h3 id="31-creatividad">3.1. Creatividad<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-creatividad" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Las consignas delimitan el objetivo de cada ejercicio, pero permiten elegir datos, reglas y formas de presentar la solución. Puedes proponer extensiones creativas siempre que mantengan el propósito didáctico y respeten los límites de seguridad indicados.</p>
+<p>La creatividad se calificará como puntaje adicional. Se asigna una sola categoría por ejercicio, según la propuesta que hayas implementado y explicado:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Categoría</th><th style="text-align:center;">Puntaje adicional</th><th style="text-align:left;">Descripción</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>Easy</strong></td><td style="text-align:center;">+10</td><td style="text-align:left;">Una mejora pequeña y pertinente, como una validación adicional o una salida más clara.</td></tr><tr><td style="text-align:left;"><strong>Medium</strong></td><td style="text-align:center;">+20</td><td style="text-align:left;">Una ampliación que resuelve un caso adicional y combina varios conceptos de Java.</td></tr><tr><td style="text-align:left;"><strong>Hard</strong></td><td style="text-align:center;">+30</td><td style="text-align:left;">Una extensión más completa, bien probada y organizada, que integra varios conceptos sin perder claridad.</td></tr><tr><td style="text-align:left;"><strong>Insane</strong></td><td style="text-align:center;">+50</td><td style="text-align:left;">En cada ejercicio, se construye una simulación creativa y constructiva de un entorno realista, dentro del alcance definido, integrando muchos conceptos y manteniendo pruebas y límites responsables.</td></tr></tbody></table></div>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Solicitud de puntaje creativo </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Para solicitar puntaje creativo, añade al <code>README.md</code> del ejercicio una nota con la categoría propuesta, qué agregaste, qué conceptos integraste y cómo comprobaste que funciona. El docente determina la categoría final. Una idea sin implementación o explicación no obtiene puntaje adicional.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="4-presentación">4. Presentación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-presentación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>En esta práctica pondrás en uso fundamentos de Java y POO: clases, objetos, atributos, métodos, constructores, encapsulamiento, relaciones entre clases, herencia, sobrecarga, sobrescritura, polimorfismo, clases abstractas e interfaces. Las consignas también usan variables, condicionales, ciclos y arreglos básicos cuando hacen falta. Los ejercicios presentan situaciones como cuentas digitales, pedidos, entregas, sensores, préstamos y auditoría de código.</p>
+<p>La guía también propone actividades de revisión de código con IA y ejercicios introductorios de seguridad informática. Los ejercicios de seguridad se trabajan con datos ficticios y código local dentro del alcance descrito.</p>
+<h3 id="41-objetivo-general">4.1. Objetivo general<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-objetivo-general" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Aplicar los conceptos de Java y POO en ejercicios pequeños e independientes, comprobando el comportamiento mediante pruebas y explicaciones breves.</p>
+<h3 id="42-al-finalizar-podrás">4.2. Al finalizar, podrás<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-al-finalizar-podrás" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Modelar objetos con atributos privados, constructores y métodos que protegen el estado.</li>
+<li>Representar relaciones entre clases y usar herencia cuando exista una relación “es un”.</li>
+<li>Distinguir sobrecarga de sobrescritura y observar el despacho dinámico.</li>
+<li>Elegir entre una clase abstracta y una interfaz según la responsabilidad del tipo.</li>
+<li>Relacionar objetos y delegar responsabilidades entre clases sencillas.</li>
+<li>Aplicar condicionales, ciclos y arreglos básicos para controlar el comportamiento de los objetos.</li>
+<li>Inspeccionar localmente una clase compilada y proponer mejoras defensivas para el ejemplo.</li>
+</ul>
+<h3 id="43-preparación">4.3. Preparación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-preparación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>JDK y un IDE o editor que utilice la versión de Java trabajada en clase.</li>
+<li>Crear un directorio separado para cada ejercicio, con su propia clase Main cuando sea necesario.</li>
+<li>Usar nombres descriptivos, indentación consistente y métodos breves.</li>
+<li>Incluir datos de prueba reproducibles; no utilizar información personal real.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Regla para el uso de IA </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Puedes pedir explicaciones, casos de prueba o revisión; debes verificar cada sugerencia y poder explicar el código que entregas.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="5-mapa-de-contenidos">5. Mapa de contenidos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-mapa-de-contenidos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Bloque</th><th style="text-align:left;">Conceptos que se practican</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>A. Objetos y relaciones</strong></td><td style="text-align:left;">Clases, objetos, estado, métodos, encapsulamiento, constructores, composición y asociación.</td></tr><tr><td style="text-align:left;"><strong>B. Comportamientos</strong></td><td style="text-align:left;">Herencia, sobrecarga, sobrescritura, polimorfismo, abstracción e interfaces.</td></tr><tr><td style="text-align:left;"><strong>C. Colaboración entre objetos</strong></td><td style="text-align:left;">Asociación entre clases, atributos privados, métodos, arreglos básicos y reglas sencillas.</td></tr><tr><td style="text-align:left;"><strong>D. Revisión responsable</strong></td><td style="text-align:left;">Revisión crítica con IA y auditoría local de una clase de acceso ficticia.</td></tr></tbody></table></div>
+<hr/>
+<h2 id="6-ejercicios">6. Ejercicios<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-ejercicios" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Resuelve los ejercicios en el orden sugerido. Antes de programar, identifica qué objetos intervienen, qué datos deben protegerse y qué resultado demostraría que la solución funciona.</p>
+<h3 id="bloque-a-objetos-y-relaciones">Bloque A. Objetos y relaciones<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bloque-a-objetos-y-relaciones" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="ejercicio-1-cuenta-digital-con-reglas-de-negocio">Ejercicio 1. Cuenta digital con reglas de negocio<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-1-cuenta-digital-con-reglas-de-negocio" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Inicial</li>
+<li><strong>Tiempo sugerido:</strong> 25 min</li>
+<li><strong>Se practica:</strong> Clases, atributos privados, constructores, encapsulamiento y condicionales.</li>
+</ul>
+<p>Una aplicación bancaria sencilla necesita representar una cuenta. El saldo no debe cambiarse directamente desde el programa principal: las operaciones de depósito y retiro deben validar sus propias reglas.</p>
+<p><strong>Consigna</strong></p>
+<p>Crea la clase <code>CuentaDigital</code> con titular, identificador y saldo. Implementa un constructor y métodos para depositar, retirar y consultar el saldo. Desde <code>Main</code>, prueba operaciones válidas y casos inválidos.</p>
+<ul>
+<li><strong>Condiciones:</strong> Mantén los atributos privados. Rechaza depósitos no positivos y retiros mayores al saldo. No permitas que un setter deje la cuenta en un estado inválido. Haz que los métodos indiquen con un resultado sencillo si la operación se realizó; muestra el estado actualizado desde <code>Main</code>.</li>
+<li><strong>Evidencia:</strong> Código fuente y una tabla breve con cuatro pruebas: depósito correcto, retiro correcto, monto no positivo y fondos insuficientes.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Añade un límite diario de retiro sin convertir la clase en una aplicación completa.</p>
+</div>
+</blockquote>
+<h4 id="ejercicio-2-pedido-de-cafetería">Ejercicio 2. Pedido de cafetería<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-2-pedido-de-cafetería" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Inicial a intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 25 min</li>
+<li><strong>Se practica:</strong> Composición, arreglos, objetos relacionados, métodos y cálculo de totales.</li>
+</ul>
+<p>Una cafetería registra pedidos con varios productos. Cada producto conserva nombre y precio; el pedido reúne los productos y calcula su total.</p>
+<p><strong>Consigna</strong></p>
+<p>Crea <code>Producto</code> y <code>Pedido</code>. Agrega productos a un pedido, muestra sus líneas y calcula subtotal y total. Usa datos de ejemplo para una compra de al menos tres productos.</p>
+<ul>
+<li><strong>Condiciones:</strong> El pedido debe guardar objetos <code>Producto</code> en un arreglo de tres posiciones y recorrerlo con un ciclo básico. Valida que el precio sea positivo. No calcules el total a mano en <code>Main</code>; delega el comportamiento al objeto que corresponde.</li>
+<li><strong>Evidencia:</strong> Una salida de consola legible que muestre los productos y el total calculado, más una explicación de por qué la relación es composición o asociación en tu diseño.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Aplica un descuento si el subtotal supera un umbral que tú definas y explica la regla.</p>
+</div>
+</blockquote>
+<hr/>
+<h3 id="bloque-b-comportamientos-y-polimorfismo">Bloque B. Comportamientos y polimorfismo<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bloque-b-comportamientos-y-polimorfismo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="ejercicio-3-tarifas-de-entrega">Ejercicio 3. Tarifas de entrega<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-3-tarifas-de-entrega" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 30 min</li>
+<li><strong>Se practica:</strong> Herencia, sobrescritura, sobrecarga y polimorfismo dinámico.</li>
+</ul>
+<p>Un servicio de entregas ofrece modalidades en bicicleta y en automóvil. Ambas comparten datos de una entrega, pero calculan el costo de forma diferente.</p>
+<p><strong>Consigna</strong></p>
+<p>Diseña una clase base <code>Entrega</code> y dos subclases. Cada subclase sobrescribe <code>calcularCosto()</code>. Guarda entregas de ambas modalidades en un arreglo <code>Entrega[]</code> y recórrelo con un ciclo para imprimir cada costo. Añade una sobrecarga que calcule el costo con un parámetro adicional, como distancia con recargo.</p>
+<ul>
+<li><strong>Condiciones:</strong> No uses <code>if</code> en el ciclo para preguntar el tipo de entrega. Usa <code>@Override</code>. Para la sobrecarga, cambia el número o tipo de parámetros; cambiar solo el retorno no cuenta.</li>
+<li><strong>Evidencia:</strong> Incluye el resultado para una entrega de cada modalidad. Añade dos frases: qué determina qué métodos puedes llamar y qué determina qué implementación sobrescrita se ejecuta.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Dibuja de forma simple la referencia de tipo base apuntando a un objeto de una subclase y explica la diferencia entre tipo estático y tipo dinámico.</p>
+</div>
+</blockquote>
+<h4 id="ejercicio-4-sensores-de-un-invernadero">Ejercicio 4. Sensores de un invernadero<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-4-sensores-de-un-invernadero" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 30 min</li>
+<li><strong>Se practica:</strong> Clase abstracta, interfaces, herencia y contrato de comportamiento.</li>
+</ul>
+<p>Un invernadero utiliza sensores que comparten identificador y ubicación. Algunos pueden calibrarse y todos deben reportar una lectura en formato común.</p>
+<p><strong>Consigna</strong></p>
+<p>Crea una clase abstracta <code>Sensor</code> con estado común y un método abstracto <code>leer()</code>. Implementa <code>SensorTemperatura</code> y <code>SensorHumedad</code>. Define una interfaz <code>Calibrable</code> y haz que al menos un sensor la implemente. Crea instancias concretas, guárdalas en un arreglo <code>Sensor[]</code> y recorre el arreglo con un ciclo para mostrar sus lecturas.</p>
+<ul>
+<li><strong>Condiciones:</strong> No instancies directamente <code>Sensor</code>. Utiliza la clase abstracta para los datos y comportamiento compartidos; utiliza la interfaz para expresar la capacidad de calibrarse. Mantén valores simulados, sin conectar hardware real.</li>
+<li><strong>Evidencia:</strong> Código con al menos dos sensores, lectura polimórfica y una llamada de calibración. Añade una explicación breve de la elección entre clase abstracta e interfaz.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Agrega un tercer sensor sin modificar el código que recorre y presenta todos los sensores.</p>
+</div>
+</blockquote>
+<hr/>
+<h3 id="bloque-c-modelado-y-colaboración-con-poo">Bloque C. Modelado y colaboración con POO<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bloque-c-modelado-y-colaboración-con-poo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="ejercicio-5-préstamo-de-un-libro">Ejercicio 5. Préstamo de un libro<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-5-préstamo-de-un-libro" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Inicial a intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 25 min</li>
+<li><strong>Se practica:</strong> Clases, encapsulamiento, constructores, asociación entre objetos, condicionales y colaboración mediante métodos.</li>
+</ul>
+<p>Una biblioteca pequeña necesita registrar el préstamo de un libro a un lector. El libro puede estar disponible o prestado, y no debe permitirse una segunda entrega mientras siga prestado.</p>
+<p><strong>Consigna</strong></p>
+<p>Crea las clases <code>Libro</code>, <code>Lector</code> y <code>Prestamo</code>. El préstamo debe relacionar un libro con un lector, registrar si está activo y ofrecer métodos para registrar la devolución. Desde <code>Main</code>, crea un caso de préstamo, intenta repetirlo y finalmente registra la devolución.</p>
+<ul>
+<li><strong>Condiciones:</strong> Mantén el estado de disponibilidad y del préstamo encapsulado. No cambies esos atributos directamente desde <code>Main</code>; define métodos que validen las operaciones. Trabaja con un solo préstamo por ejecución, sin listas ni bases de datos.</li>
+<li><strong>Evidencia:</strong> Código fuente y una secuencia de salida que muestre el préstamo válido, el intento rechazado de prestar un libro ya prestado y la devolución.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Añade una fecha simulada de devolución y un método que indique si el préstamo está vencido, usando una regla que definas.</p>
+</div>
+</blockquote>
+<h4 id="ejercicio-6-empleados-de-una-pequeña-tienda">Ejercicio 6. Empleados de una pequeña tienda<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-6-empleados-de-una-pequeña-tienda" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 25 min</li>
+<li><strong>Se practica:</strong> Herencia, constructores, <code>super</code>, sobrescritura y polimorfismo con arreglos.</li>
+</ul>
+<p>Una tienda necesita calcular una compensación sencilla para empleados con modalidades distintas. Todos comparten nombre e identificador, pero el cálculo depende de su rol.</p>
+<p><strong>Consigna</strong></p>
+<p>Crea una clase base <code>Empleado</code> y dos subclases, por ejemplo <code>EmpleadoPorHora</code> y <code>EmpleadoFijo</code>. Inicializa los atributos heredados mediante el constructor de la clase base. Sobrescribe un método <code>calcularPago()</code> en cada subclase. Guarda dos objetos de tipos distintos en un arreglo de <code>Empleado</code> y recórrelo para mostrar sus pagos.</p>
+<ul>
+<li><strong>Condiciones:</strong> Usa <code>@Override</code> y llama al constructor de la clase base con <code>super(...)</code>. No preguntes el tipo de empleado con <code>if</code> desde el ciclo que muestra los pagos; cada objeto debe responder mediante su propio método. Usa valores inventados y reglas de cálculo simples.</li>
+<li><strong>Evidencia:</strong> Código con ambos tipos de empleado, salida de los pagos y una explicación breve de qué parte se hereda y qué comportamiento cambia.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Agrega un tercer subtipo y demuestra que el ciclo puede procesarlo sin modificar su lógica.</p>
+</div>
+</blockquote>
+<hr/>
+<h3 id="bloque-d-ia-y-ciberseguridad-didáctica">Bloque D. IA y ciberseguridad didáctica<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#bloque-d-ia-y-ciberseguridad-didáctica" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="ejercicio-7-revisión-de-código-con-ayuda-de-ia">Ejercicio 7. Revisión de código con ayuda de IA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-7-revisión-de-código-con-ayuda-de-ia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 20 min</li>
+<li><strong>Se practica:</strong> Lectura de código, pruebas, depuración y criterio técnico.</li>
+</ul>
+<p>Las herramientas de IA pueden proponer código y explicaciones, pero pueden equivocarse. En esta actividad la IA funciona como asistente de revisión, y tú verificas cada observación.</p>
+<p><strong>Consigna</strong></p>
+<p>Elige uno de los ejercicios anteriores y pide a una herramienta de IA que revise un método y sugiera cinco casos de prueba. Compara cada sugerencia con el comportamiento real del programa. Corrige al menos un defecto que confirmes o explica por qué una sugerencia no aplica.</p>
+<ul>
+<li><strong>Condiciones:</strong> No compartas datos personales, credenciales, tokens ni código privado. No aceptes una respuesta sin ejecutarla. Conserva el prompt y resume qué verificaste.</li>
+<li><strong>Evidencia:</strong> Prompt utilizado, lista de sugerencias clasificadas como correcta/incorrecta/no aplicable, pruebas ejecutadas y cambio realizado o justificación.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Pide a la IA una segunda revisión del cambio; comprueba si las pruebas distinguen casos límite reales.</p>
+</div>
+</blockquote>
+<h4 id="ejercicio-8-validador-didáctico-de-claves-con-revisión-de-ia">Ejercicio 8. Validador didáctico de claves con revisión de IA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-8-validador-didáctico-de-claves-con-revisión-de-ia" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio</li>
+<li><strong>Tiempo sugerido:</strong> 30 min</li>
+<li><strong>Se practica:</strong> Clases y métodos, String, ciclos, validaciones, pruebas, depuración y revisión crítica de sugerencias de IA.</li>
+</ul>
+<p>Una aplicación de ejemplo debe revisar si una clave de prueba cumple reglas sencillas antes de aceptarla. El objetivo es practicar lógica y revisión de código; esta actividad no crea un mecanismo real de autenticación ni define una política suficiente para proteger cuentas.</p>
+<p><strong>Código inicial</strong></p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ValidadorClave</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    boolean</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> esValida</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(String </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">clave</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> clave.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">length</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">>=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 8</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> &amp;&amp;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> clave.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">contains</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;123&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p><strong>Consigna</strong></p>
+<ol>
+<li>Antes de consultar a una IA, explica qué comprueba el método, propone al menos cuatro casos de prueba y define tres reglas sencillas para este ejercicio.</li>
+<li>Implementa tu propia versión de <code>ValidadorClave</code> o corrige el código inicial. Puedes considerar longitud, espacios y presencia de distintos tipos de caracteres; justifica las reglas elegidas.</li>
+<li>Pide a un modelo que revise tu método, sugiera casos límite y proponga una mejora. No le pidas que decida por ti qué código aceptar.</li>
+<li>Ejecuta tus pruebas y las sugeridas por el modelo. Clasifica cada sugerencia como útil, incorrecta o no aplicable. Incorpora al menos una mejora que hayas comprobado o explica por qué conservaste tu solución.</li>
+</ol>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Prompt de partida </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Revisa esta clase Java como ejercicio didáctico. Primero identifica errores lógicos y casos límite; luego sugiere pruebas y una mejora pequeña. No afirmes que estas reglas hacen segura una cuenta real. Explica cada sugerencia para que pueda verificarla.</p>
+</div>
+</blockquote>
+<ul>
+<li><strong>Condiciones:</strong> Usa claves inventadas exclusivamente para las pruebas. No uses, pegues ni guardes contraseñas reales. No presentes el resultado como un sistema real de autenticación o como una recomendación de seguridad para cuentas.</li>
+<li><strong>Evidencia:</strong> Código inicial y versión revisada; pruebas antes y después; prompt usado; una tabla de sugerencias del modelo con tu verificación; explicación de una mejora aceptada y una sugerencia descartada o corregida.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Separa la validación en métodos pequeños y compara si esa organización hace más clara la clase sin cambiar el comportamiento esperado.</p>
+</div>
+</blockquote>
+<h4 id="ejercicio-9-auditoría-red-team-y-reversing-de-un-validador-de-acceso">Ejercicio 9. Auditoría Red Team y reversing de un validador de acceso<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ejercicio-9-auditoría-red-team-y-reversing-de-un-validador-de-acceso" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Nivel:</strong> Intermedio a avanzado</li>
+<li><strong>Tiempo sugerido:</strong> 45 min</li>
+<li><strong>Se practica:</strong> Lectura de código, análisis de autenticación, revisión de POO, compilación, inspección de bytecode, decompilación y propuestas defensivas.</li>
+</ul>
+<p>Un equipo solicita una auditoría académica de un validador Java construido para una demostración local. Primero revisarás el código fuente; luego compilarás la clase e inspeccionarás qué información queda en el archivo <code>.class</code>. El análisis se limita a este ejemplo ficticio y controlado.</p>
+<p><strong>Código para auditar</strong></p>
+<p>Guarda el siguiente código como <code>LoginValidator.java</code>:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> LoginValidator</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    private</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> final</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> String USER </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;admin&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    private</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> final</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> String PASSWORD_HASH </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;5f4dcc3b5aa765d61d8327deb882cf99&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> boolean</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> login</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(String </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">user</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, String </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">password</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        String hash </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> md5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(password);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> USER.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">equals</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(user)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">                &amp;&amp;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> PASSWORD_HASH.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">equals</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(hash);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    private</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> static</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> String </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">md5</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(String </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">        try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">            java.security.MessageDigest md </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">                    java.security.MessageDigest.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">getInstance</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;MD5&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">            byte</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[] digest </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> md.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">digest</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(input.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">getBytes</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">());</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">            StringBuilder sb </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> StringBuilder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">            for</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">byte</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> b </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> digest) {</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">                sb.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">append</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(String.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">format</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;%02x&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, b));</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">            }</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">            return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> sb.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">toString</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">catch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (Exception </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">            return</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> &quot;&quot;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></figure>
+<p><strong>Consigna</strong></p>
+<ol>
+<li>
+<p>Antes de usar IA, revisa el código fuente y anota los datos sensibles, decisiones de autenticación y posibles riesgos. Escribe una hipótesis sobre qué información podría quedar visible en el archivo compilado.</p>
+</li>
+<li>
+<p>Compila e inspecciona únicamente la clase que tú mismo guardaste:</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="bash" data-theme="github-light github-dark"><code data-language="bash" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">javac</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LoginValidator.java</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">javap</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -c</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> -p</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> LoginValidator.class</span></span></code></pre></figure>
+<p><code>javap</code> muestra instrucciones de bytecode; si el laboratorio dispone de un decompilador aprobado, puedes usar CFR, JD-GUI o Bytecode Viewer para comparar la salida con el código fuente. No descargues ni ejecutes herramientas desconocidas.</p>
+</li>
+<li>
+<p>Sin consultar al modelo todavía, responde las preguntas de análisis que aparecen abajo y registra evidencia local de lo que encontraste.</p>
+</li>
+<li>
+<p>Pide a un modelo que revise tu análisis y sugiera controles defensivos. Verifica cada propuesta con el código o documentación de clase; distingue entre un hallazgo observado y una recomendación.</p>
+</li>
+<li>
+<p>Prepara una versión corregida solo a nivel didáctico: elimina secretos codificados directamente, explica por qué MD5 no es apropiado para almacenar contraseñas y plantea controles como un algoritmo específico para contraseñas (BCrypt, Argon2 o PBKDF2), gestión de secretos fuera del código y limitación de intentos. No hace falta implementar un sistema de autenticación real.</p>
+</li>
+</ol>
+<h5 id="preguntas-de-análisis">Preguntas de análisis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#preguntas-de-análisis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h5>
+<ul>
+<li>¿Qué usuario y qué hash están definidos en la clase?</li>
+<li>¿Qué información puedes observar con <code>javap</code>? ¿Qué información puede mostrar un decompilador?</li>
+<li>¿Por qué un atacante con acceso al archivo <code>.class</code> podría encontrar esos valores?</li>
+<li>¿Qué debilidad presenta MD5 cuando se usa para almacenar contraseñas?</li>
+<li>¿Por qué <code>input.getBytes()</code> podría producir resultados distintos según la codificación predeterminada del entorno?</li>
+<li>¿Qué cambios reducirían la exposición de secretos y el riesgo de intentos repetidos?</li>
+<li>¿Qué limitaciones conserva esta demostración incluso después de tus cambios?</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Prompt de partida </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Revisa esta clase Java para una auditoría autorizada en un laboratorio local. Prioriza hallazgos que puedan justificarse con el código o con la inspección del <code>.class</code>. Para cada hallazgo, indica evidencia, impacto y mitigación defensiva. Distingue lo observado de lo supuesto. No propongas probar servicios externos, obtener credenciales de terceros ni evadir controles.</p>
+</div>
+</blockquote>
+<blockquote class="callout warning" data-callout="warning">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Condiciones </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Usa exclusivamente la clase de la guía, datos ficticios y herramientas de laboratorio aprobadas. No ejecutes pruebas contra sitios, redes, cuentas o sistemas reales. No intentes recuperar credenciales de otras personas ni automatices intentos de acceso. El objetivo es comprender la exposición del código y proponer defensas.</p>
+</div>
+</blockquote>
+<ul>
+<li><strong>Evidencia:</strong> Archivo fuente, comandos ejecutados y fragmentos pertinentes de la salida local; respuestas a las preguntas; lista de hallazgos priorizados con mitigaciones; prompt utilizado; comparación entre tu análisis inicial y las sugerencias de IA; propuesta de cambios defensivos.</li>
+</ul>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Reto opcional </p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>Compara el bytecode de la clase original con el de tu versión didáctica revisada y describe qué datos ya no aparecen como constantes codificadas. Puedes proponer variables de entorno para configuración de laboratorio, pero explica sus límites y no las presentes como una solución completa para gestionar secretos. No afirmes que ocultar una cadena por sí solo constituye almacenamiento seguro de contraseñas.</p>
+</div>
+</blockquote>
+<hr/>
+<h2 id="7-ruta-sugerida">7. Ruta sugerida<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-ruta-sugerida" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Puedes realizar la guía en una sesión larga o dividirla en tres bloques. Los tiempos son aproximados; prioriza entender y probar cada ejercicio sobre terminarlos todos a la vez.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:center;">Bloque</th><th style="text-align:center;">Ejercicios</th><th style="text-align:left;">Enfoque</th></tr></thead><tbody><tr><td style="text-align:center;"><strong>1</strong></td><td style="text-align:center;">1–2</td><td style="text-align:left;">Estado, validaciones y relaciones entre objetos</td></tr><tr><td style="text-align:center;"><strong>2</strong></td><td style="text-align:center;">3–6</td><td style="text-align:left;">Herencia, polimorfismo y colaboración entre objetos</td></tr><tr><td style="text-align:center;"><strong>3</strong></td><td style="text-align:center;">7–9</td><td style="text-align:left;">Revisión crítica con IA y auditoría local de código</td></tr></tbody></table></div>
+<hr/>
+<h2 id="8-lista-de-comprobación">8. Lista de comprobación<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-lista-de-comprobación" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> Los atributos que deben protegerse no se modifican directamente desde Main.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Los constructores y métodos mantienen objetos en estados válidos.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> La herencia representa una relación coherente y la sobrescritura está marcada con <code>@Override</code>.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Las clases colaboran mediante atributos y métodos con responsabilidades comprensibles.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Las pruebas incluyen datos normales y al menos un caso límite.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> El código compila con la versión de Java trabajada en clase y usa solo la sintaxis necesaria para la consigna.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Puedo explicar cada parte del código y distinguir sugerencias verificadas de sugerencias descartadas.</li>
+<li class="task-list-item"><input type="checkbox" disabled/> La auditoría del ejercicio 9 se limita al código ficticio y al archivo <code>.class</code> compilado localmente.</li>
+</ul>
+<hr/>
+<h2 id="9-cierre">9. Cierre<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-cierre" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Al terminar, selecciona dos ejercicios que te hayan resultado distintos: uno donde hayas protegido el estado de un objeto y otro donde hayas relacionado objetos o aplicado polimorfismo. Explica qué decisión de diseño ayudó a que el código fuera más fácil de entender. Finalmente, anota una pregunta que todavía tengas sobre Java o sobre seguridad informática.</p></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Vista Gráfica</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-93" aria-expanded="true"><h3>Tabla de Contenidos</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-2" class="toc-content overflow"><li class="depth-0"><a href="#antes-de-empezar" data-for="antes-de-empezar">Antes de empezar</a></li><li class="depth-0"><a href="#2-entregables" data-for="2-entregables">2. Entregables</a></li><li class="depth-0"><a href="#3-criterios-de-calificación" data-for="3-criterios-de-calificación">3. Criterios de calificación</a></li><li class="depth-1"><a href="#31-creatividad" data-for="31-creatividad">3.1. Creatividad</a></li><li class="depth-0"><a href="#4-presentación" data-for="4-presentación">4. Presentación</a></li><li class="depth-1"><a href="#41-objetivo-general" data-for="41-objetivo-general">4.1. Objetivo general</a></li><li class="depth-1"><a href="#42-al-finalizar-podrás" data-for="42-al-finalizar-podrás">4.2. Al finalizar, podrás</a></li><li class="depth-1"><a href="#43-preparación" data-for="43-preparación">4.3. Preparación</a></li><li class="depth-0"><a href="#5-mapa-de-contenidos" data-for="5-mapa-de-contenidos">5. Mapa de contenidos</a></li><li class="depth-0"><a href="#6-ejercicios" data-for="6-ejercicios">6. Ejercicios</a></li><li class="depth-1"><a href="#bloque-a-objetos-y-relaciones" data-for="bloque-a-objetos-y-relaciones">Bloque A. Objetos y relaciones</a></li><li class="depth-1"><a href="#bloque-b-comportamientos-y-polimorfismo" data-for="bloque-b-comportamientos-y-polimorfismo">Bloque B. Comportamientos y polimorfismo</a></li><li class="depth-1"><a href="#bloque-c-modelado-y-colaboración-con-poo" data-for="bloque-c-modelado-y-colaboración-con-poo">Bloque C. Modelado y colaboración con POO</a></li><li class="depth-1"><a href="#bloque-d-ia-y-ciberseguridad-didáctica" data-for="bloque-d-ia-y-ciberseguridad-didáctica">Bloque D. IA y ciberseguridad didáctica</a></li><li class="depth-0"><a href="#7-ruta-sugerida" data-for="7-ruta-sugerida">7. Ruta sugerida</a></li><li class="depth-0"><a href="#8-lista-de-comprobación" data-for="8-lista-de-comprobación">8. Lista de comprobación</a></li><li class="depth-0"><a href="#9-cierre" data-for="9-cierre">9. Cierre</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Creado con <a href="https://quartz.jzhao.xyz/">Quartz v4.5.2</a> © 2026</p><ul></ul></footer></div></div></body><script type="application/javascript" data-persist="true">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module" data-persist="true">function E(a,e){if(!a)return;function t(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function n(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}a?.addEventListener("click",t),window.addCleanup(()=>a?.removeEventListener("click",t)),document.addEventListener("keydown",n),window.addCleanup(()=>document.removeEventListener("keydown",n))}function f(a){for(;a.firstChild;)a.removeChild(a.firstChild)}var m=class{constructor(e,t){this.container=e;this.content=t;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}container;content;isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),t=this.onMouseMove.bind(this),n=this.onMouseUp.bind(this),o=this.onTouchStart.bind(this),r=this.onTouchMove.bind(this),i=this.onTouchEnd.bind(this),s=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",t),document.addEventListener("mouseup",n),this.container.addEventListener("touchstart",o,{passive:!1}),document.addEventListener("touchmove",r,{passive:!1}),document.addEventListener("touchend",i),window.addEventListener("resize",s),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",t),()=>document.removeEventListener("mouseup",n),()=>this.container.removeEventListener("touchstart",o),()=>document.removeEventListener("touchmove",r),()=>document.removeEventListener("touchend",i),()=>window.removeEventListener("resize",s))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let t=this.createButton("+",()=>this.zoom(.1)),n=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(n),e.appendChild(o),e.appendChild(t),this.container.appendChild(e)}createButton(e,t){let n=document.createElement("button");return n.textContent=e,n.className="mermaid-control-button",n.addEventListener("click",t),window.addCleanup(()=>n.removeEventListener("click",t)),n}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}onTouchStart(e){if(e.touches.length!==1)return;this.isDragging=!0;let t=e.touches[0];this.startPan={x:t.clientX-this.currentPan.x,y:t.clientY-this.currentPan.y}}onTouchMove(e){if(!this.isDragging||e.touches.length!==1)return;e.preventDefault();let t=e.touches[0];this.currentPan={x:t.clientX-this.startPan.x,y:t.clientY-this.startPan.y},this.updateTransform()}onTouchEnd(){this.isDragging=!1}zoom(e){let t=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),n=this.content.getBoundingClientRect(),o=n.width/2,r=n.height/2,i=t-this.scale;this.currentPan.x-=o*i,this.currentPan.y-=r*i,this.scale=t,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){let t=this.content.querySelector("svg").getBoundingClientRect(),n=t.width/this.scale,o=t.height/this.scale;this.scale=1,this.currentPan={x:(this.container.clientWidth-n)/2,y:(this.container.clientHeight-o)/2},this.updateTransform()}},T=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],y;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;y||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let t=y.default,n=new WeakMap;for(let r of e)n.set(r,r.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let c=n.get(s);c&&(s.innerHTML=c)}let r=T.reduce((s,c)=>(s[c]=window.getComputedStyle(document.documentElement).getPropertyValue(c),s),{}),i=document.documentElement.getAttribute("saved-theme")==="dark";t.initialize({startOnLoad:!1,securityLevel:"loose",theme:i?"dark":"base",themeVariables:{fontFamily:r["--codeFont"],primaryColor:r["--light"],primaryTextColor:r["--darkgray"],primaryBorderColor:r["--tertiary"],lineColor:r["--darkgray"],secondaryColor:r["--secondary"],tertiaryColor:r["--tertiary"],clusterBkg:r["--light"],edgeLabelBackground:r["--highlight"]}}),await t.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let r=0;r<e.length;r++){let v=function(){let g=l.querySelector("#mermaid-space"),h=l.querySelector(".mermaid-content");if(!h)return;f(h);let w=i.querySelector("svg").cloneNode(!0);h.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new m(g,h)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},i=e[r],s=i.parentElement,c=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(c),L=c.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),E(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">
+        const socket = new WebSocket('ws://localhost:3001')
+        // reload(true) ensures resources like images and scripts are fetched again in firefox
+        socket.addEventListener('message', () => document.location.reload(true))
+      </script><script src="../../postscript.js" type="module" data-persist="true"></script></html>

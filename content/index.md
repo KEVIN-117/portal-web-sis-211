@@ -1,21 +1,31 @@
 ---
-title: "Portal Web SIS-211 G2"
-tags: ["Portal Web", "SIS-211"]
+title: "Aprende. Practica. Construye."
+tags: ["SIS-211", "Portal Web"]
 ---
 
-Welcome to the Portal Web SIS-211 G2.
+Un espacio de trabajo para **Técnicas de Programación II**. Aquí encontrarás el material de clase, las prácticas y los recursos para preparar cada evaluación.
 
-This portal is a web application that allows users to access and manage their information. It is a platform for communication and collaboration between students and teachers.
+Explora los apuntes a tu ritmo, prueba los ejemplos y vuelve cuando necesites consultar una solución.
 
-## Features
+## Tu espacio de aprendizaje
 
-- User authentication and authorization
-- User profile management
-- Course management
-- Grade management
-- Attendance management
-- Communication tools
+- **[Material de clase](material/)**  
+  Conceptos, apuntes y recursos organizados por módulo.
+- **[Prácticas](practicas/)**  
+  Ejercicios para aplicar lo aprendido, paso a paso.
+- **[Parciales y evaluaciones](parciales/)**  
+  Material para repasar y prepararte para las evaluaciones.
+- **[SIS-211 · Segundo semestre](sis-211-s2/)**  
+  Clases, ejemplos resueltos y prácticas del semestre.
 
-[@netflixScaling2026].
+## Por dónde empezar
 
-[^ref]
+Si estás comenzando, entra al [Módulo 0: Introducción a Java](material/Modulo_0/) y luego continúa con los [contenidos de SIS-211](sis-211-s2/). Usa la búsqueda para encontrar rápidamente un tema, una práctica o un concepto.
+
+> [!tip] Una buena forma de estudiar
+> Lee el concepto, ejecuta el ejemplo y resuelve la práctica sin mirar la solución. Después, compara enfoques y anota tus dudas.
+
+---
+
+**SIS-211 · Técnicas de Programación II**  
+Apuntes y recursos compartidos para aprender haciendo.

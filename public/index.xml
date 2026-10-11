@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
-      <title>Portal Web SIS-211</title>
+      <title>SIS-211 · Aula digital</title>
       <link>https://quartz.jzhao.xyz</link>
-      <description>Last 10 notes on Portal Web SIS-211</description>
+      <description>Últimas 10 notas on SIS-211 · Aula digital</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>Práctica 5: POO y Fundamentos de Java con Retos</title>
+    <link>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5</link>
+    <guid>https://quartz.jzhao.xyz/sis-211-s2/practicas/Practica_5</guid>
+    <description><![CDATA[ Ejercicios independientes para practicar fundamentos de Java y programación orientada a objetos, con apoyo crítico de IA y una auditoría local de seguridad. ]]></description>
+    <pubDate>Sun, 11 Oct 2026 05:33:58 GMT</pubDate>
+  </item><item>
     <title>Guía de Laboratorio: Evolución de un Sistema en Java con POO, Herencia y Patrones</title>
     <link>https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance</link>
     <guid>https://quartz.jzhao.xyz/sis-211-s2/ejemplos-solucion-problemas/Poo_Inheritance</guid>
     <description><![CDATA[ Guía práctica y pedagógica paso a paso para la evolución progresiva de un sistema académico en Java: desde clases y encapsulación hasta herencia, separación de responsabilidades (SRP), base de datos en memoria extensible (OCP) y el patrón Singleton. ]]></description>
-    <pubDate>Tue, 15 Sep 2026 02:48:16 GMT</pubDate>
+    <pubDate>Tue, 15 Sep 2026 02:49:40 GMT</pubDate>
   </item><item>
-    <title>EXAMEN_FINAL</title>
-    <link>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</link>
-    <guid>https://quartz.jzhao.xyz/parciales/EXAMEN_FINAL</guid>
-    <description><![CDATA[ Examen final de Programación II Pregunta 1 3 / 3 pts ¿Cuál de las siguientes clases pertenece al paquete java.lang y puede utilizarse sin importarla explícitamente? ArrayList HashMap String (correcta) Scanner NOTE Explicación Pregunta 1 El paquete java.lang se importa automáticamente en todos los pr... ]]></description>
+    <title>Regresión Lineal en Java con Entrenamiento</title>
+    <link>https://quartz.jzhao.xyz/material/Modulo_0/Ejemplos/AdvancedLinearRegression</link>
+    <guid>https://quartz.jzhao.xyz/material/Modulo_0/Ejemplos/AdvancedLinearRegression</guid>
+    <description><![CDATA[ 🎯 Objetivo del Ejemplo Lo que aprenderemos es: Creacion e interaccion con clases las base de la POO Implementar un modelo de regresión lineal desde cero Calcular automáticamente los parámetros del modelo (w y b) Aplicar lógica matemática en código Java Entender cómo un modelo “aprende” a partir de ... ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>SEGUNDO_PARCIAL</title>
-    <link>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</link>
-    <guid>https://quartz.jzhao.xyz/parciales/SEGUNDO_PARCIAL</guid>
-    <description><![CDATA[ SEGUNDO PARCIAL SIS-211 G-2 Pregunta 1 ¿Qué principio de la POO garantiza que los detalles internos de una clase no puedan ser accedidos directamente desde afuera? Abstraccion Herencia Encapsulamiento Polimorfismo NOTE Explicación Pregunta 1 El encapsulamiento es el principio que oculta el estado in... ]]></description>
+    <title>Pilares de la POO</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_2/POO_-Pilares</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_2/POO_-Pilares</guid>
+    <description><![CDATA[ 1. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Práctica 10: Sockets y Concurrencia</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_10</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_10</guid>
-    <description><![CDATA[ En esta práctica construiremos un sistema de chat en tiempo real simple pero completo. Implementaremos un servidor que acepta múltiples clientes, maneja conexiones concurrentes y transmite mensajes a todos los participantes. Además, implementaremos un cliente con interfaz gráfica que se conecta al servidor y permite enviar y recibir mensajes en tiempo real. Esta práctica te permitirá comprender cómo funcionan las comunicaciones en red, el manejo concurrente de múltiples usuarios y la interacción entre el backend (servidor) y el frontend (cliente). ]]></description>
+    <title>Polimorfismo en Java</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_2/Polimorfismo-en-Java_-Gu%C3%ADa-Completa</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_2/Polimorfismo-en-Java_-Gu%C3%ADa-Completa</guid>
+    <description><![CDATA[ 1. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Practica 4: Sistema Inteligente de Recomendación de Cursos</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_4</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_4</guid>
-    <description><![CDATA[ 🧪 Laboratorio en Casa 🎯 Objetivo El estudiante será capaz de: Aplicar POO (clases, objetos, métodos) Usar ArrayList y HashMap Implementar una lógica de recomendación (tipo Machine Learning básico) Diseñar un sistema modular Encontrar errores en el código 🧠 Idea del sistema Vamos a simular un sist... ]]></description>
+    <title>Herencia en Java</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_2/Presentaci%C3%B3n_-Herencia-en-Java-para-Principiantes</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_2/Presentaci%C3%B3n_-Herencia-en-Java-para-Principiantes</guid>
+    <description><![CDATA[ 1. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Practica 5: Sistema de Combate RPG</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_5</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_5</guid>
-    <description><![CDATA[ 🧩 CONTEXTO DEL PROBLEMA Se quiere desarrollar un sistema básico de combate tipo RPG donde modelamos diferentes tipos de personajes, cada uno con su propia forma de atacar. ]]></description>
+    <title>Ejemplo 1</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_1</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_1</guid>
+    <description><![CDATA[ Un mini sistema de análisis de estudiantes utilizando Java Streams. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Practica 6: Sistema de Pagos con Clases Abstractas</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_6</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_6</guid>
-    <description><![CDATA[ 🎯 Objetivo de la Práctica Diseñar un sistema que procese múltiples formas de pago utilizando una jerarquía de clases. ]]></description>
+    <title>Ejemplo 2</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_2</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_2</guid>
+    <description><![CDATA[ Un sistema de análisis de rendimiento estudiantil utilizando Java Streams. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Practica 7: Mini Framework de Machine Learning en Java</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_7</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_7</guid>
-    <description><![CDATA[ 🎯 Objetivo de la Práctica Construir paso a paso un mini framework de Machine Learning aplicando los conceptos de POO vistos en clase: herencia, clases abstractas, interfaces, polimorfismo y colecciones (ArrayList, HashMap). ]]></description>
+    <title>Ejemplo 3</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_3</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_3</guid>
+    <description><![CDATA[ Un sistema de análisis de sensores IoT para Machine Learning utilizando Java Streams. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item><item>
-    <title>Práctica 8: SearchEngine con Streams y Programación Funcional</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_8</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_8</guid>
-    <description><![CDATA[ En esta práctica construiremos un motor de búsqueda de documentos de texto desde cero. La aplicación permitirá al usuario indexar archivos .txt desde su sistema de archivos, buscar por palabras clave y obtener resultados ordenados por relevancia. Lo que hace especial a este proyecto es que toda la lógica se implementará usando programación funcional: Streams, lambdas, method references, Optional y composición de funciones. No usaremos bucles for ni while para procesar datos; en su lugar, usaremos pipelines funcionales. ]]></description>
-    <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
-  </item><item>
-    <title>Práctica 9: Swing - Parte 1</title>
-    <link>https://quartz.jzhao.xyz/practicas/Practica_9</link>
-    <guid>https://quartz.jzhao.xyz/practicas/Practica_9</guid>
-    <description><![CDATA[ En esta práctica construiremos una aplicación de escritorio completa usando Swing. La aplicación será una calculadora avanzada que implementará diferentes formas de manejar eventos, interfaces de usuario con diferentes layouts y componentes, y se estructurará siguiendo principios de diseño orientado a objetos. Además, aplicaremos programación funcional en el manejo de eventos y utilizaremos Streams para procesar colecciones de datos. ]]></description>
+    <title>Ejemplo 4</title>
+    <link>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_4</link>
+    <guid>https://quartz.jzhao.xyz/material/modulo_3/ejemplos/example_4</guid>
+    <description><![CDATA[ Análisis de transacciones financieras utilizando Programación Funcional con Java Streams. ]]></description>
     <pubDate>Fri, 11 Sep 2026 20:23:20 GMT</pubDate>
   </item>
     </channel>
