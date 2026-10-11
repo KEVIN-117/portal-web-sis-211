@@ -21,7 +21,7 @@ export const Citations: QuartzTransformerPlugin<Partial<Options>> = (userOpts) =
   const opts = { ...defaultOptions, ...userOpts }
   return {
     name: "Citations",
-    htmlPlugins(ctx) {
+    htmlPlugins(_ctx) {
       const plugins: PluggableList = []
       // Quartz 4's citation plugin only bundles en-US. Fetching other CSL
       // locales at build time makes offline builds fail before any pages emit.

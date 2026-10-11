@@ -269,7 +269,7 @@ export function renderPage(
         <div id="quartz-root" class="page">
           <Body {...componentData}>
             {LeftComponent}
-            <div class="center" id="main-content" role="main" tabindex="-1">
+            <div class="center" id="main-content" role="main" tabindex={-1}>
               <div class="page-header">
                 <Header {...componentData}>
                   {header.map((HeaderComponent) => (

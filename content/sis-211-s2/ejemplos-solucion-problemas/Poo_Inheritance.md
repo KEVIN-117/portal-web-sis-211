@@ -24,10 +24,11 @@ tags:
 ## Evolución de un sistema de estudiantes en Java
 
 > [!INFO] Ficha Técnica de la Práctica
-> * **Asignatura:** Programación Orientada a Objetos
-> * **Lenguaje:** Java
-> * **Nivel:** Principiantes
-> * **Enfoque Pedagógico:** Evolución incremental guiada por requisitos, refactorización limpia y buenas prácticas de diseño.
+>
+> - **Asignatura:** Programación Orientada a Objetos
+> - **Lenguaje:** Java
+> - **Nivel:** Principiantes
+> - **Enfoque Pedagógico:** Evolución incremental guiada por requisitos, refactorización limpia y buenas prácticas de diseño.
 
 ---
 
@@ -39,9 +40,9 @@ Inicialmente, el sistema solamente debe permitir registrar estudiantes.
 
 Cada estudiante posee información básica:
 
-* Nombre.
-* Edad.
-* Carrera.
+- Nombre.
+- Edad.
+- Carrera.
 
 A medida que el sistema evoluciona aparecen nuevas necesidades.
 
@@ -60,7 +61,7 @@ flowchart TD
         Person["Person"]
         Student["Student (Estudiante)"]
         Teacher["Teacher (Docente)"]
-        
+
         Univ --> Person
         Person --> Student
         Person --> Teacher
@@ -70,24 +71,24 @@ flowchart TD
         SR["StudentRepository"]
         TR["TeacherRepository"]
         BR["BookRepository"]
-        
+
         Student -.-> SR
         Teacher -.-> TR
     end
 
     subgraph Almacenamiento ["💾 Almacenamiento Centralizado"]
         DB["InMemoryDatabase (Instancia Única / Singleton)"]
-        
+
         SR --> DB
         TR --> DB
         BR --> DB
-        
+
         subgraph Tablas ["Colecciones Simuladas (Tablas)"]
             T_Students["students HashMap&lt;ID, Student&gt;"]
             T_Teachers["teachers HashMap&lt;ID, Teacher&gt;"]
             T_Books["books HashMap&lt;ID, Book&gt;"]
         end
-        
+
         DB --> T_Students
         DB --> T_Teachers
         DB --> T_Books
@@ -139,12 +140,12 @@ La práctica se desarrollará siguiendo esta secuencia:
 
 La práctica se concentra principalmente en:
 
-| Categoría | Conceptos Abordados |
-| :--- | :--- |
-| **POO** | Clases y objetos, Encapsulación, Herencia |
+| Categoría                | Conceptos Abordados                                                |
+| :----------------------- | :----------------------------------------------------------------- |
+| **POO**                  | Clases y objetos, Encapsulación, Herencia                          |
 | **Principios de diseño** | Single Responsibility Principle (SRP), Open/Closed Principle (OCP) |
-| **Colecciones** | `List`, `Map`, `HashMap` |
-| **Patrón de diseño** | Singleton |
+| **Colecciones**          | `List`, `Map`, `HashMap`                                           |
+| **Patrón de diseño**     | Singleton                                                          |
 
 ```text
 POO
@@ -213,6 +214,7 @@ Estructura de clase inicial:
 - [ ] Mostrar la información de los estudiantes.
 
 > [!QUESTION] Preguntas de análisis
+>
 > 1. ¿Qué representa la clase `Student`?
 > 2. ¿Qué representa un objeto `Student`?
 > 3. ¿Cuál es la diferencia entre una clase y un objeto?
@@ -281,6 +283,7 @@ Por ejemplo, la edad no debería aceptar valores negativos.
 - [ ] Probar qué ocurre al intentar introducir datos inválidos.
 
 > [!QUESTION] Preguntas de análisis
+>
 > 1. ¿Por qué los atributos deberían estar protegidos?
 > 2. ¿Qué problema resuelve `private`?
 > 3. ¿Por qué no debemos permitir que cualquier parte del programa modifique directamente los atributos?
@@ -359,7 +362,6 @@ flowchart TD
 
 La estructura conceptual será:
 
-
 <iframe src="https://mermaid.live/embed?theme=dark&look=classic&mode=dark#pako:eNqFk8FPwyAUxv8V8ry42F6miY54cZs7GpN5MlxIeVKyFhqgumXuf5d2RaXZlFP53u9976O0eyiMQKBQVNy5peLS8ppZpklYvUae0TqjyT6q3crX3iotieY1JrrSnnCZaFcS_VPgLifk2JUU3VD8ZTgh70aJscWD7ByC_7i9Kwxj085D95CeZe1bgYE9eZiCW0Q7nrvo1bPhh3Ji8W-MF-RFifZ0DNdgoXjld-Mk61g4G-aHGHv9EWm43_vPPP9-P5Tg1qMW7hQU0ydQBJ3fVRhx563ZIL14vLudrWbZcZt_KOFLOm22aU-cHZumy-XNfJUycXRkVvPZ9HoRGchAWiWAettiBjXamndb2DPwJYZPFSgDwe2GQcagMmbTK_2lqILBITg0XL8aU0cTa1pZAn3jlQu7thHc4_CbHJHDFzg2DD4" width="100%" height="480" style="border:0" loading="lazy" title="Mermaid diagram" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
 ## Actividades
@@ -371,6 +373,7 @@ La estructura conceptual será:
 - [ ] Cada clase hija debe conservar sus propios datos específicos.
 
 > [!QUESTION] Preguntas de análisis
+>
 > 1. ¿Qué información tienen en común `Student` y `Teacher`?
 > 2. ¿Qué información pertenece únicamente a `Student`?
 > 3. ¿Qué información pertenece únicamente a `Teacher`?
@@ -380,9 +383,9 @@ La estructura conceptual será:
 
 > [!NOTE] Concepto clave
 > La **herencia** permite reutilizar características comunes de una clase existente en nuevas clases relacionadas.
-> 
+>
 > En esta práctica se utilizará la herencia principalmente para **reutilizar atributos y comportamiento común**.
-> 
+>
 > Todavía no se estudiarán abstracción ni polimorfismo.
 
 ---
@@ -466,6 +469,7 @@ flowchart TD
 - [ ] Analizar qué responsabilidades pertenecen a cada clase.
 
 > [!QUESTION] Preguntas de análisis
+>
 > 1. ¿Qué responsabilidad tiene `Student`?
 > 2. ¿Qué responsabilidad tiene `StudentRepository`?
 > 3. ¿Qué problemas aparecen cuando una clase intenta hacerlo todo?
@@ -819,7 +823,7 @@ flowchart TD
 
         S_Base["🧱 Sistema existente (InMemoryDatabase) Se mantiene funcionando y sin alteraciones estructurales"]
         S_Ext["✨ Nueva funcionalidad (Entidad Book + BookRepository) Se integra agregando una nueva colección sin reescribir la BD"]
-        
+
         S_Base -.->|Soporta sin cambios| S_Ext
     end
     style S_Base stroke:#4a5568
@@ -846,6 +850,7 @@ se agrega mediante extensión
 - [ ] Comprobar que estudiantes, docentes y libros pueden coexistir dentro de la misma base de datos.
 
 > [!QUESTION] Preguntas de análisis
+>
 > 1. ¿Por qué utilizamos un `Map` para representar las tablas?
 > 2. ¿Por qué cada tabla puede utilizar un `HashMap`?
 > 3. ¿Qué ventaja tiene buscar utilizando un ID?
@@ -964,6 +969,7 @@ Todos utilizan el mismo almacenamiento.
 La clase `InMemoryDatabase` deberá cumplir tres condiciones:
 
 > [!IMPORTANT] Tres Condiciones Fundamentales del Patrón Singleton
+>
 > 1. **Constructor privado:** No permitir que cualquier clase cree libremente nuevas instancias (`private InMemoryDatabase()`).
 > 2. **Instancia estática única:** Mantener internamente la única instancia compartida (`private static InMemoryDatabase instance`).
 > 3. **Punto de acceso global:** Proporcionar una forma controlada de obtener esa instancia mediante un método estático (`public static InMemoryDatabase getInstance()`).
@@ -1268,16 +1274,16 @@ Responder con sus propias palabras:
 
 Para mantener el enfoque en los fundamentos de POO, en esta práctica no se utilizarán:
 
-| ❌ Elementos No Permitidos | ✔️ Elementos Permitidos y Requeridos |
-| :--- | :--- |
-| Interfaces | Clases y Objetos estándar |
-| Clases abstractas | Atributos privados y métodos de acceso (`getters`/`setters`) |
-| Polimorfismo | Herencia directa mediante `extends` |
-| Métodos abstractos | Constructores con delegación mediante `super(...)` |
-| `@Override` | Principio de Responsabilidad Única (SRP) |
-| JDBC | Simulación de base de datos en memoria |
-| MySQL / PostgreSQL | Colecciones Java: `List`, `Map` y `HashMap` |
-| Frameworks externos | Patrón Singleton artesanal en Java puro |
+| ❌ Elementos No Permitidos | ✔️ Elementos Permitidos y Requeridos                         |
+| :------------------------- | :----------------------------------------------------------- |
+| Interfaces                 | Clases y Objetos estándar                                    |
+| Clases abstractas          | Atributos privados y métodos de acceso (`getters`/`setters`) |
+| Polimorfismo               | Herencia directa mediante `extends`                          |
+| Métodos abstractos         | Constructores con delegación mediante `super(...)`           |
+| `@Override`                | Principio de Responsabilidad Única (SRP)                     |
+| JDBC                       | Simulación de base de datos en memoria                       |
+| MySQL / PostgreSQL         | Colecciones Java: `List`, `Map` y `HashMap`                  |
+| Frameworks externos        | Patrón Singleton artesanal en Java puro                      |
 
 ```text
 ❌ Interfaces

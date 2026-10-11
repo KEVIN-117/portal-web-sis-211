@@ -32,10 +32,10 @@ Ejercicios independientes para practicar fundamentos de Java y programación ori
 
 **Atajos:** [Ver los 9 ejercicios](#6-ejercicios) · [Requisitos de entrega](#2-entregables) · [Criterios de evaluación](#3-criterios-de-calificación) · [Lista de comprobación](#8-lista-de-comprobación).
 
-| Parámetro | Detalle |
-| :--- | :--- |
-| **Asignatura** | Programación en Java |
-| **Modalidad** | Individual o parejas |
+| Parámetro             | Detalle                |
+| :-------------------- | :--------------------- |
+| **Asignatura**        | Programación en Java   |
+| **Modalidad**         | Individual o parejas   |
 | **Duración estimada** | 4 a 5 horas, ajustable |
 
 > [!NOTE] Modalidad de trabajo
@@ -64,12 +64,12 @@ El repositorio debe incluir:
 
 La calificación base se distribuirá sobre 100 puntos. La creatividad se reconocerá aparte según la escala de la sección siguiente.
 
-| Criterio | Peso | Qué se calificará |
-| :--- | :---: | :--- |
-| **Funcionamiento** | 35 puntos | El programa compila, cumple la consigna y produce resultados correctos en casos normales. |
-| **Aplicación de Java y POO** | 25 puntos | Uso adecuado de clases, encapsulamiento, relaciones, herencia, polimorfismo y demás conceptos solicitados. |
-| **Pruebas y casos límite** | 15 puntos | Pruebas reproducibles, incluidos valores inválidos o situaciones límite pertinentes. |
-| **Organización y legibilidad** | 10 puntos | Nombres claros, responsabilidades comprensibles, estructura del repositorio y `README.md` suficiente para ejecutar el trabajo. |
+| Criterio                           |   Peso    | Qué se calificará                                                                                                                                                                 |
+| :--------------------------------- | :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Funcionamiento**                 | 35 puntos | El programa compila, cumple la consigna y produce resultados correctos en casos normales.                                                                                         |
+| **Aplicación de Java y POO**       | 25 puntos | Uso adecuado de clases, encapsulamiento, relaciones, herencia, polimorfismo y demás conceptos solicitados.                                                                        |
+| **Pruebas y casos límite**         | 15 puntos | Pruebas reproducibles, incluidos valores inválidos o situaciones límite pertinentes.                                                                                              |
+| **Organización y legibilidad**     | 10 puntos | Nombres claros, responsabilidades comprensibles, estructura del repositorio y `README.md` suficiente para ejecutar el trabajo.                                                    |
 | **Explicación y revisión crítica** | 15 puntos | Justificación de decisiones; en ejercicios con IA, verificación de sugerencias y evidencia de qué se aceptó o descartó. En seguridad, respeto del alcance y análisis responsable. |
 
 ### 3.1. Creatividad
@@ -78,12 +78,12 @@ Las consignas delimitan el objetivo de cada ejercicio, pero permiten elegir dato
 
 La creatividad se calificará como puntaje adicional. Se asigna una sola categoría por ejercicio, según la propuesta que hayas implementado y explicado:
 
-| Categoría | Puntaje adicional | Descripción |
-| :--- | :---: | :--- |
-| **Easy** | +10 | Una mejora pequeña y pertinente, como una validación adicional o una salida más clara. |
-| **Medium** | +20 | Una ampliación que resuelve un caso adicional y combina varios conceptos de Java. |
-| **Hard** | +30 | Una extensión más completa, bien probada y organizada, que integra varios conceptos sin perder claridad. |
-| **Insane** | +50 | En cada ejercicio, se construye una simulación creativa y constructiva de un entorno realista, dentro del alcance definido, integrando muchos conceptos y manteniendo pruebas y límites responsables. |
+| Categoría  | Puntaje adicional | Descripción                                                                                                                                                                                           |
+| :--------- | :---------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Easy**   |        +10        | Una mejora pequeña y pertinente, como una validación adicional o una salida más clara.                                                                                                                |
+| **Medium** |        +20        | Una ampliación que resuelve un caso adicional y combina varios conceptos de Java.                                                                                                                     |
+| **Hard**   |        +30        | Una extensión más completa, bien probada y organizada, que integra varios conceptos sin perder claridad.                                                                                              |
+| **Insane** |        +50        | En cada ejercicio, se construye una simulación creativa y constructiva de un entorno realista, dentro del alcance definido, integrando muchos conceptos y manteniendo pruebas y límites responsables. |
 
 > [!NOTE] Solicitud de puntaje creativo
 > Para solicitar puntaje creativo, añade al `README.md` del ejercicio una nota con la categoría propuesta, qué agregaste, qué conceptos integraste y cómo comprobaste que funciona. El docente determina la categoría final. Una idea sin implementación o explicación no obtiene puntaje adicional.
@@ -124,12 +124,12 @@ Aplicar los conceptos de Java y POO en ejercicios pequeños e independientes, co
 
 ## 5. Mapa de contenidos
 
-| Bloque | Conceptos que se practican |
-| :--- | :--- |
-| **A. Objetos y relaciones** | Clases, objetos, estado, métodos, encapsulamiento, constructores, composición y asociación. |
-| **B. Comportamientos** | Herencia, sobrecarga, sobrescritura, polimorfismo, abstracción e interfaces. |
-| **C. Colaboración entre objetos** | Asociación entre clases, atributos privados, métodos, arreglos básicos y reglas sencillas. |
-| **D. Revisión responsable** | Revisión crítica con IA y auditoría local de una clase de acceso ficticia. |
+| Bloque                            | Conceptos que se practican                                                                  |
+| :-------------------------------- | :------------------------------------------------------------------------------------------ |
+| **A. Objetos y relaciones**       | Clases, objetos, estado, métodos, encapsulamiento, constructores, composición y asociación. |
+| **B. Comportamientos**            | Herencia, sobrecarga, sobrescritura, polimorfismo, abstracción e interfaces.                |
+| **C. Colaboración entre objetos** | Asociación entre clases, atributos privados, métodos, arreglos básicos y reglas sencillas.  |
+| **D. Revisión responsable**       | Revisión crítica con IA y auditoría local de una clase de acceso ficticia.                  |
 
 ---
 
@@ -363,6 +363,7 @@ public class LoginValidator {
    ```
 
    `javap` muestra instrucciones de bytecode; si el laboratorio dispone de un decompilador aprobado, puedes usar CFR, JD-GUI o Bytecode Viewer para comparar la salida con el código fuente. No descargues ni ejecutes herramientas desconocidas.
+
 3. Sin consultar al modelo todavía, responde las preguntas de análisis que aparecen abajo y registra evidencia local de lo que encontraste.
 4. Pide a un modelo que revise tu análisis y sugiera controles defensivos. Verifica cada propuesta con el código o documentación de clase; distingue entre un hallazgo observado y una recomendación.
 5. Prepara una versión corregida solo a nivel didáctico: elimina secretos codificados directamente, explica por qué MD5 no es apropiado para almacenar contraseñas y plantea controles como un algoritmo específico para contraseñas (BCrypt, Argon2 o PBKDF2), gestión de secretos fuera del código y limitación de intentos. No hace falta implementar un sistema de autenticación real.
@@ -394,11 +395,11 @@ public class LoginValidator {
 
 Puedes realizar la guía en una sesión larga o dividirla en tres bloques. Los tiempos son aproximados; prioriza entender y probar cada ejercicio sobre terminarlos todos a la vez.
 
-| Bloque | Ejercicios | Enfoque |
-| :---: | :---: | :--- |
-| **1** | 1–2 | Estado, validaciones y relaciones entre objetos |
-| **2** | 3–6 | Herencia, polimorfismo y colaboración entre objetos |
-| **3** | 7–9 | Revisión crítica con IA y auditoría local de código |
+| Bloque | Ejercicios | Enfoque                                             |
+| :----: | :--------: | :-------------------------------------------------- |
+| **1**  |    1–2     | Estado, validaciones y relaciones entre objetos     |
+| **2**  |    3–6     | Herencia, polimorfismo y colaboración entre objetos |
+| **3**  |    7–9     | Revisión crítica con IA y auditoría local de código |
 
 ---
 
